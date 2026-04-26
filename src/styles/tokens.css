@@ -1,0 +1,213 @@
+/* ==========================================================================
+   AQUA DS — Design Tokens
+   Caixa d'Água Revestimentos e Impermeabilizações
+   v1.0.0
+   ========================================================================== */
+
+:root {
+  /* ─────────────────────────────────────────────────────────
+     GLOBAL — Color Ramp
+     Extraído do logo. Do azul navy profundo ao ciano brilhante.
+  ──────────────────────────────────────────────────────────── */
+
+  --color-navy-deep: #0d2a52;
+  --color-navy: #1a4a8a;
+  --color-navy-mid: #1657a8;
+  --color-cobalt: #1a6bc4;
+  --color-royal: #1e90e8;
+  --color-sky: #00b8f0;
+  --color-cyan: #00c8f0;
+  --color-cyan-light: #7adcf5;
+  --color-cyan-pale: #c6f0fb;
+  --color-cyan-ghost: #e0f6fd;
+
+  /* Accent — Lacre (garantia, patente, sucesso) */
+  --color-lacre: #00d4aa;
+  --color-lacre-light: #ccfaf0;
+
+  /* Neutros */
+  --color-white: #ffffff;
+  --color-fog: #f2f6fb;
+  --color-mist: #dde8f5;
+  --color-iron: #6b82a0;
+  --color-steel: #3a5270;
+  --color-text: #0a1e35;
+
+  /* Semânticas */
+  --color-success: #00d4aa;
+  --color-warning: #e8a020;
+  --color-error: #d64045;
+
+  /* WhatsApp */
+  --color-wpp: #075e54;
+  --color-wpp-hover: #25d366;
+
+  /* ─────────────────────────────────────────────────────────
+     SEMÂNTICOS — usar nos componentes (nunca os globais direto)
+  ──────────────────────────────────────────────────────────── */
+
+  --brand-primary: var(--color-navy);
+  --brand-primary-deep: var(--color-navy-deep);
+  --brand-accent: var(--color-sky);
+  --brand-highlight: var(--color-cyan);
+  --brand-success: var(--color-lacre);
+
+  --brand-gradient: linear-gradient(
+    135deg,
+    #1a4a8a 0%,
+    #1a6bc4 35%,
+    #1e90e8 65%,
+    #00c8f0 100%
+  );
+  --brand-gradient-dark: linear-gradient(
+    135deg,
+    #0d2a52 0%,
+    #1657a8 50%,
+    #00b8f0 100%
+  );
+
+  --bg-page: var(--color-fog);
+  --bg-surface: var(--color-white);
+  --bg-hero: var(--color-navy-deep);
+
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-steel);
+  --text-muted: var(--color-iron);
+  --text-on-dark: var(--color-white);
+  --text-on-accent: var(--color-navy-deep);
+
+  --border-default: var(--color-mist);
+  --border-emphasis: var(--color-navy);
+  --border-accent: var(--color-sky);
+
+  /* ─────────────────────────────────────────────────────────
+     TIPOGRAFIA
+  ──────────────────────────────────────────────────────────── */
+
+  --font-wave: "Wavefont", sans-serif; /* H1 hero — weight 800 */
+  --font-display: "Wavefont", sans-serif; /* headings, display */
+  --font-body: "Lato", sans-serif; /* body text */
+  --font-mono: "DM Mono", monospace; /* labels, badges, dados técnicos */
+
+  --text-xs: 10px;
+  --text-sm: 12px;
+  --text-base: 15px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 28px;
+  --text-3xl: 36px;
+  --text-display: clamp(32px, 5vw, 52px);
+
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.7;
+
+  --tracking-tight: -0.8px;
+  --tracking-snug: -0.3px;
+  --tracking-mono: 0.14em;
+  --tracking-label: 0.2em;
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-bold: 700;
+  --weight-black: 800;
+
+  /* ─────────────────────────────────────────────────────────
+     ESPAÇAMENTO — base 4px
+  ──────────────────────────────────────────────────────────── */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ─────────────────────────────────────────────────────────
+     BORDER RADIUS — filosofia sharp/técnica
+  ──────────────────────────────────────────────────────────── */
+
+  --radius-none: 0px;
+  --radius-xs: 2px; /* botões, badges */
+  --radius-sm: 4px; /* cards, inputs */
+  --radius-md: 8px; /* modais, seções */
+  --radius-pill: 999px; /* tags, chips */
+
+  /* ─────────────────────────────────────────────────────────
+     BORDAS
+  ──────────────────────────────────────────────────────────── */
+
+  --border-thin: 0.5px;
+  --border-default: 1px;
+  --border-medium: 1.5px;
+  --border-strong: 2px;
+
+  /* ─────────────────────────────────────────────────────────
+     SOMBRAS
+  ──────────────────────────────────────────────────────────── */
+
+  --shadow-sm: 0 1px 4px rgba(13, 42, 82, 0.08);
+  --shadow-md: 0 4px 16px rgba(13, 42, 82, 0.12);
+  --shadow-lg: 0 8px 32px rgba(13, 42, 82, 0.16);
+  --shadow-xl: 0 16px 48px rgba(13, 42, 82, 0.2);
+
+  /* ─────────────────────────────────────────────────────────
+     MOTION
+  ──────────────────────────────────────────────────────────── */
+
+  --ease-default: ease-out;
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --dur-instant: 80ms;
+  --dur-fast: 150ms;
+  --dur-base: 280ms;
+  --dur-slow: 500ms;
+  --dur-enter: 700ms;
+
+  /* ─────────────────────────────────────────────────────────
+     LAYOUT
+  ──────────────────────────────────────────────────────────── */
+
+  --container-sm: 480px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-max: 1440px;
+
+  --grid-cols-mobile: 1;
+  --grid-cols-tablet: 2;
+  --grid-cols-desktop: 12;
+  --grid-gap: var(--space-4);
+
+  /* ─────────────────────────────────────────────────────────
+     Z-INDEX
+  ──────────────────────────────────────────────────────────── */
+
+  --z-below: -1;
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+  --z-top: 9999;
+}
+
+/* ─────────────────────────────────────────────────────────
+   BREAKPOINTS (referência — usar via @media)
+
+   Mobile first:
+   @media (min-width: 480px)  { ... }   sm
+   @media (min-width: 768px)  { ... }   md / tablet
+   @media (min-width: 1024px) { ... }   lg / desktop
+   @media (min-width: 1280px) { ... }   xl
+──────────────────────────────────────────────────────────── */

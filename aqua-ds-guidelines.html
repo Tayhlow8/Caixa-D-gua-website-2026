@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aqua DS — Design System · Caixa d'Água Revestimentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&family=Syne:wght@700;800&family=Lato:wght@300;400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   TOKENS
+══════════════════════════════════════ */
+:root {
+  --navy-deep:   #0D2A52;
+  --navy:        #1A4A8A;
+  --navy-mid:    #1657A8;
+  --cobalt:      #1A6BC4;
+  --royal:       #1E90E8;
+  --sky:         #00B8F0;
+  --cyan:        #00C8F0;
+  --cyan-light:  #7ADCF5;
+  --cyan-pale:   #C6F0FB;
+  --cyan-ghost:  #E0F6FD;
+  --lacre:       #00D4AA;
+  --lacre-light: #CCFAF0;
+  --white:       #FFFFFF;
+  --fog:         #F2F6FB;
+  --mist:        #DDE8F5;
+  --iron:        #6B82A0;
+  --steel:       #3A5270;
+  --text:        #0A1E35;
+
+  --font-wave:    'Raleway', 'Syne', sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Lato', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  --spring: cubic-bezier(.22,1,.36,1);
+  --ease:   ease-out;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--fog);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════ */
+.ds-nav {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: 220px;
+  background: var(--navy-deep);
+  padding: 32px 0;
+  overflow-y: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0,184,240,.1);
+}
+
+.ds-nav__logo {
+  padding: 0 24px 28px;
+  border-bottom: .5px solid rgba(255,255,255,.07);
+  margin-bottom: 20px;
+}
+
+.ds-nav__logo-name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.3px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.ds-nav__logo-version {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--sky);
+}
+
+.ds-nav__section {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+  padding: 0 24px 8px;
+  margin-top: 20px;
+}
+
+.ds-nav a {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  padding: 8px 24px;
+  transition: color .2s, background .2s;
+  border-left: 2px solid transparent;
+}
+
+.ds-nav a:hover {
+  color: #fff;
+  background: rgba(255,255,255,.04);
+}
+
+.ds-nav a.active {
+  color: var(--sky);
+  border-left-color: var(--sky);
+  background: rgba(0,184,240,.06);
+}
+
+.ds-main {
+  margin-left: 220px;
+  padding: 48px;
+  max-width: 1100px;
+}
+
+/* ══════════════════════════════════════
+   SECTION HEADERS
+══════════════════════════════════════ */
+.ds-section {
+  margin-bottom: 72px;
+  scroll-margin-top: 32px;
+}
+
+.ds-section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--sky);
+  margin-bottom: 6px;
+}
+
+.ds-section-title {
+  font-family: var(--font-wave);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--navy-deep);
+  letter-spacing: .01em;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.ds-section-desc {
+  font-size: 14px;
+  color: var(--steel);
+  max-width: 600px;
+  line-height: 1.65;
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+.ds-divider {
+  height: .5px;
+  background: var(--mist);
+  margin: 48px 0;
+}
+
+/* ══════════════════════════════════════
+   CARDS / BLOCKS
+══════════════════════════════════════ */
+.ds-card {
+  background: var(--white);
+  border-radius: 4px;
+  border: .5px solid var(--mist);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.ds-card--dark {
+  background: var(--navy-deep);
+  border-color: rgba(0,184,240,.12);
+}
+
+.ds-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--iron);
+  margin-bottom: 12px;
+}
+
+.ds-label--light { color: rgba(255,255,255,.35); }
+
+/* ══════════════════════════════════════
+   COLOR PALETTE
+══════════════════════════════════════ */
+.color-ramp {
+  display: flex;
+  gap: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  height: 48px;
+}
+
+.color-ramp span {
+  flex: 1;
+  transition: flex .3s var(--spring);
+  cursor: pointer;
+}
+
+.color-ramp span:hover { flex: 2; }
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.color-swatch {
+  border-radius: 4px;
+  overflow: hidden;
+  border: .5px solid rgba(0,0,0,.06);
+}
+
+.color-swatch__fill { height: 48px; }
+
+.color-swatch__info {
+  padding: 8px 10px;
+  background: var(--white);
+}
+
+.color-swatch__name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  display: block;
+  margin-bottom: 1px;
+}
+
+.color-swatch__hex {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--iron);
+  display: block;
+}
+
+.color-swatch__role {
+  font-size: 12px;
+  color: var(--steel);
+  font-weight: 300;
+  display: block;
+  margin-top: 2px;
+}
+
+/* ══════════════════════════════════════
+   TYPOGRAPHY SHOWCASE
+══════════════════════════════════════ */
+.type-row {
+  padding: 20px 0;
+  border-bottom: .5px solid var(--mist);
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.type-row:last-child { border-bottom: none; }
+
+.type-meta { padding-top: 4px; }
+
+.type-meta__tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--sky);
+  background: var(--cyan-ghost);
+  border: .5px solid var(--cyan-light);
+  padding: 2px 6px;
+  border-radius: 2px;
+  margin-bottom: 6px;
+}
+
+.type-meta__spec {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--iron);
+  line-height: 1.7;
+  display: block;
+}
+
+/* Amostras tipográficas */
+.sample-wave-display {
+  font-family: var(--font-wave);
+  font-weight: 300;
+  font-size: 52px;
+  line-height: 1.05;
+  letter-spacing: .01em;
+  color: var(--navy-deep);
+}
+
+.sample-wave-h1 {
+  font-family: var(--font-wave);
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: .01em;
+  color: var(--navy-deep);
+}
+
+.sample-wave-h1-accent {
+  font-family: var(--font-wave);
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: .01em;
+  color: var(--sky);
+}
+
+.sample-syne-h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -.03em;
+  line-height: 1.1;
+}
+
+.sample-syne-h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -.02em;
+}
+
+.sample-syne-h4 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cobalt);
+}
+
+.sample-mono {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--sky);
+}
+
+.sample-body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.72;
+  color: var(--steel);
+}
+
+.sample-body-strong {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sample-caption {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--iron);
+}
+
+/* ══════════════════════════════════════
+   WAVEFONT SECTION ESPECIAL
+══════════════════════════════════════ */
+.wave-hero-demo {
+  background: var(--navy-deep);
+  border-radius: 4px;
+  padding: 40px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-hero-demo::before {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,184,240,.1), transparent 70%);
+  right: -100px; top: -100px;
+  pointer-events: none;
+}
+
+.wave-hero-demo h1 {
+  font-family: var(--font-wave);
+  font-weight: 300;
+  font-size: clamp(28px, 5vw, 52px);
+  line-height: 1.1;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.wave-hero-demo h1 span { color: var(--sky); }
+
+.wave-hero-demo p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,.5);
+  margin-top: 12px;
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  line-height: 1.65;
+}
+
+.wave-do-dont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.do-card {
+  background: var(--lacre-light);
+  border-left: 3px solid var(--lacre);
+  border-radius: 0 4px 4px 0;
+  padding: 16px;
+}
+
+.dont-card {
+  background: #FAEAEA;
+  border-left: 3px solid #D64045;
+  border-radius: 0 4px 4px 0;
+  padding: 16px;
+}
+
+.do-card__title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #00735A;
+  margin-bottom: 10px;
+}
+
+.dont-card__title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #A32D2D;
+  margin-bottom: 10px;
+}
+
+.rule-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+
+.rule-list li {
+  font-size: 14px;
+  color: var(--steel);
+  display: flex;
+  gap: 7px;
+  line-height: 1.45;
+}
+
+.rule-list li::before { flex-shrink: 0; font-size: 14px; }
+.do-card .rule-list li::before  { content: '✓'; color: var(--lacre); }
+.dont-card .rule-list li::before { content: '✗'; color: #D64045; }
+
+/* ══════════════════════════════════════
+   SPACING
+══════════════════════════════════════ */
+.spacing-grid { display: flex; flex-direction: column; gap: 8px; }
+
+.spacing-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.spacing-bar {
+  background: var(--cyan-ghost);
+  border: 1px solid var(--cyan-light);
+  border-radius: 2px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.spacing-info {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.spacing-token {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--cobalt);
+  min-width: 80px;
+}
+
+.spacing-value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--iron);
+  min-width: 40px;
+}
+
+.spacing-use {
+  font-size: 14px;
+  color: var(--steel);
+}
+
+/* ══════════════════════════════════════
+   RADIUS
+══════════════════════════════════════ */
+.radius-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.radius-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.radius-box {
+  width: 52px;
+  height: 52px;
+  background: var(--navy);
+}
+
+.radius-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--iron);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ══════════════════════════════════════
+   MOTION
+══════════════════════════════════════ */
+.motion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.motion-card {
+  background: var(--white);
+  border: .5px solid var(--mist);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.motion-card__label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--iron);
+  margin-bottom: 8px;
+}
+
+.motion-card__token {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--cobalt);
+  margin-bottom: 4px;
+}
+
+.motion-card__value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--iron);
+  margin-bottom: 8px;
+}
+
+.motion-card__use {
+  font-size: 14px;
+  color: var(--steel);
+  font-weight: 300;
+}
+
+.motion-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: transform .15s ease, background .15s ease;
+}
+
+.motion-demo-btn:hover { background: var(--cobalt); transform: translateY(-2px); }
+.motion-demo-btn:active { transform: scale(.97); }
+
+/* ══════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════ */
+.btn-showcase { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  padding: 14px 28px;
+  border-radius: 2px;
+  isolation: isolate;
+  transition: color .38s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+}
+
+.btn .wsv {
+  position: absolute;
+  left: -100%; top: 0;
+  width: 300%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+
+.btn:hover .wsv { opacity: 1; }
+
+.btn .blbl {
+  position: relative;
+  z-index: 1;
+  transition: color .38s ease;
+}
+
+.btn .wg1 { transform: translateY(115%); transition: transform .65s var(--spring); }
+.btn .wg2 { transform: translateY(125%); transition: transform .7s var(--spring) .05s; }
+
+@keyframes bob1 { 0%,100% { transform: translateY(-10%); } 50% { transform: translateY(-14%); } }
+@keyframes bob2 { 0%,100% { transform: translateY(-6%);  } 50% { transform: translateY(-11%); } }
+
+.btn:hover .wg1 { animation: bob1 3.2s ease-in-out infinite; }
+.btn:hover .wg2 { animation: bob2 4s ease-in-out .4s infinite; }
+.btn:not(:hover) .wg1 { transform: translateY(115%); }
+.btn:not(:hover) .wg2 { transform: translateY(125%); }
+
+.btn--primary { background: var(--navy-deep); color: #fff; border: 2px solid var(--sky); }
+.btn--primary .wf1 { fill: var(--sky); }
+.btn--primary .wf2 { fill: var(--cyan-light); opacity: .5; }
+.btn--primary:hover .blbl { color: var(--navy-deep); }
+
+.btn--cobalt { background: var(--cobalt); color: #fff; }
+.btn--cobalt .wf1 { fill: var(--cyan); }
+.btn--cobalt .wf2 { fill: #b8f0ff; opacity: .5; }
+.btn--cobalt:hover .blbl { color: var(--navy-deep); }
+
+.btn--outline { background: var(--navy-deep); color: #fff; border: 2px solid var(--sky); }
+.btn--outline .wf1 { fill: var(--sky); }
+.btn--outline .wf2 { fill: var(--cyan-light); opacity: .5; }
+.btn--outline:hover .blbl { color: var(--navy-deep); }
+
+.btn--outline-lt { background: #fff; color: var(--navy); border: 2px solid var(--navy); }
+.btn--outline-lt .wf1 { fill: var(--navy); }
+.btn--outline-lt .wf2 { fill: var(--cobalt); opacity: .45; }
+.btn--outline-lt:hover .blbl { color: #fff; }
+
+.btn--ghost { background: var(--fog); color: var(--steel); border: 1.5px dashed var(--mist); }
+.btn--ghost .wf1 { fill: var(--mist); }
+.btn--ghost .wf2 { fill: var(--cyan-light); opacity: .3; }
+.btn--ghost:hover .blbl { color: var(--navy); }
+
+.btn--sm { padding: 9px 18px !important; font-size: 12px !important; min-height: 36px !important; }
+.btn--lg { padding: 20px 40px !important; font-size: 14px !important; min-height: 64px !important; }
+
+/* ══════════════════════════════════════
+   BADGES
+══════════════════════════════════════ */
+.badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.badge--patent  { background: var(--navy-deep); color: var(--cyan-light); border: 1px solid var(--sky); }
+.badge--anos    { background: var(--lacre-light); color: #00735A; border: 1px solid var(--lacre); }
+.badge--anvisa  { background: var(--cyan-ghost); color: var(--navy); border: 1px solid var(--cyan-light); }
+.badge--region  { background: var(--fog); color: var(--cobalt); border: 1px solid var(--mist); }
+
+/* ══════════════════════════════════════
+   CODE BLOCKS
+══════════════════════════════════════ */
+.code {
+  background: #0D1B2A;
+  border-radius: 4px;
+  padding: 16px 20px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.8;
+  color: #7ADCF5;
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+.code .ck { color: #00C8F0; }   /* keyword/prop */
+.code .cv { color: #B8E0FF; }   /* value */
+.code .cc { color: rgba(255,255,255,.28); } /* comment */
+.code .ct { color: #7ADCF5; }   /* text */
+
+/* ══════════════════════════════════════
+   STATS / HERO EXAMPLE
+══════════════════════════════════════ */
+.stat-strip {
+  background: var(--navy-deep);
+  border-radius: 4px;
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stat-item { text-align: center; }
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--sky);
+  line-height: 1;
+  display: block;
+}
+
+.stat-lbl {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.35);
+  margin-top: 4px;
+  display: block;
+}
+
+/* ══════════════════════════════════════
+   TONE SECTION
+══════════════════════════════════════ */
+.tone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.tone-block {
+  background: var(--navy-deep);
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.tone-col-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.tone-yes { color: var(--lacre); }
+.tone-no  { color: #FF6B6B; }
+
+.tone-item {
+  font-size: 14px;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 6px;
+  display: flex;
+  gap: 7px;
+  line-height: 1.45;
+}
+
+.tone-dot-y { color: var(--lacre); font-size: 14px; line-height: 1.1; }
+.tone-dot-n { color: #FF6B6B; font-size: 14px; line-height: 1.1; }
+
+/* ══════════════════════════════════════
+   SCROLLSPY / ACTIVE NAV
+══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .ds-nav { display: none; }
+  .ds-main { margin-left: 0; padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR NAV -->
+<nav class="ds-nav" id="nav">
+  <div class="ds-nav__logo">
+    <span class="ds-nav__logo-name">Aqua DS</span>
+    <span class="ds-nav__logo-version">v1.0 · Caixa d'Água</span>
+  </div>
+
+  <span class="ds-nav__section">Fundação</span>
+  <a href="#intro"      class="active">Introdução</a>
+  <a href="#principios">Princípios</a>
+  <a href="#cores">Cores</a>
+
+  <span class="ds-nav__section">Tipografia</span>
+  <a href="#wavefont">Wavefont</a>
+  <a href="#tipografia">Sistema Tipográfico</a>
+
+  <span class="ds-nav__section">Tokens</span>
+  <a href="#espacamento">Espaçamento</a>
+  <a href="#radius">Border Radius</a>
+  <a href="#motion">Motion</a>
+
+  <span class="ds-nav__section">Componentes</span>
+  <a href="#botoes">Botões</a>
+  <a href="#badges">Badges</a>
+  <a href="#stats">Stats Strip</a>
+
+  <span class="ds-nav__section">Editorial</span>
+  <a href="#tom">Tom & Voz</a>
+  <a href="#seo">SEO Guidelines</a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="ds-main">
+
+  <!-- ══ INTRO ══ -->
+  <section class="ds-section" id="intro">
+    <div class="ds-section-eyebrow">Aqua DS · v1.0.0</div>
+    <h1 class="ds-section-title">Design System</h1>
+    <p class="ds-section-desc">Sistema de design para a reformulação do site institucional da Caixa d'Água Revestimentos e Impermeabilizações. Mobile-first, WCAG AA, Sharp-edge. Autoridade técnica de 30+ anos com estética contemporânea.</p>
+
+    <div class="ds-card" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div>
+        <div class="ds-label">Stack</div>
+        <div style="font-family:var(--font-mono);font-size:14px;color:var(--cobalt);line-height:1.8;">Vue 3 + Vite<br>vue-router@4<br>CSS custom props<br>Vercel deploy</div>
+      </div>
+      <div>
+        <div class="ds-label">Fontes</div>
+        <div style="font-family:var(--font-mono);font-size:14px;color:var(--cobalt);line-height:1.8;">Wavefont (H1)<br>Syne (headings)<br>Lato (body)<br>DM Mono (labels)</div>
+      </div>
+      <div>
+        <div class="ds-label">Breakpoints</div>
+        <div style="font-family:var(--font-mono);font-size:14px;color:var(--cobalt);line-height:1.8;">360px mobile<br>480px sm<br>768px tablet<br>1024px desktop</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PRINCÍPIOS ══ -->
+  <section class="ds-section" id="principios">
+    <div class="ds-section-eyebrow">01 · Fundação</div>
+    <h2 class="ds-section-title">Princípios de Design</h2>
+    <p class="ds-section-desc">Quatro pilares que guiam cada decisão — de tipografia a copy.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="ds-card" style="border-left:3px solid var(--cobalt);">
+        <div style="font-family:var(--font-mono);font-size:12px;color:var(--sky);margin-bottom:6px;">01</div>
+        <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;">Autoridade Visível</div>
+        <div style="font-size:14px;color:var(--steel);font-weight:300;line-height:1.55;">Cada elemento comunica expertise. A interface não precisa gritar — ela convence pela presença.</div>
+      </div>
+      <div class="ds-card" style="border-left:3px solid var(--cobalt);">
+        <div style="font-family:var(--font-mono);font-size:12px;color:var(--sky);margin-bottom:6px;">02</div>
+        <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;">Clareza Técnica</div>
+        <div style="font-size:14px;color:var(--steel);font-weight:300;line-height:1.55;">Informações complexas apresentadas com precisão cirúrgica. O cliente entende o que está contratando.</div>
+      </div>
+      <div class="ds-card" style="border-left:3px solid var(--cobalt);">
+        <div style="font-family:var(--font-mono);font-size:12px;color:var(--sky);margin-bottom:6px;">03</div>
+        <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;">Fluxo Hídrico</div>
+        <div style="font-size:14px;color:var(--steel);font-weight:300;line-height:1.55;">Hierarquia e navegação fluem naturalmente — como a água, sem obstáculos desnecessários.</div>
+      </div>
+      <div class="ds-card" style="border-left:3px solid var(--cobalt);">
+        <div style="font-family:var(--font-mono);font-size:12px;color:var(--sky);margin-bottom:6px;">04</div>
+        <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;">Confiança Construída</div>
+        <div style="font-size:14px;color:var(--steel);font-weight:300;line-height:1.55;">30+ anos se mostram nos detalhes: espaçamento cuidadoso, consistência e zero ambiguidade.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CORES ══ -->
+  <section class="ds-section" id="cores">
+    <div class="ds-section-eyebrow">02 · Cores</div>
+    <h2 class="ds-section-title">Paleta de Cores</h2>
+    <p class="ds-section-desc">Extraída do logo. Gradiente azul navy → ciano como fio condutor visual. O gradiente é reservado para elementos de destaque máximo — hero, CTA, símbolo.</p>
+
+    <!-- Ramp completo -->
+    <div class="ds-label" style="margin-bottom:8px;">Ramp completo — do logo ao sistema</div>
+    <div class="color-ramp" style="margin-bottom:4px;">
+      <span style="background:#0D2A52;" title="#0D2A52 — Deep"></span>
+      <span style="background:#1A4A8A;" title="#1A4A8A — Navy"></span>
+      <span style="background:#1657A8;" title="#1657A8 — Mid"></span>
+      <span style="background:#1A6BC4;" title="#1A6BC4 — Cobalt"></span>
+      <span style="background:#1E90E8;" title="#1E90E8 — Royal"></span>
+      <span style="background:#00B8F0;" title="#00B8F0 — Sky"></span>
+      <span style="background:#00C8F0;" title="#00C8F0 — Cyan"></span>
+      <span style="background:#7ADCF5;" title="#7ADCF5 — Cyan Light"></span>
+      <span style="background:#C6F0FB;" title="#C6F0FB — Cyan Pale"></span>
+      <span style="background:#E0F6FD;" title="#E0F6FD — Ghost"></span>
+    </div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--iron);margin-bottom:24px;">Passe o mouse para expandir</div>
+
+    <div class="color-grid">
+      <div class="color-swatch"><div class="color-swatch__fill" style="background:#0D2A52;"></div><div class="color-swatch__info"><span class="color-swatch__name">Navy Deep</span><span class="color-swatch__hex">#0D2A52</span><span class="color-swatch__role">Hero bg · fundos escuros</span></div></div>
+      <div class="color-swatch"><div class="color-swatch__fill" style="background:#1A4A8A;"></div><div class="color-swatch__info"><span class="color-swatch__name">Navy</span><span class="color-swatch__hex">#1A4A8A</span><span class="color-swatch__role">Cor principal · texto logo</span></div></div>
+      <div class="color-swatch"><div class="color-swatch__fill" style="background:#1A6BC4;"></div><div class="color-swatch__info"><span class="color-swatch__name">Cobalt</span><span class="color-swatch__hex">#1A6BC4</span><span class="color-swatch__role">Botão cobalt · links</span></div></div>
+      <div class="color-swatch"><div class="color-swatch__fill" style="background:#00B8F0;"></div><div class="color-swatch__info"><span class="color-swatch__name">Sky</span><span class="color-swatch__hex">#00B8F0</span><span class="color-swatch__role">Acento · CTA · destaques</span></div></div>
+      <div class="color-swatch"><div class="color-swatch__fill" style="background:#00C8F0;"></div><div class="color-swatch__info"><span class="color-swatch__name">Cyan</span><span class="color-swatch__hex">#00C8F0</span><span class="color-swatch__role">Labels em fundo escuro</span></div></div>
+      <div class="color-swatch"><div class="color-swatch__fill" style="background:#00D4AA;"></div><div class="color-swatch__info"><span class="color-swatch__name">Lacre</span><span class="color-swatch__hex">#00D4AA</span><span class="color-swatch__role">Patente · garantia · ok</span></div></div>
+      <div class="color-swatch"><div class="color-swatch__fill" style="background:#F2F6FB;border:.5px solid #DDE8F5;"></div><div class="color-swatch__info"><span class="color-swatch__name">Névoa</span><span class="color-swatch__hex">#F2F6FB</span><span class="color-swatch__role">Background seções claras</span></div></div>
+      <div class="color-swatch"><div class="color-swatch__fill" style="background:#DDE8F5;"></div><div class="color-swatch__info"><span class="color-swatch__name">Mist</span><span class="color-swatch__hex">#DDE8F5</span><span class="color-swatch__role">Bordas · divisores</span></div></div>
+    </div>
+
+    <!-- Semânticas -->
+    <div class="ds-label" style="margin-top:24px;margin-bottom:12px;">Cores Semânticas</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:8px;background:var(--white);padding:10px 14px;border-radius:4px;border:.5px solid var(--mist);">
+        <span style="width:20px;height:20px;border-radius:50%;background:#00D4AA;flex-shrink:0;"></span>
+        <div><div style="font-family:var(--font-mono);font-size:12px;color:var(--iron);">Sucesso</div><div style="font-family:var(--font-mono);font-size:13px;color:var(--cobalt);">#00D4AA</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;background:var(--white);padding:10px 14px;border-radius:4px;border:.5px solid var(--mist);">
+        <span style="width:20px;height:20px;border-radius:50%;background:#E8A020;flex-shrink:0;"></span>
+        <div><div style="font-family:var(--font-mono);font-size:12px;color:var(--iron);">Atenção</div><div style="font-family:var(--font-mono);font-size:13px;color:var(--cobalt);">#E8A020</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;background:var(--white);padding:10px 14px;border-radius:4px;border:.5px solid var(--mist);">
+        <span style="width:20px;height:20px;border-radius:50%;background:#D64045;flex-shrink:0;"></span>
+        <div><div style="font-family:var(--font-mono);font-size:12px;color:var(--iron);">Erro</div><div style="font-family:var(--font-mono);font-size:13px;color:var(--cobalt);">#D64045</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WAVEFONT ══ -->
+  <section class="ds-section" id="wavefont">
+    <div class="ds-section-eyebrow">03 · Tipografia</div>
+    <h2 class="ds-section-title">Wavefont</h2>
+    <p class="ds-section-desc">A fonte principal dos títulos hero. Geométrica com DNA de fluidez — as curvas orgânicas de cada letra evocam movimento de água sem literalidade. Usada exclusivamente no H1 do site, sempre em peso 300 (light).</p>
+
+    <!-- Demo hero real -->
+    <div class="wave-hero-demo">
+      <h1>Sua caixa d'água está <span>rachando,</span> <span>vazando</span> ou a água chegou suja?</h1>
+      <p>Exemplo real de uso — H1 do HeroSection. Wavefont 300, branco + sky nas palavras de dor.</p>
+    </div>
+
+    <!-- Variações de peso/tamanho -->
+    <div class="ds-card" style="margin-bottom:16px;">
+      <div class="ds-label">Peso único — sempre 300 (light)</div>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:8px;">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--iron);margin-bottom:4px;">Display · 52px · clamp(32px, 5vw, 52px)</div>
+          <div style="font-family:var(--font-wave);font-weight:300;font-size:52px;line-height:1.05;color:var(--navy-deep);letter-spacing:.01em;">Impermeabilização</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--iron);margin-bottom:4px;">H1 Desktop · 40px</div>
+          <div style="font-family:var(--font-wave);font-weight:300;font-size:40px;line-height:1.1;color:var(--navy-deep);letter-spacing:.01em;">Caixa d'Água com garantia real</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--iron);margin-bottom:4px;">H1 Mobile · 30px</div>
+          <div style="font-family:var(--font-wave);font-weight:300;font-size:30px;line-height:1.1;color:var(--navy-deep);letter-spacing:.01em;">Rachou? Está vazando?</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--iron);margin-bottom:4px;">Com destaque sky — palavras de dor/ação</div>
+          <div style="font-family:var(--font-wave);font-weight:300;font-size:40px;line-height:1.1;letter-spacing:.01em;">
+            <span style="color:var(--navy-deep);">Caixa com </span><span style="color:var(--sky);">rachadura</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Como importar -->
+    <div class="ds-label" style="margin-bottom:8px;">Como importar</div>
+    <div class="code">
+<span class="cc">/* Via Google Fonts — para Vue components (scoped style) */</span>
+<span class="ck">@import</span> <span class="cv">url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap')</span>;
+
+<span class="cc">/* Aplicação no CSS */</span>
+<span class="ck">--font-wave</span>: <span class="cv">'Raleway', 'Syne', sans-serif</span>;
+
+<span class="cc">/* Uso no H1 */</span>
+<span class="ck">.hero__title</span> {
+  <span class="ck">font-family</span>: <span class="cv">var(--font-wave)</span>;
+  <span class="ck">font-weight</span>: <span class="cv">300</span>; <span class="cc">/* sempre light */</span>
+  <span class="ck">font-size</span>: <span class="cv">clamp(30px, 6vw, 58px)</span>;
+  <span class="ck">line-height</span>: <span class="cv">1.1</span>;
+  <span class="ck">letter-spacing</span>: <span class="cv">.01em</span>;
+}
+    </div>
+
+    <!-- Do & Don't -->
+    <div class="ds-label" style="margin-top:24px;margin-bottom:8px;">Regras de uso</div>
+    <div class="wave-do-dont">
+      <div class="do-card">
+        <div class="do-card__title">Use assim ✓</div>
+        <ul class="rule-list">
+          <li>Sempre font-weight: 300 (light)</li>
+          <li>Apenas no H1 — um por página</li>
+          <li>Palavras de dor/destaque em sky #00B8F0</li>
+          <li>Fundo escuro (navy) ou branco limpo</li>
+          <li>Fallback: 'Syne', sans-serif</li>
+          <li>clamp() para responsividade</li>
+        </ul>
+      </div>
+      <div class="dont-card">
+        <div class="dont-card__title">Evite ✗</div>
+        <ul class="rule-list">
+          <li>Nunca font-weight: 700 ou 800</li>
+          <li>Não usar em H2, H3, body text</li>
+          <li>Não usar em botões ou labels</li>
+          <li>Não usar em textos longos (corpo)</li>
+          <li>Não usar em fundo colorido saturado</li>
+          <li>Não misturar com Syne no mesmo título</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TIPOGRAFIA ══ -->
+  <section class="ds-section" id="tipografia">
+    <div class="ds-section-eyebrow">03 · Tipografia</div>
+    <h2 class="ds-section-title">Sistema Tipográfico</h2>
+    <p class="ds-section-desc">Quatro famílias com papéis bem definidos. Cada uma tem um contexto específico — nunca intercambiáveis.</p>
+
+    <div class="ds-card">
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-meta__tag">H1 · Wavefont</span>
+          <span class="type-meta__spec">300 · clamp(30,6vw,58px)<br>LH 1.1 · LS .01em<br>Cor: #fff ou navy-deep</span>
+        </div>
+        <div style="font-family:var(--font-wave);font-weight:300;font-size:clamp(28px,4vw,48px);line-height:1.1;color:var(--navy-deep);letter-spacing:.01em;">Impermeabilização com garantia real.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-meta__tag">H2 · Syne</span>
+          <span class="type-meta__spec">800 · clamp(24,4vw,40px)<br>LH 1.1 · LS -.03em<br>Cor: navy ou navy-deep</span>
+        </div>
+        <div class="sample-syne-h2">Mais de 30 anos protegendo reservatórios</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-meta__tag">H3 · Syne</span>
+          <span class="type-meta__spec">700 · 18px<br>LH 1.2 · LS -.02em<br>Cor: navy</span>
+        </div>
+        <div class="sample-syne-h3">Produto patenteado e exclusivo</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-meta__tag">H4 · Syne</span>
+          <span class="type-meta__spec">700 · 14px<br>Cor: cobalt</span>
+        </div>
+        <div class="sample-syne-h4">Aprovado pela ANVISA</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-meta__tag">Mono Label</span>
+          <span class="type-meta__spec">DM Mono 500 · 9–10px<br>LS .2em · UPPERCASE<br>Cor: sky ou iron</span>
+        </div>
+        <div class="sample-mono">Reservatório Certificado · RS / SC · ANVISA</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-meta__tag">Body</span>
+          <span class="type-meta__spec">Lato 300 · 15px<br>LH 1.72<br>Cor: steel</span>
+        </div>
+        <div class="sample-body">Revestimento aplicado por equipe técnica especializada, utilizando produto de formulação patenteada aprovada pela ANVISA para contato com água potável.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-meta__tag">Caption</span>
+          <span class="type-meta__spec">Lato 400 · 12px<br>Cor: iron</span>
+        </div>
+        <div class="sample-caption">* Garantia de estanqueidade comprovada por laudo técnico emitido após execução.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ESPAÇAMENTO ══ -->
+  <section class="ds-section" id="espacamento">
+    <div class="ds-section-eyebrow">04 · Tokens</div>
+    <h2 class="ds-section-title">Espaçamento</h2>
+    <p class="ds-section-desc">Base 4px. Nunca usar valores hardcoded — sempre via token.</p>
+
+    <div class="ds-card">
+      <div class="spacing-grid">
+        <div class="spacing-row"><div class="spacing-bar" style="width:4px;"></div><div class="spacing-info"><span class="spacing-token">--space-1</span><span class="spacing-value">4px</span><span class="spacing-use">Gap mínimo entre ícone e texto</span></div></div>
+        <div class="spacing-row"><div class="spacing-bar" style="width:8px;"></div><div class="spacing-info"><span class="spacing-token">--space-2</span><span class="spacing-value">8px</span><span class="spacing-use">Gap entre elementos inline</span></div></div>
+        <div class="spacing-row"><div class="spacing-bar" style="width:12px;"></div><div class="spacing-info"><span class="spacing-token">--space-3</span><span class="spacing-value">12px</span><span class="spacing-use">Gap entre badges, chips</span></div></div>
+        <div class="spacing-row"><div class="spacing-bar" style="width:16px;"></div><div class="spacing-info"><span class="spacing-token">--space-4</span><span class="spacing-value">16px</span><span class="spacing-use">Gap padrão entre elementos · grid gap</span></div></div>
+        <div class="spacing-row"><div class="spacing-bar" style="width:24px;"></div><div class="spacing-info"><span class="spacing-token">--space-6</span><span class="spacing-value">24px</span><span class="spacing-use">Padding interno de cards</span></div></div>
+        <div class="spacing-row"><div class="spacing-bar" style="width:32px;"></div><div class="spacing-info"><span class="spacing-token">--space-8</span><span class="spacing-value">32px</span><span class="spacing-use">Padding de seções mobile</span></div></div>
+        <div class="spacing-row"><div class="spacing-bar" style="width:48px;"></div><div class="spacing-info"><span class="spacing-token">--space-12</span><span class="spacing-value">48px</span><span class="spacing-use">Espaço entre seções</span></div></div>
+        <div class="spacing-row"><div class="spacing-bar" style="width:64px;"></div><div class="spacing-info"><span class="spacing-token">--space-16</span><span class="spacing-value">64px</span><span class="spacing-use">Padding de seções desktop</span></div></div>
+        <div class="spacing-row"><div class="spacing-bar" style="width:80px;"></div><div class="spacing-info"><span class="spacing-token">--space-20</span><span class="spacing-value">80px</span><span class="spacing-use">Separação entre blocos grandes</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ RADIUS ══ -->
+  <section class="ds-section" id="radius">
+    <div class="ds-section-eyebrow">04 · Tokens</div>
+    <h2 class="ds-section-title">Border Radius</h2>
+    <p class="ds-section-desc">Filosofia sharp/técnica. Bordas predominantemente retas reforçam autoridade. Arredondamento excessivo contradiz o posicionamento industrial da marca.</p>
+
+    <div class="ds-card">
+      <div class="radius-row">
+        <div class="radius-demo"><div class="radius-box" style="border-radius:0;"></div><div class="radius-label">0px<br>Estrutural<br>--radius-none</div></div>
+        <div class="radius-demo"><div class="radius-box" style="border-radius:2px;"></div><div class="radius-label">2px<br>Botões · badges<br>--radius-xs</div></div>
+        <div class="radius-demo"><div class="radius-box" style="border-radius:4px;"></div><div class="radius-label">4px<br>Cards · inputs<br>--radius-sm</div></div>
+        <div class="radius-demo"><div class="radius-box" style="border-radius:8px;"></div><div class="radius-label">8px<br>Modais · seções<br>--radius-md</div></div>
+        <div class="radius-demo"><div class="radius-box" style="border-radius:999px;width:80px;height:32px;"></div><div class="radius-label">pill<br>Tags · chips<br>--radius-pill</div></div>
+      </div>
+      <div style="margin-top:20px;font-size:14px;color:var(--iron);font-style:italic;font-weight:300;">Nunca usar border-radius acima de 8px em cards ou botões — reforça seriedade técnica vs. apps de saúde ou delivery.</div>
+    </div>
+  </section>
+
+  <!-- ══ MOTION ══ -->
+  <section class="ds-section" id="motion">
+    <div class="ds-section-eyebrow">04 · Tokens</div>
+    <h2 class="ds-section-title">Motion</h2>
+    <p class="ds-section-desc">Animações com propósito — nunca decorativas. O easing spring é reservado para entradas e elementos que precisam de energia. Fade simples para transições de estado.</p>
+
+    <div class="motion-grid">
+      <div class="motion-card">
+        <div class="motion-card__label">Easing</div>
+        <div class="motion-card__token">--ease-default</div>
+        <div class="motion-card__value">ease-out</div>
+        <div class="motion-card__use">Transições de estado, hover genérico</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-card__label">Easing</div>
+        <div class="motion-card__token">--ease-spring</div>
+        <div class="motion-card__value">cubic-bezier(.22,1,.36,1)</div>
+        <div class="motion-card__use">Entradas, sidebar, modais, onda do botão</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-card__label">Duração</div>
+        <div class="motion-card__token">--dur-fast</div>
+        <div class="motion-card__value">150ms</div>
+        <div class="motion-card__use">Hover, focus, micro-interações imediatas</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-card__label">Duração</div>
+        <div class="motion-card__token">--dur-base</div>
+        <div class="motion-card__value">280ms</div>
+        <div class="motion-card__use">Transições padrão entre estados</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-card__label">Duração</div>
+        <div class="motion-card__token">--dur-slow</div>
+        <div class="motion-card__value">500ms</div>
+        <div class="motion-card__use">Overlays, modais, transições de página</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-card__label">Duração</div>
+        <div class="motion-card__token">--dur-enter</div>
+        <div class="motion-card__value">700ms</div>
+        <div class="motion-card__use">Onda do botão, entradas de seção hero</div>
+      </div>
+    </div>
+
+    <div class="code" style="margin-top:16px;">
+<span class="cc">/* Animação de entrada — usado nos elementos do Hero */</span>
+<span class="ck">@keyframes</span> fadeUp {
+  <span class="ck">from</span> { <span class="ck">opacity</span>: <span class="cv">0</span>; <span class="ck">transform</span>: <span class="cv">translateY(20px)</span>; }
+  <span class="ck">to</span>   { <span class="ck">opacity</span>: <span class="cv">1</span>; <span class="ck">transform</span>: <span class="cv">translateY(0)</span>; }
+}
+
+<span class="cc">/* Escalonar com animation-delay */</span>
+<span class="ck">.hero__eyebrow</span> { animation: fadeUp .7s var(--ease-spring) <span class="cv">.05s</span> forwards; }
+<span class="ck">.hero__title</span>   { animation: fadeUp .7s var(--ease-spring) <span class="cv">.12s</span> forwards; }
+<span class="ck">.hero__sub</span>     { animation: fadeUp .7s var(--ease-spring) <span class="cv">.20s</span> forwards; }
+<span class="ck">.hero__ctas</span>    { animation: fadeUp .7s var(--ease-spring) <span class="cv">.28s</span> forwards; }
+    </div>
+  </section>
+
+  <!-- ══ BOTÕES ══ -->
+  <section class="ds-section" id="botoes">
+    <div class="ds-section-eyebrow">05 · Componentes</div>
+    <h2 class="ds-section-title">Botões</h2>
+    <p class="ds-section-desc">Efeito de onda SVG que sobe de baixo — dois paths em fase oposta criam ilusão de superfície líquida real. Passe o mouse para ver.</p>
+
+    <div class="ds-card" style="margin-bottom:16px;">
+      <div class="ds-label" style="margin-bottom:16px;">Fundo claro</div>
+      <div class="btn-showcase">
+
+        <button class="btn btn--primary">
+          <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+          <span class="blbl">Solicitar Orçamento</span>
+        </button>
+
+        <button class="btn btn--cobalt">
+          <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+          <span class="blbl">Ver Serviços</span>
+        </button>
+
+        <button class="btn btn--outline-lt">
+          <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+          <span class="blbl">Saiba Mais</span>
+        </button>
+
+        <button class="btn btn--ghost">
+          <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+          <span class="blbl">Ver todos →</span>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="ds-card ds-card--dark" style="margin-bottom:16px;">
+      <div class="ds-label ds-label--light" style="margin-bottom:16px;">Fundo escuro — hero section</div>
+      <div class="btn-showcase">
+
+        <button class="btn btn--outline">
+          <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+          <span class="blbl">Solicitar Orçamento</span>
+        </button>
+
+        <button class="btn btn--cobalt">
+          <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+          <span class="blbl">Ver Serviços</span>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="ds-card" style="margin-bottom:16px;">
+      <div class="ds-label" style="margin-bottom:16px;">Tamanhos</div>
+      <div class="btn-showcase" style="align-items:center;">
+        <button class="btn btn--primary btn--sm">
+          <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+          <span class="blbl">Small</span>
+        </button>
+        <button class="btn btn--primary">
+          <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+          <span class="blbl">Default</span>
+        </button>
+        <button class="btn btn--primary btn--lg">
+          <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+          <span class="blbl">Large — Hero CTA</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="code">
+<span class="cc">/* Anatomia do wave button */</span>
+<span class="ck">.btn</span> {
+  <span class="ck">position</span>: <span class="cv">relative</span>;
+  <span class="ck">overflow</span>: <span class="cv">hidden</span>;  <span class="cc">/* clip da onda */</span>
+  <span class="ck">isolation</span>: <span class="cv">isolate</span>; <span class="cc">/* z-index context */</span>
+}
+
+<span class="cc">/* SVG: width 300% e left -100% — onda nunca expõe borda */</span>
+<span class="ck">.wave-svg</span> {
+  <span class="ck">position</span>: <span class="cv">absolute</span>;
+  <span class="ck">left</span>: <span class="cv">-100%</span>; <span class="ck">width</span>: <span class="cv">300%</span>;
+}
+
+<span class="cc">/* Label sempre z-index 1 sobre a onda */</span>
+<span class="ck">.btn__label</span> { <span class="ck">position</span>: <span class="cv">relative</span>; <span class="ck">z-index</span>: <span class="cv">1</span>; }
+
+<span class="cc">/* Bob Y-only após fill — sem translateX para não revelar borda */</span>
+<span class="ck">@keyframes</span> bob { <span class="ck">50%</span> { <span class="ck">transform</span>: <span class="cv">translateY(-14%)</span>; } }
+    </div>
+  </section>
+
+  <!-- ══ BADGES ══ -->
+  <section class="ds-section" id="badges">
+    <div class="ds-section-eyebrow">05 · Componentes</div>
+    <h2 class="ds-section-title">Badges de Diferencial</h2>
+    <p class="ds-section-desc">Aparecem em pontos estratégicos para reforçar os diferenciais competitivos. Cada badge tem código visual próprio.</p>
+
+    <div class="ds-card">
+      <div class="badge-row">
+        <span class="badge badge--patent">✦ Produto Patenteado</span>
+        <span class="badge badge--anos">+ de 30 anos</span>
+        <span class="badge badge--anvisa">ANVISA Aprovado</span>
+        <span class="badge badge--region">RS · SC</span>
+      </div>
+    </div>
+
+    <div class="code" style="margin-top:16px;">
+<span class="cc">/* Badge patenteado — destaque máximo */</span>
+<span class="ck">.badge--patent</span> {
+  <span class="ck">background</span>: <span class="cv">#0D2A52</span>;
+  <span class="ck">color</span>: <span class="cv">#7ADCF5</span>;
+  <span class="ck">border</span>: <span class="cv">1px solid #00B8F0</span>;
+}
+    </div>
+  </section>
+
+  <!-- ══ STATS ══ -->
+  <section class="ds-section" id="stats">
+    <div class="ds-section-eyebrow">05 · Componentes</div>
+    <h2 class="ds-section-title">Stats Strip</h2>
+    <p class="ds-section-desc">Bloco de credibilidade — aparece no hero logo abaixo dos CTAs. Números grandes em sky sobre fundo navy.</p>
+
+    <div class="stat-strip">
+      <div class="stat-item"><span class="stat-num">30+</span><span class="stat-lbl">anos de experiência</span></div>
+      <div class="stat-item"><span class="stat-num">1</span><span class="stat-lbl">dia para instalação</span></div>
+      <div class="stat-item"><span class="stat-num">RS · SC</span><span class="stat-lbl">estados atendidos</span></div>
+      <div class="stat-item"><span class="stat-num">★</span><span class="stat-lbl">aprovado ANVISA</span></div>
+    </div>
+  </section>
+
+  <!-- ══ TOM ══ -->
+  <section class="ds-section" id="tom">
+    <div class="ds-section-eyebrow">06 · Editorial</div>
+    <h2 class="ds-section-title">Tom & Voz</h2>
+    <p class="ds-section-desc">A empresa tem 30+ anos de autoridade técnica. A comunicação deve refletir isso — sem apelar, sem exagerar.</p>
+
+    <div class="tone-grid">
+      <div class="tone-block">
+        <div class="tone-col-title tone-yes">Use assim ↗</div>
+        <div class="tone-item"><span class="tone-dot-y">·</span>"Formulação exclusiva patenteada"</div>
+        <div class="tone-item"><span class="tone-dot-y">·</span>"30+ anos no Sul do Brasil"</div>
+        <div class="tone-item"><span class="tone-dot-y">·</span>"Equipe técnica especializada em campo"</div>
+        <div class="tone-item"><span class="tone-dot-y">·</span>"Laudo técnico pós-execução incluso"</div>
+        <div class="tone-item"><span class="tone-dot-y">·</span>"Aprovado ANVISA · água potável"</div>
+        <div class="tone-item"><span class="tone-dot-y">·</span>"Cadastro Vigilância Sanitária nº 2561"</div>
+        <div class="tone-item"><span class="tone-dot-y">·</span>"Resolve em 1 dia — sem obras"</div>
+      </div>
+      <div class="tone-block">
+        <div class="tone-col-title tone-no">Evite isso ↘</div>
+        <div class="tone-item"><span class="tone-dot-n">·</span>"Somos os melhores do mercado!"</div>
+        <div class="tone-item"><span class="tone-dot-n">·</span>"Preço imbatível, fale já agora!"</div>
+        <div class="tone-item"><span class="tone-dot-n">·</span>Múltiplas exclamações por frase</div>
+        <div class="tone-item"><span class="tone-dot-n">·</span>Emoji em contexto técnico</div>
+        <div class="tone-item"><span class="tone-dot-n">·</span>Superlativos vazios sem respaldo</div>
+        <div class="tone-item"><span class="tone-dot-n">·</span>Textos genéricos sem especificidade</div>
+        <div class="tone-item"><span class="tone-dot-n">·</span>Copy que poderia ser de qualquer empresa</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SEO ══ -->
+  <section class="ds-section" id="seo">
+    <div class="ds-section-eyebrow">06 · Editorial</div>
+    <h2 class="ds-section-title">SEO Guidelines</h2>
+    <p class="ds-section-desc">Keywords orientadas à dor do cliente — o que as pessoas pesquisam quando têm o problema, não quando já sabem a solução.</p>
+
+    <div class="ds-card" style="margin-bottom:16px;">
+      <div class="ds-label" style="margin-bottom:12px;">Keywords primárias — dor do cliente</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span style="font-family:var(--font-mono);font-size:13px;background:var(--cyan-ghost);color:var(--navy);padding:4px 10px;border-radius:2px;border:.5px solid var(--cyan-light);">caixa d'água rachada</span>
+        <span style="font-family:var(--font-mono);font-size:13px;background:var(--cyan-ghost);color:var(--navy);padding:4px 10px;border-radius:2px;border:.5px solid var(--cyan-light);">caixa d'água vazando</span>
+        <span style="font-family:var(--font-mono);font-size:13px;background:var(--cyan-ghost);color:var(--navy);padding:4px 10px;border-radius:2px;border:.5px solid var(--cyan-light);">água suja na pia</span>
+        <span style="font-family:var(--font-mono);font-size:13px;background:var(--cyan-ghost);color:var(--navy);padding:4px 10px;border-radius:2px;border:.5px solid var(--cyan-light);">impermeabilização caixa d'água RS</span>
+        <span style="font-family:var(--font-mono);font-size:13px;background:var(--cyan-ghost);color:var(--navy);padding:4px 10px;border-radius:2px;border:.5px solid var(--cyan-light);">revestimento reservatório</span>
+        <span style="font-family:var(--font-mono);font-size:13px;background:var(--cyan-ghost);color:var(--navy);padding:4px 10px;border-radius:2px;border:.5px solid var(--cyan-light);">umidade teto reservatório</span>
+        <span style="font-family:var(--font-mono);font-size:13px;background:var(--cyan-ghost);color:var(--navy);padding:4px 10px;border-radius:2px;border:.5px solid var(--cyan-light);">limpeza caixa d'água Porto Alegre</span>
+        <span style="font-family:var(--font-mono);font-size:13px;background:var(--cyan-ghost);color:var(--navy);padding:4px 10px;border-radius:2px;border:.5px solid var(--cyan-light);">manutenção reservatório condomínio</span>
+      </div>
+    </div>
+
+    <div class="ds-card">
+      <div class="ds-label" style="margin-bottom:12px;">Estrutura H1 → H2 → H3</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:baseline;gap:12px;padding:8px 0;border-bottom:.5px solid var(--mist);">
+          <span style="font-family:var(--font-mono);font-size:12px;color:var(--sky);width:40px;flex-shrink:0;">H1</span>
+          <span style="font-size:14px;color:var(--steel);">1 por página · Wavefont · contém keyword primária de dor</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:12px;padding:8px 0;border-bottom:.5px solid var(--mist);">
+          <span style="font-family:var(--font-mono);font-size:12px;color:var(--sky);width:40px;flex-shrink:0;">H2</span>
+          <span style="font-size:14px;color:var(--steel);">Títulos de seção · Syne · keyword secundária ou diferencial</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:12px;padding:8px 0;">
+          <span style="font-family:var(--font-mono);font-size:12px;color:var(--sky);width:40px;flex-shrink:0;">H3</span>
+          <span style="font-size:14px;color:var(--steel);">Títulos de card/serviço · Syne · termos técnicos específicos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Scrollspy simples
+const sections = document.querySelectorAll('.ds-section')
+const links = document.querySelectorAll('.ds-nav a')
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id
+      links.forEach(l => l.classList.remove('active'))
+      const active = document.querySelector(`.ds-nav a[href="#${id}"]`)
+      if (active) active.classList.add('active')
+    }
+  })
+}, { rootMargin: '-30% 0px -60% 0px' })
+
+sections.forEach(s => observer.observe(s))
+</script>
+</body>
+</html>
