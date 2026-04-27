@@ -170,24 +170,19 @@ const areaTags = [
         </div>
 
         <div class="footer-social">
-          <a href="#" class="social-btn" aria-label="Instagram">
+          <a href="#" class="social-btn" aria-label="Siga a Caixa d'Água Revestimentos no Instagram">
             <svg viewBox="0 0 16 16" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.2">
               <rect x="2" y="2" width="12" height="12" rx="3"/>
               <circle cx="8" cy="8" r="3"/>
               <circle cx="11.5" cy="4.5" r=".5" fill="rgba(255,255,255,.45)" stroke="none"/>
             </svg>
           </a>
-          <a href="#" class="social-btn" aria-label="Facebook">
+          <a href="#" class="social-btn" aria-label="Caixa d'Água Revestimentos no Facebook">
             <svg viewBox="0 0 16 16" fill="rgba(255,255,255,.45)">
               <path d="M14 8a6 6 0 1 0-6.9 5.9v-4.2H5.6V8H7V6.7c0-1.4.8-2.1 2.1-2.1.6 0 1.3.1 1.3.1v1.4h-.7c-.7 0-.9.4-.9.9V8h1.6l-.3 1.7H9v4.2A6 6 0 0 0 14 8z"/>
             </svg>
           </a>
-          <a href="#" class="social-btn" aria-label="YouTube">
-            <svg viewBox="0 0 16 16" fill="rgba(255,255,255,.45)">
-              <path d="M14.5 4.5S14.3 3.3 13.7 2.7C13 2 12.2 2 11.9 1.9 10 1.8 8 1.8 8 1.8s-2 0-3.9.1C3.8 2 3 2 2.3 2.7 1.7 3.3 1.5 4.5 1.5 4.5S1.3 5.8 1.3 7.2v1.3c0 1.3.2 2.7.2 2.7s.2 1.2.8 1.8c.7.7 1.6.7 2 .8C5.5 14 8 14 8 14s2 0 3.9-.2c.3 0 1.1-.1 1.8-.8.6-.6.8-1.8.8-1.8s.2-1.3.2-2.7V7.2c0-1.4-.2-2.7-.2-2.7zM6.5 10V5.8l4.3 2.2L6.5 10z"/>
-            </svg>
-          </a>
-          <a :href="WPP" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
+          <a :href="WPP" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Fale com a Caixa d'Água Revestimentos pelo WhatsApp">
             <svg viewBox="0 0 16 16" fill="rgba(255,255,255,.45)">
               <path d="M13.8 2.2C12.3.8 10.3 0 8.1 0 3.7 0 .1 3.6.1 8c0 1.4.4 2.8 1 4L0 16l4.2-1.1C5.4 15.6 6.7 16 8.1 16c4.4 0 8-3.6 8-8 0-2.1-.8-4.2-2.3-5.8zm-5.7 12.3c-1.2 0-2.4-.3-3.4-.9l-.2-.1-2.5.7.7-2.4-.2-.2c-.6-1-1-2.2-1-3.4C1.5 4.5 4.5 1.5 8.1 1.5c1.7 0 3.3.7 4.5 1.9 1.2 1.2 1.8 2.8 1.8 4.5.1 3.6-2.9 6.6-6.3 6.6zm3.5-4.9c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.4.1-.1.2-.5.7-.6.8-.1.1-.2.1-.4.1-.6-.3-1.2-.6-1.7-1.1-.5-.5-.9-1-.9-1.2-.1-.2 0-.4.1-.5l.4-.4c.1-.1.1-.3.2-.4l.1-.4c0-.1-.3-1.2-.5-1.6-.1-.4-.3-.3-.5-.3h-.4c-.2 0-.4.1-.6.3-.8.7-1.2 1.5-1.2 2.4 0 1.3.9 2.6 1 2.7.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.4.5.6.2 1.1.1 1.5-.1.5-.2 1.4-.6 1.6-1.2.2-.5.2-1 .1-1.1-.1-.2-.2-.2-.4-.3z"/>
             </svg>

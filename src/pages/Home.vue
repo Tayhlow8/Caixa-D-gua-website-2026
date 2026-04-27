@@ -5,6 +5,7 @@ import SectionServicos from "../components/SectionServicos.vue";
 import SectionDepoimentos from "../components/SectionDepoimentos.vue";
 import SectionGaleria from "../components/SectionGaleria.vue";
 import AppFooter from "../components/AppFooter.vue";
+import BackToTop from "../components/BackToTop.vue";
 </script>
 
 <template>
@@ -70,6 +71,7 @@ import AppFooter from "../components/AppFooter.vue";
       <SectionGaleria />
     </main>
     <AppFooter />
+    <BackToTop />
   </div>
 </template>
 

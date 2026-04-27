@@ -5,14 +5,14 @@ import imgSlide2 from "../assets/revestimento2.jpg";
 import imgSlide3 from "../assets/revestimento8.jpg";
 import imgSlide4 from "../assets/Revestimento9.jpg";
 import imgImpermeabilizacao from "../assets/foto chapa.jpg";
-import imgTampas from "../assets/Tampa.jpg";
+import imgTampas from "../assets/tampa nova.jpg";
 import imgLimpeza from "../assets/antes3.JPG";
 
 const SLIDES = [
-  { label: "Antes da instalação", img: imgLimpeza },
-  { label: "Instalação em andamento", img: imgSlide2 },
-  { label: "Ancoramento nas paredes", img: imgSlide3 },
-  { label: "Entrega finalizada", img: imgSlide1 },
+  { label: "Interior de caixa d'água antes do revestimento — paredes com deterioração e manchas", img: imgLimpeza },
+  { label: "Técnico aplicando revestimento de PVC em caixa d'água durante o processo de instalação", img: imgSlide2 },
+  { label: "Detalhe do sistema de ancoragem do revestimento de PVC fixado nas paredes do reservatório", img: imgSlide3 },
+  { label: "Caixa d'água com revestimento de PVC finalizado — paredes lisas, impermeáveis e prontas para uso", img: imgSlide1 },
 ];
 
 const APP_TAGS = [
@@ -191,7 +191,7 @@ onUnmounted(() => {
           <button
             class="carousel-btn carousel-btn--prev"
             @click="prev"
-            aria-label="Anterior"
+            aria-label="Ver foto anterior do processo de revestimento"
           >
             <svg
               viewBox="0 0 24 24"
@@ -207,7 +207,7 @@ onUnmounted(() => {
           <button
             class="carousel-btn carousel-btn--next"
             @click="next"
-            aria-label="Próximo"
+            aria-label="Ver próxima foto do processo de revestimento"
           >
             <svg
               viewBox="0 0 24 24"
@@ -229,7 +229,7 @@ onUnmounted(() => {
             class="carousel-dot"
             :class="{ active: i === current }"
             @click="jumpTo(i)"
-            :aria-label="`Ir para slide ${i + 1}`"
+            :aria-label="`Exibir foto ${i + 1} do processo de revestimento`"
           ></button>
         </div>
 
@@ -300,7 +300,7 @@ onUnmounted(() => {
           <div class="card-photo">
             <img
               :src="imgImpermeabilizacao"
-              alt="Manta asfáltica com película de alumínio aplicada sobre laje de reservatório"
+              alt="Manta asfáltica com película de alumínio aplicada sobre a laje externa do reservatório — proteção contra infiltração, umidade e variação térmica"
             />
           </div>
 
@@ -343,7 +343,7 @@ onUnmounted(() => {
           <div class="card-photo">
             <img
               :src="imgTampas"
-              alt="Tampa de alumínio sob medida com presilha de fixação para caixa d'água"
+              alt="Tampa de alumínio sob medida com presilha de fixação instalada em caixa d'água — vedação total contra contaminação externa e entrada de luz"
             />
           </div>
 
@@ -383,7 +383,7 @@ onUnmounted(() => {
           <div class="card-photo">
             <img
               :src="imgLimpeza"
-              alt="Técnico realizando higienização interna de reservatório com hipoclorito de sódio"
+              alt="Técnico realizando higienização e sanitização interna de caixa d'água com hipoclorito de sódio — inclui certificado de limpeza ANVISA"
             />
           </div>
 

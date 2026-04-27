@@ -82,7 +82,7 @@ function stars(n) {
 
         <div class="reviews-rating">
           <span class="rating-num">{{ rating }}</span>
-          <div class="rating-stars" aria-label="5 estrelas">
+          <div class="rating-stars" aria-label="Nota média 5 de 5 estrelas no Google Meu Negócio">
             <svg v-for="i in 5" :key="i" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"
@@ -135,7 +135,7 @@ function stars(n) {
         >
           <!-- Topo: estrelas + fonte -->
           <div class="card-top">
-            <div class="card-stars" :aria-label="`${review.nota} estrelas`">
+            <div class="card-stars" :aria-label="`Avaliação: ${review.nota} de 5 estrelas`">
               <svg
                 v-for="i in stars(review.nota)"
                 :key="i"
@@ -147,7 +147,7 @@ function stars(n) {
                 />
               </svg>
             </div>
-            <span class="card-google" aria-label="Avaliação do Google">
+            <span class="card-google" aria-label="Avaliação verificada pelo Google Meu Negócio">
               <svg
                 width="10"
                 height="10"

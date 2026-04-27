@@ -22,7 +22,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
       <a href="#hero" class="logo">
         <img
           src="../assets/logos/logo cx dagua horizontal sem fundo.png"
-          alt="Caixa d'Água Revestimentos"
+          alt="Logotipo da Caixa d'Água Revestimentos e Impermeabilizações"
           class="logo-img"
         />
       </a>
@@ -32,7 +32,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
           <li><a href="#hero" class="act">Home</a></li>
           <li><a href="#quem-somos">Quem Somos</a></li>
           <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#revestimento">Revestimento</a></li>
+          <li><a href="#revestimento">Impermeabilização</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </nav>
@@ -50,7 +50,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
       <button
         class="hamburger"
         :class="{ open: menuOpen }"
-        aria-label="Abrir menu"
+        :aria-label="menuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'"
         @click="menuOpen = !menuOpen"
       >
         <span></span><span></span><span></span>

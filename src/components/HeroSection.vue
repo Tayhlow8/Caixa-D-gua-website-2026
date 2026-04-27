@@ -169,7 +169,7 @@ function scrollToNext() {
       <div class="hero-image-col">
         <img
           src="../assets/caixa dagua new.png"
-          alt="Reservatório deteriorado com rachaduras e infiltração"
+          alt="Interior de caixa d'água com revestimento de PVC concluído — paredes lisas e impermeáveis para armazenamento de água potável"
           class="hero-img"
           loading="eager"
         />
@@ -571,6 +571,7 @@ function scrollToNext() {
 }
 .titem:last-child {
   border-right: none;
+  margin: 0 auto;
 }
 
 .tnum {
