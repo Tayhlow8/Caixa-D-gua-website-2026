@@ -4,12 +4,12 @@ import logoImg from '../assets/logos/logo cx dagua horizontal sem fundo.png'
 const WPP = 'https://api.whatsapp.com/send?phone=5551992145030'
 
 const navLinks = [
-  { label: 'Início',      href: '#hero' },
-  { label: 'Quem Somos', href: '#quem-somos' },
-  { label: 'Revestimento', href: '#revestimento' },
-  { label: 'Serviços',   href: '#servicos' },
-  { label: 'Galeria',    href: '#revestimento' },
-  { label: 'Contato',    href: '#contato' },
+  { label: 'Início',           href: '/#hero' },
+  { label: 'Quem Somos',      href: '/#quem-somos' },
+  { label: 'Impermeabilização', href: '/impermeabilizacao' },
+  { label: 'Serviços',        href: '/#servicos' },
+  { label: 'Galeria',         href: '/#revestimento' },
+  { label: 'Contato',         href: '/#contato' },
 ]
 
 const serviceLinks = [

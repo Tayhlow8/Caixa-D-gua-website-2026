@@ -1,8 +1,10 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
 
 const scrolled = ref(false)
 const menuOpen = ref(false)
+const route = useRoute()
 
 function onScroll() {
   scrolled.value = window.scrollY > 40
@@ -19,7 +21,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 <template>
   <header class="navbar" :class="{ scrolled }">
     <div class="nav-inner">
-      <a href="#hero" class="logo">
+      <a href="/" class="logo">
         <img
           src="../assets/logos/logo cx dagua horizontal sem fundo.png"
           alt="Logotipo da Caixa d'Água Revestimentos e Impermeabilizações"
@@ -29,11 +31,11 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
       <nav>
         <ul class="nav-links">
-          <li><a href="#hero" class="act">Home</a></li>
-          <li><a href="#quem-somos">Quem Somos</a></li>
-          <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#revestimento">Impermeabilização</a></li>
-          <li><a href="#contato">Contato</a></li>
+          <li><a href="/#hero" :class="{ act: route.path === '/' }">Home</a></li>
+          <li><a href="/#quem-somos">Quem Somos</a></li>
+          <li><a href="/#servicos">Serviços</a></li>
+          <li><a href="/impermeabilizacao" :class="{ act: route.path === '/impermeabilizacao' }">Impermeabilização</a></li>
+          <li><a href="/#contato">Contato</a></li>
         </ul>
       </nav>
 
@@ -60,11 +62,11 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
   <div class="mob-menu" :class="{ open: menuOpen }">
     <ul>
-      <li><a href="#hero" @click="closeMob">Home</a></li>
-      <li><a href="#quem-somos" @click="closeMob">Quem Somos</a></li>
-      <li><a href="#servicos" @click="closeMob">Serviços</a></li>
-      <li><a href="#revestimento" @click="closeMob">Revestimento</a></li>
-      <li><a href="#contato" @click="closeMob">Contato</a></li>
+      <li><a href="/#hero" :class="{ act: route.path === '/' }" @click="closeMob">Home</a></li>
+      <li><a href="/#quem-somos" @click="closeMob">Quem Somos</a></li>
+      <li><a href="/#servicos" @click="closeMob">Serviços</a></li>
+      <li><a href="/impermeabilizacao" :class="{ act: route.path === '/impermeabilizacao' }" @click="closeMob">Impermeabilização</a></li>
+      <li><a href="/#contato" @click="closeMob">Contato</a></li>
     </ul>
     <a
       href="https://api.whatsapp.com/send?phone=5551992145030"
