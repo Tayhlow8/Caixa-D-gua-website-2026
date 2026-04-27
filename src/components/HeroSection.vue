@@ -344,6 +344,7 @@ function scrollToNext() {
 .hero-content {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 /* Badge */
@@ -462,7 +463,8 @@ function scrollToNext() {
   isolation: isolate;
   padding: 17px 28px;
   min-height: 56px;
-  white-space: nowrap;
+  white-space: normal;
+  max-width: 100%;
 }
 
 .btn-p {
@@ -592,9 +594,9 @@ function scrollToNext() {
   line-height: 1.4;
 }
 
-/* Pain points — só desktop */
+/* Pain points */
 .hero-pain {
-  display: none;
+  display: block;
   margin-top: 28px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(0, 184, 240, 0.1);
@@ -829,15 +831,21 @@ function scrollToNext() {
   }
 }
 
-/* Garante que no mobile o botão não transborde */
 @media (max-width: 479px) {
   .btn-hero {
+    width: 100%;
     padding: 14px 18px;
-    font-size: 14px;
+    font-size: 13px;
     min-height: 48px;
   }
   .hero-ctas {
     flex-direction: column;
+  }
+}
+
+@media (min-width: 900px) {
+  .btn-hero {
+    white-space: nowrap;
   }
 }
 

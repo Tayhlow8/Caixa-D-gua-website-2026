@@ -248,7 +248,7 @@ onUnmounted(() => {
 
         <div class="tech-block tech-block--guarantee">
           <div class="tech-label">Garantia contratual</div>
-          <div class="tech-value"><span>8 anos</span></div>
+          <div class="tech-value"><span>5 anos</span></div>
           <div class="tech-sub">
             Manta reparável em caso de danos acidentais.
           </div>
