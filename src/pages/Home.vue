@@ -82,8 +82,10 @@ import BackToTop from "../components/BackToTop.vue";
 }
 
 .section-why {
+  position: relative;
+  z-index: 1;
   background: var(--color-white);
-  padding: 72px 24px 88px;
+  padding: calc(clamp(90px, 15vw, 200px) + 72px) 24px 88px;
 }
 
 .sec-inner {
