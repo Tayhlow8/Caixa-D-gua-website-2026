@@ -6,10 +6,17 @@ function scrollToNext() {
 
 <template>
   <!-- SVG clip-path para gota d'água — objectBoundingBox = responsivo -->
-  <svg width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true">
+  <svg
+    width="0"
+    height="0"
+    style="position: absolute; pointer-events: none"
+    aria-hidden="true"
+  >
     <defs>
       <clipPath id="drop-clip" clipPathUnits="objectBoundingBox">
-        <path d="M0.5,0.023 C0.5,0.023 0.05,0.346 0.05,0.615 C0.05,0.808 0.25,0.977 0.5,0.977 C0.75,0.977 0.95,0.808 0.95,0.615 C0.95,0.346 0.5,0.023 0.5,0.023Z" />
+        <path
+          d="M0.5,0.023 C0.5,0.023 0.05,0.346 0.05,0.615 C0.05,0.808 0.25,0.977 0.5,0.977 C0.75,0.977 0.95,0.808 0.95,0.615 C0.95,0.346 0.5,0.023 0.5,0.023Z"
+        />
       </clipPath>
     </defs>
   </svg>
@@ -35,38 +42,60 @@ function scrollToNext() {
         <h1 class="hero-title">
           <span class="title-line">Sua caixa d'água está</span>
           <span class="title-line">
-            <span class="tacc">rachando</span>,<span class="tacc">vazando</span>
+            <span class="tacc">com vazamentos</span>,<span class="tacc"></span>
             ou a água chegou <em class="suja">suja</em>?
           </span>
         </h1>
 
         <p class="hero-sub">
-          Esses são sinais de alerta — a caixa pode estar deteriorada por dentro,
+          Esses são sinais de alerta — a caixa pode estar deteriorada por
+          dentro,
           <strong>contaminando a água</strong> que sua família consome. Nosso
           revestimento com tecnologia <strong>patenteada</strong> e
           <strong>exclusiva</strong> resolve em
-          <span class="sub-blue">1 dia</span>, com garantia e aprovação da
-          vigilância sanitária.
+          <span class="sub-blue">1 dia</span>, com garantia de 5 anos e
+          certificado de limpeza.
         </p>
 
         <div class="hero-ctas">
           <a
-            href="https://api.whatsapp.com/send?phone=5551992145030"
+            href="https://api.whatsapp.com/send?phone=5551981969303"
             target="_blank"
             rel="noopener"
             class="btn-hero"
           >
             <svg
-              class="wico"
-              viewBox="0 0 24 24"
-              fill="currentColor"
+              class="wsv"
+              viewBox="0 0 600 60"
+              preserveAspectRatio="none"
               aria-hidden="true"
             >
-              <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.534 5.853L.054 23.94l6.267-1.643A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"
-              />
+              <g class="wg1">
+                <path
+                  class="wf1"
+                  d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                />
+              </g>
+              <g class="wg2">
+                <path
+                  class="wf2"
+                  d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                />
+              </g>
             </svg>
-            Faça seu orçamento pelo Whatsapp
+            <span class="wlbl">
+              <svg
+                class="wico"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.534 5.853L.054 23.94l6.267-1.643A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"
+                />
+              </svg>
+              Faça seu orçamento pelo Whatsapp
+            </span>
           </a>
         </div>
       </div>
@@ -126,31 +155,73 @@ function scrollToNext() {
   <div class="wave-break" aria-hidden="true">
     <div class="wv-layer wv-navy">
       <div class="wv-track">
-        <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,70 C360,30 720,110 1080,70 C1260,50 1380,80 1440,70 L1440,200 L0,200 Z" fill="#0D2A52"/>
+        <svg
+          viewBox="0 0 1440 200"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,70 C360,30 720,110 1080,70 C1260,50 1380,80 1440,70 L1440,200 L0,200 Z"
+            fill="#0D2A52"
+          />
         </svg>
-        <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,70 C360,30 720,110 1080,70 C1260,50 1380,80 1440,70 L1440,200 L0,200 Z" fill="#0D2A52"/>
+        <svg
+          viewBox="0 0 1440 200"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,70 C360,30 720,110 1080,70 C1260,50 1380,80 1440,70 L1440,200 L0,200 Z"
+            fill="#0D2A52"
+          />
         </svg>
       </div>
     </div>
     <div class="wv-layer wv-blue">
       <div class="wv-track">
-        <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,110 C320,75 640,145 960,110 C1200,80 1380,125 1440,110 L1440,200 L0,200 Z" fill="#1a3a6b"/>
+        <svg
+          viewBox="0 0 1440 200"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,110 C320,75 640,145 960,110 C1200,80 1380,125 1440,110 L1440,200 L0,200 Z"
+            fill="#1a3a6b"
+          />
         </svg>
-        <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,110 C320,75 640,145 960,110 C1200,80 1380,125 1440,110 L1440,200 L0,200 Z" fill="#1a3a6b"/>
+        <svg
+          viewBox="0 0 1440 200"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,110 C320,75 640,145 960,110 C1200,80 1380,125 1440,110 L1440,200 L0,200 Z"
+            fill="#1a3a6b"
+          />
         </svg>
       </div>
     </div>
     <div class="wv-layer wv-cyan">
       <div class="wv-track">
-        <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,150 C280,115 560,175 840,150 C1120,115 1320,165 1440,150 L1440,200 L0,200 Z" fill="#00B8F0"/>
+        <svg
+          viewBox="0 0 1440 200"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,150 C280,115 560,175 840,150 C1120,115 1320,165 1440,150 L1440,200 L0,200 Z"
+            fill="#00B8F0"
+          />
         </svg>
-        <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,150 C280,115 560,175 840,150 C1120,115 1320,165 1440,150 L1440,200 L0,200 Z" fill="#00B8F0"/>
+        <svg
+          viewBox="0 0 1440 200"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,150 C280,115 560,175 840,150 C1120,115 1320,165 1440,150 L1440,200 L0,200 Z"
+            fill="#00B8F0"
+          />
         </svg>
       </div>
     </div>
@@ -302,7 +373,7 @@ function scrollToNext() {
 
 /* H1 — Playfair Display, escuro, highlights coloridos */
 .hero-title {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-weight: 400;
   font-size: clamp(32px, 5.5vw, 80px);
   line-height: 1.5;
@@ -355,12 +426,15 @@ function scrollToNext() {
 }
 
 .btn-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   background: #0d2a52;
   color: #fff;
-  border: 1px solid #00b8f0;
+  border: 2px solid #00b8f0;
   border-radius: 40px;
   padding: 18px 30px;
   min-height: 56px;
@@ -371,15 +445,104 @@ function scrollToNext() {
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition:
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: color 0.38s ease;
   white-space: nowrap;
 }
 
-.btn-hero:hover {
-  background: #1a4a8a;
-  box-shadow: 0 4px 20px rgba(0, 184, 240, 0.25);
+/* Onda SVG */
+.btn-hero .wsv {
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 300%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-hero:hover .wsv {
+  opacity: 1;
+}
+
+/* Label elevado sobre a onda */
+.btn-hero .wlbl {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.38s;
+}
+
+/* Ondas fora da tela em repouso */
+.btn-hero .wg1 {
+  transform: translateY(115%);
+  transition: transform 0.55s ease-in;
+}
+.btn-hero .wg2 {
+  transform: translateY(125%);
+  transition: transform 0.55s ease-in 0.04s;
+}
+
+/* Hover: sobe + boia */
+.btn-hero:hover .wg1 {
+  animation:
+    heroRise1 0.65s var(--ease-spring) forwards,
+    heroBob1 3.2s ease-in-out 0.65s infinite;
+}
+.btn-hero:hover .wg2 {
+  animation:
+    heroRise2 0.7s var(--ease-spring) 0.05s forwards,
+    heroBob2 4s ease-in-out 0.75s infinite;
+}
+
+@keyframes heroRise1 {
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: translateY(-10%);
+  }
+}
+@keyframes heroRise2 {
+  from {
+    transform: translateY(125%);
+  }
+  to {
+    transform: translateY(-6%);
+  }
+}
+@keyframes heroBob1 {
+  0%,
+  100% {
+    transform: translateY(-10%);
+  }
+  50% {
+    transform: translateY(-14%);
+  }
+}
+@keyframes heroBob2 {
+  0%,
+  100% {
+    transform: translateY(-6%);
+  }
+  50% {
+    transform: translateY(-11%);
+  }
+}
+
+/* Cores da onda — sky inunda o botão, texto inverte */
+.btn-hero .wf1 {
+  fill: #00b8f0;
+}
+.btn-hero .wf2 {
+  fill: #7adcf5;
+  opacity: 0.5;
+}
+.btn-hero:hover .wlbl {
+  color: #0d2a52;
 }
 
 .wico {
@@ -526,12 +689,18 @@ function scrollToNext() {
 }
 
 @keyframes wvScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wv-track { animation: none; }
+  .wv-track {
+    animation: none;
+  }
 }
 
 /* ── Desktop ── */
@@ -600,6 +769,10 @@ function scrollToNext() {
     padding: 14px 18px;
     font-size: 13px;
     min-height: 48px;
+  }
+
+  .btn-hero .wlbl {
+    justify-content: center;
   }
 }
 </style>

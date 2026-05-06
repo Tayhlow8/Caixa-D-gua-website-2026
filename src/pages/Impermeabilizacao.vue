@@ -20,7 +20,7 @@ import extAntes      from '../assets/antes3.JPG'
 import extAplicacao  from '../assets/revestimento6.jpg'
 import extDepois     from '../assets/revestimento7.jpg'
 
-const WPP_RS = 'https://api.whatsapp.com/send?phone=5551992145030'
+const WPP_RS = 'https://api.whatsapp.com/send?phone=5551981969303'
 
 const activeTab = ref('interna')
 
@@ -1275,7 +1275,7 @@ function switchTab(tab) {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 16px 28px;
-  border-radius: 2px;
+  border-radius: 40px;
   border: 2px solid var(--color-sky);
   cursor: pointer;
   min-height: 48px;
@@ -1339,7 +1339,7 @@ function switchTab(tab) {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 14px 20px;
-  border-radius: 2px;
+  border-radius: 40px;
   border: 1.5px solid rgba(255, 255, 255, 0.18);
   cursor: pointer;
   min-height: 48px;
@@ -1363,7 +1363,7 @@ function switchTab(tab) {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 13px 24px;
-  border-radius: 2px;
+  border-radius: 40px;
   border: 2px solid var(--color-sky);
   white-space: nowrap;
   isolation: isolate;

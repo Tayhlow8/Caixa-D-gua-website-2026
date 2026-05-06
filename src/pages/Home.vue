@@ -50,14 +50,14 @@ import BackToTop from "../components/BackToTop.vue";
               <div class="wtitle">Aprovado pela ANVISA</div>
               <p class="wtext">
                 Material atóxico e certificado para contato direto com água
-                potável. Cadastro na Vigilância Sanitária nº 2561.
+                potável.
               </p>
             </div>
             <div class="why-card">
               <div class="wnum">04 · Experiência</div>
               <div class="wtitle">Fundada em 1994</div>
               <p class="wtext">
-                30 anos atendendo condomínios, residências, indústrias e
+                32 anos atendendo condomínios, residências, indústrias e
                 empresas no Rio Grande do Sul e Santa Catarina.
               </p>
             </div>
@@ -76,7 +76,7 @@ import BackToTop from "../components/BackToTop.vue";
 </template>
 
 <style scoped>
-.page-home {
+<style scoped > .page-home {
   min-height: 100svh;
   background: var(--bg-page);
 }
@@ -95,7 +95,7 @@ import BackToTop from "../components/BackToTop.vue";
 
 .sec-eyebrow {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 14px; /* era 9px — DM Mono mínimo 14px */
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-iron);
@@ -104,7 +104,7 @@ import BackToTop from "../components/BackToTop.vue";
 
 .sec-title {
   font-family: var(--font-wave);
-  font-size: clamp(24px, 4vw, 40px);
+  font-size: clamp(28px, 4vw, 40px);
   font-weight: 300;
   color: var(--color-navy);
   letter-spacing: 0.01em;
@@ -118,8 +118,8 @@ import BackToTop from "../components/BackToTop.vue";
 
 .sec-sub {
   font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 300;
+  font-size: 17px; /* era 15px */
+  font-weight: 500; /* era 300 — Lato Medium */
   color: var(--color-steel);
   line-height: 1.7;
   max-width: 520px;
@@ -150,7 +150,7 @@ import BackToTop from "../components/BackToTop.vue";
 
 .wnum {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 14px; /* era 9px — DM Mono mínimo 14px */
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-sky);
@@ -159,7 +159,7 @@ import BackToTop from "../components/BackToTop.vue";
 
 .wtitle {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 17px; /* era 15px */
   font-weight: 700;
   color: var(--color-navy);
   margin-bottom: 8px;
@@ -167,9 +167,9 @@ import BackToTop from "../components/BackToTop.vue";
 
 .wtext {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 16px; /* era 13px */
   color: var(--color-steel);
   line-height: 1.6;
-  font-weight: 300;
+  font-weight: 500; /* era 300 — Lato Medium */
 }
 </style>

@@ -84,20 +84,20 @@
      TIPOGRAFIA
   ──────────────────────────────────────────────────────────── */
 
-  --font-wave: "Wavefont", sans-serif; /* H1 hero — weight 800 */
-  --font-display: "Wavefont", sans-serif; /* headings, display */
+  --font-wave: "Wavefont", "Syne", sans-serif; /* H1 hero — weight 800 */
+  --font-display: "Wavefont", "Syne", sans-serif; /* headings, display */
   --font-body: "Lato", sans-serif; /* body text */
   --font-mono: "DM Mono", monospace; /* labels, badges, dados técnicos */
 
-  --text-xs: 10px;
-  --text-sm: 12px;
-  --text-base: 15px;
-  --text-md: 16px;
-  --text-lg: 18px;
-  --text-xl: 22px;
-  --text-2xl: 28px;
-  --text-3xl: 36px;
-  --text-display: clamp(32px, 5vw, 52px);
+  --text-xs: 14px; /* DM Mono mínimo — labels pequenas */
+  --text-sm: 16px; /* DM Mono padrão, captions */
+  --text-base: 17px; /* body padrão — Lato */
+  --text-md: 18px; /* body destaque, subtítulos de card */
+  --text-lg: 20px; /* subtítulos de seção */
+  --text-xl: 24px; /* H4 / títulos de card */
+  --text-2xl: 30px; /* H3 */
+  --text-3xl: 40px; /* H2 */
+  --text-display: clamp(36px, 5vw, 58px); /* H1 hero */
 
   --leading-tight: 1.05;
   --leading-snug: 1.2;
@@ -110,7 +110,7 @@
   --tracking-label: 0.2em;
 
   --weight-light: 300;
-  --weight-regular: 400;
+  --weight-regular: 500;
   --weight-bold: 700;
   --weight-black: 800;
 

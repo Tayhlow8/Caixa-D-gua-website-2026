@@ -9,7 +9,7 @@ defineProps({
 const menuOpen = ref(false)
 function closeMob() { menuOpen.value = false }
 
-const WPP = 'https://api.whatsapp.com/send?phone=5551992145030'
+const WPP = 'https://api.whatsapp.com/send?phone=5551981969303'
 </script>
 
 <template>
@@ -58,7 +58,16 @@ const WPP = 'https://api.whatsapp.com/send?phone=5551992145030'
       <li><a href="/#servicos" @click="closeMob">Serviços</a></li>
     </ul>
     <a :href="WPP" target="_blank" rel="noopener noreferrer" class="mob-cta" @click="closeMob">
-      Solicitar Orçamento Grátis
+      <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true">
+        <g class="g1"><path class="f1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g>
+        <g class="g2"><path class="f2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g>
+      </svg>
+      <span class="wlbl">
+        <svg class="wico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.534 5.853L.054 23.94l6.267-1.643A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+        </svg>
+        Solicitar Orçamento Grátis
+      </span>
     </a>
   </div>
 
@@ -127,7 +136,7 @@ nav { flex: 1; }
   color: var(--color-navy-deep);
   background: var(--color-lacre);
   padding: 9px 18px;
-  border-radius: 2px;
+  border-radius: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -211,21 +220,71 @@ nav { flex: 1; }
 .mob-menu a.active { color: var(--color-sky); }
 
 .mob-cta {
-  display: block;
-  text-align: center;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-navy-deep) !important;
-  background: var(--color-sky);
+  color: #fff !important;
+  background: var(--color-navy-deep);
+  border: 2px solid var(--color-sky) !important;
   padding: 16px 24px;
-  border-radius: 2px;
+  border-radius: 40px;
   border-bottom: none !important;
-  transition: background 0.2s;
+  transition: color 0.38s ease;
 }
 
-.mob-cta:hover { background: var(--color-cyan); }
+.mob-cta .wsv {
+  position: absolute;
+  left: -100%; top: 0;
+  width: 300%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.mob-cta:hover .wsv { opacity: 1; }
+
+.mob-cta .wlbl {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.38s;
+}
+
+.mob-cta .wico { width: 16px; height: 16px; flex-shrink: 0; }
+
+.mob-cta .g1 { transform: translateY(115%); transition: transform 0.55s ease-in; }
+.mob-cta .g2 { transform: translateY(125%); transition: transform 0.55s ease-in 0.04s; }
+
+.mob-cta:hover .g1 {
+  animation:
+    mobRise1 0.65s var(--ease-spring) forwards,
+    mobBob1 3.2s ease-in-out 0.65s infinite;
+}
+.mob-cta:hover .g2 {
+  animation:
+    mobRise2 0.7s var(--ease-spring) 0.05s forwards,
+    mobBob2 4s ease-in-out 0.75s infinite;
+}
+
+@keyframes mobRise1 { from { transform: translateY(115%); } to { transform: translateY(-10%); } }
+@keyframes mobRise2 { from { transform: translateY(125%); } to { transform: translateY(-6%); } }
+@keyframes mobBob1 { 0%,100% { transform: translateY(-10%); } 50% { transform: translateY(-14%); } }
+@keyframes mobBob2 { 0%,100% { transform: translateY(-6%); } 50% { transform: translateY(-11%); } }
+
+.mob-cta .f1 { fill: var(--color-sky); }
+.mob-cta .f2 { fill: var(--color-cyan-light); opacity: 0.5; }
+.mob-cta:hover .wlbl { color: var(--color-navy-deep) !important; }
 
 .overlay {
   position: fixed;

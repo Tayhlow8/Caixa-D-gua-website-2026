@@ -1,5 +1,5 @@
 @import './styles/tokens.css';
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Lato:wght@300;400;700&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,500&family=Syne:wght@700;800&family=Lato:wght@300;400;700&family=DM+Mono:wght@400;500&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 

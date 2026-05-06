@@ -1,21 +1,21 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import imgBefore  from "../assets/antes.jpg";
-import imgAfter   from "../assets/revestimento5.jpg";
+import imgBefore from "../assets/antes.jpg";
+import imgAfter from "../assets/revestimento5.jpg";
 import imgBefore2 from "../assets/infestação de baratas em caixa d'água.jpg";
-import imgAfter2  from "../assets/revestimento8.jpg";
+import imgAfter2 from "../assets/revestimento8.jpg";
 import imgBefore3 from "../assets/antes2.jpg";
-import imgAfter3  from "../assets/Revestimento9.jpg";
+import imgAfter3 from "../assets/Revestimento9.jpg";
 
-const WPP = "https://api.whatsapp.com/send?phone=5551992145030";
+const WPP = "https://api.whatsapp.com/send?phone=5551981969303";
 
 const bg = (url) => ({ backgroundImage: `url("${url}")` });
 const card1Before = bg(imgBefore);
-const card1After  = bg(imgAfter);
+const card1After = bg(imgAfter);
 const card2Before = bg(imgBefore2);
-const card2After  = bg(imgAfter2);
+const card2After = bg(imgAfter2);
 const card3Before = bg(imgBefore3);
-const card3After  = bg(imgAfter3);
+const card3After = bg(imgAfter3);
 const root = ref(null);
 
 function initSlider(card) {
@@ -95,7 +95,7 @@ onMounted(() => {
         <div class="compare-card compare-card--featured">
           <div class="compare-wrap">
             <div class="img-before img-before--1" :style="card1Before"></div>
-            <div class="img-after  img-after--1"  :style="card1After"></div>
+            <div class="img-after img-after--1" :style="card1After"></div>
 
             <div class="before-icon">
               <div class="before-icon-ring">
@@ -172,7 +172,7 @@ onMounted(() => {
         <div class="compare-card compare-card--sm">
           <div class="compare-wrap">
             <div class="img-before img-before--2" :style="card2Before"></div>
-            <div class="img-after  img-after--2"  :style="card2After"></div>
+            <div class="img-after img-after--2" :style="card2After"></div>
             <div class="badge-antes">Antes</div>
             <div class="badge-depois">Depois</div>
             <div class="compare-divider compare-divider--sm">
@@ -202,7 +202,7 @@ onMounted(() => {
         <div class="compare-card compare-card--sm">
           <div class="compare-wrap">
             <div class="img-before img-before--3" :style="card3Before"></div>
-            <div class="img-after  img-after--3"  :style="card3After"></div>
+            <div class="img-after img-after--3" :style="card3After"></div>
             <div class="badge-antes">Antes</div>
             <div class="badge-depois">Depois</div>
             <div class="compare-divider compare-divider--sm">
@@ -232,7 +232,7 @@ onMounted(() => {
       <!-- Stats -->
       <div class="gallery-stats">
         <div class="gallery-stat">
-          <div class="gallery-stat__num">+500<span>.</span></div>
+          <div class="gallery-stat__num">+10<span>mil.</span></div>
           <div class="gallery-stat__label">Projetos entregues</div>
         </div>
         <div class="gallery-stat">
@@ -245,9 +245,7 @@ onMounted(() => {
         </div>
         <div class="gallery-stat">
           <div class="gallery-stat__num"><span>#</span>2561</div>
-          <div class="gallery-stat__label">
-            Cadastro ANVISA/Vigil. Sanitária
-          </div>
+          <div class="gallery-stat__label">Cadastro Vigil. Sanitária</div>
         </div>
       </div>
 
@@ -259,18 +257,16 @@ onMounted(() => {
           rel="noopener noreferrer"
           class="btn-primary"
         >
-          <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5">
-            <path
-              stroke="currentColor"
-              d="M13.6 2.4C12.1.9 10.1 0 8 0 3.6 0 0 3.6 0 8c0 1.4.4 2.8 1 4L0 16l4.1-1.1C5.3 15.6 6.6 16 8 16c4.4 0 8-3.6 8-8 0-2.1-.9-4.1-2.4-5.6z"
-            />
-            <path
-              stroke="none"
-              fill="rgba(255,255,255,.85)"
-              d="M11.5 9.9c-.2-.1-1.3-.7-1.5-.7-.2-.1-.3-.1-.5.1-.1.2-.5.7-.7.8-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-.9-1.2-1-1.4-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.2-.4 0-.2-.5-1.3-.7-1.7-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3C3.7 5.3 3 6 3 7.3c0 1.3.9 2.5 1 2.7.1.2 1.8 2.9 4.5 4 .6.3 1.1.4 1.5.5.6.1 1.2.1 1.6 0 .5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.1-.4-.2z"
-            />
+          <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true">
+            <g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g>
+            <g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g>
           </svg>
-          Solicitar orçamento grátis
+          <span class="wlbl">
+            <svg class="wico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.534 5.853L.054 23.94l6.267-1.643A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+            </svg>
+            Solicitar orçamento grátis
+          </span>
         </a>
       </div>
     </div>
@@ -766,6 +762,7 @@ onMounted(() => {
 .btn-primary {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   font-family: var(--font-body);
   font-size: 13px;
   font-weight: 700;
@@ -773,41 +770,59 @@ onMounted(() => {
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
   padding: 18px 36px;
   background: var(--color-navy);
   color: var(--color-white);
   border: 2px solid var(--color-sky);
-  border-radius: 2px;
+  border-radius: 40px;
   text-decoration: none;
   cursor: pointer;
-  transition:
-    background 0.3s var(--ease-spring),
-    border-color 0.3s ease,
-    transform 0.2s ease;
+  transition: color 0.38s ease;
 }
 
-.btn-primary:hover {
-  background: var(--color-cobalt);
-  border-color: var(--color-cyan);
-  transform: translateY(-2px);
-}
-
-.btn-primary::after {
-  content: "";
+.btn-primary .wsv {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 184, 240, 0.12) 0%,
-    transparent 60%
-  );
+  left: -100%; top: 0;
+  width: 300%; height: 100%;
   pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.btn-primary svg {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
+.btn-primary:hover .wsv { opacity: 1; }
+
+.btn-primary .wlbl {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.38s;
 }
+
+.btn-primary .wico { width: 18px; height: 18px; flex-shrink: 0; }
+
+.btn-primary .wg1 { transform: translateY(115%); transition: transform 0.55s ease-in; }
+.btn-primary .wg2 { transform: translateY(125%); transition: transform 0.55s ease-in 0.04s; }
+
+.btn-primary:hover .wg1 {
+  animation:
+    galRise1 0.65s var(--ease-spring) forwards,
+    galBob1 3.2s ease-in-out 0.65s infinite;
+}
+.btn-primary:hover .wg2 {
+  animation:
+    galRise2 0.7s var(--ease-spring) 0.05s forwards,
+    galBob2 4s ease-in-out 0.75s infinite;
+}
+
+@keyframes galRise1 { from { transform: translateY(115%); } to { transform: translateY(-10%); } }
+@keyframes galRise2 { from { transform: translateY(125%); } to { transform: translateY(-6%); } }
+@keyframes galBob1 { 0%,100% { transform: translateY(-10%); } 50% { transform: translateY(-14%); } }
+@keyframes galBob2 { 0%,100% { transform: translateY(-6%); } 50% { transform: translateY(-11%); } }
+
+.btn-primary .wf1 { fill: var(--color-sky); }
+.btn-primary .wf2 { fill: var(--color-cyan-light); opacity: 0.5; }
+.btn-primary:hover .wlbl { color: var(--color-navy-deep); }
 </style>

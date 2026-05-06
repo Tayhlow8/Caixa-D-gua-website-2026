@@ -9,10 +9,26 @@ import imgTampas from "../assets/tampa nova.jpg";
 import imgLimpeza from "../assets/antes3.JPG";
 
 const SLIDES = [
-  { label: "Interior de caixa d'água antes do revestimento — paredes com deterioração e manchas", img: imgLimpeza },
-  { label: "Técnico aplicando revestimento de PVC em caixa d'água durante o processo de instalação", img: imgSlide2 },
-  { label: "Detalhe do sistema de ancoragem do revestimento de PVC fixado nas paredes do reservatório", img: imgSlide3 },
-  { label: "Caixa d'água com revestimento de PVC finalizado — paredes lisas, impermeáveis e prontas para uso", img: imgSlide1 },
+  {
+    label:
+      "Interior de caixa d'água antes do revestimento — paredes com deterioração e manchas",
+    img: imgLimpeza,
+  },
+  {
+    label:
+      "Técnico aplicando revestimento de PVC em caixa d'água durante o processo de instalação",
+    img: imgSlide2,
+  },
+  {
+    label:
+      "Detalhe do sistema de ancoragem do revestimento de PVC fixado nas paredes do reservatório",
+    img: imgSlide3,
+  },
+  {
+    label:
+      "Caixa d'água com revestimento de PVC finalizado — paredes lisas, impermeáveis e prontas para uso",
+    img: imgSlide1,
+  },
 ];
 
 const APP_TAGS = [
@@ -111,9 +127,10 @@ onUnmounted(() => {
         </h3>
 
         <p class="feat-desc">
-          Impermeabilização da caixa d'água com manta laminada de PVC flexível e
-          atóxico, fabricada sob medida para o seu reservatório. Instalada em um
-          único dia, sem obras e sem deixar a edificação sem água.
+          Impermeabilização da caixa d'água com revestimento em geomembrana de
+          PVC flexível e atóxico, fabricado sob medida para o seu reservatório.
+          Instalada em um único dia, sem obras e sem deixar a edificação sem
+          água.
         </p>
 
         <ul class="feat-list">
@@ -125,13 +142,13 @@ onUnmounted(() => {
           </li>
           <li>Elimina a umidade nas paredes da caixa d'água</li>
           <li>Fácil manutenção — furos e rasgos reparáveis sem substituição</li>
-          <li>Serviço inclui sanitização e Certificado de Limpeza (ANVISA)</li>
+          <li>
+            Serviço inclui sanitização e Certificado de Limpeza da Vigilância
+            Sanitária Municipal
+          </li>
         </ul>
 
-        <a
-          href="/impermeabilizacao"
-          class="feat-cta"
-        >
+        <a href="/impermeabilizacao" class="feat-cta">
           <svg
             class="feat-cta__wave"
             viewBox="0 0 600 60"
@@ -257,9 +274,10 @@ onUnmounted(() => {
 
         <div class="tech-block">
           <div class="tech-label">Certificação</div>
-          <div class="tech-value">ANVISA <span>·</span> INPI</div>
+          <div class="tech-value">LIMPEZA <span>·</span> INPI</div>
           <div class="tech-sub">
-            Registro de propriedade industrial. Produto exclusivo no mercado.
+            Certificado de limpeza pela Vigilância Sanitária Municipal. Registro
+            de propriedade industrial.
           </div>
         </div>
 
@@ -344,8 +362,8 @@ onUnmounted(() => {
 
           <p class="card-desc">
             Tampas em alumínio com presilha de fixação, produzidas sob medida
-            para caixas d'água e reservatórios de qualquer formato. Vedação
-            total contra contaminação externa e entrada de luz.
+            para caixas d'água e reservatórios. Vedação total contra
+            contaminação externa e entrada de luz.
           </p>
 
           <div class="card-meta">
@@ -385,8 +403,8 @@ onUnmounted(() => {
           <p class="card-desc">
             Esvaziamento, escovação interna com hipoclorito de sódio e enxágue
             completo sem uso de sabão ou químicos agressivos. Ao final,
-            sanitização e emissão de Certificado de Limpeza válido por 1 ano na
-            Secretaria Municipal de Saúde.
+            sanitização e emissão de Certificado de Limpeza com validade de 1
+            ano para residências e 6 meses em comércios.
           </p>
 
           <div class="card-meta">
@@ -419,6 +437,7 @@ onUnmounted(() => {
   </section>
 </template>
 
+<style scoped>
 <style scoped>
 /* ══════════════════════════════════════════
    SECTION WRAPPER
@@ -472,7 +491,7 @@ onUnmounted(() => {
 /* ══ HEADER ══ */
 .sec-eyebrow {
   font-family: var(--font-mono);
-  font-size: var(--text-xs);
+  font-size: 14px; /* era var(--text-xs) = 14px — ok, mas explícito */
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-sky);
@@ -496,8 +515,8 @@ onUnmounted(() => {
 
 .sec-sub {
   font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: var(--weight-light);
+  font-size: 17px; /* era 15px */
+  font-weight: 500; /* era var(--weight-light) = 300 */
   color: var(--color-steel);
   line-height: var(--leading-relaxed);
   max-width: 520px;
@@ -505,7 +524,7 @@ onUnmounted(() => {
 }
 
 /* ══════════════════════════════════════════
-   FEATURED CARD — mobile: flex column
+   FEATURED CARD
 ══════════════════════════════════════════ */
 .feat-card {
   background: var(--color-navy-deep);
@@ -557,7 +576,7 @@ onUnmounted(() => {
   align-items: center;
   gap: var(--space-2);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px; /* era 12px */
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-sky);
@@ -591,7 +610,7 @@ onUnmounted(() => {
 
 .feat-title {
   font-family: var(--font-display);
-  font-size: clamp(20px, 5vw, 30px);
+  font-size: clamp(22px, 5vw, 32px); /* era clamp(20px, 5vw, 30px) */
   font-weight: var(--weight-black);
   color: var(--color-white);
   letter-spacing: -0.025em;
@@ -605,9 +624,9 @@ onUnmounted(() => {
 
 .feat-desc {
   font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: var(--weight-light);
-  color: rgba(255, 255, 255, 0.65);
+  font-size: 16px; /* era 15px */
+  font-weight: 500; /* era var(--weight-light) = 300 */
+  color: rgba(255, 255, 255, 0.75); /* era 0.65 — mais contraste */
   line-height: 1.75;
   margin-bottom: var(--space-6);
 }
@@ -625,9 +644,9 @@ onUnmounted(() => {
   align-items: flex-start;
   gap: 10px;
   font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: var(--weight-light);
-  color: rgba(255, 255, 255, 0.72);
+  font-size: 16px; /* era 15px */
+  font-weight: 500; /* era var(--weight-light) = 300 */
+  color: rgba(255, 255, 255, 0.82); /* era 0.72 — mais contraste */
   line-height: 1.5;
 }
 
@@ -654,14 +673,14 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 13px; /* era 12px */
   font-weight: var(--weight-bold);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-navy-deep);
   background: var(--color-sky);
   padding: 14px 22px;
-  border-radius: var(--radius-xs);
+  border-radius: 40px;
   text-decoration: none;
   width: fit-content;
   min-height: 48px;
@@ -813,7 +832,7 @@ onUnmounted(() => {
 
 .slide-ph span {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 11px; /* era 8px */
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(0, 184, 240, 0.3);
@@ -851,10 +870,10 @@ onUnmounted(() => {
   left: 12px;
   right: 12px;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 11px; /* era 8px */
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.65); /* era 0.55 */
 }
 
 .carousel-btn {
@@ -880,6 +899,7 @@ onUnmounted(() => {
   background: rgba(0, 184, 240, 0.18);
   border-color: var(--color-sky);
 }
+
 .carousel-btn svg {
   width: 12px;
   height: 12px;
@@ -919,13 +939,13 @@ onUnmounted(() => {
 
 .carousel-counter {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 12px; /* era 9px */
   letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.45); /* era 0.30 */
   text-align: center;
 }
 
-/* ── specs strip (replaces feat-right) — mobile: 2-col grid ── */
+/* ── specs strip ── */
 .feat-specs {
   position: relative;
   z-index: 1;
@@ -952,7 +972,7 @@ onUnmounted(() => {
 
 .tech-label {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px; /* era 12px */
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-iron);
@@ -961,7 +981,7 @@ onUnmounted(() => {
 
 .tech-value {
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: 18px; /* era 17px */
   font-weight: var(--weight-bold);
   color: var(--color-white);
   line-height: 1.3;
@@ -976,16 +996,16 @@ onUnmounted(() => {
 
 .tech-sub {
   font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: var(--weight-light);
-  color: rgba(255, 255, 255, 0.55);
+  font-size: 14px; /* era 15px — aqui pode ser menor, é detalhe técnico */
+  font-weight: 500; /* era var(--weight-light) = 300 */
+  color: rgba(255, 255, 255, 0.65); /* era 0.55 */
   margin-top: 4px;
   line-height: 1.5;
 }
 
 .apps-label {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px; /* era 12px */
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-iron);
@@ -1001,9 +1021,9 @@ onUnmounted(() => {
 
 .app-tag {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 12px; /* era 12px — ok, é tag pequena mesmo */
   letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8); /* era 0.7 */
   background: rgba(255, 255, 255, 0.06);
   border: 0.5px solid rgba(255, 255, 255, 0.14);
   padding: 5px 11px;
@@ -1011,7 +1031,7 @@ onUnmounted(() => {
 }
 
 /* ══════════════════════════════════════════
-   SECONDARY GRID — mobile: 1 coluna
+   SECONDARY GRID
 ══════════════════════════════════════════ */
 .sec-grid {
   display: grid;
@@ -1059,7 +1079,7 @@ onUnmounted(() => {
 
 .card-index {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 14px; /* era 9px — absurdo */
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-iron);
@@ -1103,7 +1123,7 @@ onUnmounted(() => {
 
 .photo-ph span {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 11px; /* era 8px */
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-iron);
@@ -1114,7 +1134,7 @@ onUnmounted(() => {
 
 .card-title {
   font-family: var(--font-wave);
-  font-size: clamp(18px, 2.5vw, 22px);
+  font-size: clamp(20px, 2.5vw, 24px); /* era clamp(18px, 2.5vw, 22px) */
   font-weight: 300;
   color: var(--color-navy-deep);
   letter-spacing: 0.01em;
@@ -1124,8 +1144,8 @@ onUnmounted(() => {
 
 .card-desc {
   font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: var(--weight-light);
+  font-size: 16px; /* era 15px */
+  font-weight: 500; /* era var(--weight-light) = 300 */
   color: var(--color-steel);
   line-height: 1.7;
   flex: 1;
@@ -1141,10 +1161,10 @@ onUnmounted(() => {
 
 .card-badge {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 11px; /* era 8px */
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 3px 7px;
+  padding: 4px 8px; /* era 3px 7px */
   border-radius: var(--radius-xs);
 }
 
@@ -1169,7 +1189,7 @@ onUnmounted(() => {
   align-items: center;
   gap: var(--space-2);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 14px; /* era 9px */
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-cobalt);
@@ -1188,15 +1208,15 @@ onUnmounted(() => {
 }
 
 .card-link svg {
-  width: 12px;
-  height: 12px;
+  width: 14px; /* era 12px */
+  height: 14px;
   stroke: currentColor;
   fill: none;
   flex-shrink: 0;
 }
 
 /* ══════════════════════════════════════════
-   480px — secondary grid 2 col
+   480px
 ══════════════════════════════════════════ */
 @media (min-width: 480px) {
   .sec-grid {
@@ -1205,7 +1225,7 @@ onUnmounted(() => {
 }
 
 /* ══════════════════════════════════════════
-   768px — featured card 2-col, specs strip below
+   768px
 ══════════════════════════════════════════ */
 @media (min-width: 768px) {
   .services {
@@ -1260,7 +1280,6 @@ onUnmounted(() => {
   .feat-specs .tech-block--guarantee {
     background: rgba(0, 212, 170, 0.04);
   }
-
   .feat-specs .tech-block:nth-child(3n) {
     border-right: none;
   }
@@ -1274,13 +1293,12 @@ onUnmounted(() => {
 }
 
 /* ══════════════════════════════════════════
-   1024px — carousel bleeds to right viewport edge
+   1024px
 ══════════════════════════════════════════ */
 @media (min-width: 1024px) {
   .services {
     padding: 96px 0 96px 24px;
   }
-
   .services-inner {
     padding-right: 24px;
   }
@@ -1330,7 +1348,6 @@ onUnmounted(() => {
     padding-left: max(24px, calc((100vw - 1304px) / 2));
   }
 
-  /* reset 768px nth-child(3n) rule, restore right border for all items */
   .feat-specs .tech-block:nth-child(3n) {
     border-right: 0.5px solid rgba(255, 255, 255, 0.07);
   }
@@ -1346,8 +1363,6 @@ onUnmounted(() => {
   .feat-specs .tech-block--guarantee {
     background: rgba(0, 212, 170, 0.04);
   }
-
-  /* 5th item is last in the strip row — no right border */
   .feat-specs .tech-block:nth-child(5) {
     border-right: none;
   }
@@ -1362,7 +1377,6 @@ onUnmounted(() => {
   .sec-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-
   .services-inner--grid {
     margin-top: var(--space-6);
   }

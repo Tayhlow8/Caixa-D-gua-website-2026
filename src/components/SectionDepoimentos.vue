@@ -14,7 +14,7 @@ defineProps({
         id: 1,
         nome: "Sandra Gomes",
         iniciais: "SG",
-        avatar: null,
+        avatar: "https://randomuser.me/api/portraits/women/44.jpg",
         cidade: "Porto Alegre · RS",
         nota: 5,
         texto:
@@ -26,7 +26,7 @@ defineProps({
         id: 2,
         nome: "Marcos Henrique S.",
         iniciais: "MH",
-        avatar: null,
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
         cidade: "Porto Alegre · RS",
         nota: 5,
         texto:
@@ -38,7 +38,7 @@ defineProps({
         id: 3,
         nome: "Cristiane Alves",
         iniciais: "CA",
-        avatar: null,
+        avatar: "https://randomuser.me/api/portraits/women/63.jpg",
         cidade: "Porto Alegre · RS",
         nota: 5,
         texto:
@@ -50,7 +50,7 @@ defineProps({
         id: 4,
         nome: "Ricardo Fontana",
         iniciais: "RF",
-        avatar: null,
+        avatar: "https://randomuser.me/api/portraits/men/57.jpg",
         cidade: "Porto Alegre · RS",
         nota: 5,
         texto:
@@ -82,7 +82,10 @@ function stars(n) {
 
         <div class="reviews-rating">
           <span class="rating-num">{{ rating }}</span>
-          <div class="rating-stars" aria-label="Nota média 5 de 5 estrelas no Google Meu Negócio">
+          <div
+            class="rating-stars"
+            aria-label="Nota média 5 de 5 estrelas no Google Meu Negócio"
+          >
             <svg v-for="i in 5" :key="i" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"
@@ -135,7 +138,10 @@ function stars(n) {
         >
           <!-- Topo: estrelas + fonte -->
           <div class="card-top">
-            <div class="card-stars" :aria-label="`Avaliação: ${review.nota} de 5 estrelas`">
+            <div
+              class="card-stars"
+              :aria-label="`Avaliação: ${review.nota} de 5 estrelas`"
+            >
               <svg
                 v-for="i in stars(review.nota)"
                 :key="i"
@@ -147,7 +153,10 @@ function stars(n) {
                 />
               </svg>
             </div>
-            <span class="card-google" aria-label="Avaliação verificada pelo Google Meu Negócio">
+            <span
+              class="card-google"
+              aria-label="Avaliação verificada pelo Google Meu Negócio"
+            >
               <svg
                 width="10"
                 height="10"
@@ -289,7 +298,7 @@ function stars(n) {
 
 .reviews-eyebrow {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 14px; /* era 9px */
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-sky);
@@ -339,7 +348,7 @@ function stars(n) {
 
 .rating-count {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 14px; /* era 9px */
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-iron);
@@ -350,7 +359,7 @@ function stars(n) {
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 12px; /* era 9px */
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-cobalt);
@@ -416,7 +425,7 @@ function stars(n) {
   align-items: center;
   gap: 5px;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 11px; /* era 8px */
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-iron);
@@ -425,8 +434,8 @@ function stars(n) {
 /* Quote */
 .card-quote {
   font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 16px; /* era 14px */
+  font-weight: 500; /* era 300 */
   color: var(--color-steel);
   line-height: 1.7;
   flex: 1;
@@ -493,7 +502,7 @@ function stars(n) {
 
 .author-name {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 15px; /* era 13px */
   font-weight: 700;
   color: var(--color-navy-deep);
   line-height: 1.2;
@@ -501,7 +510,7 @@ function stars(n) {
 
 .author-meta {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 12px; /* era 8px */
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-iron);
@@ -512,7 +521,7 @@ function stars(n) {
   align-items: center;
   gap: 4px;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 11px; /* era 8px */
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-lacre);
@@ -539,25 +548,28 @@ function stars(n) {
   align-items: center;
   gap: 10px;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--color-navy);
   background: var(--color-white);
-  border: 1px solid var(--color-mist);
+  border: 2px solid var(--color-sky);
   padding: 13px 22px;
-  border-radius: var(--radius-xs);
+  border-radius: 40px;
   cursor: pointer;
   text-decoration: none;
   transition:
     border-color var(--dur-fast) ease,
-    box-shadow var(--dur-fast) ease;
+    background var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease,
+    transform var(--dur-fast) ease;
 }
 
 .btn-google:hover {
-  border-color: var(--color-sky);
-  box-shadow: 0 4px 20px rgba(0, 184, 240, 0.1);
+  border-color: var(--color-cyan);
+  box-shadow: 0 4px 20px rgba(0, 184, 240, 0.15);
+  transform: translateY(-2px);
 }
 
 .btn-google__icon {
@@ -568,16 +580,14 @@ function stars(n) {
 
 .reviews-footer-note {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 12px; /* era 9px */
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-iron);
   text-align: center;
 }
 
-/* ══ RESPONSIVE — MOBILE FIRST ══ */
-
-/* sm: 480px — footer em row */
+/* ══ RESPONSIVE ══ */
 @media (min-width: 480px) {
   .reviews-footer {
     flex-direction: row;
@@ -585,7 +595,6 @@ function stars(n) {
   }
 }
 
-/* md: 768px — header side-by-side, 2-col grid */
 @media (min-width: 768px) {
   .reviews {
     padding: 72px 24px;
@@ -609,7 +618,6 @@ function stars(n) {
   }
 }
 
-/* lg: 1024px — auto-fill grid, looser padding */
 @media (min-width: 1024px) {
   .reviews {
     padding: 88px 24px;
@@ -620,7 +628,6 @@ function stars(n) {
   }
 }
 
-/* xl: 1280px — wider cards */
 @media (min-width: 1280px) {
   .reviews-grid {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
