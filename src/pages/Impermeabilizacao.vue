@@ -1,35 +1,38 @@
 <script setup>
-import { ref } from 'vue'
-import NavBar from '../components/NavBar.vue'
-import AppFooter from '../components/AppFooter.vue'
-import BackToTop from '../components/BackToTop.vue'
+import { ref } from "vue";
+import NavBar from "../components/NavBar.vue";
+import AppFooter from "../components/AppFooter.vue";
+import BackToTop from "../components/BackToTop.vue";
 
 // ── Interna images
-import heroImg       from '../assets/revestimento1.jpg'
-import antesI1       from '../assets/antes.jpg'
-import depoisI1      from '../assets/depois.jpg'
-import procLimpeza   from '../assets/foto chapa.jpg'
-import procFixacao   from '../assets/revestimento2.jpg'
-import procSolda     from '../assets/revestimento3.jpg'
-import procFinal     from '../assets/revestimento4.jpg'
-import antesI2       from '../assets/reservatorio antes.png'
-import depoisI2      from '../assets/revestimento8.jpg'
+import heroImg from "../assets/revestimento1.jpg";
+import antesI1 from "../assets/Antes 4.jpg";
+import depoisI1 from "../assets/revestimento7.jpg";
+import procLimpeza from "../assets/antes6.jpg";
+import procFixacao from "../assets/antes8.jpg";
+import procSolda from "../assets/depois com canos.jpg";
+import procFinal from "../assets/revestimento2.jpg";
+import antesI2 from "../assets/reservatorio antes.png";
+import depoisI2 from "../assets/revestimento8.jpg";
 
 // ── Externa images
-import extAntes      from '../assets/antes3.JPG'
-import extAplicacao  from '../assets/revestimento6.jpg'
-import extDepois     from '../assets/revestimento7.jpg'
+import extAntes from "../assets/antes3.JPG";
+import extAplicacao from "../assets/revestimento6.jpg";
+import extDepois from "../assets/revestimento7.jpg";
 
-const WPP_RS = 'https://api.whatsapp.com/send?phone=5551981969303'
+const WPP_RS = "https://api.whatsapp.com/send?phone=5551981969303";
 
-const activeTab = ref('interna')
+const activeTab = ref("interna");
 
 function switchTab(tab) {
-  activeTab.value = tab
-  const id = tab === 'interna' ? 'interna' : 'externa'
-  const el = document.getElementById(id)
+  activeTab.value = tab;
+  const id = tab === "interna" ? "interna" : "externa";
+  const el = document.getElementById(id);
   if (el) {
-    setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 10)
+    setTimeout(
+      () => el.scrollIntoView({ behavior: "smooth", block: "start" }),
+      10,
+    );
   }
 }
 </script>
@@ -45,47 +48,92 @@ function switchTab(tab) {
         <div class="hero-content">
           <p class="hero-eyebrow" aria-hidden="true">Especialista em RS e SC</p>
           <h1 class="hero-h1">
-            Impermeabilização<br>
-            de caixa d'água<br>
+            Impermeabilização<br />
+            de caixa d'água<br />
             <em>com garantia real</em>
           </h1>
           <p class="hero-sub">
-            Tecnologia patenteada e exclusiva no Sul do Brasil. Instalação em 1 dia,
-            sem obras, sem entulho — e a caixa liberada para uso no mesmo dia.
+            Tecnologia patenteada e exclusiva no Sul do Brasil. Instalação em 1
+            dia, sem obras, sem entulho — e a caixa liberada para uso no mesmo
+            dia.
           </p>
           <div class="hero-badges" role="list" aria-label="Diferenciais">
             <span class="badge" role="listitem">Aprovado ANVISA</span>
             <span class="badge" role="listitem">Instalação em 1 dia</span>
-            <span class="badge badge--sky" role="listitem">Garantia 5 anos</span>
+            <span class="badge badge--sky" role="listitem"
+              >Garantia 5 anos</span
+            >
             <span class="badge badge--sky" role="listitem">Sem obras</span>
           </div>
           <div class="hero-ctas">
-            <a :href="WPP_RS" class="btn-primary" target="_blank" rel="noopener noreferrer"
-               aria-label="Solicitar orçamento gratuito via WhatsApp — Rio Grande do Sul">
-              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true">
-                <g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g>
-                <g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g>
+            <a
+              :href="WPP_RS"
+              class="btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Solicitar orçamento gratuito via WhatsApp — Rio Grande do Sul"
+            >
+              <svg
+                class="wsv"
+                viewBox="0 0 600 60"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g>
               </svg>
               <span class="wlbl">
-                <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" aria-hidden="true" class="wp-icon">
-                  <path stroke="currentColor" d="M13.6 2.4C12.1.9 10.1 0 8 0 3.6 0 0 3.6 0 8c0 1.4.4 2.8 1 4L0 16l4.1-1.1C5.3 15.6 6.6 16 8 16c4.4 0 8-3.6 8-8 0-2.1-.9-4.1-2.4-5.6z"/>
-                  <path stroke="none" fill="rgba(255,255,255,.85)" d="M11.5 9.9c-.2-.1-1.3-.7-1.5-.7-.2-.1-.3-.1-.5.1-.1.2-.5.7-.7.8-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-.9-1.2-1-1.4-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.2-.4 0-.2-.5-1.3-.7-1.7-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3C3.7 5.3 3 6 3 7.3c0 1.3.9 2.5 1 2.7.1.2 1.8 2.9 4.5 4 .6.3 1.1.4 1.5.5.6.1 1.2.1 1.6 0 .5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.1-.4-.2z"/>
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                  class="wp-icon"
+                >
+                  <path
+                    stroke="currentColor"
+                    d="M13.6 2.4C12.1.9 10.1 0 8 0 3.6 0 0 3.6 0 8c0 1.4.4 2.8 1 4L0 16l4.1-1.1C5.3 15.6 6.6 16 8 16c4.4 0 8-3.6 8-8 0-2.1-.9-4.1-2.4-5.6z"
+                  />
+                  <path
+                    stroke="none"
+                    fill="rgba(255,255,255,.85)"
+                    d="M11.5 9.9c-.2-.1-1.3-.7-1.5-.7-.2-.1-.3-.1-.5.1-.1.2-.5.7-.7.8-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-.9-1.2-1-1.4-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.2-.4 0-.2-.5-1.3-.7-1.7-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3C3.7 5.3 3 6 3 7.3c0 1.3.9 2.5 1 2.7.1.2 1.8 2.9 4.5 4 .6.3 1.1.4 1.5.5.6.1 1.2.1 1.6 0 .5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.1-.4-.2z"
+                  />
                 </svg>
                 Orçamento Grátis — RS
               </span>
             </a>
-            <a :href="activeTab === 'externa' ? '#externa' : '#interna'" class="btn-ghost">Ver como funciona ↓</a>
+            <a
+              :href="activeTab === 'externa' ? '#externa' : '#interna'"
+              class="btn-ghost"
+              >Ver como funciona ↓</a
+            >
           </div>
         </div>
 
         <!-- Visual -->
         <div class="hero-visual" aria-hidden="true">
           <div class="hero-img-wrap">
-            <img :src="heroImg" alt="Interior de caixa d'água revestida com PVC geomembrana" class="hero-img" loading="eager" />
+            <img
+              :src="heroImg"
+              alt="Interior de caixa d'água revestida com PVC geomembrana"
+              class="hero-img"
+              loading="eager"
+            />
           </div>
           <div class="hero-badge-float">
             <span class="badge-num">30+</span>
-            <span class="badge-txt">anos de<br>experiência</span>
+            <span class="badge-txt">anos de<br />experiência</span>
           </div>
         </div>
       </div>
@@ -95,7 +143,11 @@ function switchTab(tab) {
     <div class="wave-div" aria-hidden="true"></div>
 
     <!-- ══ TABS ══ -->
-    <div class="section-selector" role="tablist" aria-label="Tipos de impermeabilização">
+    <div
+      class="section-selector"
+      role="tablist"
+      aria-label="Tipos de impermeabilização"
+    >
       <div class="tabs-inner">
         <button
           class="tab-btn"
@@ -123,30 +175,54 @@ function switchTab(tab) {
     </div>
 
     <!-- ══ PAINEL INTERNA ══ -->
-    <div id="panel-interna" role="tabpanel" aria-labelledby="tab-interna" v-show="activeTab === 'interna'">
+    <div
+      id="panel-interna"
+      role="tabpanel"
+      aria-labelledby="tab-interna"
+      v-show="activeTab === 'interna'"
+    >
       <section class="sec-content" id="interna">
-
         <p class="sec-eyebrow" aria-hidden="true">Impermeabilização Interna</p>
-        <h2 class="sec-title">PVC Geomembrana — tecnologia<br><em>exclusiva no Sul do Brasil</em></h2>
+        <h2 class="sec-title">
+          PVC Geomembrana — tecnologia<br /><em>exclusiva no Sul do Brasil</em>
+        </h2>
         <p class="sec-desc">
-          O revestimento interno com geomembrana de PVC flexível é aplicado sob medida dentro
-          da caixa d'água, criando uma barreira total contra infiltrações e deterioração do concreto.
-          Atóxico, aprovado pela ANVISA e com garantia de 5 anos.
+          O revestimento interno com geomembrana de PVC flexível é aplicado sob
+          medida dentro da caixa d'água, criando uma barreira total contra
+          infiltrações e deterioração do concreto. Atóxico, aprovado pela ANVISA
+          e com garantia de 5 anos.
         </p>
 
         <!-- Antes e Depois 1 -->
         <div class="ba-section" aria-label="Comparativo antes e depois">
-          <p class="ba-label" aria-hidden="true">Antes e depois do revestimento</p>
+          <p class="ba-label" aria-hidden="true">
+            Antes e depois do revestimento
+          </p>
           <div class="ba-grid" role="group" aria-label="Imagens comparativas">
             <div class="ba-item">
-              <img :src="antesI1" alt="Interior de caixa d'água deteriorada com infiltrações — antes do serviço" loading="lazy" />
+              <img
+                :src="antesI1"
+                alt="Interior de caixa d'água deteriorada com infiltrações — antes do serviço"
+                loading="lazy"
+              />
               <span class="ba-tag ba-tag--antes" aria-hidden="true">Antes</span>
-              <p class="ba-caption">Concreto exposto com infiltrações — risco à saúde</p>
+              <p class="ba-caption">
+                Concreto exposto com infiltrações — risco à saúde
+              </p>
             </div>
             <div class="ba-item">
-              <img :src="depoisI1" alt="Interior de caixa d'água revestida com PVC geomembrana — após o serviço" loading="lazy" />
-              <span class="ba-tag ba-tag--depois" aria-hidden="true">Depois</span>
-              <p class="ba-caption">PVC geomembrana instalado — superfície lisa, atóxica e impermeável</p>
+              <img
+                :src="depoisI1"
+                alt="Interior de caixa d'água revestida com PVC geomembrana — após o serviço"
+                loading="lazy"
+              />
+              <span class="ba-tag ba-tag--depois" aria-hidden="true"
+                >Depois</span
+              >
+              <p class="ba-caption">
+                PVC geomembrana instalado — superfície lisa, atóxica e
+                impermeável
+              </p>
             </div>
           </div>
         </div>
@@ -154,83 +230,151 @@ function switchTab(tab) {
         <!-- Galeria de processo -->
         <div aria-label="Galeria do processo de instalação">
           <p class="ba-label" aria-hidden="true">Etapas do processo</p>
-          <div class="gallery-grid" role="group" aria-label="Fotos das etapas de instalação">
+          <div
+            class="gallery-grid"
+            role="group"
+            aria-label="Fotos das etapas de instalação"
+          >
             <div class="gal-item">
-              <img :src="procLimpeza" alt="Preparação dos barriletes de alumínio para fixação" loading="lazy" />
+              <img
+                :src="procLimpeza"
+                alt="Preparação dos barriletes de alumínio para fixação"
+                loading="lazy"
+              />
               <span class="gal-label" aria-hidden="true">Barriletes</span>
             </div>
             <div class="gal-item">
-              <img :src="procFixacao" alt="Instalação do revestimento PVC na caixa d'água" loading="lazy" />
-              <span class="gal-label" aria-hidden="true">Fixação dos barriletes</span>
+              <img
+                :src="procFixacao"
+                alt="Instalação do revestimento PVC na caixa d'água"
+                loading="lazy"
+              />
+              <span class="gal-label" aria-hidden="true"
+                >Fixação dos barriletes</span
+              >
             </div>
             <div class="gal-item">
-              <img :src="procSolda" alt="Solda térmica do PVC nas tubulações internas" loading="lazy" />
+              <img
+                :src="procSolda"
+                alt="Solda térmica do PVC nas tubulações internas"
+                loading="lazy"
+              />
               <span class="gal-label" aria-hidden="true">Solda térmica</span>
             </div>
             <div class="gal-item">
-              <img :src="procFinal" alt="Instalação do PVC geomembrana concluída" loading="lazy" />
-              <span class="gal-label" aria-hidden="true">Instalação concluída</span>
+              <img
+                :src="procFinal"
+                alt="Instalação do PVC geomembrana concluída"
+                loading="lazy"
+              />
+              <span class="gal-label" aria-hidden="true"
+                >Instalação concluída</span
+              >
             </div>
           </div>
         </div>
 
         <!-- Antes e Depois 2 -->
         <div class="ba-section" aria-label="Segundo comparativo antes e depois">
-          <p class="ba-label" aria-hidden="true">Outro exemplo — caixa de grande volume</p>
+          <p class="ba-label" aria-hidden="true">
+            Outro exemplo — caixa de grande volume
+          </p>
           <div class="ba-grid" role="group" aria-label="Segundo comparativo">
             <div class="ba-item">
-              <img :src="antesI2" alt="Caixa d'água com concreto deteriorado — antes" loading="lazy" />
+              <img
+                :src="antesI2"
+                alt="Caixa d'água com concreto deteriorado — antes"
+                loading="lazy"
+              />
               <span class="ba-tag ba-tag--antes" aria-hidden="true">Antes</span>
-              <p class="ba-caption">Infiltrações visíveis — situação comum em condomínios</p>
+              <p class="ba-caption">
+                Infiltrações visíveis — situação comum em condomínios
+              </p>
             </div>
             <div class="ba-item">
-              <img :src="depoisI2" alt="Caixa d'água com PVC geomembrana instalado — depois" loading="lazy" />
-              <span class="ba-tag ba-tag--depois" aria-hidden="true">Depois</span>
-              <p class="ba-caption">Revestimento integral — paredes, fundo e entorno das tubulações</p>
+              <img
+                :src="depoisI2"
+                alt="Caixa d'água com PVC geomembrana instalado — depois"
+                loading="lazy"
+              />
+              <span class="ba-tag ba-tag--depois" aria-hidden="true"
+                >Depois</span
+              >
+              <p class="ba-caption">
+                Revestimento integral — paredes, fundo e entorno das tubulações
+              </p>
             </div>
           </div>
         </div>
 
         <!-- Processo passo a passo -->
-        <div class="process-section" id="processo-interna" aria-labelledby="processo-title">
+        <div
+          class="process-section"
+          id="processo-interna"
+          aria-labelledby="processo-title"
+        >
           <div class="process-header">
             <div>
               <p class="sec-eyebrow" aria-hidden="true">Como funciona</p>
-              <h2 class="sec-title sec-title--inline" id="processo-title">Instalação em <em>6 etapas</em></h2>
+              <h2 class="sec-title sec-title--inline" id="processo-title">
+                Instalação em <em>6 etapas</em>
+              </h2>
             </div>
-            <p class="process-note">Do esgotamento à entrega: tudo em 1 dia, sem obras.</p>
+            <p class="process-note">
+              Do esgotamento à entrega: tudo em 1 dia, sem obras.
+            </p>
           </div>
 
           <div class="process-grid" role="list" aria-label="Etapas do processo">
             <div class="step-card" role="listitem">
               <div class="step-num" aria-hidden="true">01</div>
               <h3 class="step-title">Levantamento técnico</h3>
-              <p class="step-text">Verificação das condições físicas do reservatório e planejamento da instalação conforme as dimensões internas da caixa.</p>
+              <p class="step-text">
+                Verificação das condições físicas do reservatório e planejamento
+                da instalação conforme as dimensões internas da caixa.
+              </p>
             </div>
             <div class="step-card" role="listitem">
               <div class="step-num" aria-hidden="true">02</div>
               <h3 class="step-title">Esgotamento e limpeza</h3>
-              <p class="step-text">Esvaziamento do reservatório e escovação interna com solução de hipoclorito de sódio — sem detergentes ou produtos químicos.</p>
+              <p class="step-text">
+                Esvaziamento do reservatório e escovação interna com solução de
+                hipoclorito de sódio — sem detergentes ou produtos químicos.
+              </p>
             </div>
             <div class="step-card" role="listitem">
               <div class="step-num" aria-hidden="true">03</div>
               <h3 class="step-title">Fixação dos barriletes</h3>
-              <p class="step-text">Instalação dos perfis de alumínio com buchas e parafusos inoxidáveis próximos à laje superior, acima do nível d'água da bóia.</p>
+              <p class="step-text">
+                Instalação dos perfis de alumínio com buchas e parafusos
+                inoxidáveis próximos à laje superior, acima do nível d'água da
+                bóia.
+              </p>
             </div>
             <div class="step-card" role="listitem">
               <div class="step-num" aria-hidden="true">04</div>
               <h3 class="step-title">Instalação do revestimento</h3>
-              <p class="step-text">O módulo de PVC geomembrana chega pronto, sob medida. É aberto dentro do reservatório e ancorado nos barriletes instalados.</p>
+              <p class="step-text">
+                O módulo de PVC geomembrana chega pronto, sob medida. É aberto
+                dentro do reservatório e ancorado nos barriletes instalados.
+              </p>
             </div>
             <div class="step-card" role="listitem">
               <div class="step-num" aria-hidden="true">05</div>
               <h3 class="step-title">Solda nas tubulações</h3>
-              <p class="step-text">Fusão por soprador térmico une o PVC flexível ao PVC rígido dos canos — formam um único corpo, sem passagem de água entre eles.</p>
+              <p class="step-text">
+                Fusão por soprador térmico une o PVC flexível ao PVC rígido dos
+                canos — formam um único corpo, sem passagem de água entre eles.
+              </p>
             </div>
             <div class="step-card" role="listitem">
               <div class="step-num" aria-hidden="true">06</div>
               <h3 class="step-title">Sanitização e entrega</h3>
-              <p class="step-text">Limpeza final e sanitização do reservatório. Emissão do Certificado de Limpeza e Conservação, válido por 1 ano na Secretaria de Saúde.</p>
+              <p class="step-text">
+                Limpeza final e sanitização do reservatório. Emissão do
+                Certificado de Limpeza e Conservação, válido por 1 ano na
+                Secretaria de Saúde.
+              </p>
             </div>
           </div>
         </div>
@@ -238,88 +382,162 @@ function switchTab(tab) {
         <!-- Especificações técnicas -->
         <div class="specs-section" aria-labelledby="specs-title">
           <p class="specs-label" aria-hidden="true">Especificações técnicas</p>
-          <div class="specs-grid" role="list" aria-label="Especificações técnicas">
+          <div
+            class="specs-grid"
+            role="list"
+            aria-label="Especificações técnicas"
+          >
             <div class="spec-item" role="listitem">
               <p class="spec-label">Material</p>
               <p class="spec-value">PVC Flexível</p>
-              <p class="spec-desc">Geomembrana sem porosidade, lisa e de cor cinza claro</p>
+              <p class="spec-desc">
+                Geomembrana sem porosidade, lisa e de cor cinza claro
+              </p>
             </div>
             <div class="spec-item" role="listitem">
               <p class="spec-label">Instalação</p>
               <p class="spec-value">1 dia</p>
-              <p class="spec-desc">Sem obras de alvenaria — apenas limpeza prévia necessária</p>
+              <p class="spec-desc">
+                Sem obras de alvenaria — apenas limpeza prévia necessária
+              </p>
             </div>
             <div class="spec-item" role="listitem">
               <p class="spec-label">Garantia</p>
               <p class="spec-value">5 anos</p>
-              <p class="spec-desc">Contra infiltrações em paredes e laje de fundo provenientes do material</p>
+              <p class="spec-desc">
+                Contra infiltrações em paredes e laje de fundo provenientes do
+                material
+              </p>
             </div>
             <div class="spec-item" role="listitem">
               <p class="spec-label">Certificação</p>
               <p class="spec-value">ANVISA</p>
-              <p class="spec-desc">Atóxico, aprovado para contato direto com água potável</p>
+              <p class="spec-desc">
+                Atóxico, aprovado para contato direto com água potável
+              </p>
             </div>
           </div>
         </div>
 
         <!-- Garantia strip -->
-        <div class="guarantee-strip" role="region" aria-label="Certificado incluso">
+        <div
+          class="guarantee-strip"
+          role="region"
+          aria-label="Certificado incluso"
+        >
           <div class="guarantee-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2Z"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M9 12l2 2 4-4"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </div>
           <div class="guarantee-text">
             <h3>Certificado de Limpeza e Conservação incluso</h3>
-            <p>Documento válido por 1 ano na Secretaria Municipal de Saúde — o condomínio fica livre de vistorias, notificações e multas por falta de higiene.</p>
+            <p>
+              Documento válido por 1 ano na Secretaria Municipal de Saúde — o
+              condomínio fica livre de vistorias, notificações e multas por
+              falta de higiene.
+            </p>
           </div>
-          <a :href="WPP_RS" class="btn-cta" target="_blank" rel="noopener noreferrer"
-             aria-label="Solicitar orçamento da impermeabilização interna via WhatsApp">
-            <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true">
-              <g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g>
-              <g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g>
+          <a
+            :href="WPP_RS"
+            class="btn-cta"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Solicitar orçamento da impermeabilização interna via WhatsApp"
+          >
+            <svg
+              class="wsv"
+              viewBox="0 0 600 60"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <g class="wg1">
+                <path
+                  class="wf1"
+                  d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                />
+              </g>
+              <g class="wg2">
+                <path
+                  class="wf2"
+                  d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                />
+              </g>
             </svg>
             <span class="wlbl">Solicitar orçamento</span>
           </a>
         </div>
-
       </section>
     </div>
 
     <!-- ══ PAINEL EXTERNA ══ -->
-    <div id="panel-externa" role="tabpanel" aria-labelledby="tab-externa" v-show="activeTab === 'externa'">
+    <div
+      id="panel-externa"
+      role="tabpanel"
+      aria-labelledby="tab-externa"
+      v-show="activeTab === 'externa'"
+    >
       <section class="sec-content" id="externa">
-
         <p class="sec-eyebrow" aria-hidden="true">Impermeabilização Externa</p>
-        <h2 class="sec-title">Manta asfáltica — proteção<br><em>pela face externa</em></h2>
+        <h2 class="sec-title">
+          Manta asfáltica — proteção<br /><em>pela face externa</em>
+        </h2>
         <p class="sec-desc">
-          Quando o problema está na parte externa do reservatório — umidade no teto, manchas nas
-          lajes ou infiltrações na estrutura — a solução é a impermeabilização com manta asfáltica,
-          aplicada sobre a superfície externa da caixa.
+          Quando o problema está na parte externa do reservatório — umidade no
+          teto, manchas nas lajes ou infiltrações na estrutura — a solução é a
+          impermeabilização com manta asfáltica, aplicada sobre a superfície
+          externa da caixa.
         </p>
 
         <!-- Callout diferença -->
-        <div class="diff-callout" role="note" aria-label="Diferença entre revestimento interno e externo">
+        <div
+          class="diff-callout"
+          role="note"
+          aria-label="Diferença entre revestimento interno e externo"
+        >
           <h4>Revestimento interno × Impermeabilização externa</h4>
           <p>
-            O revestimento interno (PVC geomembrana) protege a água de dentro da caixa,
-            impedindo que o concreto contamine o que você consome. Já a impermeabilização
-            externa atua na estrutura: evita que a umidade do ambiente externo penetre nas
-            paredes do reservatório e cause danos à laje e à ferragem do concreto.
-            São serviços complementares — cada um resolve um problema diferente.
+            O revestimento interno (PVC geomembrana) protege a água de dentro da
+            caixa, impedindo que o concreto contamine o que você consome. Já a
+            impermeabilização externa atua na estrutura: evita que a umidade do
+            ambiente externo penetre nas paredes do reservatório e cause danos à
+            laje e à ferragem do concreto. São serviços complementares — cada um
+            resolve um problema diferente.
           </p>
         </div>
 
         <!-- Comparativo -->
         <div aria-label="Comparativo entre os tipos de serviço">
-          <p class="ba-label" aria-hidden="true">Qual serviço resolve seu problema?</p>
-          <div class="compare-grid" role="group" aria-label="Comparativo interno × externo">
-
+          <p class="ba-label" aria-hidden="true">
+            Qual serviço resolve seu problema?
+          </p>
+          <div
+            class="compare-grid"
+            role="group"
+            aria-label="Comparativo interno × externo"
+          >
             <div class="compare-card">
-              <span class="compare-chip compare-chip--azul" aria-hidden="true">Interna — PVC</span>
+              <span class="compare-chip compare-chip--azul" aria-hidden="true"
+                >Interna — PVC</span
+              >
               <h3>Protege a água</h3>
-              <p>Para quando o concreto dentro da caixa está deteriorado, a água chega suja ou com gosto estranho, e há infiltrações nas paredes internas.</p>
+              <p>
+                Para quando o concreto dentro da caixa está deteriorado, a água
+                chega suja ou com gosto estranho, e há infiltrações nas paredes
+                internas.
+              </p>
               <ul class="compare-list" aria-label="Indicado para">
                 <li>Água com cor ou odor diferente</li>
                 <li>Concreto descascando por dentro</li>
@@ -329,9 +547,15 @@ function switchTab(tab) {
             </div>
 
             <div class="compare-card compare-card--dark">
-              <span class="compare-chip compare-chip--escuro" aria-hidden="true">Externa — Manta</span>
+              <span class="compare-chip compare-chip--escuro" aria-hidden="true"
+                >Externa — Manta</span
+              >
               <h3>Protege a estrutura</h3>
-              <p>Para quando há umidade no teto abaixo da caixa, manchas de infiltração na laje, ou quando a estrutura de concreto externo está sendo comprometida.</p>
+              <p>
+                Para quando há umidade no teto abaixo da caixa, manchas de
+                infiltração na laje, ou quando a estrutura de concreto externo
+                está sendo comprometida.
+              </p>
               <ul class="compare-list" aria-label="Indicado para">
                 <li>Umidade ou manchas no teto embaixo</li>
                 <li>Infiltração na laje externa</li>
@@ -339,24 +563,39 @@ function switchTab(tab) {
                 <li>Prevenção de danos estruturais</li>
               </ul>
             </div>
-
           </div>
         </div>
 
         <!-- Galeria externa -->
         <div aria-label="Galeria da impermeabilização externa">
           <p class="ba-label" aria-hidden="true">Galeria — manta asfáltica</p>
-          <div class="gallery-3" role="group" aria-label="Fotos da impermeabilização externa">
+          <div
+            class="gallery-3"
+            role="group"
+            aria-label="Fotos da impermeabilização externa"
+          >
             <div class="g3-item">
-              <img :src="extAntes" alt="Superfície externa de caixa d'água antes da impermeabilização" loading="lazy" />
+              <img
+                :src="extAntes"
+                alt="Superfície externa de caixa d'água antes da impermeabilização"
+                loading="lazy"
+              />
               <span class="gal-label" aria-hidden="true">Superfície antes</span>
             </div>
             <div class="g3-item">
-              <img :src="extAplicacao" alt="Aplicação da manta asfáltica na superfície externa" loading="lazy" />
+              <img
+                :src="extAplicacao"
+                alt="Aplicação da manta asfáltica na superfície externa"
+                loading="lazy"
+              />
               <span class="gal-label" aria-hidden="true">Aplicação</span>
             </div>
             <div class="g3-item">
-              <img :src="extDepois" alt="Resultado final da impermeabilização externa" loading="lazy" />
+              <img
+                :src="extDepois"
+                alt="Resultado final da impermeabilização externa"
+                loading="lazy"
+              />
               <span class="gal-label" aria-hidden="true">Resultado final</span>
             </div>
           </div>
@@ -365,46 +604,90 @@ function switchTab(tab) {
         <!-- Manta cards -->
         <div class="manta-section" aria-labelledby="manta-title">
           <p class="sec-eyebrow" aria-hidden="true">Manta asfáltica</p>
-          <h2 class="sec-title sec-title--inline" id="manta-title">Como a manta <em>protege a estrutura</em></h2>
+          <h2 class="sec-title sec-title--inline" id="manta-title">
+            Como a manta <em>protege a estrutura</em>
+          </h2>
           <p class="sec-desc">
-            A manta asfáltica é aplicada sobre a superfície externa com calor, criando uma membrana
-            impermeável que impede a passagem de umidade do ambiente para dentro da estrutura de concreto.
+            A manta asfáltica é aplicada sobre a superfície externa com calor,
+            criando uma membrana impermeável que impede a passagem de umidade do
+            ambiente para dentro da estrutura de concreto.
           </p>
 
-          <div class="manta-grid" role="list" aria-label="Características da manta asfáltica">
-
+          <div
+            class="manta-grid"
+            role="list"
+            aria-label="Características da manta asfáltica"
+          >
             <div class="manta-card" role="listitem">
               <div class="manta-icon" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M10 2v16M2 10h16" stroke="#1A6BC4" stroke-width="1.5" stroke-linecap="round"/>
+                  <path
+                    d="M10 2v16M2 10h16"
+                    stroke="#1A6BC4"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
                 </svg>
               </div>
               <h4>Aplicação a quente</h4>
-              <p>A manta é fixada com maçarico, fundindo ao substrato de cimento — cria uma barreira impermeável e duradoura, sem risco de descolamento.</p>
+              <p>
+                A manta é fixada com maçarico, fundindo ao substrato de cimento
+                — cria uma barreira impermeável e duradoura, sem risco de
+                descolamento.
+              </p>
             </div>
 
             <div class="manta-card" role="listitem">
               <div class="manta-icon" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <rect x="3" y="3" width="14" height="14" rx="2" stroke="#1A6BC4" stroke-width="1.5"/>
-                  <path d="M7 10l2 2 4-4" stroke="#1A6BC4" stroke-width="1.5" stroke-linecap="round"/>
+                  <rect
+                    x="3"
+                    y="3"
+                    width="14"
+                    height="14"
+                    rx="2"
+                    stroke="#1A6BC4"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M7 10l2 2 4-4"
+                    stroke="#1A6BC4"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
                 </svg>
               </div>
               <h4>Proteção estrutural</h4>
-              <p>Evita que a ferragem do concreto fique exposta à umidade, prevenindo oxidação e os danos estruturais graves que ela causa ao longo do tempo.</p>
+              <p>
+                Evita que a ferragem do concreto fique exposta à umidade,
+                prevenindo oxidação e os danos estruturais graves que ela causa
+                ao longo do tempo.
+              </p>
             </div>
 
             <div class="manta-card" role="listitem">
               <div class="manta-icon" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M10 3C6.5 3 4 6 4 10s2.5 7 6 7 6-3 6-7-2.5-7-6-7z" stroke="#1A6BC4" stroke-width="1.5"/>
-                  <path d="M10 7v3l2 2" stroke="#1A6BC4" stroke-width="1.5" stroke-linecap="round"/>
+                  <path
+                    d="M10 3C6.5 3 4 6 4 10s2.5 7 6 7 6-3 6-7-2.5-7-6-7z"
+                    stroke="#1A6BC4"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M10 7v3l2 2"
+                    stroke="#1A6BC4"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
                 </svg>
               </div>
               <h4>Durabilidade comprovada</h4>
-              <p>Material testado para ambientes externos com variações de temperatura e exposição solar — mantém a eficiência mesmo sob condições climáticas adversas.</p>
+              <p>
+                Material testado para ambientes externos com variações de
+                temperatura e exposição solar — mantém a eficiência mesmo sob
+                condições climáticas adversas.
+              </p>
             </div>
-
           </div>
         </div>
 
@@ -412,24 +695,57 @@ function switchTab(tab) {
         <div class="guarantee-strip">
           <div class="guarantee-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2Z"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M9 12l2 2 4-4"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </div>
           <div class="guarantee-text">
             <h3>Diagnóstico gratuito</h3>
-            <p>Informe o problema e receba uma avaliação técnica sem compromisso — presencial ou por fotos. Atendemos RS e SC.</p>
+            <p>
+              Informe o problema e receba uma avaliação técnica sem compromisso
+              — presencial ou por fotos. Atendemos RS e SC.
+            </p>
           </div>
-          <a :href="WPP_RS" class="btn-cta" target="_blank" rel="noopener noreferrer"
-             aria-label="Solicitar diagnóstico da impermeabilização externa">
-            <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true">
-              <g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g>
-              <g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g>
+          <a
+            :href="WPP_RS"
+            class="btn-cta"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Solicitar diagnóstico da impermeabilização externa"
+          >
+            <svg
+              class="wsv"
+              viewBox="0 0 600 60"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <g class="wg1">
+                <path
+                  class="wf1"
+                  d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                />
+              </g>
+              <g class="wg2">
+                <path
+                  class="wf2"
+                  d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                />
+              </g>
             </svg>
             <span class="wlbl">Solicitar diagnóstico</span>
           </a>
         </div>
-
       </section>
     </div>
 
@@ -438,24 +754,58 @@ function switchTab(tab) {
       <div class="cta-inner">
         <p class="sec-eyebrow" aria-hidden="true">Próximo passo</p>
         <h2 id="cta-title">
-          Água limpa e estrutura<br>
+          Água limpa e estrutura<br />
           <em>protegida em 1 dia</em>
         </h2>
         <p>
-          Atendemos residências, condomínios e empresas em todo o Rio Grande do Sul e Santa Catarina.
-          Orçamento gratuito — sem visita técnica obrigatória para casos simples.
+          Atendemos residências, condomínios e empresas em todo o Rio Grande do
+          Sul e Santa Catarina. Orçamento gratuito — sem visita técnica
+          obrigatória para casos simples.
         </p>
         <div class="cta-btns">
-          <a :href="WPP_RS" class="btn-primary" target="_blank" rel="noopener noreferrer"
-             aria-label="Solicitar orçamento via WhatsApp">
-            <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true">
-              <g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g>
-              <g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g>
+          <a
+            :href="WPP_RS"
+            class="btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Solicitar orçamento via WhatsApp"
+          >
+            <svg
+              class="wsv"
+              viewBox="0 0 600 60"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <g class="wg1">
+                <path
+                  class="wf1"
+                  d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                />
+              </g>
+              <g class="wg2">
+                <path
+                  class="wf2"
+                  d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                />
+              </g>
             </svg>
             <span class="wlbl">
-              <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" aria-hidden="true" class="wp-icon">
-                <path stroke="currentColor" d="M13.6 2.4C12.1.9 10.1 0 8 0 3.6 0 0 3.6 0 8c0 1.4.4 2.8 1 4L0 16l4.1-1.1C5.3 15.6 6.6 16 8 16c4.4 0 8-3.6 8-8 0-2.1-.9-4.1-2.4-5.6z"/>
-                <path stroke="none" fill="rgba(255,255,255,.85)" d="M11.5 9.9c-.2-.1-1.3-.7-1.5-.7-.2-.1-.3-.1-.5.1-.1.2-.5.7-.7.8-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-.9-1.2-1-1.4-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.2-.4 0-.2-.5-1.3-.7-1.7-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3C3.7 5.3 3 6 3 7.3c0 1.3.9 2.5 1 2.7.1.2 1.8 2.9 4.5 4 .6.3 1.1.4 1.5.5.6.1 1.2.1 1.6 0 .5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.1-.4-.2z"/>
+              <svg
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke-width="1.5"
+                aria-hidden="true"
+                class="wp-icon"
+              >
+                <path
+                  stroke="currentColor"
+                  d="M13.6 2.4C12.1.9 10.1 0 8 0 3.6 0 0 3.6 0 8c0 1.4.4 2.8 1 4L0 16l4.1-1.1C5.3 15.6 6.6 16 8 16c4.4 0 8-3.6 8-8 0-2.1-.9-4.1-2.4-5.6z"
+                />
+                <path
+                  stroke="none"
+                  fill="rgba(255,255,255,.85)"
+                  d="M11.5 9.9c-.2-.1-1.3-.7-1.5-.7-.2-.1-.3-.1-.5.1-.1.2-.5.7-.7.8-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-.9-1.2-1-1.4-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.2-.4 0-.2-.5-1.3-.7-1.7-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3C3.7 5.3 3 6 3 7.3c0 1.3.9 2.5 1 2.7.1.2 1.8 2.9 4.5 4 .6.3 1.1.4 1.5.5.6.1 1.2.1 1.6 0 .5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.1-.4-.2z"
+                />
               </svg>
               Orçamento Grátis — WhatsApp
             </span>
@@ -491,23 +841,36 @@ function switchTab(tab) {
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 80% at 85% 50%, rgba(0, 184, 240, 0.08) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(0, 184, 240, 0.05) 0%, transparent 60%);
+    radial-gradient(
+      ellipse 60% 80% at 85% 50%,
+      rgba(0, 184, 240, 0.08) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 60% at 10% 80%,
+      rgba(0, 184, 240, 0.05) 0%,
+      transparent 60%
+    );
   pointer-events: none;
 }
 
 .hero::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -20%;
   right: -5%;
   width: 1px;
   height: 140%;
-  background: linear-gradient(to bottom, transparent, rgba(0, 184, 240, 0.15) 40%, transparent);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 184, 240, 0.15) 40%,
+    transparent
+  );
   transform: rotate(12deg);
   pointer-events: none;
 }
@@ -525,7 +888,7 @@ function switchTab(tab) {
 
 .hero-eyebrow {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 14px; /* era 11px */
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-sky);
@@ -536,7 +899,7 @@ function switchTab(tab) {
 }
 
 .hero-eyebrow::before {
-  content: '';
+  content: "";
   width: 24px;
   height: 1px;
   background: var(--color-sky);
@@ -559,10 +922,10 @@ function switchTab(tab) {
 }
 
 .hero-sub {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 17px; /* era 15px */
+  color: rgba(255, 255, 255, 0.75); /* era 0.6 */
   line-height: 1.72;
-  font-weight: 300;
+  font-weight: 500; /* era 300 */
   max-width: 480px;
   margin-bottom: 28px;
 }
@@ -576,7 +939,7 @@ function switchTab(tab) {
 
 .badge {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px; /* era 10px */
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 5px 12px;
@@ -643,10 +1006,10 @@ function switchTab(tab) {
 
 .badge-txt {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px; /* era 10px */
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.6); /* era 0.5 */
   line-height: 1.4;
 }
 
@@ -678,11 +1041,13 @@ function switchTab(tab) {
   scrollbar-width: none;
 }
 
-.tabs-inner::-webkit-scrollbar { display: none; }
+.tabs-inner::-webkit-scrollbar {
+  display: none;
+}
 
 .tab-btn {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 14px; /* era 11px */
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-iron);
@@ -691,12 +1056,16 @@ function switchTab(tab) {
   cursor: pointer;
   padding: 18px 24px;
   border-bottom: 2px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-.tab-btn:hover { color: var(--color-cobalt); }
+.tab-btn:hover {
+  color: var(--color-cobalt);
+}
 
 .tab-btn.active {
   color: var(--color-cobalt);
@@ -705,7 +1074,7 @@ function switchTab(tab) {
 }
 
 /* ═══════════════════════════════
-   SECTION CONTENT (both panels)
+   SECTION CONTENT
 ═══════════════════════════════ */
 .sec-content {
   max-width: 1080px;
@@ -715,7 +1084,7 @@ function switchTab(tab) {
 
 .sec-eyebrow {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 14px; /* era 10px */
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-sky);
@@ -726,7 +1095,7 @@ function switchTab(tab) {
 }
 
 .sec-eyebrow::before {
-  content: '';
+  content: "";
   width: 20px;
   height: 1px;
   background: var(--color-sky);
@@ -748,23 +1117,27 @@ function switchTab(tab) {
   color: var(--color-cobalt);
 }
 
-.sec-title--inline { margin-bottom: 0; }
+.sec-title--inline {
+  margin-bottom: 0;
+}
 
 .sec-desc {
-  font-size: 15px;
+  font-size: 17px; /* era 15px */
   color: var(--color-steel);
-  font-weight: 300;
+  font-weight: 500; /* era 300 */
   line-height: 1.75;
   max-width: 640px;
   margin-bottom: 48px;
 }
 
 /* ── Before/After ── */
-.ba-section { margin-bottom: 64px; }
+.ba-section {
+  margin-bottom: 64px;
+}
 
 .ba-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 14px; /* era 10px */
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-iron);
@@ -775,7 +1148,7 @@ function switchTab(tab) {
 }
 
 .ba-label::after {
-  content: '';
+  content: "";
   flex: 1;
   height: 0.5px;
   background: var(--color-mist);
@@ -805,14 +1178,16 @@ function switchTab(tab) {
   transition: transform 0.6s var(--ease-spring);
 }
 
-.ba-item:hover img { transform: scale(1.03); }
+.ba-item:hover img {
+  transform: scale(1.03);
+}
 
 .ba-tag {
   position: absolute;
   top: 14px;
   left: 14px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px; /* era 10px — tag sobre imagem, ok */
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 4px 10px;
@@ -839,9 +1214,9 @@ function switchTab(tab) {
   right: 0;
   padding: 40px 16px 14px;
   background: linear-gradient(to top, rgba(13, 26, 50, 0.85), transparent);
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.75);
-  font-weight: 300;
+  font-size: 15px; /* era 13px */
+  color: rgba(255, 255, 255, 0.85); /* era 0.75 */
+  font-weight: 500; /* era 300 */
 }
 
 /* ── Gallery grid ── */
@@ -867,6 +1242,11 @@ function switchTab(tab) {
   aspect-ratio: 16/9;
 }
 
+.gallery-grid .gal-item:last-child {
+  grid-column: span 2;
+  aspect-ratio: 16/9;
+}
+
 .gal-item img {
   width: 100%;
   height: 100%;
@@ -875,17 +1255,19 @@ function switchTab(tab) {
   transition: transform 0.5s var(--ease-spring);
 }
 
-.gal-item:hover img { transform: scale(1.04); }
+.gal-item:hover img {
+  transform: scale(1.04);
+}
 
 .gal-label {
   position: absolute;
   bottom: 10px;
   left: 10px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px; /* era 10px — label sobre imagem */
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.75); /* era 0.65 */
   background: rgba(13, 26, 50, 0.6);
   backdrop-filter: blur(6px);
   padding: 3px 8px;
@@ -894,7 +1276,9 @@ function switchTab(tab) {
 }
 
 /* ── Process ── */
-.process-section { margin-bottom: 64px; }
+.process-section {
+  margin-bottom: 64px;
+}
 
 .process-header {
   display: flex;
@@ -906,9 +1290,9 @@ function switchTab(tab) {
 }
 
 .process-note {
-  font-size: 13px;
+  font-size: 14px; /* era 13px */
   color: var(--color-iron);
-  font-weight: 300;
+  font-weight: 500; /* era 300 */
   max-width: 200px;
   text-align: right;
   line-height: 1.6;
@@ -924,7 +1308,9 @@ function switchTab(tab) {
   background: var(--color-white);
   border: 0.5px solid var(--color-mist);
   padding: 24px 20px;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .step-card:hover {
@@ -942,21 +1328,23 @@ function switchTab(tab) {
   transition: color 0.2s;
 }
 
-.step-card:hover .step-num { color: var(--color-cyan-pale); }
+.step-card:hover .step-num {
+  color: var(--color-cyan-pale);
+}
 
 .step-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 17px; /* era 15px */
   color: var(--color-navy);
   margin-bottom: 6px;
   letter-spacing: -0.01em;
 }
 
 .step-text {
-  font-size: 14px;
+  font-size: 16px; /* era 14px */
   color: var(--color-iron);
-  font-weight: 300;
+  font-weight: 500; /* era 300 */
   line-height: 1.65;
 }
 
@@ -971,22 +1359,26 @@ function switchTab(tab) {
 }
 
 .specs-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
   width: 250px;
   height: 250px;
-  background: radial-gradient(circle, rgba(0, 184, 240, 0.08) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(0, 184, 240, 0.08) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
 .specs-label {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 14px; /* era 9px */
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.4); /* era 0.25 */
   margin-bottom: 24px;
 }
 
@@ -1000,10 +1392,10 @@ function switchTab(tab) {
 
 .spec-label {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 12px; /* era 9px */
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.4); /* era 0.3 */
   margin-bottom: 4px;
 }
 
@@ -1017,9 +1409,9 @@ function switchTab(tab) {
 }
 
 .spec-desc {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.45);
-  font-weight: 300;
+  font-size: 14px; /* era 12px */
+  color: rgba(255, 255, 255, 0.6); /* era 0.45 */
+  font-weight: 500; /* era 300 */
   line-height: 1.5;
 }
 
@@ -1049,15 +1441,15 @@ function switchTab(tab) {
 .guarantee-text h3 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 17px; /* era 16px */
   color: var(--color-navy-deep);
   margin-bottom: 4px;
 }
 
 .guarantee-text p {
-  font-size: 14px;
+  font-size: 16px; /* era 14px */
   color: var(--color-steel);
-  font-weight: 300;
+  font-weight: 500; /* era 300 */
   line-height: 1.6;
 }
 
@@ -1077,16 +1469,16 @@ function switchTab(tab) {
 .diff-callout h4 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px; /* era 14px */
   color: var(--color-cobalt);
   margin-bottom: 8px;
   letter-spacing: 0.01em;
 }
 
 .diff-callout p {
-  font-size: 14px;
+  font-size: 16px; /* era 14px */
   color: var(--color-steel);
-  font-weight: 300;
+  font-weight: 500; /* era 300 */
   line-height: 1.7;
 }
 
@@ -1112,7 +1504,7 @@ function switchTab(tab) {
 .compare-chip {
   display: inline-flex;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px; /* era 10px */
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 3px 10px;
@@ -1140,18 +1532,26 @@ function switchTab(tab) {
   letter-spacing: -0.02em;
 }
 
-.compare-card:not(.compare-card--dark) h3 { color: var(--color-navy-deep); }
-.compare-card--dark h3 { color: var(--color-white); }
+.compare-card:not(.compare-card--dark) h3 {
+  color: var(--color-navy-deep);
+}
+.compare-card--dark h3 {
+  color: var(--color-white);
+}
 
 .compare-card p {
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 16px; /* era 14px */
+  font-weight: 500; /* era 300 */
   line-height: 1.7;
   margin-bottom: 16px;
 }
 
-.compare-card:not(.compare-card--dark) p { color: var(--color-steel); }
-.compare-card--dark p { color: rgba(255, 255, 255, 0.55); }
+.compare-card:not(.compare-card--dark) p {
+  color: var(--color-steel);
+}
+.compare-card--dark p {
+  color: rgba(255, 255, 255, 0.7);
+} /* era 0.55 */
 
 .compare-list {
   display: flex;
@@ -1160,8 +1560,8 @@ function switchTab(tab) {
 }
 
 .compare-list li {
-  font-size: 13px;
-  font-weight: 300;
+  font-size: 15px; /* era 13px */
+  font-weight: 500; /* era 300 */
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -1169,17 +1569,25 @@ function switchTab(tab) {
 }
 
 .compare-list li::before {
-  content: '→';
+  content: "→";
   font-family: var(--font-mono);
   font-size: 11px;
   flex-shrink: 0;
   margin-top: 1px;
 }
 
-.compare-card:not(.compare-card--dark) .compare-list li { color: var(--color-steel); }
-.compare-card--dark .compare-list li { color: rgba(255, 255, 255, 0.6); }
-.compare-card:not(.compare-card--dark) .compare-list li::before { color: var(--color-cobalt); }
-.compare-card--dark .compare-list li::before { color: var(--color-cyan); }
+.compare-card:not(.compare-card--dark) .compare-list li {
+  color: var(--color-steel);
+}
+.compare-card--dark .compare-list li {
+  color: rgba(255, 255, 255, 0.75);
+} /* era 0.6 */
+.compare-card:not(.compare-card--dark) .compare-list li::before {
+  color: var(--color-cobalt);
+}
+.compare-card--dark .compare-list li::before {
+  color: var(--color-cyan);
+}
 
 /* Gallery 3 */
 .gallery-3 {
@@ -1207,10 +1615,14 @@ function switchTab(tab) {
   transition: transform 0.5s var(--ease-spring);
 }
 
-.g3-item:hover img { transform: scale(1.05); }
+.g3-item:hover img {
+  transform: scale(1.05);
+}
 
 /* Manta cards */
-.manta-section { margin-top: 48px; }
+.manta-section {
+  margin-top: 48px;
+}
 
 .manta-grid {
   display: grid;
@@ -1224,7 +1636,9 @@ function switchTab(tab) {
   border: 0.5px solid var(--color-mist);
   padding: 20px;
   border-radius: 4px;
-  transition: box-shadow 0.2s, border-color 0.2s;
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s;
 }
 
 .manta-card:hover {
@@ -1246,15 +1660,15 @@ function switchTab(tab) {
 .manta-card h4 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 17px; /* era 15px */
   color: var(--color-navy);
   margin-bottom: 6px;
 }
 
 .manta-card p {
-  font-size: 13px;
+  font-size: 15px; /* era 13px */
   color: var(--color-iron);
-  font-weight: 300;
+  font-weight: 500; /* era 300 */
   line-height: 1.6;
 }
 
@@ -1281,20 +1695,24 @@ function switchTab(tab) {
   min-height: 48px;
   white-space: nowrap;
   isolation: isolate;
-  transition: color .38s ease;
+  transition: color 0.38s ease;
 }
 
 .btn-primary .wsv {
   position: absolute;
-  left: -100%; top: 0;
-  width: 300%; height: 100%;
+  left: -100%;
+  top: 0;
+  width: 300%;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  transition: opacity .4s ease;
+  transition: opacity 0.4s ease;
 }
 
-.btn-primary:hover .wsv { opacity: 1; }
+.btn-primary:hover .wsv {
+  opacity: 1;
+}
 
 .btn-primary .wlbl {
   position: relative;
@@ -1302,7 +1720,7 @@ function switchTab(tab) {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  transition: color .38s;
+  transition: color 0.38s;
 }
 
 .btn-primary .wp-icon {
@@ -1311,21 +1729,36 @@ function switchTab(tab) {
   flex-shrink: 0;
 }
 
-.btn-primary .wg1 { transform: translateY(115%); transition: transform .55s ease-in; }
-.btn-primary .wg2 { transform: translateY(125%); transition: transform .55s ease-in .04s; }
+.btn-primary .wg1 {
+  transform: translateY(115%);
+  transition: transform 0.55s ease-in;
+}
+.btn-primary .wg2 {
+  transform: translateY(125%);
+  transition: transform 0.55s ease-in 0.04s;
+}
 
 .btn-primary:hover .wg1 {
-  animation: waveRise1 .65s var(--ease-spring) forwards,
-             waveBob1  3.2s ease-in-out .65s infinite;
+  animation:
+    waveRise1 0.65s var(--ease-spring) forwards,
+    waveBob1 3.2s ease-in-out 0.65s infinite;
 }
 .btn-primary:hover .wg2 {
-  animation: waveRise2 .7s var(--ease-spring) .05s forwards,
-             waveBob2  4s  ease-in-out .75s  infinite;
+  animation:
+    waveRise2 0.7s var(--ease-spring) 0.05s forwards,
+    waveBob2 4s ease-in-out 0.75s infinite;
 }
 
-.btn-primary .wf1 { fill: var(--color-sky); }
-.btn-primary .wf2 { fill: var(--color-cyan-light); opacity: .5; }
-.btn-primary:hover .wlbl { color: var(--color-navy-deep); }
+.btn-primary .wf1 {
+  fill: var(--color-sky);
+}
+.btn-primary .wf2 {
+  fill: var(--color-cyan-light);
+  opacity: 0.5;
+}
+.btn-primary:hover .wlbl {
+  color: var(--color-navy-deep);
+}
 
 .btn-ghost {
   display: inline-flex;
@@ -1334,7 +1767,7 @@ function switchTab(tab) {
   background: transparent;
   color: rgba(255, 255, 255, 0.7);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px; /* era 11px */
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1343,10 +1776,15 @@ function switchTab(tab) {
   border: 1.5px solid rgba(255, 255, 255, 0.18);
   cursor: pointer;
   min-height: 48px;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
-.btn-ghost:hover { border-color: var(--color-sky); color: var(--color-sky); }
+.btn-ghost:hover {
+  border-color: var(--color-sky);
+  color: var(--color-sky);
+}
 
 .btn-cta {
   position: relative;
@@ -1359,7 +1797,7 @@ function switchTab(tab) {
   color: #fff;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px; /* era 12px */
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 13px 24px;
@@ -1367,47 +1805,96 @@ function switchTab(tab) {
   border: 2px solid var(--color-sky);
   white-space: nowrap;
   isolation: isolate;
-  transition: color .38s ease;
+  transition: color 0.38s ease;
 }
 
 .btn-cta .wsv {
   position: absolute;
-  left: -100%; top: 0;
-  width: 300%; height: 100%;
+  left: -100%;
+  top: 0;
+  width: 300%;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  transition: opacity .4s ease;
+  transition: opacity 0.4s ease;
 }
 
-.btn-cta:hover .wsv { opacity: 1; }
+.btn-cta:hover .wsv {
+  opacity: 1;
+}
 
 .btn-cta .wlbl {
   position: relative;
   z-index: 1;
-  transition: color .38s;
+  transition: color 0.38s;
 }
 
-.btn-cta .wg1 { transform: translateY(115%); transition: transform .55s ease-in; }
-.btn-cta .wg2 { transform: translateY(125%); transition: transform .55s ease-in .04s; }
+.btn-cta .wg1 {
+  transform: translateY(115%);
+  transition: transform 0.55s ease-in;
+}
+.btn-cta .wg2 {
+  transform: translateY(125%);
+  transition: transform 0.55s ease-in 0.04s;
+}
 
 .btn-cta:hover .wg1 {
-  animation: waveRise1 .65s var(--ease-spring) forwards,
-             waveBob1  3.2s ease-in-out .65s infinite;
+  animation:
+    waveRise1 0.65s var(--ease-spring) forwards,
+    waveBob1 3.2s ease-in-out 0.65s infinite;
 }
 .btn-cta:hover .wg2 {
-  animation: waveRise2 .7s var(--ease-spring) .05s forwards,
-             waveBob2  4s  ease-in-out .75s  infinite;
+  animation:
+    waveRise2 0.7s var(--ease-spring) 0.05s forwards,
+    waveBob2 4s ease-in-out 0.75s infinite;
 }
 
-.btn-cta .wf1 { fill: var(--color-sky); }
-.btn-cta .wf2 { fill: var(--color-cyan-light); opacity: .5; }
-.btn-cta:hover .wlbl { color: var(--color-navy-deep); }
+.btn-cta .wf1 {
+  fill: var(--color-sky);
+}
+.btn-cta .wf2 {
+  fill: var(--color-cyan-light);
+  opacity: 0.5;
+}
+.btn-cta:hover .wlbl {
+  color: var(--color-navy-deep);
+}
 
-@keyframes waveRise1 { from { transform: translateY(115%); } to { transform: translateY(-10%); } }
-@keyframes waveRise2 { from { transform: translateY(125%); } to { transform: translateY(-6%);  } }
-@keyframes waveBob1  { 0%,100% { transform: translateY(-10%); } 50% { transform: translateY(-14%); } }
-@keyframes waveBob2  { 0%,100% { transform: translateY(-6%);  } 50% { transform: translateY(-11%); } }
+@keyframes waveRise1 {
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: translateY(-10%);
+  }
+}
+@keyframes waveRise2 {
+  from {
+    transform: translateY(125%);
+  }
+  to {
+    transform: translateY(-6%);
+  }
+}
+@keyframes waveBob1 {
+  0%,
+  100% {
+    transform: translateY(-10%);
+  }
+  50% {
+    transform: translateY(-14%);
+  }
+}
+@keyframes waveBob2 {
+  0%,
+  100% {
+    transform: translateY(-6%);
+  }
+  50% {
+    transform: translateY(-11%);
+  }
+}
 
 /* ═══════════════════════════════
    CTA FINAL
@@ -1421,10 +1908,14 @@ function switchTab(tab) {
 }
 
 .cta-final::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 60% 100% at 50% 100%, rgba(0, 184, 240, 0.1) 0%, transparent 60%);
+  background: radial-gradient(
+    ellipse 60% 100% at 50% 100%,
+    rgba(0, 184, 240, 0.1) 0%,
+    transparent 60%
+  );
   pointer-events: none;
 }
 
@@ -1435,8 +1926,12 @@ function switchTab(tab) {
   z-index: 1;
 }
 
-.cta-final .sec-eyebrow { justify-content: center; }
-.cta-final .sec-eyebrow::before { display: none; }
+.cta-final .sec-eyebrow {
+  justify-content: center;
+}
+.cta-final .sec-eyebrow::before {
+  display: none;
+}
 
 .cta-final h2 {
   font-family: var(--font-display);
@@ -1454,9 +1949,9 @@ function switchTab(tab) {
 }
 
 .cta-final > .cta-inner > p {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.55);
-  font-weight: 300;
+  font-size: 17px; /* era 15px */
+  color: rgba(255, 255, 255, 0.7); /* era 0.55 */
+  font-weight: 500; /* era 300 */
   line-height: 1.7;
   margin-bottom: 36px;
 }
@@ -1472,7 +1967,9 @@ function switchTab(tab) {
    TABLET — 600px+
 ═══════════════════════════════ */
 @media (min-width: 600px) {
-  .ba-grid { grid-template-columns: 1fr 1fr; }
+  .ba-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 
   .gallery-grid {
     grid-template-columns: 2fr 1fr 1fr;
@@ -1485,55 +1982,82 @@ function switchTab(tab) {
     aspect-ratio: 3/4;
   }
 
-  .gallery-grid .gal-item:not(:first-child) {
+  .gallery-grid .gal-item:not(:first-child):not(:last-child) {
     aspect-ratio: 4/3;
   }
 
-  .process-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid .gal-item:last-child {
+    grid-column: span 2;
+    aspect-ratio: 16/9;
+  }
 
-  .compare-grid { grid-template-columns: 1fr 1fr; }
-
-  .gallery-3 { grid-template-columns: repeat(3, 1fr); }
-
-  .manta-grid { grid-template-columns: repeat(3, 1fr); }
-
-  .cta-btns { flex-direction: row; justify-content: center; }
+  .process-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .compare-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .gallery-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .manta-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cta-btns {
+    flex-direction: row;
+    justify-content: center;
+  }
 
   .guarantee-strip {
     flex-direction: row;
     align-items: center;
   }
-
-  .btn-cta { align-self: auto; margin-left: auto; }
+  .btn-cta {
+    align-self: auto;
+    margin-left: auto;
+  }
 }
 
 /* ═══════════════════════════════
    DESKTOP — 900px+
 ═══════════════════════════════ */
 @media (min-width: 900px) {
-  .hero { padding: calc(68px + 80px) 48px 88px; }
+  .hero {
+    padding: calc(68px + 80px) 48px 88px;
+  }
 
   .hero-inner {
     grid-template-columns: 1fr 1fr;
     gap: 64px;
   }
 
-  .hero-visual { order: 0; }
+  .hero-visual {
+    order: 0;
+  }
 
-  .sec-content { padding: 72px 48px; }
-
-  .section-selector { padding: 0 48px; }
-
-  .specs-section { padding: 48px; }
-
-  .specs-grid { grid-template-columns: repeat(4, 1fr); }
-
-  .process-grid { grid-template-columns: repeat(3, 1fr); }
-
-  .process-note { max-width: 240px; }
+  .sec-content {
+    padding: 72px 48px;
+  }
+  .section-selector {
+    padding: 0 48px;
+  }
+  .specs-section {
+    padding: 48px;
+  }
+  .specs-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .process-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .process-note {
+    max-width: 240px;
+  }
 }
 
 @media (min-width: 1080px) {
-  .tabs-inner { padding: 0; }
+  .tabs-inner {
+    padding: 0;
+  }
 }
 </style>
