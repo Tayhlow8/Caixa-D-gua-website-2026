@@ -82,6 +82,8 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
         :aria-label="
           menuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'
         "
+        :aria-expanded="menuOpen"
+        aria-controls="mob-menu"
         @click="menuOpen = !menuOpen"
       >
         <span></span><span></span><span></span>
@@ -89,7 +91,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
     </div>
   </header>
 
-  <div class="mob-menu" :class="{ open: menuOpen }">
+  <div id="mob-menu" class="mob-menu" :class="{ open: menuOpen }">
     <ul>
       <li>
         <a href="/#hero" :class="{ act: route.path === '/' }" @click="closeMob"
