@@ -76,7 +76,7 @@ import BackToTop from "../components/BackToTop.vue";
 </template>
 
 <style scoped>
-<style scoped > .page-home {
+.page-home {
   min-height: 100svh;
   background: var(--bg-page);
 }
