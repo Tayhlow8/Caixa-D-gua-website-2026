@@ -1,0 +1,2227 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aqua DS — Documentação de Botões</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Lato:wght@300;400;700&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy-deep: #0d2a52;
+        --navy: #1a4a8a;
+        --cobalt: #1a6bc4;
+        --sky: #00b8f0;
+        --cyan: #00c8f0;
+        --cyan-light: #7adcf5;
+        --cyan-pale: #c6f0fb;
+        --cyan-ghost: #e0f6fd;
+        --lacre: #00d4aa;
+        --white: #ffffff;
+        --fog: #f2f6fb;
+        --mist: #dde8f5;
+        --iron: #6b82a0;
+        --steel: #3a5270;
+        --text: #0a1e35;
+        --font-d: "Syne", sans-serif;
+        --font-b: "Lato", sans-serif;
+        --font-m: "DM Mono", monospace;
+        --spring: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-b);
+        background: var(--fog);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.6;
+      }
+
+      /* ── NAV ── */
+      .ds-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 220px;
+        background: var(--navy-deep);
+        padding: 32px 0;
+        overflow-y: auto;
+        z-index: 100;
+        border-right: 1px solid rgba(0, 184, 240, 0.1);
+      }
+      .ds-nav__logo {
+        padding: 0 24px 28px;
+        border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+        margin-bottom: 20px;
+      }
+      .ds-nav__logo-name {
+        font-family: var(--font-d);
+        font-size: 13px;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.3px;
+        display: block;
+        margin-bottom: 2px;
+      }
+      .ds-nav__logo-ver {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--sky);
+      }
+      .ds-nav__section {
+        font-family: var(--font-m);
+        font-size: 8px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.25);
+        padding: 0 24px 8px;
+        margin-top: 20px;
+        display: block;
+      }
+      .ds-nav a {
+        display: block;
+        font-family: var(--font-b);
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        padding: 8px 24px;
+        transition:
+          color 0.2s,
+          background 0.2s;
+        border-left: 2px solid transparent;
+      }
+      .ds-nav a:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .ds-nav a.active {
+        color: var(--sky);
+        border-left-color: var(--sky);
+        background: rgba(0, 184, 240, 0.06);
+      }
+
+      /* ── MAIN ── */
+      .ds-main {
+        margin-left: 220px;
+        padding: 48px;
+        max-width: 1050px;
+      }
+
+      /* ── SECTION ── */
+      .ds-section {
+        margin-bottom: 80px;
+        scroll-margin-top: 32px;
+      }
+      .eyebrow {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--sky);
+        margin-bottom: 6px;
+      }
+      .sec-title {
+        font-family: var(--font-d);
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--navy-deep);
+        letter-spacing: -0.03em;
+        margin-bottom: 8px;
+      }
+      .sec-desc {
+        font-size: 14px;
+        color: var(--steel);
+        max-width: 600px;
+        line-height: 1.65;
+        margin-bottom: 32px;
+        font-weight: 300;
+      }
+      .ds-card {
+        background: #fff;
+        border-radius: 4px;
+        border: 0.5px solid var(--mist);
+        padding: 28px;
+        margin-bottom: 16px;
+      }
+      .ds-card--dark {
+        background: var(--navy-deep);
+        border-color: rgba(0, 184, 240, 0.12);
+      }
+      .ds-label {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--iron);
+        margin-bottom: 14px;
+        display: block;
+      }
+      .ds-label--light {
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .code {
+        background: #0d1b2a;
+        border-radius: 4px;
+        padding: 16px 20px;
+        font-family: var(--font-m);
+        font-size: 11px;
+        line-height: 1.8;
+        color: #7adcf5;
+        overflow-x: auto;
+        margin-top: 12px;
+      }
+      .ck {
+        color: #00c8f0;
+      }
+      .cv {
+        color: #b8e0ff;
+      }
+      .cc {
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      /* ── BUTTON SYSTEM ── */
+      .btn-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 4px;
+      }
+
+      .btn {
+        position: relative;
+        overflow: hidden;
+        font-family: var(--font-b);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        border-radius: 40px;
+        isolation: isolate;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        text-decoration: none;
+        transition: color 0.38s ease;
+        white-space: nowrap;
+      }
+      /* tamanhos */
+      .btn--sm {
+        font-size: 10px;
+        padding: 9px 18px;
+        min-height: 36px;
+        letter-spacing: 0.08em;
+      }
+      .btn--md {
+        font-size: 12px;
+        padding: 14px 28px;
+        min-height: 48px;
+      }
+      .btn--lg {
+        font-size: 14px;
+        padding: 20px 40px;
+        min-height: 64px;
+        letter-spacing: 0.12em;
+      }
+
+      /* variantes */
+      .btn--primary {
+        background: var(--navy-deep);
+        color: #fff;
+        border: 2px solid var(--sky);
+      }
+      .btn--cobalt {
+        background: var(--cobalt);
+        color: #fff;
+      }
+      .btn--outline {
+        background: var(--white);
+        color: var(--navy);
+        border: 2px solid var(--navy);
+      }
+      .btn--outline-dark {
+        background: var(--navy-deep);
+        color: #fff;
+        border: 2px solid var(--sky);
+      }
+      .btn--ghost {
+        background: var(--fog);
+        color: var(--steel);
+        border: 1.5px dashed var(--mist);
+      }
+      .btn--danger {
+        background: #d64045;
+        color: #fff;
+      }
+      .btn--success {
+        background: var(--lacre);
+        color: var(--navy-deep);
+      }
+
+      /* wave SVG */
+      .btn .wsv {
+        position: absolute;
+        left: -100%;
+        top: 0;
+        width: 300%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0;
+        transition: opacity 0.15s;
+      }
+      .btn:hover .wsv {
+        opacity: 1;
+      }
+      .btn .blbl {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: color 0.38s;
+      }
+      .btn .wg1 {
+        transform: translateY(115%);
+        transition: transform 0.65s var(--spring);
+      }
+      .btn .wg2 {
+        transform: translateY(125%);
+        transition: transform 0.7s var(--spring) 0.05s;
+      }
+      @keyframes bob1 {
+        0%,
+        100% {
+          transform: translateY(-10%);
+        }
+        50% {
+          transform: translateY(-14%);
+        }
+      }
+      @keyframes bob2 {
+        0%,
+        100% {
+          transform: translateY(-6%);
+        }
+        50% {
+          transform: translateY(-11%);
+        }
+      }
+      .btn:hover .wg1 {
+        animation: bob1 3.2s ease-in-out infinite;
+      }
+      .btn:hover .wg2 {
+        animation: bob2 4s ease-in-out 0.4s infinite;
+      }
+      .btn:not(:hover) .wg1 {
+        transform: translateY(115%);
+      }
+      .btn:not(:hover) .wg2 {
+        transform: translateY(125%);
+      }
+      /* cores das ondas por variante */
+      .btn--primary .wf1,
+      .btn--outline-dark .wf1 {
+        fill: var(--sky);
+      }
+      .btn--primary .wf2,
+      .btn--outline-dark .wf2 {
+        fill: var(--cyan-light);
+        opacity: 0.5;
+      }
+      .btn--primary:hover .blbl,
+      .btn--outline-dark:hover .blbl {
+        color: var(--navy-deep);
+      }
+      .btn--cobalt .wf1 {
+        fill: var(--cyan);
+      }
+      .btn--cobalt .wf2 {
+        fill: #b8f0ff;
+        opacity: 0.5;
+      }
+      .btn--cobalt:hover .blbl {
+        color: var(--navy-deep);
+      }
+      .btn--outline .wf1 {
+        fill: var(--navy);
+      }
+      .btn--outline .wf2 {
+        fill: var(--cobalt);
+        opacity: 0.45;
+      }
+      .btn--outline:hover .blbl {
+        color: #fff;
+      }
+      .btn--ghost .wf1 {
+        fill: var(--mist);
+      }
+      .btn--ghost .wf2 {
+        fill: var(--cyan-light);
+        opacity: 0.3;
+      }
+      .btn--ghost:hover .blbl {
+        color: var(--navy);
+      }
+      .btn--danger .wf1 {
+        fill: #ff8080;
+      }
+      .btn--danger .wf2 {
+        fill: #ffb3b3;
+        opacity: 0.5;
+      }
+      .btn--danger:hover .blbl {
+        color: #5a0000;
+      }
+      .btn--success .wf1 {
+        fill: #00eebb;
+      }
+      .btn--success .wf2 {
+        fill: #aafff0;
+        opacity: 0.5;
+      }
+      .btn--success:hover .blbl {
+        color: var(--navy-deep);
+      }
+
+      /* whatsapp btn */
+      .btn--wa {
+        background: #25d366;
+        color: #fff;
+        border: none;
+      }
+      .btn--wa .wf1 {
+        fill: #20c05e;
+      }
+      .btn--wa .wf2 {
+        fill: #a8ffd3;
+        opacity: 0.4;
+      }
+      .btn--wa:hover .blbl {
+        color: #004d1d;
+      }
+      .btn--wa svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
+
+      /* ── SPEC TABLE ── */
+      .spec-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+      .spec-table th {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--iron);
+        text-align: left;
+        padding: 8px 12px;
+        border-bottom: 1px solid var(--mist);
+      }
+      .spec-table td {
+        padding: 11px 12px;
+        border-bottom: 0.5px solid var(--mist);
+        color: var(--steel);
+        vertical-align: top;
+        line-height: 1.5;
+      }
+      .spec-table td:first-child {
+        font-family: var(--font-m);
+        font-size: 11px;
+        color: var(--cobalt);
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .spec-table tr:last-child td {
+        border-bottom: none;
+      }
+      .tag {
+        display: inline-block;
+        font-family: var(--font-m);
+        font-size: 9px;
+        padding: 2px 7px;
+        border-radius: 2px;
+        margin: 2px 2px 2px 0;
+        white-space: nowrap;
+      }
+      .tag--primary {
+        background: var(--navy-deep);
+        color: var(--cyan-light);
+        border: 1px solid var(--sky);
+      }
+      .tag--cobalt {
+        background: var(--cobalt);
+        color: #fff;
+      }
+      .tag--outline {
+        background: var(--fog);
+        color: var(--navy);
+        border: 1px solid var(--navy);
+      }
+      .tag--ghost {
+        background: var(--fog);
+        color: var(--steel);
+        border: 1px dashed var(--mist);
+      }
+      .tag--wa {
+        background: #25d366;
+        color: #fff;
+      }
+      .tag--danger {
+        background: #d64045;
+        color: #fff;
+      }
+      .tag--success {
+        background: var(--lacre);
+        color: var(--navy-deep);
+      }
+      .tag--ok {
+        background: var(--lacre-light, #ccfaf0);
+        color: #00735a;
+        border: 1px solid var(--lacre);
+      }
+      .tag--no {
+        background: #faeaea;
+        color: #a32d2d;
+        border: 1px solid #d64045;
+      }
+
+      /* ── DO / DONT ── */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .do-card {
+        background: #ccfaf0;
+        border-left: 3px solid var(--lacre);
+        padding: 16px 18px;
+        border-radius: 0 4px 4px 0;
+      }
+      .dont-card {
+        background: #faeaea;
+        border-left: 3px solid #d64045;
+        padding: 16px 18px;
+        border-radius: 0 4px 4px 0;
+      }
+      .do-title {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #00735a;
+        margin-bottom: 10px;
+      }
+      .dont-title {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #a32d2d;
+        margin-bottom: 10px;
+      }
+      ul.rule-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      ul.rule-list li {
+        font-size: 12px;
+        color: var(--steel);
+        display: flex;
+        gap: 7px;
+        line-height: 1.45;
+      }
+      ul.rule-list li::before {
+        flex-shrink: 0;
+      }
+      .do-card ul.rule-list li::before {
+        content: "✓";
+        color: var(--lacre);
+      }
+      .dont-card ul.rule-list li::before {
+        content: "✗";
+        color: #d64045;
+      }
+
+      /* ── USAGE MATRIX ── */
+      .matrix {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 0;
+        border-radius: 4px;
+        overflow: hidden;
+        border: 0.5px solid var(--mist);
+      }
+      .matrix-head {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 10px 16px;
+        background: var(--navy-deep);
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .matrix-row {
+        display: contents;
+      }
+      .matrix-row > div {
+        padding: 14px 16px;
+        border-top: 0.5px solid var(--mist);
+        font-size: 13px;
+        color: var(--steel);
+        line-height: 1.5;
+      }
+      .matrix-row > div:first-child {
+        background: var(--fog);
+        font-family: var(--font-m);
+        font-size: 11px;
+        color: var(--cobalt);
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .matrix-row:hover > div {
+        background: var(--cyan-ghost);
+      }
+      .matrix-row:hover > div:first-child {
+        background: #dff8fd;
+      }
+
+      /* ── ANATOMY ── */
+      .anatomy-wrap {
+        display: flex;
+        gap: 32px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .anatomy-btn-wrap {
+        position: relative;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .anno {
+        position: absolute;
+        font-family: var(--font-m);
+        font-size: 9px;
+        color: var(--sky);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap;
+      }
+      .anno::before {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: var(--sky);
+        opacity: 0.5;
+        flex-shrink: 0;
+      }
+
+      /* ── SIZE COMPARE ── */
+      .size-row {
+        display: flex;
+        gap: 12px;
+        align-items: flex-end;
+        flex-wrap: wrap;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .ds-nav {
+          display: none;
+        }
+        .ds-main {
+          margin-left: 0;
+          padding: 24px;
+        }
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* waveSvg template */
+    </style>
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <nav class="ds-nav" id="nav">
+      <div class="ds-nav__logo">
+        <span class="ds-nav__logo-name">Aqua DS</span>
+        <span class="ds-nav__logo-ver">Botões · v1.0</span>
+      </div>
+      <span class="ds-nav__section">Visão Geral</span>
+      <a href="#intro" class="active">Introdução</a>
+      <a href="#anatomia">Anatomia</a>
+      <a href="#matrix">Quando usar cada um</a>
+
+      <span class="ds-nav__section">Variantes</span>
+      <a href="#primary">Primary</a>
+      <a href="#cobalt">Cobalt</a>
+      <a href="#outline">Outline Light</a>
+      <a href="#outline-dark">Outline Dark</a>
+      <a href="#ghost">Ghost</a>
+      <a href="#whatsapp">WhatsApp</a>
+      <a href="#semantic">Semânticos</a>
+
+      <span class="ds-nav__section">Tokens</span>
+      <a href="#tamanhos">Tamanhos</a>
+      <a href="#regras">Regras de uso</a>
+    </nav>
+
+    <main class="ds-main">
+      <!-- ── INTRO ── -->
+      <section class="ds-section" id="intro">
+        <p class="eyebrow">Aqua DS · Componentes</p>
+        <h1 class="sec-title">Botões</h1>
+        <p class="sec-desc">
+          Todos os botões do sistema compartilham o mesmo efeito de onda líquida
+          no hover — um SVG de dois paths em fase oposta que sobe de baixo,
+          criando a ilusão de superfície d'água. A onda nunca transborda graças
+          ao
+          <code
+            style="
+              font-family: var(--font-m);
+              font-size: 11px;
+              color: var(--cobalt);
+            "
+            >overflow:hidden</code
+          >
+          e ao posicionamento
+          <code
+            style="
+              font-family: var(--font-m);
+              font-size: 11px;
+              color: var(--cobalt);
+            "
+            >left:-100%; width:300%</code
+          >.
+        </p>
+
+        <div class="ds-card" style="background: var(--navy-deep)">
+          <span class="ds-label ds-label--light" style="margin-bottom: 20px"
+            >Prévia de todas as variantes — passe o mouse</span
+          >
+          <div class="btn-row">
+            <!-- Primary -->
+            <button class="btn btn--md btn--primary">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Primary</span>
+            </button>
+            <!-- Cobalt -->
+            <button class="btn btn--md btn--cobalt">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Cobalt</span>
+            </button>
+            <!-- Outline Light -->
+            <button class="btn btn--md btn--outline">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Outline Light</span>
+            </button>
+            <!-- Outline Dark -->
+            <button class="btn btn--md btn--outline-dark">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Outline Dark</span>
+            </button>
+            <!-- Ghost -->
+            <button class="btn btn--md btn--ghost">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Ghost</span>
+            </button>
+            <!-- WhatsApp -->
+            <button class="btn btn--md btn--wa">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl"
+                ><svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.534 5.853L.054 23.94l6.267-1.643A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"
+                  /></svg
+                >WhatsApp</span
+              >
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── ANATOMIA ── -->
+      <section class="ds-section" id="anatomia">
+        <p class="eyebrow">01 · Estrutura</p>
+        <h2 class="sec-title">Anatomia</h2>
+        <p class="sec-desc">
+          Todo botão é composto por 3 camadas sobrepostas: o container com
+          overflow:hidden, o SVG da onda (oculto em repouso), e o label elevado
+          via z-index. Isso garante que a onda nunca vaze para fora do botão.
+        </p>
+
+        <div class="ds-card">
+          <div class="code">
+            <span class="cc">/* Estrutura HTML de todo botão wave */</span>
+            &lt;<span class="ck">button</span>
+            <span class="cv">class</span>="btn btn--md btn--primary"&gt;
+
+            <span class="cc"
+              >&lt;!-- Camada 1: Onda SVG (invisível em repouso, sobe no :hover)
+              --&gt;</span
+            >
+            &lt;<span class="ck">svg</span> <span class="cv">class</span>="wsv"
+            <span class="cv">viewBox</span>="0 0 600 60"
+            <span class="cv">preserveAspectRatio</span>="none"&gt; &lt;<span
+              class="ck"
+              >g</span
+            >
+            <span class="cv">class</span>="wg1"&gt;&lt;<span class="ck"
+              >path</span
+            >
+            <span class="cv">class</span>="wf1" <span class="cv">d</span>="M0,22
+            C50,6 ..."/&gt;&lt;/<span class="ck">g</span>&gt; &lt;<span
+              class="ck"
+              >g</span
+            >
+            <span class="cv">class</span>="wg2"&gt;&lt;<span class="ck"
+              >path</span
+            >
+            <span class="cv">class</span>="wf2" <span class="cv">d</span>="M0,28
+            C60,12 ..."/&gt;&lt;/<span class="ck">g</span>&gt; &lt;/<span
+              class="ck"
+              >svg</span
+            >&gt;
+
+            <span class="cc"
+              >&lt;!-- Camada 2: Label (z-index: 1, sempre visível por cima da
+              onda) --&gt;</span
+            >
+            &lt;<span class="ck">span</span>
+            <span class="cv">class</span>="blbl"&gt;Solicitar
+            Orçamento&lt;/<span class="ck">span</span>&gt; &lt;/<span class="ck"
+              >button</span
+            >&gt;
+
+            <span class="cc">/* CSS mínimo obrigatório */</span>
+            <span class="ck">.btn</span> { <span class="ck">position</span>:
+            <span class="cv">relative</span>; <span class="ck">overflow</span>:
+            <span class="cv">hidden</span>;
+            <span class="cc">/* clip da onda */</span>
+            <span class="ck">isolation</span>: <span class="cv">isolate</span>;
+            <span class="cc">/* z-index context */</span>
+            }
+            <span class="ck">.wsv</span> { <span class="ck">position</span>:
+            <span class="cv">absolute</span>; <span class="ck">left</span>:
+            <span class="cv">-100%</span>; <span class="ck">width</span>:
+            <span class="cv">300%</span>;
+            <span class="cc">/* nunca expõe borda */</span>
+            <span class="ck">opacity</span>: <span class="cv">0</span>;
+            <span class="ck">transition</span>:
+            <span class="cv">opacity .15s</span>; }
+            <span class="ck">.btn:hover .wsv</span> {
+            <span class="ck">opacity</span>: <span class="cv">1</span>; }
+            <span class="ck">.blbl</span> { <span class="ck">position</span>:
+            <span class="cv">relative</span>; <span class="ck">z-index</span>:
+            <span class="cv">1</span>; }
+
+            <span class="cc"
+              >/* Animação da onda — bob Y only (sem translateX) */</span
+            >
+            <span class="ck">@keyframes</span> bob1 {
+            <span class="ck">50%</span> { <span class="ck">transform</span>:
+            <span class="cv">translateY(-14%)</span>; } }
+            <span class="ck">@keyframes</span> bob2 {
+            <span class="ck">50%</span> { <span class="ck">transform</span>:
+            <span class="cv">translateY(-11%)</span>; } }
+            <span class="ck">.btn:hover .wg1</span> {
+            <span class="ck">animation</span>:
+            <span class="cv">bob1 3.2s ease-in-out infinite</span>; }
+            <span class="ck">.btn:hover .wg2</span> {
+            <span class="ck">animation</span>:
+            <span class="cv">bob2 4s ease-in-out .4s infinite</span>; }
+          </div>
+        </div>
+      </section>
+
+      <!-- ── MATRIX QUANDO USAR ── -->
+      <section class="ds-section" id="matrix">
+        <p class="eyebrow">02 · Decisão</p>
+        <h2 class="sec-title">Quando usar cada variante</h2>
+        <p class="sec-desc">
+          Regra de ouro: <strong>uma ação principal por tela</strong>. Nunca
+          coloque dois botões Primary lado a lado. A hierarquia visual guia o
+          usuário — Primary → Cobalt → Outline → Ghost.
+        </p>
+
+        <div
+          style="
+            border-radius: 4px;
+            overflow: hidden;
+            border: 0.5px solid var(--mist);
+          "
+        >
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 200px 1fr;
+              background: var(--navy-deep);
+            "
+          >
+            <div class="matrix-head">Variante</div>
+            <div class="matrix-head">Quando usar</div>
+          </div>
+          <!-- Primary -->
+          <div class="matrix-row" style="display: contents">
+            <div
+              style="
+                padding: 14px 16px;
+                border-top: 0.5px solid var(--mist);
+                background: var(--fog);
+                font-family: var(--font-m);
+                font-size: 11px;
+                color: var(--cobalt);
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+              "
+            >
+              <span class="tag tag--primary">Primary</span>
+              <span style="font-size: 10px; color: var(--iron)"
+                >navy-deep + sky border</span
+              >
+            </div>
+            <div
+              style="
+                padding: 14px 16px;
+                border-top: 0.5px solid var(--mist);
+                font-size: 13px;
+                color: var(--steel);
+                line-height: 1.6;
+              "
+            >
+              <strong style="color: var(--text)"
+                >A ação mais importante da página.</strong
+              >
+              CTA principal do hero, formulário de contato, "Solicitar Orçamento
+              Grátis". Só deve existir <em>um</em> por tela. Em fundos claros e
+              escuros.
+            </div>
+          </div>
+          <!-- Cobalt -->
+          <div class="matrix-row" style="display: contents">
+            <div
+              style="
+                padding: 14px 16px;
+                border-top: 0.5px solid var(--mist);
+                background: var(--fog);
+                font-family: var(--font-m);
+                font-size: 11px;
+                color: var(--cobalt);
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+              "
+            >
+              <span class="tag tag--cobalt">Cobalt</span>
+              <span style="font-size: 10px; color: var(--iron)"
+                >cobalt sólido #1A6BC4</span
+              >
+            </div>
+            <div
+              style="
+                padding: 14px 16px;
+                border-top: 0.5px solid var(--mist);
+                font-size: 13px;
+                color: var(--steel);
+                line-height: 1.6;
+              "
+            >
+              <strong style="color: var(--text)"
+                >Ação secundária de alto valor.</strong
+              >
+              Botão "Ver Serviços" ao lado de um Primary, segundo CTA do hero,
+              ações de confirmação. Tem destaque próprio mas não compete com o
+              Primary.
+            </div>
+          </div>
+          <!-- Outline Light -->
+          <div class="matrix-row" style="display: contents">
+            <div
+              style="
+                padding: 14px 16px;
+                border-top: 0.5px solid var(--mist);
+                background: var(--fog);
+                font-family: var(--font-m);
+                font-size: 11px;
+                color: var(--cobalt);
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+              "
+            >
+              <span class="tag tag--outline">Outline Light</span>
+              <span style="font-size: 10px; color: var(--iron)"
+                >branco + navy border</span
+              >
+            </div>
+            <div
+              style="
+                padding: 14px 16px;
+                border-top: 0.5px solid var(--mist);
+                font-size: 13px;
+                color: var(--steel);
+                line-height: 1.6;
+              "
+            >
+              <strong style="color: var(--text)"
+                >Ação secundária em fundo claro.</strong
+              >
+              "Saiba mais", "Ver todos os serviços", "Voltar" em seções com
+              fundo branco ou névoa (#F2F6FB). Tom neutro que não distrai da
+              ação principal.
+            </div>
+          </div>
+          <!-- Outline Dark -->
+          <div class="matrix-row" style="display: contents">
+            <div
+              style="
+                padding: 14px 16px;
+                border-top: 0.5px solid var(--mist);
+                background: var(--fog);
+                font-family: var(--font-m);
+                font-size: 11px;
+                color: var(--cobalt);
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+              "
+            >
+              <span class="tag tag--primary">Outline Dark</span>
+              <span style="font-size: 10px; color: var(--iron)"
+                >navy-deep + sky border</span
+              >
+            </div>
+            <div
+              style="
+                padding: 14px 16px;
+                border-top: 0.5px solid var(--mist);
+                font-size: 13px;
+                color: var(--steel);
+                line-height: 1.6;
+              "
+            >
+              <strong style="color: var(--text)"
+                >CTA em fundos escuros (hero, seção navy).</strong
+              >
+              Visualmente idêntico ao Primary mas funciona como "segundo botão"
+              quando está ao lado de um Cobalt no hero. Também usado no nav bar.
+            </div>
+          </div>
+          <!-- Ghost -->
+          <div class="matrix-row" style="display: contents">
+            <div
+              style="
+                padding: 14px 16px;
+                border-top: 0.5px solid var(--mist);
+                background: var(--fog);
+                font-family: var(--font-m);
+                font-size: 11px;
+                color: var(--cobalt);
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+              "
+            >
+              <span class="tag tag--ghost">Ghost</span>
+              <span style="font-size: 10px; color: var(--iron)"
+                >fog + mist border dashed</span
+              >
+            </div>
+            <div
+              style="
+                padding: 14px 16px;
+                border-top: 0.5px solid var(--mist);
+                font-size: 13px;
+                color: var(--steel);
+                line-height: 1.6;
+              "
+            >
+              <strong style="color: var(--text)"
+                >Ação terciária ou de navegação suave.</strong
+              >
+              "Ver todos →", links de paginação, ações dentro de cards que não
+              precisam de destaque. Nunca use em posição de CTA principal.
+            </div>
+          </div>
+          <!-- WhatsApp -->
+          <div class="matrix-row" style="display: contents">
+            <div
+              style="
+                padding: 14px 16px;
+                border-top: 0.5px solid var(--mist);
+                background: var(--fog);
+                font-family: var(--font-m);
+                font-size: 11px;
+                color: var(--cobalt);
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+              "
+            >
+              <span class="tag tag--wa">WhatsApp</span>
+              <span style="font-size: 10px; color: var(--iron)">#25D366</span>
+            </div>
+            <div
+              style="
+                padding: 14px 16px;
+                border-top: 0.5px solid var(--mist);
+                font-size: 13px;
+                color: var(--steel);
+                line-height: 1.6;
+              "
+            >
+              <strong style="color: var(--text)"
+                >Exclusivo para links diretos ao WhatsApp.</strong
+              >
+              Usado no hero (CTA principal de conversão), no footer e no botão
+              flutuante. Sempre acompanhado do ícone oficial do WhatsApp. Cor
+              verde reconhecível dispensa explicação.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── PRIMARY ── -->
+      <section class="ds-section" id="primary">
+        <p class="eyebrow">03 · Variante</p>
+        <h2 class="sec-title">Primary</h2>
+        <p class="sec-desc">
+          O botão de maior hierarquia do sistema. Fundo navy-deep (<code
+            style="font-family: var(--font-m); color: var(--cobalt)"
+            >#0D2A52</code
+          >) com borda sky (<code
+            style="font-family: var(--font-m); color: var(--cobalt)"
+            >#00B8F0</code
+          >). No hover, a onda em sky sobe e inverte a cor do texto para navy —
+          contraste WCAG AA garantido em ambos os estados.
+        </p>
+
+        <div class="ds-card">
+          <span class="ds-label">Default → Hover</span>
+          <div class="btn-row">
+            <button class="btn btn--md btn--primary">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Solicitar Orçamento Grátis</span>
+            </button>
+          </div>
+        </div>
+
+        <table class="spec-table" style="margin-top: 0">
+          <tr>
+            <th>Propriedade</th>
+            <th>Valor</th>
+          </tr>
+          <tr>
+            <td>background</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >var(--navy-deep) / #0D2A52</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>border</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >2px solid var(--sky) / #00B8F0</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>color (default)</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >#FFFFFF</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>color (hover)</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >var(--navy-deep) / #0D2A52</code
+              >
+              — texto inverte
+            </td>
+          </tr>
+          <tr>
+            <td>onda · wf1</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >fill: var(--sky)</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>onda · wf2</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >fill: var(--cyan-light), opacity .5</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>border-radius</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >40px</code
+              >
+              — bordas arredondadas
+            </td>
+          </tr>
+          <tr>
+            <td>Uso correto</td>
+            <td>
+              Hero CTA principal, formulário de conversão, CTA final de página
+            </td>
+          </tr>
+          <tr>
+            <td>Regra</td>
+            <td><span class="tag tag--no">máx. 1 por tela</span></td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ── COBALT ── -->
+      <section class="ds-section" id="cobalt">
+        <p class="eyebrow">04 · Variante</p>
+        <h2 class="sec-title">Cobalt</h2>
+        <p class="sec-desc">
+          Fundo sólido cobalt (<code
+            style="font-family: var(--font-m); color: var(--cobalt)"
+            >#1A6BC4</code
+          >) sem borda. Onda em cyan (#00C8F0) e french-pass (#B8F0FF). Tem
+          presença própria mas hierarquia menor que Primary. Ideal como segundo
+          CTA.
+        </p>
+
+        <div class="ds-card">
+          <span class="ds-label">Default → Hover</span>
+          <div class="btn-row">
+            <button class="btn btn--md btn--cobalt">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Ver Serviços</span>
+            </button>
+            <button class="btn btn--md btn--cobalt">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Saiba Como Funciona</span>
+            </button>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr>
+            <th>Propriedade</th>
+            <th>Valor</th>
+          </tr>
+          <tr>
+            <td>background</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >var(--cobalt) / #1A6BC4</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>border</td>
+            <td>nenhuma</td>
+          </tr>
+          <tr>
+            <td>color</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >#FFFFFF</code
+              >
+              (ambos estados)
+            </td>
+          </tr>
+          <tr>
+            <td>onda · wf1</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >fill: var(--cyan) #00C8F0</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>onda · wf2</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >fill: #B8F0FF (french-pass), opacity .5</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Combinações válidas</td>
+            <td>
+              Ao lado de Primary no hero · No nav bar como CTA "Orçamento
+              Grátis"
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ── OUTLINE ── -->
+      <section class="ds-section" id="outline">
+        <p class="eyebrow">05 · Variante</p>
+        <h2 class="sec-title">Outline Light</h2>
+        <p class="sec-desc">
+          Para fundos claros (branco, névoa). Fundo branco com borda navy. No
+          hover, a onda navy sobe e o texto fica branco sobre o navy preenchido
+          — boa reversão de cor sem quebrar a paleta.
+        </p>
+
+        <div class="ds-card">
+          <span class="ds-label">Default → Hover (em fundo claro)</span>
+          <div class="btn-row">
+            <button class="btn btn--md btn--outline">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Saiba Mais</span>
+            </button>
+            <button class="btn btn--md btn--outline">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Ver Todos os Serviços</span>
+            </button>
+            <button class="btn btn--md btn--outline">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Conheça Nossa Equipe</span>
+            </button>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr>
+            <th>Propriedade</th>
+            <th>Valor</th>
+          </tr>
+          <tr>
+            <td>background</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >#FFFFFF</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>border</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >2px solid var(--navy) #1A4A8A</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>color (default)</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >var(--navy) #1A4A8A</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>color (hover)</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >#FFFFFF</code
+              >
+              — texto inverte para branco
+            </td>
+          </tr>
+          <tr>
+            <td>onda · wf1</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >fill: var(--navy)</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>onda · wf2</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >fill: var(--cobalt), opacity .45</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Contexto</td>
+            <td>
+              Seções brancas ou névoa ·
+              <span class="tag tag--no">não usar em fundo navy</span>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ── OUTLINE DARK ── -->
+      <section class="ds-section" id="outline-dark">
+        <p class="eyebrow">06 · Variante</p>
+        <h2 class="sec-title">Outline Dark</h2>
+        <p class="sec-desc">
+          Visualmente idêntico ao Primary, mas com semântica de "segundo botão
+          em fundo escuro". Usado especificamente no hero ao lado de um Cobalt,
+          ou no nav bar como CTA. A distinção é contextual, não visual.
+        </p>
+
+        <div class="ds-card ds-card--dark">
+          <span class="ds-label ds-label--light">Em fundo navy (hero)</span>
+          <div class="btn-row">
+            <button class="btn btn--md btn--cobalt">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Orçamento RS</span>
+            </button>
+            <button class="btn btn--md btn--outline-dark">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Orçamento SC</span>
+            </button>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr>
+            <th>Propriedade</th>
+            <th>Valor</th>
+          </tr>
+          <tr>
+            <td>background</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >var(--navy-deep) / #0D2A52</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>border</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >2px solid var(--sky) / #00B8F0</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Diferença do Primary</td>
+            <td>
+              Semântica apenas — hierarquia menor por posição/contexto, não por
+              estilo
+            </td>
+          </tr>
+          <tr>
+            <td>Contexto</td>
+            <td>
+              Hero com dois CTAs, nav bar ·
+              <span class="tag tag--no">não usar em fundo claro</span>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ── GHOST ── -->
+      <section class="ds-section" id="ghost">
+        <p class="eyebrow">07 · Variante</p>
+        <h2 class="sec-title">Ghost</h2>
+        <p class="sec-desc">
+          Borda tracejada (<code
+            style="font-family: var(--font-m); color: var(--cobalt)"
+            >border-style: dashed</code
+          >) em mist sobre fundo névoa. Visual discreto para ações de navegação
+          que não devem competir com os CTAs principais. Onda em mist +
+          cyan-light reforça o DNA aquático sem destaque excessivo.
+        </p>
+
+        <div class="ds-card">
+          <span class="ds-label">Em fundo claro</span>
+          <div class="btn-row">
+            <button class="btn btn--md btn--ghost">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Ver Todos →</span>
+            </button>
+            <button class="btn btn--md btn--ghost">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Próxima Página</span>
+            </button>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr>
+            <th>Propriedade</th>
+            <th>Valor</th>
+          </tr>
+          <tr>
+            <td>background</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >var(--fog) / #F2F6FB</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>border</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >1.5px dashed var(--mist) / #DDE8F5</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>color (default)</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >var(--steel) / #3A5270</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>color (hover)</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >var(--navy)</code
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Contexto</td>
+            <td>Cards de serviço, paginação, "ver mais" dentro de seções</td>
+          </tr>
+          <tr>
+            <td>Regra</td>
+            <td>
+              <span class="tag tag--no">nunca como CTA principal de seção</span>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ── WHATSAPP ── -->
+      <section class="ds-section" id="whatsapp">
+        <p class="eyebrow">08 · Variante</p>
+        <h2 class="sec-title">WhatsApp</h2>
+        <p class="sec-desc">
+          A cor verde oficial do WhatsApp (#25D366) é amplamente reconhecida e
+          dispensa explicação.
+          <strong>Sempre incluir o ícone SVG oficial</strong> ao lado do texto.
+          Destinado exclusivamente a links
+          <code style="font-family: var(--font-m); color: var(--cobalt)"
+            >api.whatsapp.com/send?phone=...</code
+          >. Nunca usar este verde em outro contexto.
+        </p>
+
+        <div class="ds-card" style="background: var(--navy-deep)">
+          <span class="ds-label ds-label--light"
+            >No hero — dois números (RS e SC)</span
+          >
+          <div
+            class="btn-row"
+            style="flex-direction: column; align-items: flex-start; gap: 10px"
+          >
+            <a href="#" class="btn btn--md btn--wa"
+              ><svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl"
+                ><svg
+                  style="width: 16px; height: 16px; flex-shrink: 0"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.534 5.853L.054 23.94l6.267-1.643A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"
+                  /></svg
+                >Orçamento Grátis — Rio Grande do Sul</span
+              ></a
+            >
+            <a href="#" class="btn btn--md btn--ghost"
+              ><svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl"
+                ><svg
+                  style="
+                    width: 16px;
+                    height: 16px;
+                    flex-shrink: 0;
+                    opacity: 0.7;
+                  "
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.534 5.853L.054 23.94l6.267-1.643A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"
+                  /></svg
+                >Orçamento Grátis — Santa Catarina</span
+              ></a
+            >
+          </div>
+          <div
+            style="
+              font-family: var(--font-m);
+              font-size: 9px;
+              color: rgba(255, 255, 255, 0.3);
+              margin-top: 16px;
+            "
+          >
+            Padrão no hero: RS em WhatsApp verde · SC em Ghost (menor
+            hierarquia)
+          </div>
+        </div>
+
+        <table class="spec-table" style="margin-top: 16px">
+          <tr>
+            <th>Propriedade</th>
+            <th>Valor</th>
+          </tr>
+          <tr>
+            <td>background</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >#25D366</code
+              >
+              — verde oficial WhatsApp
+            </td>
+          </tr>
+          <tr>
+            <td>border</td>
+            <td>nenhuma</td>
+          </tr>
+          <tr>
+            <td>Ícone</td>
+            <td>SVG oficial — obrigatório · width/height: 16px</td>
+          </tr>
+          <tr>
+            <td>Destino</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >api.whatsapp.com/send?phone=55...</code
+              >
+              · target="_blank"
+            </td>
+          </tr>
+          <tr>
+            <td>Regra crítica</td>
+            <td>
+              <span class="tag tag--no"
+                >nunca usar #25D366 fora de contexto WhatsApp</span
+              >
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ── SEMÂNTICOS ── -->
+      <section class="ds-section" id="semantic">
+        <p class="eyebrow">09 · Variante</p>
+        <h2 class="sec-title">Semânticos (Sucesso / Erro)</h2>
+        <p class="sec-desc">
+          Reservados exclusivamente para feedback de formulários e estados do
+          sistema. Nunca usar como CTA de navegação.
+        </p>
+
+        <div class="ds-card">
+          <span class="ds-label">Sucesso e Erro</span>
+          <div class="btn-row">
+            <button class="btn btn--md btn--success">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">✓ Enviado com sucesso</span>
+            </button>
+            <button class="btn btn--md btn--danger">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none">
+                <g class="wg1">
+                  <path
+                    class="wf1"
+                    d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                  />
+                </g>
+                <g class="wg2">
+                  <path
+                    class="wf2"
+                    d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                  />
+                </g></svg
+              ><span class="blbl">Tentar novamente</span>
+            </button>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr>
+            <th>Token</th>
+            <th>Hex</th>
+            <th>Contexto</th>
+          </tr>
+          <tr>
+            <td>--lacre</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >#00D4AA</code
+              >
+            </td>
+            <td>Formulário enviado, confirmação de agendamento</td>
+          </tr>
+          <tr>
+            <td>--error</td>
+            <td>
+              <code style="font-family: var(--font-m); font-size: 11px"
+                >#D64045</code
+              >
+            </td>
+            <td>Falha no envio, campo inválido, retry</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ── TAMANHOS ── -->
+      <section class="ds-section" id="tamanhos">
+        <p class="eyebrow">10 · Tokens</p>
+        <h2 class="sec-title">Tamanhos</h2>
+        <p class="sec-desc">
+          Três tamanhos com especificações extraídas do Figma. O Large é
+          exclusivo para o hero — nunca usar em cards ou seções de conteúdo.
+        </p>
+
+        <div class="ds-card">
+          <span class="ds-label">sm / md (default) / lg</span>
+          <div class="size-row">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+              "
+            >
+              <button class="btn btn--sm btn--primary">
+                <svg
+                  class="wsv"
+                  viewBox="0 0 600 60"
+                  preserveAspectRatio="none"
+                >
+                  <g class="wg1">
+                    <path
+                      class="wf1"
+                      d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                    />
+                  </g>
+                  <g class="wg2">
+                    <path
+                      class="wf2"
+                      d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                    />
+                  </g></svg
+                ><span class="blbl">Small</span>
+              </button>
+              <span
+                style="
+                  font-family: var(--font-m);
+                  font-size: 9px;
+                  color: var(--iron);
+                "
+                >.btn--sm</span
+              >
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+              "
+            >
+              <button class="btn btn--md btn--primary">
+                <svg
+                  class="wsv"
+                  viewBox="0 0 600 60"
+                  preserveAspectRatio="none"
+                >
+                  <g class="wg1">
+                    <path
+                      class="wf1"
+                      d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                    />
+                  </g>
+                  <g class="wg2">
+                    <path
+                      class="wf2"
+                      d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                    />
+                  </g></svg
+                ><span class="blbl">Default</span>
+              </button>
+              <span
+                style="
+                  font-family: var(--font-m);
+                  font-size: 9px;
+                  color: var(--iron);
+                "
+                >.btn--md</span
+              >
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+              "
+            >
+              <button class="btn btn--lg btn--primary">
+                <svg
+                  class="wsv"
+                  viewBox="0 0 600 60"
+                  preserveAspectRatio="none"
+                >
+                  <g class="wg1">
+                    <path
+                      class="wf1"
+                      d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                    />
+                  </g>
+                  <g class="wg2">
+                    <path
+                      class="wf2"
+                      d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                    />
+                  </g></svg
+                ><span class="blbl">Large — Hero CTA</span>
+              </button>
+              <span
+                style="
+                  font-family: var(--font-m);
+                  font-size: 9px;
+                  color: var(--iron);
+                "
+                >.btn--lg</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr>
+            <th>Classe</th>
+            <th>Fonte</th>
+            <th>Padding</th>
+            <th>Altura mín.</th>
+            <th>Contexto</th>
+          </tr>
+          <tr>
+            <td>.btn--sm</td>
+            <td>10px · Lato Bold</td>
+            <td>9px 18px</td>
+            <td>36px</td>
+            <td>Tags dentro de cards, ações secundárias compactas</td>
+          </tr>
+          <tr>
+            <td>.btn--md</td>
+            <td>12px · Lato Bold</td>
+            <td>14px 28px</td>
+            <td>48px</td>
+            <td>Padrão — uso geral em seções, formulários, nav</td>
+          </tr>
+          <tr>
+            <td>.btn--lg</td>
+            <td>14px · Lato Bold</td>
+            <td>20px 40px</td>
+            <td>64px</td>
+            <td></td>
+            <td>
+              Hero CTA principal · Guarantee strip
+              <span class="tag tag--no">nunca em cards</span>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ── REGRAS ── -->
+      <section class="ds-section" id="regras">
+        <p class="eyebrow">11 · Diretrizes</p>
+        <h2 class="sec-title">Regras de Uso</h2>
+        <p class="sec-desc">
+          As regras abaixo garantem consistência e hierarquia visual em todo o
+          site.
+        </p>
+
+        <div class="grid-2" style="margin-bottom: 16px">
+          <div class="do-card">
+            <p class="do-title">Use assim ✓</p>
+            <ul class="rule-list">
+              <li>Máximo 1 botão Primary por tela ou seção</li>
+              <li>Sempre incluir ícone WhatsApp no btn--wa</li>
+              <li>Hero: Large (lg) para o CTA principal</li>
+              <li>Nav bar: Cobalt ou Outline Dark em md</li>
+              <li>Cards de serviço: Ghost ou Outline Light em md</li>
+              <li>border-radius sempre 40px — bordas arredondadas</li>
+              <li>Texto sempre uppercase + letter-spacing</li>
+              <li>Label sempre dentro de .blbl (z-index:1)</li>
+              <li>SVG da onda sempre com left:-100%; width:300%</li>
+            </ul>
+          </div>
+          <div class="dont-card">
+            <p class="dont-title">Evite ✗</p>
+            <ul class="rule-list">
+              <li>Dois botões Primary na mesma seção</li>
+              <li>btn--wa fora de contexto WhatsApp</li>
+              <li>Botão Large (lg) fora do hero</li>
+              <li>Outline Light em fundo navy (invisível)</li>
+              <li>Ghost como único CTA de seção importante</li>
+              <li>Remover o efeito de onda em qualquer variante</li>
+              <li>Alterar o border-radius de 40px sem aprovação</li>
+              <li>Texto em lowercase ou sem letter-spacing</li>
+              <li>Botões semânticos (sucesso/erro) em CTAs de nav</li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="ds-card"
+          style="background: var(--navy-deep); margin-top: 0"
+        >
+          <span class="ds-label ds-label--light" style="margin-bottom: 16px"
+            >Hierarquia recomendada por posição no site</span
+          >
+          <table class="spec-table" style="color: rgba(255, 255, 255, 0.6)">
+            <tr>
+              <th style="color: rgba(255, 255, 255, 0.3)">Posição</th>
+              <th style="color: rgba(255, 255, 255, 0.3)">CTA 1 (principal)</th>
+              <th style="color: rgba(255, 255, 255, 0.3)">
+                CTA 2 (secundário)
+              </th>
+            </tr>
+            <tr>
+              <td style="color: rgba(255, 255, 255, 0.5)">Hero</td>
+              <td><span class="tag tag--wa">WhatsApp · lg</span></td>
+              <td>
+                <span
+                  class="tag tag--ghost"
+                  style="
+                    background: rgba(255, 255, 255, 0.06);
+                    color: rgba(255, 255, 255, 0.5);
+                  "
+                  >Ghost · lg</span
+                >
+              </td>
+            </tr>
+            <tr>
+              <td style="color: rgba(255, 255, 255, 0.5)">Nav bar</td>
+              <td><span class="tag tag--cobalt">Cobalt · md</span></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td style="color: rgba(255, 255, 255, 0.5)">Seção serviços</td>
+              <td><span class="tag tag--primary">Primary · md</span></td>
+              <td><span class="tag tag--outline">Outline · md</span></td>
+            </tr>
+            <tr>
+              <td style="color: rgba(255, 255, 255, 0.5)">Cards</td>
+              <td>
+                <span
+                  class="tag tag--ghost"
+                  style="
+                    background: rgba(255, 255, 255, 0.06);
+                    color: rgba(255, 255, 255, 0.5);
+                  "
+                  >Ghost · md</span
+                >
+              </td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td style="color: rgba(255, 255, 255, 0.5)">
+                CTA final (bottom)
+              </td>
+              <td><span class="tag tag--wa">WhatsApp · lg</span></td>
+              <td><span class="tag tag--outline">Outline Light · md</span></td>
+            </tr>
+            <tr>
+              <td style="color: rgba(255, 255, 255, 0.5)">Formulário</td>
+              <td><span class="tag tag--primary">Primary · md</span></td>
+              <td>
+                <span
+                  class="tag tag--ghost"
+                  style="
+                    background: rgba(255, 255, 255, 0.06);
+                    color: rgba(255, 255, 255, 0.5);
+                  "
+                  >Ghost · sm (cancelar)</span
+                >
+              </td>
+            </tr>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const sections = document.querySelectorAll(".ds-section");
+      const links = document.querySelectorAll(".ds-nav a");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              links.forEach((l) => l.classList.remove("active"));
+              const active = document.querySelector(`.ds-nav a[href="#${id}"]`);
+              if (active) active.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-30% 0px -60% 0px" },
+      );
+      sections.forEach((s) => observer.observe(s));
+    </script>
+  </body>
+</html>

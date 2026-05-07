@@ -85,7 +85,7 @@ import BackToTop from "../components/BackToTop.vue";
   position: relative;
   z-index: 1;
   background: var(--color-white);
-  padding: calc(clamp(90px, 15vw, 200px) + 72px) 24px 88px;
+  padding: calc(72px + 100px) 24px 88px;
 }
 
 .sec-inner {

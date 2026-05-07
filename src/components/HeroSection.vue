@@ -40,7 +40,7 @@ function scrollToNext() {
         </div>
 
         <h1 class="hero-title">
-          <span class="title-line">Sua caixa d'água está</span>
+          <span class="title-line">Caixa d'água</span>
           <span class="title-line">
             <span class="tacc">com vazamentos</span>,<span class="tacc"></span>
             ou a água chegou <em class="suja">suja</em>?
@@ -120,8 +120,8 @@ function scrollToNext() {
           >
             <path
               d="M200,12 C200,12 20,180 20,320 C20,420 100,508 200,508 C300,508 380,420 380,320 C380,180 200,12 200,12 Z"
-              stroke="rgba(0,184,240,0.4)"
-              stroke-width="2"
+              stroke="rgba(0,184,240,0.85)"
+              stroke-width="6"
             />
           </svg>
         </div>
@@ -133,20 +133,14 @@ function scrollToNext() {
       aria-label="Rolar para próxima seção"
       @click="scrollToNext"
     >
-      <svg
-        class="drop-ico"
-        viewBox="0 0 20 28"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M10 1 C10 1, 1 13, 1 18.5 C1 23.75 5.03 27 10 27 C14.97 27 19 23.75 19 18.5 C19 13 10 1 10 1 Z"
-          fill="rgba(0,184,240,0.15)"
-          stroke="rgba(0,184,240,0.75)"
-          stroke-width="1.5"
-          stroke-linejoin="round"
+      <span class="drop-ico-wrap">
+        <img
+          src="../assets/small gout.svg"
+          class="drop-ico"
+          alt=""
+          aria-hidden="true"
         />
-      </svg>
+      </span>
       <span class="slbl">ROLE</span>
     </button>
   </section>
@@ -371,12 +365,13 @@ function scrollToNext() {
   }
 }
 
-/* H1 — Playfair Display, escuro, highlights coloridos */
+/* H1 — mesma fonte do hero de impermeabilizações */
 .hero-title {
-  font-family: "Playfair Display", serif;
-  font-weight: 400;
+  font-family: var(--font-wave);
+  font-weight: 300;
   font-size: clamp(32px, 5.5vw, 80px);
-  line-height: 1.5;
+  line-height: 1.08;
+  letter-spacing: 0.01em;
   color: #0d1b2a;
   margin-bottom: 24px;
   opacity: 0;
@@ -568,10 +563,23 @@ function scrollToNext() {
 
 /* clip-path usa ID do SVG definido no topo do template */
 .drop-wrap {
+  position: relative;
   width: 100%;
   height: 100%;
   clip-path: url(#drop-clip);
   overflow: hidden;
+}
+
+.drop-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 52%,
+    rgba(0, 40, 90, 0.22) 100%
+  );
+  pointer-events: none;
 }
 
 .hero-img {
@@ -609,9 +617,21 @@ function scrollToNext() {
   outline: none;
 }
 
+.drop-ico-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scroll-ind:hover .drop-ico-wrap {
+  transform: scale(1.35);
+}
+
 .drop-ico {
-  width: 20px;
-  height: 28px;
+  width: 22px;
+  height: auto;
+  display: block;
   animation: dropFloat 2s ease-in-out infinite;
 }
 
@@ -652,8 +672,7 @@ function scrollToNext() {
   position: relative;
   z-index: 2;
   margin-top: -2px;
-  margin-bottom: calc(clamp(90px, 15vw, 200px) * -1);
-  overflow: hidden;
+  margin-bottom: -120px;
   height: clamp(90px, 15vw, 200px);
   background: linear-gradient(to bottom, #f2f6fb 0%, #0d2a52 100%);
 }
@@ -734,17 +753,16 @@ function scrollToNext() {
   }
 
   .hero-image-col {
-    height: 100%;
-    min-height: 520px;
-    align-self: stretch;
+    align-self: center;
     margin-top: 0;
     overflow: visible;
   }
 
   .drop-container {
-    width: min(480px, 42vw);
-    height: 100%;
-    aspect-ratio: unset;
+    height: min(700px, 86vh);
+    width: auto;
+    aspect-ratio: 400 / 520;
+    max-width: 52vw;
   }
 
   .drop-wrap {

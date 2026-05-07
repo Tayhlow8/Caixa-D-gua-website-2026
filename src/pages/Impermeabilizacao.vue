@@ -5,20 +5,20 @@ import AppFooter from "../components/AppFooter.vue";
 import BackToTop from "../components/BackToTop.vue";
 
 // ── Interna images
-import heroImg from "../assets/revestimento1.jpg";
 import antesI1 from "../assets/Antes 4.jpg";
 import depoisI1 from "../assets/revestimento7.jpg";
 import procLimpeza from "../assets/antes6.jpg";
 import procFixacao from "../assets/antes8.jpg";
 import procSolda from "../assets/depois com canos.jpg";
 import procFinal from "../assets/revestimento2.jpg";
+import procFinal2 from "../assets/revestimentos2.jpg";
 import antesI2 from "../assets/reservatorio antes.png";
-import depoisI2 from "../assets/revestimento8.jpg";
+import depoisI2 from "../assets/Presidente Roosevelt (32).jpg";
 
 // ── Externa images
-import extAntes from "../assets/antes3.JPG";
-import extAplicacao from "../assets/revestimento6.jpg";
-import extDepois from "../assets/revestimento7.jpg";
+import extManta from "../assets/manta asfaltica 1.png";
+import extGeo1 from "../assets/geomembrana externa.png";
+import extGeo2 from "../assets/geomembrana externa2 1.png";
 
 const WPP_RS = "https://api.whatsapp.com/send?phone=5551981969303";
 
@@ -35,6 +35,15 @@ function switchTab(tab) {
     );
   }
 }
+
+function onTabKeydown(e, currentTab) {
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+    e.preventDefault();
+    const next = currentTab === "interna" ? "externa" : "interna";
+    switchTab(next);
+    document.getElementById(`tab-${next}`)?.focus();
+  }
+}
 </script>
 
 <template>
@@ -43,6 +52,21 @@ function switchTab(tab) {
 
     <!-- ══ HERO ══ -->
     <header class="hero" role="banner">
+      <!-- Vídeo de fundo full-screen -->
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        aria-hidden="true"
+        preload="auto"
+      >
+        <source src="../assets/hero-impermeabilizacao.mp4" type="video/mp4" />
+      </video>
+      <!-- Overlay translúcido para legibilidade do texto escuro -->
+      <div class="hero-overlay" aria-hidden="true"></div>
+
       <div class="hero-inner">
         <!-- Text -->
         <div class="hero-content">
@@ -50,20 +74,19 @@ function switchTab(tab) {
           <h1 class="hero-h1">
             Impermeabilização<br />
             de caixa d'água<br />
-            <em>com garantia real</em>
+            <span class="hl">com garantia real</span>
           </h1>
           <p class="hero-sub">
-            Tecnologia patenteada e exclusiva no Sul do Brasil. Instalação em 1
-            dia, sem obras, sem entulho — e a caixa liberada para uso no mesmo
-            dia.
+            Tecnologia patenteada e exclusiva no Brasil. Instalação em 1 dia,
+            sem obras, sem entulho — e a caixa liberada para uso no mesmo dia.
           </p>
           <div class="hero-badges" role="list" aria-label="Diferenciais">
-            <span class="badge" role="listitem">Aprovado ANVISA</span>
-            <span class="badge" role="listitem">Instalação em 1 dia</span>
-            <span class="badge badge--sky" role="listitem"
+            <span class="badge badge--accent" role="listitem">Aprovado ANVISA</span>
+            <span class="badge badge--accent" role="listitem">Instalação em 1 dia</span>
+            <span class="badge badge--accent" role="listitem"
               >Garantia 5 anos</span
             >
-            <span class="badge badge--sky" role="listitem">Sem obras</span>
+            <span class="badge badge--accent" role="listitem">Sem obras</span>
           </div>
           <div class="hero-ctas">
             <a
@@ -110,30 +133,15 @@ function switchTab(tab) {
                     d="M11.5 9.9c-.2-.1-1.3-.7-1.5-.7-.2-.1-.3-.1-.5.1-.1.2-.5.7-.7.8-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-.9-1.2-1-1.4-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.2-.4 0-.2-.5-1.3-.7-1.7-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3C3.7 5.3 3 6 3 7.3c0 1.3.9 2.5 1 2.7.1.2 1.8 2.9 4.5 4 .6.3 1.1.4 1.5.5.6.1 1.2.1 1.6 0 .5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.1-.4-.2z"
                   />
                 </svg>
-                Orçamento Grátis — RS
+                Orçamento Grátis
               </span>
             </a>
             <a
               :href="activeTab === 'externa' ? '#externa' : '#interna'"
               class="btn-ghost"
-              >Ver como funciona ↓</a
+              :aria-label="`Ver como funciona — ir para seção de impermeabilização ${activeTab}`"
+              >Ver como funciona <span aria-hidden="true">↓</span></a
             >
-          </div>
-        </div>
-
-        <!-- Visual -->
-        <div class="hero-visual" aria-hidden="true">
-          <div class="hero-img-wrap">
-            <img
-              :src="heroImg"
-              alt="Interior de caixa d'água revestida com PVC geomembrana"
-              class="hero-img"
-              loading="eager"
-            />
-          </div>
-          <div class="hero-badge-float">
-            <span class="badge-num">30+</span>
-            <span class="badge-txt">anos de<br />experiência</span>
           </div>
         </div>
       </div>
@@ -157,6 +165,7 @@ function switchTab(tab) {
           :aria-selected="activeTab === 'interna'"
           aria-controls="panel-interna"
           @click="switchTab('interna')"
+          @keydown="onTabKeydown($event, 'interna')"
         >
           Impermeabilização Interna
         </button>
@@ -168,6 +177,7 @@ function switchTab(tab) {
           :aria-selected="activeTab === 'externa'"
           aria-controls="panel-externa"
           @click="switchTab('externa')"
+          @keydown="onTabKeydown($event, 'externa')"
         >
           Impermeabilização Externa
         </button>
@@ -184,7 +194,9 @@ function switchTab(tab) {
       <section class="sec-content" id="interna">
         <p class="sec-eyebrow" aria-hidden="true">Impermeabilização Interna</p>
         <h2 class="sec-title">
-          PVC Geomembrana — tecnologia<br /><em>exclusiva no Sul do Brasil</em>
+          PVC Geomembrana — tecnologia<br /><span class="hl"
+            >exclusiva e patenteada no Brasil</span
+          >
         </h2>
         <p class="sec-desc">
           O revestimento interno com geomembrana de PVC flexível é aplicado sob
@@ -271,6 +283,16 @@ function switchTab(tab) {
                 >Instalação concluída</span
               >
             </div>
+            <div class="gal-item">
+              <img
+                :src="procFinal2"
+                alt="Interior de caixa d'água com revestimento PVC geomembrana instalado"
+                loading="lazy"
+              />
+              <span class="gal-label" aria-hidden="true"
+                >Revestimento interno</span
+              >
+            </div>
           </div>
         </div>
 
@@ -317,7 +339,7 @@ function switchTab(tab) {
             <div>
               <p class="sec-eyebrow" aria-hidden="true">Como funciona</p>
               <h2 class="sec-title sec-title--inline" id="processo-title">
-                Instalação em <em>6 etapas</em>
+                Instalação em <span class="hl">6 etapas</span>
               </h2>
             </div>
             <p class="process-note">
@@ -410,10 +432,11 @@ function switchTab(tab) {
               </p>
             </div>
             <div class="spec-item" role="listitem">
-              <p class="spec-label">Certificação</p>
-              <p class="spec-value">ANVISA</p>
+              <p class="spec-label">QUALIDADE</p>
+              <p class="spec-value">Durabilidade</p>
               <p class="spec-desc">
-                Atóxico, aprovado para contato direto com água potável
+                Certificado pela Vig. Sanitária Municipal.aprovado para contato
+                direto com água potável
               </p>
             </div>
           </div>
@@ -445,9 +468,9 @@ function switchTab(tab) {
           <div class="guarantee-text">
             <h3>Certificado de Limpeza e Conservação incluso</h3>
             <p>
-              Documento válido por 1 ano na Secretaria Municipal de Saúde — o
-              condomínio fica livre de vistorias, notificações e multas por
-              falta de higiene.
+              Documento válido por 1 ano para residênicas e 6 meses pra
+              comércios na Secretaria Municipal de Saúde — o condomínio fica
+              livre de vistorias, notificações e multas por falta de higiene.
             </p>
           </div>
           <a
@@ -492,7 +515,7 @@ function switchTab(tab) {
       <section class="sec-content" id="externa">
         <p class="sec-eyebrow" aria-hidden="true">Impermeabilização Externa</p>
         <h2 class="sec-title">
-          Manta asfáltica — proteção<br /><em>pela face externa</em>
+          Manta asfáltica — proteção<br /><span class="hl">pela face externa</span>
         </h2>
         <p class="sec-desc">
           Quando o problema está na parte externa do reservatório — umidade no
@@ -538,7 +561,7 @@ function switchTab(tab) {
                 chega suja ou com gosto estranho, e há infiltrações nas paredes
                 internas.
               </p>
-              <ul class="compare-list" aria-label="Indicado para">
+              <ul class="compare-list" role="list" aria-label="Indicado para">
                 <li>Água com cor ou odor diferente</li>
                 <li>Concreto descascando por dentro</li>
                 <li>Infiltrações visíveis internamente</li>
@@ -556,7 +579,7 @@ function switchTab(tab) {
                 infiltração na laje, ou quando a estrutura de concreto externo
                 está sendo comprometida.
               </p>
-              <ul class="compare-list" aria-label="Indicado para">
+              <ul class="compare-list" role="list" aria-label="Indicado para">
                 <li>Umidade ou manchas no teto embaixo</li>
                 <li>Infiltração na laje externa</li>
                 <li>Ferragem do concreto exposta</li>
@@ -576,27 +599,29 @@ function switchTab(tab) {
           >
             <div class="g3-item">
               <img
-                :src="extAntes"
-                alt="Superfície externa de caixa d'água antes da impermeabilização"
+                :src="extManta"
+                alt="Manta asfáltica aplicada sobre superfície externa da caixa d'água"
                 loading="lazy"
               />
-              <span class="gal-label" aria-hidden="true">Superfície antes</span>
+              <span class="gal-label" aria-hidden="true">Manta asfáltica</span>
             </div>
             <div class="g3-item">
               <img
-                :src="extAplicacao"
-                alt="Aplicação da manta asfáltica na superfície externa"
+                :src="extGeo1"
+                alt="Geomembrana aplicada na face externa do reservatório"
                 loading="lazy"
               />
-              <span class="gal-label" aria-hidden="true">Aplicação</span>
+              <span class="gal-label" aria-hidden="true"
+                >Geomembrana externa</span
+              >
             </div>
             <div class="g3-item">
               <img
-                :src="extDepois"
-                alt="Resultado final da impermeabilização externa"
+                :src="extGeo2"
+                alt="Acabamento da geomembrana externa na caixa d'água"
                 loading="lazy"
               />
-              <span class="gal-label" aria-hidden="true">Resultado final</span>
+              <span class="gal-label" aria-hidden="true">Acabamento</span>
             </div>
           </div>
         </div>
@@ -605,7 +630,7 @@ function switchTab(tab) {
         <div class="manta-section" aria-labelledby="manta-title">
           <p class="sec-eyebrow" aria-hidden="true">Manta asfáltica</p>
           <h2 class="sec-title sec-title--inline" id="manta-title">
-            Como a manta <em>protege a estrutura</em>
+            Como a manta <span class="hl">protege a estrutura</span>
           </h2>
           <p class="sec-desc">
             A manta asfáltica é aplicada sobre a superfície externa com calor,
@@ -755,7 +780,7 @@ function switchTab(tab) {
         <p class="sec-eyebrow" aria-hidden="true">Próximo passo</p>
         <h2 id="cta-title">
           Água limpa e estrutura<br />
-          <em>protegida em 1 dia</em>
+          <span class="hl">protegida em 1 dia</span>
         </h2>
         <p>
           Atendemos residências, condomínios e empresas em todo o Rio Grande do
@@ -833,65 +858,50 @@ function switchTab(tab) {
    HERO
 ═══════════════════════════════ */
 .hero {
-  background: var(--color-navy-deep);
   position: relative;
   overflow: hidden;
   margin-top: -68px;
   padding: calc(68px + 64px) 24px 72px;
+  /* sem background — o vídeo ocupa tudo */
 }
 
-.hero::before {
-  content: "";
+/* Vídeo de fundo */
+.hero-video {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(
-      ellipse 60% 80% at 85% 50%,
-      rgba(0, 184, 240, 0.08) 0%,
-      transparent 65%
-    ),
-    radial-gradient(
-      ellipse 40% 60% at 10% 80%,
-      rgba(0, 184, 240, 0.05) 0%,
-      transparent 60%
-    );
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
   pointer-events: none;
 }
 
-.hero::after {
-  content: "";
+/* Overlay leve branqueado para garantir contraste do texto escuro */
+.hero-overlay {
   position: absolute;
-  top: -20%;
-  right: -5%;
-  width: 1px;
-  height: 140%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(0, 184, 240, 0.15) 40%,
-    transparent
-  );
-  transform: rotate(12deg);
+  inset: 0;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 1;
   pointer-events: none;
 }
 
 .hero-inner {
-  max-width: 1080px;
-  margin: 0 auto;
+  max-width: 760px;
+  margin: 0;
   position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  align-items: center;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .hero-eyebrow {
   font-family: var(--font-mono);
-  font-size: 14px; /* era 11px */
+  font-size: 14px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-sky);
+  color: var(--color-cobalt);
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -902,30 +912,29 @@ function switchTab(tab) {
   content: "";
   width: 24px;
   height: 1px;
-  background: var(--color-sky);
+  background: var(--color-cobalt);
   flex-shrink: 0;
 }
 
 .hero-h1 {
   font-family: var(--font-wave);
   font-weight: 300;
-  font-size: clamp(28px, 7vw, 48px);
+  font-size: clamp(28px, 7vw, 52px);
   line-height: 1.08;
   letter-spacing: 0.01em;
-  color: #fff;
+  color: var(--color-navy-deep);
   margin-bottom: 20px;
 }
 
-.hero-h1 em {
-  font-style: normal;
-  color: var(--color-cyan-light);
+.hero-h1 .hl {
+  color: var(--color-cobalt);
 }
 
 .hero-sub {
-  font-size: 17px; /* era 15px */
-  color: rgba(255, 255, 255, 0.75); /* era 0.6 */
+  font-size: 17px;
+  color: var(--color-navy-deep);
   line-height: 1.72;
-  font-weight: 500; /* era 300 */
+  font-weight: 700;
   max-width: 480px;
   margin-bottom: 28px;
 }
@@ -939,85 +948,26 @@ function switchTab(tab) {
 
 .badge {
   font-family: var(--font-mono);
-  font-size: 12px; /* era 10px */
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 5px 12px;
   border-radius: 2px;
-  border: 1px solid rgba(0, 184, 240, 0.25);
-  color: var(--color-cyan-light);
-  background: rgba(0, 184, 240, 0.06);
+  border: 1px solid rgba(26, 107, 196, 0.3);
+  color: var(--color-navy);
+  background: rgba(26, 107, 196, 0.08);
 }
 
-.badge--sky {
-  border-color: rgba(0, 184, 240, 0.35);
-  color: var(--color-sky);
-  background: rgba(0, 184, 240, 0.1);
+.badge--accent {
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+  background: rgba(26, 107, 196, 0.14);
 }
 
 .hero-ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-}
-
-/* Hero visual */
-.hero-visual {
-  position: relative;
-  order: -1;
-}
-
-.hero-img-wrap {
-  width: 100%;
-  aspect-ratio: 4/3;
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--color-navy);
-  border: 1px solid rgba(0, 184, 240, 0.15);
-}
-
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.hero-badge-float {
-  position: absolute;
-  bottom: -14px;
-  left: 0;
-  background: var(--color-navy-deep);
-  border: 1px solid rgba(0, 184, 240, 0.2);
-  border-radius: 4px;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.badge-num {
-  font-family: var(--font-wave);
-  font-weight: 300;
-  font-size: 26px;
-  color: var(--color-sky);
-  line-height: 1;
-}
-
-.badge-txt {
-  font-family: var(--font-mono);
-  font-size: 11px; /* era 10px */
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6); /* era 0.5 */
-  line-height: 1.4;
-}
-
-/* Wave divider */
-.wave-div {
-  height: 48px;
-  background: var(--color-navy-deep);
-  clip-path: ellipse(52% 100% at 50% 0%);
 }
 
 /* ═══════════════════════════════
@@ -1050,7 +1000,7 @@ function switchTab(tab) {
   font-size: 14px; /* era 11px */
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-iron);
+  color: var(--color-steel);
   background: none;
   border: none;
   cursor: pointer;
@@ -1084,10 +1034,10 @@ function switchTab(tab) {
 
 .sec-eyebrow {
   font-family: var(--font-mono);
-  font-size: 14px; /* era 10px */
+  font-size: 14px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-sky);
+  color: var(--color-cobalt);
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -1098,7 +1048,7 @@ function switchTab(tab) {
   content: "";
   width: 20px;
   height: 1px;
-  background: var(--color-sky);
+  background: var(--color-cobalt);
   flex-shrink: 0;
 }
 
@@ -1112,8 +1062,7 @@ function switchTab(tab) {
   margin-bottom: 14px;
 }
 
-.sec-title em {
-  font-style: normal;
+.sec-title .hl {
   color: var(--color-cobalt);
 }
 
@@ -1202,9 +1151,9 @@ function switchTab(tab) {
 }
 
 .ba-tag--depois {
-  background: rgba(0, 184, 240, 0.12);
-  color: var(--color-sky);
-  border: 1px solid rgba(0, 184, 240, 0.3);
+  background: rgba(13, 42, 82, 0.65);
+  color: var(--color-cyan-light);
+  border: 1px solid rgba(122, 220, 245, 0.4);
 }
 
 .ba-caption {
@@ -1223,10 +1172,9 @@ function switchTab(tab) {
 .gallery-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3px;
+  gap: 6px;
   border-radius: 4px;
   overflow: hidden;
-  border: 1px solid var(--color-mist);
   margin-bottom: 64px;
 }
 
@@ -1234,16 +1182,11 @@ function switchTab(tab) {
   overflow: hidden;
   background: var(--color-navy);
   position: relative;
-  aspect-ratio: 4/3;
+  aspect-ratio: 1/1;
 }
 
 .gal-item:first-child {
-  grid-column: span 2;
-  aspect-ratio: 16/9;
-}
-
-.gallery-grid .gal-item:last-child {
-  grid-column: span 2;
+  grid-column: 1 / -1;
   aspect-ratio: 16/9;
 }
 
@@ -1395,7 +1338,7 @@ function switchTab(tab) {
   font-size: 12px; /* era 9px */
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4); /* era 0.3 */
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 4px;
 }
 
@@ -1765,15 +1708,15 @@ function switchTab(tab) {
   align-items: center;
   gap: 8px;
   background: transparent;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-steel);
   font-family: var(--font-mono);
-  font-size: 12px; /* era 11px */
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 14px 20px;
   border-radius: 40px;
-  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(26, 74, 138, 0.35);
   cursor: pointer;
   min-height: 48px;
   transition:
@@ -1782,8 +1725,8 @@ function switchTab(tab) {
 }
 
 .btn-ghost:hover {
-  border-color: var(--color-sky);
-  color: var(--color-sky);
+  border-color: var(--color-cobalt);
+  color: var(--color-cobalt);
 }
 
 .btn-cta {
@@ -1800,7 +1743,7 @@ function switchTab(tab) {
   font-size: 13px; /* era 12px */
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 13px 24px;
+  padding: 16px 60px;
   border-radius: 40px;
   border: 2px solid var(--color-sky);
   white-space: nowrap;
@@ -1943,8 +1886,7 @@ function switchTab(tab) {
   letter-spacing: -0.02em;
 }
 
-.cta-final h2 em {
-  font-style: normal;
+.cta-final h2 .hl {
   color: var(--color-cyan-light);
 }
 
@@ -1973,22 +1915,17 @@ function switchTab(tab) {
 
   .gallery-grid {
     grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: auto auto;
+    gap: 6px;
   }
 
   .gallery-grid .gal-item:first-child {
-    grid-row: span 2;
-    grid-column: span 1;
-    aspect-ratio: 3/4;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    aspect-ratio: auto;
   }
 
-  .gallery-grid .gal-item:not(:first-child):not(:last-child) {
+  .gallery-grid .gal-item:not(:first-child) {
     aspect-ratio: 4/3;
-  }
-
-  .gallery-grid .gal-item:last-child {
-    grid-column: span 2;
-    aspect-ratio: 16/9;
   }
 
   .process-grid {
@@ -2023,16 +1960,7 @@ function switchTab(tab) {
 ═══════════════════════════════ */
 @media (min-width: 900px) {
   .hero {
-    padding: calc(68px + 80px) 48px 88px;
-  }
-
-  .hero-inner {
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-  }
-
-  .hero-visual {
-    order: 0;
+    padding: calc(68px + 80px) max(24px, calc((100vw - 1280px) / 2)) 88px;
   }
 
   .sec-content {
@@ -2053,11 +1981,68 @@ function switchTab(tab) {
   .process-note {
     max-width: 240px;
   }
+  .gallery-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 320px 320px;
+    gap: 6px;
+  }
+
+  .gallery-grid .gal-item:first-child {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    aspect-ratio: auto;
+  }
+
+  .gallery-grid .gal-item:not(:first-child) {
+    aspect-ratio: 4/3;
+  }
 }
 
 @media (min-width: 1080px) {
   .tabs-inner {
     padding: 0;
+  }
+}
+
+/* ═══════════════════════════════
+   FOCUS (WCAG 2.4.7)
+═══════════════════════════════ */
+.tab-btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-ghost:focus-visible,
+.btn-cta:focus-visible {
+  outline: 3px solid var(--color-sky);
+  outline-offset: 3px;
+}
+
+/* ═══════════════════════════════
+   REDUCED MOTION (WCAG 2.2.2 / 2.3.3)
+═══════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
+  .hero {
+    background: var(--color-navy-deep);
+  }
+  .hero-h1,
+  .hero-sub,
+  .hero-eyebrow {
+    color: #fff;
+  }
+  .hero-h1 .hl {
+    color: var(--color-cyan-light);
+  }
+  .hero-eyebrow {
+    color: var(--color-cyan-pale);
+  }
+  .hero-eyebrow::before {
+    background: var(--color-cyan-pale);
+  }
+  .badge {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
   }
 }
 </style>
