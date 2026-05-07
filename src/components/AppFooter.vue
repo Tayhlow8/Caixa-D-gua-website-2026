@@ -229,7 +229,7 @@ const areaTags = [
 
         <div class="footer-legal">
           <a href="#">Termos de uso</a>
-          <a href="#">Política de privacidade</a>
+          <a href="/politica-de-privacidade">Política de privacidade</a>
           <a href="#">Cookies</a>
         </div>
 
