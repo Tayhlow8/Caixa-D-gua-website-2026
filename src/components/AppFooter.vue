@@ -235,7 +235,9 @@ const areaTags = [
 
         <div class="footer-social">
           <a
-            href="#"
+            href="https://www.instagram.com/caixadaguarevestimentos/"
+            target="_blank"
+            rel="noopener noreferrer"
             class="social-btn"
             aria-label="Siga a Caixa d'Água Revestimentos no Instagram"
           >
@@ -257,7 +259,9 @@ const areaTags = [
             </svg>
           </a>
           <a
-            href="#"
+            href="https://www.facebook.com/caixadaguarevestimentos"
+            target="_blank"
+            rel="noopener noreferrer"
             class="social-btn"
             aria-label="Caixa d'Água Revestimentos no Facebook"
           >

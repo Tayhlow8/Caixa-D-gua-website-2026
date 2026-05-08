@@ -1,7 +1,23 @@
 <script setup>
+import { useHead } from "@unhead/vue";
 import NavBar from "../components/NavBar.vue";
 import AppFooter from "../components/AppFooter.vue";
 import BackToTop from "../components/BackToTop.vue";
+
+const SITE = "https://www.caixadaguarevestimentos.net.br";
+
+useHead({
+  title: "Política de Privacidade | Caixa d'Água Revestimentos",
+  meta: [
+    { name: "description", content: "Política de privacidade e uso de cookies do site Caixa d'Água Revestimentos. Saiba como coletamos e protegemos seus dados." },
+    { name: "robots", content: "noindex, follow" },
+    { property: "og:title", content: "Política de Privacidade | Caixa d'Água Revestimentos" },
+    { property: "og:description", content: "Política de privacidade e uso de cookies do site Caixa d'Água Revestimentos." },
+    { property: "og:url", content: `${SITE}/politica-de-privacidade` },
+    { property: "og:type", content: "website" },
+  ],
+  link: [{ rel: "canonical", href: `${SITE}/politica-de-privacidade` }],
+});
 </script>
 
 <template>

@@ -1,8 +1,76 @@
 <script setup>
 import { ref } from "vue";
+import { useHead } from "@unhead/vue";
 import NavBar from "../components/NavBar.vue";
 import AppFooter from "../components/AppFooter.vue";
 import BackToTop from "../components/BackToTop.vue";
+
+const SITE = "https://www.caixadaguarevestimentos.net.br";
+const PAGE = `${SITE}/impermeabilizacao`;
+
+useHead({
+  title: "Impermeabilização de Caixa d'Água com Garantia | Caixa d'Água Revestimentos",
+  meta: [
+    { name: "description", content: "Impermeabilização com geomembrana PVC e manta asfáltica. Instalação em 1 dia, 5 anos de garantia, aprovação ANVISA. Atendemos Porto Alegre, RS e SC." },
+    { name: "keywords", content: "impermeabilização caixa d'água, geomembrana PVC, manta asfáltica reservatório, impermeabilização Porto Alegre, garantia 5 anos" },
+    { name: "robots", content: "index, follow" },
+    { property: "og:title", content: "Impermeabilização de Caixa d'Água com Garantia | Caixa d'Água Revestimentos" },
+    { property: "og:description", content: "Impermeabilização com geomembrana PVC e manta asfáltica. Instalação em 1 dia, 5 anos de garantia, aprovação ANVISA. Atendemos Porto Alegre, RS e SC." },
+    { property: "og:url", content: PAGE },
+    { property: "og:image", content: `${SITE}/og-image.jpg` },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:type", content: "website" },
+    { name: "twitter:title", content: "Impermeabilização de Caixa d'Água com Garantia | Caixa d'Água Revestimentos" },
+    { name: "twitter:description", content: "Impermeabilização com geomembrana PVC e manta asfáltica. Instalação em 1 dia, 5 anos de garantia, aprovação ANVISA." },
+    { name: "twitter:image", content: `${SITE}/og-image.jpg` },
+  ],
+  link: [{ rel: "canonical", href: PAGE }],
+  script: [
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Impermeabilização de Caixa d'Água",
+        url: PAGE,
+        description: "Serviço de impermeabilização interna com geomembrana de PVC flexível patenteada e impermeabilização externa com manta asfáltica. Instalação em 1 dia, garantia de 5 anos, aprovado pela ANVISA.",
+        provider: {
+          "@type": "LocalBusiness",
+          name: "Caixa d'Água Revestimentos",
+          url: SITE,
+          telephone: "+5551981969303",
+        },
+        areaServed: [
+          { "@type": "State", name: "Rio Grande do Sul" },
+          { "@type": "State", name: "Santa Catarina" },
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Serviços de impermeabilização",
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Impermeabilização Interna — Geomembrana PVC",
+                description: "Revestimento interno com geomembrana de PVC flexível patenteada. Instalação em 1 dia, sem obra, garantia de 5 anos.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Impermeabilização Externa — Manta Asfáltica",
+                description: "Proteção externa da estrutura com manta asfáltica. Previne infiltrações e aumenta a vida útil do reservatório.",
+              },
+            },
+          ],
+        },
+      }),
+    },
+  ],
+});
 
 // ── Interna images
 import antesI1 from "../assets/Antes 4.jpg";
