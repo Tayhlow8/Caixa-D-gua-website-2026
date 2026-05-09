@@ -66,12 +66,23 @@ const areaTags = [
             rel="noopener noreferrer"
             class="footer-wpp"
           >
-            <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true">
+            <svg
+              class="wsv"
+              viewBox="0 0 600 60"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
               <g class="wg1">
-                <path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/>
+                <path
+                  class="wf1"
+                  d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"
+                />
               </g>
               <g class="wg2">
-                <path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/>
+                <path
+                  class="wf2"
+                  d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"
+                />
               </g>
             </svg>
             <span class="wlbl">
@@ -198,9 +209,7 @@ const areaTags = [
               </div>
               <div class="contact-text">
                 <span class="contact-label">Horário</span>
-                <span class="contact-value"
-                  >Seg–Sex: 08h–18h<br />Sáb: 08h–12h</span
-                >
+                <span class="contact-value">Seg–Sex: 08h–18h<br /></span>
               </div>
             </div>
           </div>
@@ -224,11 +233,13 @@ const areaTags = [
             >© 2026 Caixa d'Água Revestimentos e Impermeabilizações. Todos os
             direitos reservados.</span
           >
-          <span class="footer-cnpj">Registro Vig. Sanitária nº 2561</span>
+          <span class="footer-cnpj"
+            >CNPJ: 00.180.250/0001-50 - Registro Vig. Sanitária nº 2561</span
+          >
         </div>
 
         <div class="footer-legal">
-          <a href="#">Termos de uso</a>
+          <a href="/termos-de-servico">Termos de uso</a>
           <a href="/politica-de-privacidade">Política de privacidade</a>
           <a href="#">Cookies</a>
         </div>
@@ -424,7 +435,9 @@ const areaTags = [
   padding: 8px 14px;
   border-radius: 40px;
   text-decoration: none;
-  transition: color 0.38s ease, border-color 0.25s ease;
+  transition:
+    color 0.38s ease,
+    border-color 0.25s ease;
 }
 
 .footer-wpp:hover {
@@ -483,20 +496,38 @@ const areaTags = [
 }
 
 @keyframes wppRise1 {
-  from { transform: translateY(115%); }
-  to   { transform: translateY(-10%); }
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: translateY(-10%);
+  }
 }
 @keyframes wppRise2 {
-  from { transform: translateY(125%); }
-  to   { transform: translateY(-6%); }
+  from {
+    transform: translateY(125%);
+  }
+  to {
+    transform: translateY(-6%);
+  }
 }
 @keyframes wppBob1 {
-  0%, 100% { transform: translateY(-10%); }
-  50%      { transform: translateY(-14%); }
+  0%,
+  100% {
+    transform: translateY(-10%);
+  }
+  50% {
+    transform: translateY(-14%);
+  }
 }
 @keyframes wppBob2 {
-  0%, 100% { transform: translateY(-6%); }
-  50%      { transform: translateY(-11%); }
+  0%,
+  100% {
+    transform: translateY(-6%);
+  }
+  50% {
+    transform: translateY(-11%);
+  }
 }
 
 .footer-wpp .wf1 {

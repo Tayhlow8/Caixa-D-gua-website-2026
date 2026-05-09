@@ -11,20 +11,45 @@ import BackToTop from "../components/BackToTop.vue";
 const SITE = "https://www.caixadaguarevestimentos.net.br";
 
 useHead({
-  title: "Revestimento de Caixa d'Água em Porto Alegre | Caixa d'Água Revestimentos",
+  title:
+    "Revestimento de Caixa d'Água em Porto Alegre | Caixa d'Água Revestimentos",
   meta: [
-    { name: "description", content: "Especialistas em revestimento interno e impermeabilização de caixa d'água com tecnologia exclusiva de PVC flexível. Atendemos RS e SC. Orçamento grátis!" },
-    { name: "keywords", content: "revestimento caixa d'água, impermeabilização reservatório, revestimento PVC, caixa d'água Porto Alegre, impermeabilização RS SC" },
+    {
+      name: "description",
+      content:
+        "Especialistas em revestimento interno e impermeabilização de caixa d'água com tecnologia exclusiva de PVC flexível. Atendemos RS e SC. Orçamento grátis!",
+    },
+    {
+      name: "keywords",
+      content:
+        "revestimento caixa d'água, impermeabilização reservatório, revestimento PVC, caixa d'água Porto Alegre, impermeabilização RS SC",
+    },
     { name: "robots", content: "index, follow" },
-    { property: "og:title", content: "Revestimento de Caixa d'Água em Porto Alegre | Caixa d'Água Revestimentos" },
-    { property: "og:description", content: "Especialistas em revestimento interno e impermeabilização de caixa d'água com tecnologia exclusiva de PVC flexível. Atendemos RS e SC. Orçamento grátis!" },
+    {
+      property: "og:title",
+      content:
+        "Revestimento de Caixa d'Água em Porto Alegre | Caixa d'Água Revestimentos",
+    },
+    {
+      property: "og:description",
+      content:
+        "Especialistas em revestimento interno e impermeabilização de caixa d'água com tecnologia exclusiva de PVC flexível. Atendemos RS e SC. Orçamento grátis!",
+    },
     { property: "og:url", content: SITE },
     { property: "og:image", content: `${SITE}/og-image.jpg` },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
     { property: "og:type", content: "website" },
-    { name: "twitter:title", content: "Revestimento de Caixa d'Água em Porto Alegre | Caixa d'Água Revestimentos" },
-    { name: "twitter:description", content: "Especialistas em revestimento interno e impermeabilização de caixa d'água com tecnologia exclusiva de PVC flexível. Atendemos RS e SC." },
+    {
+      name: "twitter:title",
+      content:
+        "Revestimento de Caixa d'Água em Porto Alegre | Caixa d'Água Revestimentos",
+    },
+    {
+      name: "twitter:description",
+      content:
+        "Especialistas em revestimento interno e impermeabilização de caixa d'água com tecnologia exclusiva de PVC flexível. Atendemos RS e SC.",
+    },
     { name: "twitter:image", content: `${SITE}/og-image.jpg` },
   ],
   link: [{ rel: "canonical", href: SITE }],
@@ -39,7 +64,8 @@ useHead({
         telephone: "+5551981969303",
         email: "contato@caixadagua.com.br",
         image: `${SITE}/og-image.jpg`,
-        description: "Especialistas em revestimento interno e impermeabilização de caixa d'água com tecnologia exclusiva de PVC flexível patenteada. A única empresa autorizada no Brasil.",
+        description:
+          "Especialistas em revestimento interno e impermeabilização de caixa d'água com tecnologia exclusiva de PVC flexível patenteada. A única empresa autorizada no Brasil.",
         address: {
           "@type": "PostalAddress",
           addressLocality: "Porto Alegre",
@@ -52,8 +78,18 @@ useHead({
         ],
         foundingDate: "1994",
         openingHoursSpecification: [
-          { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "08:00", closes: "18:00" },
-          { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "08:00", closes: "12:00" },
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "08:00",
+            closes: "18:00",
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Saturday"],
+            opens: "08:00",
+            closes: "12:00",
+          },
         ],
         aggregateRating: {
           "@type": "AggregateRating",

@@ -481,7 +481,8 @@ onUnmounted(() => {
 .services-inner {
   position: relative;
   max-width: var(--container-xl);
-  margin: 0 auto;
+  margin: 40px auto;
+  padding-inline: 16px;
 }
 
 .services-inner--grid {
@@ -668,6 +669,7 @@ onUnmounted(() => {
 .feat-cta {
   position: relative;
   overflow: hidden;
+  contain: paint;
   isolation: isolate;
   display: inline-flex;
   align-items: center;
@@ -1232,6 +1234,10 @@ onUnmounted(() => {
     padding: 80px 32px;
   }
 
+  .services-inner {
+    padding-inline: 0;
+  }
+
   .sec-sub {
     margin-bottom: var(--space-12);
   }
@@ -1313,7 +1319,7 @@ onUnmounted(() => {
   .feat-left {
     grid-column: 1;
     grid-row: 1;
-    padding: 52px 48px 44px max(24px, calc((100vw - 1304px) / 2));
+    padding: 52px 48px 44px max(24px, calc((100% - 1304px) / 2));
   }
 
   .feat-carousel-col {
@@ -1345,7 +1351,7 @@ onUnmounted(() => {
     grid-template-columns: repeat(5, 1fr);
     gap: 0;
     border-top: 0.5px solid rgba(255, 255, 255, 0.1);
-    padding-left: max(24px, calc((100vw - 1304px) / 2));
+    padding-left: max(24px, calc((100% - 1304px) / 2));
   }
 
   .feat-specs .tech-block:nth-child(3n) {

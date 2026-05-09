@@ -184,7 +184,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
   display: flex;
   align-items: center;
   gap: 28px;
-  overflow: hidden; /* corta wsv que vaza para fora do nav */
+  /* sem overflow: hidden aqui — cortava o conteúdo em mobile */
 }
 
 .logo {
@@ -252,6 +252,7 @@ nav {
 .btn-wave {
   position: relative;
   overflow: hidden;
+  contain: paint;
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 700;
@@ -408,16 +409,17 @@ nav {
   background: var(--color-navy-deep);
   border-left: 1px solid rgba(0, 184, 240, 0.15);
   padding: 28px 24px;
-  transform: translateX(100%);
+  overflow: hidden;
+  clip-path: inset(0 0 0 100%);
   transition:
-    transform 0.35s var(--ease-spring),
+    clip-path 0.35s var(--ease-spring),
     visibility 0.35s;
   z-index: 999;
   visibility: hidden;
 }
 
 .mob-menu.open {
-  transform: translateX(0);
+  clip-path: inset(0);
   visibility: visible;
 }
 

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../pages/Home.vue'
 import Impermeabilizacao from '../pages/Impermeabilizacao.vue'
 import PoliticaPrivacidade from '../pages/PoliticaPrivacidade.vue'
+import TermosServico from '../pages/TermosServico.vue'
 
 const routes = [
   {
@@ -26,6 +27,14 @@ const routes = [
     meta: {
       title: "Política de Privacidade | Caixa d'Água Revestimentos",
       description: "Política de privacidade e uso de cookies do site Caixa d'Água Revestimentos.",
+    },
+  },
+  {
+    path: '/termos-de-servico',
+    component: TermosServico,
+    meta: {
+      title: "Termos de Serviço | Caixa d'Água Revestimentos",
+      description: "Termos de serviço e condições de uso do site Caixa d'Água Revestimentos.",
     },
   },
 ]

@@ -355,6 +355,7 @@ function scrollToNext() {
 .btn-hero {
   position: relative;
   overflow: hidden;
+  contain: paint;
   isolation: isolate;
   display: inline-flex;
   align-items: center;
@@ -660,7 +661,7 @@ function scrollToNext() {
 /* ── Desktop ── */
 @media (min-width: 900px) {
   .hero {
-    padding: 68px 0 120px max(24px, calc((100vw - 1280px) / 2));
+    padding: 68px 0 120px max(24px, calc((100% - 1280px) / 2));
   }
 
   .hero-inner {

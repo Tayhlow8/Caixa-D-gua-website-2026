@@ -10,11 +10,7 @@
 }
 
 html {
-  overflow-x: clip;
-}
-
-body {
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -28,6 +24,8 @@ body {
   color: var(--text-primary);
   background: var(--bg-surface);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img {

@@ -82,7 +82,12 @@ useHead({
           </section>
         </div>
 
-        <a href="/" class="back-link">← Voltar ao início</a>
+        <div class="privacidade-links">
+          <a href="/termos-de-servico" class="related-link"
+            >→ Termos de Serviço</a
+          >
+          <a href="/" class="back-link">← Voltar ao início</a>
+        </div>
       </div>
     </main>
     <AppFooter />
@@ -159,9 +164,18 @@ useHead({
   text-underline-offset: 2px;
 }
 
-.back-link {
-  display: inline-block;
+.privacidade-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
   margin-top: 56px;
+}
+
+.back-link,
+.related-link {
+  display: inline-block;
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.1em;
@@ -170,7 +184,8 @@ useHead({
   transition: opacity 0.2s ease;
 }
 
-.back-link:hover {
+.back-link:hover,
+.related-link:hover {
   opacity: 0.7;
 }
 </style>

@@ -9,20 +9,45 @@ const SITE = "https://www.caixadaguarevestimentos.net.br";
 const PAGE = `${SITE}/impermeabilizacao`;
 
 useHead({
-  title: "Impermeabilização de Caixa d'Água com Garantia | Caixa d'Água Revestimentos",
+  title:
+    "Impermeabilização de Caixa d'Água com Garantia | Caixa d'Água Revestimentos",
   meta: [
-    { name: "description", content: "Impermeabilização com geomembrana PVC e manta asfáltica. Instalação em 1 dia, 5 anos de garantia, aprovação ANVISA. Atendemos Porto Alegre, RS e SC." },
-    { name: "keywords", content: "impermeabilização caixa d'água, geomembrana PVC, manta asfáltica reservatório, impermeabilização Porto Alegre, garantia 5 anos" },
+    {
+      name: "description",
+      content:
+        "Impermeabilização com geomembrana PVC e manta asfáltica. Instalação em 1 dia, 5 anos de garantia, aprovação ANVISA. Atendemos Porto Alegre, RS e SC.",
+    },
+    {
+      name: "keywords",
+      content:
+        "impermeabilização caixa d'água, geomembrana PVC, manta asfáltica reservatório, impermeabilização Porto Alegre, garantia 5 anos",
+    },
     { name: "robots", content: "index, follow" },
-    { property: "og:title", content: "Impermeabilização de Caixa d'Água com Garantia | Caixa d'Água Revestimentos" },
-    { property: "og:description", content: "Impermeabilização com geomembrana PVC e manta asfáltica. Instalação em 1 dia, 5 anos de garantia, aprovação ANVISA. Atendemos Porto Alegre, RS e SC." },
+    {
+      property: "og:title",
+      content:
+        "Impermeabilização de Caixa d'Água com Garantia | Caixa d'Água Revestimentos",
+    },
+    {
+      property: "og:description",
+      content:
+        "Impermeabilização com geomembrana PVC e manta asfáltica. Instalação em 1 dia, 5 anos de garantia, aprovação ANVISA. Atendemos Porto Alegre, RS e SC.",
+    },
     { property: "og:url", content: PAGE },
     { property: "og:image", content: `${SITE}/og-image.jpg` },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
     { property: "og:type", content: "website" },
-    { name: "twitter:title", content: "Impermeabilização de Caixa d'Água com Garantia | Caixa d'Água Revestimentos" },
-    { name: "twitter:description", content: "Impermeabilização com geomembrana PVC e manta asfáltica. Instalação em 1 dia, 5 anos de garantia, aprovação ANVISA." },
+    {
+      name: "twitter:title",
+      content:
+        "Impermeabilização de Caixa d'Água com Garantia | Caixa d'Água Revestimentos",
+    },
+    {
+      name: "twitter:description",
+      content:
+        "Impermeabilização com geomembrana PVC e manta asfáltica. Instalação em 1 dia, 5 anos de garantia, aprovação ANVISA.",
+    },
     { name: "twitter:image", content: `${SITE}/og-image.jpg` },
   ],
   link: [{ rel: "canonical", href: PAGE }],
@@ -34,7 +59,8 @@ useHead({
         "@type": "Service",
         name: "Impermeabilização de Caixa d'Água",
         url: PAGE,
-        description: "Serviço de impermeabilização interna com geomembrana de PVC flexível patenteada e impermeabilização externa com manta asfáltica. Instalação em 1 dia, garantia de 5 anos, aprovado pela ANVISA.",
+        description:
+          "Serviço de impermeabilização interna com geomembrana de PVC flexível patenteada e impermeabilização externa com manta asfáltica. Instalação em 1 dia, garantia de 5 anos, aprovado pela ANVISA.",
         provider: {
           "@type": "LocalBusiness",
           name: "Caixa d'Água Revestimentos",
@@ -54,7 +80,8 @@ useHead({
               itemOffered: {
                 "@type": "Service",
                 name: "Impermeabilização Interna — Geomembrana PVC",
-                description: "Revestimento interno com geomembrana de PVC flexível patenteada. Instalação em 1 dia, sem obra, garantia de 5 anos.",
+                description:
+                  "Revestimento interno com geomembrana de PVC flexível patenteada. Instalação em 1 dia, sem obra, garantia de 5 anos.",
               },
             },
             {
@@ -62,7 +89,8 @@ useHead({
               itemOffered: {
                 "@type": "Service",
                 name: "Impermeabilização Externa — Manta Asfáltica",
-                description: "Proteção externa da estrutura com manta asfáltica. Previne infiltrações e aumenta a vida útil do reservatório.",
+                description:
+                  "Proteção externa da estrutura com manta asfáltica. Previne infiltrações e aumenta a vida útil do reservatório.",
               },
             },
           ],
@@ -149,8 +177,12 @@ function onTabKeydown(e, currentTab) {
             sem obras, sem entulho — e a caixa liberada para uso no mesmo dia.
           </p>
           <div class="hero-badges" role="list" aria-label="Diferenciais">
-            <span class="badge badge--accent" role="listitem">Aprovado ANVISA</span>
-            <span class="badge badge--accent" role="listitem">Instalação em 1 dia</span>
+            <span class="badge badge--accent" role="listitem"
+              >Aprovado ANVISA</span
+            >
+            <span class="badge badge--accent" role="listitem"
+              >Instalação em 1 dia</span
+            >
             <span class="badge badge--accent" role="listitem"
               >Garantia 5 anos</span
             >
@@ -235,7 +267,8 @@ function onTabKeydown(e, currentTab) {
           @click="switchTab('interna')"
           @keydown="onTabKeydown($event, 'interna')"
         >
-          Impermeabilização Interna
+          <span class="tab-full">Impermeabilização Interna</span>
+          <span class="tab-short" aria-hidden="true">Imp. Interna</span>
         </button>
         <button
           class="tab-btn"
@@ -247,7 +280,8 @@ function onTabKeydown(e, currentTab) {
           @click="switchTab('externa')"
           @keydown="onTabKeydown($event, 'externa')"
         >
-          Impermeabilização Externa
+          <span class="tab-full">Impermeabilização Externa</span>
+          <span class="tab-short" aria-hidden="true">Imp. Externa</span>
         </button>
       </div>
     </div>
@@ -583,7 +617,9 @@ function onTabKeydown(e, currentTab) {
       <section class="sec-content" id="externa">
         <p class="sec-eyebrow" aria-hidden="true">Impermeabilização Externa</p>
         <h2 class="sec-title">
-          Manta asfáltica — proteção<br /><span class="hl">pela face externa</span>
+          Manta asfáltica — proteção<br /><span class="hl"
+            >pela face externa</span
+          >
         </h2>
         <p class="sec-desc">
           Quando o problema está na parte externa do reservatório — umidade no
@@ -1091,6 +1127,14 @@ function onTabKeydown(e, currentTab) {
   font-weight: 500;
 }
 
+.tab-full { display: none; }
+.tab-short { display: inline; }
+
+@media (min-width: 480px) {
+  .tab-full { display: inline; }
+  .tab-short { display: none; }
+}
+
 /* ═══════════════════════════════
    SECTION CONTENT
 ═══════════════════════════════ */
@@ -1395,10 +1439,16 @@ function onTabKeydown(e, currentTab) {
 
 .specs-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 24px;
   position: relative;
   z-index: 1;
+}
+
+@media (min-width: 480px) {
+  .specs-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .spec-label {
