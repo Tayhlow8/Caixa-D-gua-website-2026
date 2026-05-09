@@ -234,74 +234,6 @@ function scrollToNext() {
   padding: 68px 24px 120px;
 }
 
-/* Orbs — muito sutis no fundo claro (opacity 0.16 = Figma) */
-.hero-orbs {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.16;
-  animation: orbDrift ease-in-out infinite alternate;
-}
-
-.orb-1 {
-  width: 500px;
-  height: 500px;
-  background: #00b8f0;
-  left: -120px;
-  top: -60px;
-  animation-duration: 13s;
-}
-.orb-2 {
-  width: 350px;
-  height: 350px;
-  background: #1a6bc4;
-  right: -60px;
-  bottom: 60px;
-  animation-duration: 16s;
-  animation-delay: -5s;
-}
-.orb-3 {
-  width: 280px;
-  height: 280px;
-  background: #00c8f0;
-  left: 38%;
-  top: 25%;
-  animation-duration: 11s;
-  animation-delay: -8s;
-}
-
-@keyframes orbDrift {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  100% {
-    transform: translate(25px, 18px) scale(1.07);
-  }
-}
-
-/* Grid */
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(0, 184, 240, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 184, 240, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(
-    ellipse 90% 90% at 30% 50%,
-    black 0%,
-    transparent 100%
-  );
-}
-
 /* Layout */
 .hero-inner {
   position: relative;
@@ -675,11 +607,14 @@ function scrollToNext() {
   margin-bottom: -120px;
   height: clamp(90px, 15vw, 200px);
   background: linear-gradient(to bottom, #f2f6fb 0%, #0d2a52 100%);
+  overflow: hidden;
+  contain: paint;
 }
 
 .wv-layer {
   position: absolute;
   inset: 0;
+  overflow: hidden;
 }
 
 .wv-track {

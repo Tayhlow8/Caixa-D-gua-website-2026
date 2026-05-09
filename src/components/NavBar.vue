@@ -158,6 +158,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
 .navbar.scrolled .hamburger span {
   background: var(--color-navy-deep);
 }
+
 /* Navbar sobre hero escuro — página impermeabilização */
 .navbar.dark-hero .nav-links a {
   color: rgba(255, 255, 255, 0.75);
@@ -174,6 +175,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
 .navbar.dark-hero .hamburger span {
   background: var(--color-white);
 }
+
 .nav-inner {
   max-width: 1280px;
   margin: 0 auto;
@@ -182,6 +184,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
   display: flex;
   align-items: center;
   gap: 28px;
+  overflow: hidden; /* corta wsv que vaza para fora do nav */
 }
 
 .logo {
@@ -292,7 +295,6 @@ nav {
   transition: color 0.38s;
 }
 
-/* Resting: waves off-screen. Transition handles smooth exit on unhover. */
 .btn-wave .g1 {
   transform: translateY(115%);
   transition: transform 0.55s ease-in;
@@ -302,7 +304,6 @@ nav {
   transition: transform 0.55s ease-in 0.04s;
 }
 
-/* Hover: 1) rise from bottom once  2) bob forever after rise completes */
 .btn-wave:hover .g1 {
   animation:
     waveRise1 0.65s var(--ease-spring) forwards,
@@ -373,6 +374,7 @@ nav {
   border: none;
   cursor: pointer;
   margin-left: auto;
+  flex-shrink: 0;
 }
 
 .hamburger span {
@@ -407,12 +409,16 @@ nav {
   border-left: 1px solid rgba(0, 184, 240, 0.15);
   padding: 28px 24px;
   transform: translateX(100%);
-  transition: transform 0.35s var(--ease-spring);
+  transition:
+    transform 0.35s var(--ease-spring),
+    visibility 0.35s;
   z-index: 999;
+  visibility: hidden;
 }
 
 .mob-menu.open {
   transform: translateX(0);
+  visibility: visible;
 }
 
 .mob-menu ul {
