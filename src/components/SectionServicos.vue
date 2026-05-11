@@ -731,6 +731,12 @@ onUnmounted(() => {
     fcBob2 4s ease-in-out 0.75s infinite;
 }
 
+.feat-cta:focus { outline: none; }
+.feat-cta:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-sky);
+}
+
 .feat-cta__label {
   position: relative;
   z-index: 1;
@@ -1207,6 +1213,12 @@ onUnmounted(() => {
 .card-link:hover {
   color: var(--color-sky);
   gap: 10px;
+}
+.card-link:focus { outline: none; }
+.card-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-fog), 0 0 0 4px var(--color-navy-deep);
+  border-radius: 2px;
 }
 
 .card-link svg {

@@ -211,3 +211,55 @@
    @media (min-width: 1024px) { ... }   lg / desktop
    @media (min-width: 1280px) { ... }   xl
 ──────────────────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────
+   ADIÇÕES v1.1.0
+   Tokens ausentes — adicionados sem quebrar nada existente
+──────────────────────────────────────────────────────────── */
+
+:root {
+  /* Focus ring — acessibilidade */
+  --shadow-focus: 0 0 0 3px rgba(0, 184, 240, 0.35);
+
+  /* Superfícies semânticas */
+  --bg-overlay: rgba(13, 42, 82, 0.6);
+  --bg-subtle: var(--color-cyan-ghost);
+
+  /* Texto inverso muted */
+  --text-on-dark-muted: rgba(255, 255, 255, 0.5);
+
+  /* Bordas semânticas extra */
+  --border-focus: var(--color-sky);
+  --border-subtle: rgba(0, 184, 240, 0.1);
+  --border-inverse: rgba(255, 255, 255, 0.07);
+
+  /* Motion semântico composto */
+  --transition-hover: var(--dur-fast) var(--ease-default);
+  --transition-state: var(--dur-base) var(--ease-default);
+  --transition-overlay: var(--dur-slow) var(--ease-spring);
+  --transition-wave: var(--dur-enter) var(--ease-spring);
+
+  /* Feedback com bg e border */
+  --color-success-bg: var(--color-lacre-light);
+  --color-success-border: var(--color-lacre);
+  --color-success-text: #00735a;
+
+  --color-error-bg: #faeaea;
+  --color-error-border: var(--color-error);
+  --color-error-text: #a32d2d;
+
+  --color-warning-bg: #fef3dc;
+  --color-warning-border: var(--color-warning);
+  --color-warning-text: #7a4a00;
+}
+
+/* Acessibilidade — remove animações se preferência do sistema */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

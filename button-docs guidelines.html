@@ -668,6 +668,75 @@
       }
 
       /* waveSvg template */
+
+      /* ── DISABLED ── */
+      .btn:disabled,
+      .btn[aria-disabled="true"] {
+        opacity: 0.35;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+      .btn:disabled .wsv,
+      .btn[aria-disabled="true"] .wsv { display: none; }
+
+      /* ── LOADING ── */
+      @keyframes spin { to { transform: rotate(360deg); } }
+      .btn--loading { cursor: wait; pointer-events: none; }
+      .btn-spinner {
+        display: none;
+        width: 14px;
+        height: 14px;
+        border: 2px solid rgba(255,255,255,.22);
+        border-top-color: currentColor;
+        border-radius: 50%;
+        animation: spin .65s linear infinite;
+        flex-shrink: 0;
+      }
+      .btn--loading .btn-spinner { display: block; }
+      .btn--outline .btn-spinner,
+      .btn--ghost   .btn-spinner {
+        border-color: rgba(26,74,138,.2);
+        border-top-color: var(--navy);
+      }
+
+      /* ── ERROR STATE ── */
+      @keyframes shake {
+        0%,100% { transform: translateX(0); }
+        20%     { transform: translateX(-5px); }
+        40%     { transform: translateX(5px); }
+        60%     { transform: translateX(-3px); }
+        80%     { transform: translateX(3px); }
+      }
+      .btn--error-state {
+        box-shadow: 0 0 0 2px #D64045, 0 0 0 5px rgba(214,64,69,.18);
+        animation: shake .5s var(--spring) forwards;
+      }
+
+      /* ── FOCUS-VISIBLE ── */
+      .btn:focus { outline: none; }
+      .btn:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--sky);
+      }
+      .btn--outline:focus-visible,
+      .btn--ghost:focus-visible {
+        box-shadow: 0 0 0 2px var(--fog), 0 0 0 4px var(--navy);
+      }
+      /* Static demo helpers — simulate :focus-visible in the doc */
+      .btn--focus-dark  { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--sky); }
+      .btn--focus-light { box-shadow: 0 0 0 2px var(--fog), 0 0 0 4px var(--navy); }
+
+      /* ── STATE OVERVIEW GRID ── */
+      .state-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .state-label {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--iron);
+        margin-bottom: 10px;
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -690,6 +759,13 @@
       <a href="#ghost">Ghost</a>
       <a href="#whatsapp">WhatsApp</a>
       <a href="#semantic">Semânticos</a>
+
+      <span class="ds-nav__section">Estados</span>
+      <a href="#estados">Visão Geral</a>
+      <a href="#disabled">Disabled</a>
+      <a href="#loading">Loading / Busy</a>
+      <a href="#error-state">Error State</a>
+      <a href="#focus-visible">Focus Visible</a>
 
       <span class="ds-nav__section">Tokens</span>
       <a href="#tamanhos">Tamanhos</a>
@@ -1924,9 +2000,365 @@
         </table>
       </section>
 
+      <!-- ── ESTADOS OVERVIEW ── -->
+      <section class="ds-section" id="estados">
+        <p class="eyebrow">10 · Estados</p>
+        <h2 class="sec-title">Estados do Botão</h2>
+        <p class="sec-desc">
+          Além de default e hover, o sistema define quatro estados de interação adicionais — cada um com CSS e atributos ARIA próprios que devem ser implementados em todas as variantes.
+        </p>
+        <div class="state-grid">
+          <div class="ds-card" style="border-left:3px solid rgba(100,130,160,.3);">
+            <span class="state-label">Disabled</span>
+            <div class="btn-row" style="margin-bottom:8px;">
+              <button class="btn btn--sm btn--primary" disabled aria-disabled="true"><span class="blbl">Enviar</span></button>
+              <button class="btn btn--sm btn--cobalt" disabled aria-disabled="true"><span class="blbl">Ver mais</span></button>
+            </div>
+            <div style="font-size:12px;color:var(--iron);">opacity:0.35 · cursor:not-allowed · sem onda</div>
+          </div>
+          <div class="ds-card" style="border-left:3px solid var(--sky);">
+            <span class="state-label">Loading / Busy</span>
+            <div class="btn-row" style="margin-bottom:8px;">
+              <button class="btn btn--sm btn--primary btn--loading" disabled aria-busy="true">
+                <span class="blbl"><span class="btn-spinner" style="display:block;" aria-hidden="true"></span>Enviando...</span>
+              </button>
+              <button class="btn btn--sm btn--cobalt btn--loading" disabled aria-busy="true">
+                <span class="blbl"><span class="btn-spinner" style="display:block;" aria-hidden="true"></span>Carregando...</span>
+              </button>
+            </div>
+            <div style="font-size:12px;color:var(--iron);">spinner 14px · cursor:wait · aria-busy="true"</div>
+          </div>
+          <div class="ds-card" style="border-left:3px solid #D64045;">
+            <span class="state-label">Error State</span>
+            <div class="btn-row" style="margin-bottom:8px;">
+              <button class="btn btn--sm btn--primary btn--error-state">
+                <span class="blbl">Falha — tentar novamente</span>
+              </button>
+            </div>
+            <div style="font-size:12px;color:var(--iron);">ring vermelho 2px + shake · transitório</div>
+          </div>
+          <div class="ds-card" style="border-left:3px solid var(--cobalt);">
+            <span class="state-label">Focus-Visible</span>
+            <div class="btn-row" style="margin-bottom:8px;">
+              <button class="btn btn--sm btn--primary btn--focus-dark"><span class="blbl">Teclado</span></button>
+              <button class="btn btn--sm btn--outline btn--focus-light"><span class="blbl">Teclado</span></button>
+            </div>
+            <div style="font-size:12px;color:var(--iron);">ring duplo · visível apenas via Tab</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── DISABLED ── -->
+      <section class="ds-section" id="disabled">
+        <p class="eyebrow">Estado · Disabled</p>
+        <h2 class="sec-title">Disabled</h2>
+        <p class="sec-desc">
+          Aplicado quando a ação não está disponível — campo obrigatório vazio, limite de tentativas, ou operação em andamento. A opacidade reduzida comunica indisponibilidade sem remover o elemento do layout.
+        </p>
+
+        <div class="ds-card" style="margin-bottom:16px;">
+          <span class="ds-label">Todas as variantes — estado disabled</span>
+          <div class="btn-row">
+            <button class="btn btn--md btn--primary" disabled aria-disabled="true"><span class="blbl">Solicitar Orçamento</span></button>
+            <button class="btn btn--md btn--cobalt" disabled aria-disabled="true"><span class="blbl">Ver Serviços</span></button>
+            <button class="btn btn--md btn--outline" disabled aria-disabled="true"><span class="blbl">Saiba Mais</span></button>
+            <button class="btn btn--md btn--ghost" disabled aria-disabled="true"><span class="blbl">Ver Todos →</span></button>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr><th>Propriedade</th><th>Valor</th></tr>
+          <tr>
+            <td>opacity</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">0.35</code></td>
+          </tr>
+          <tr>
+            <td>cursor</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">not-allowed</code></td>
+          </tr>
+          <tr>
+            <td>pointer-events</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">none</code></td>
+          </tr>
+          <tr>
+            <td>Onda (wsv)</td>
+            <td>Oculta — <code style="font-family:var(--font-m);font-size:11px">display:none</code> no estado disabled</td>
+          </tr>
+          <tr>
+            <td>HTML obrigatório</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">disabled</code> + <code style="font-family:var(--font-m);font-size:11px">aria-disabled="true"</code></td>
+          </tr>
+          <tr>
+            <td>Regra</td>
+            <td>Nunca remover o botão do DOM — manter visível e desabilitado. Considerar tooltip explicando o motivo.</td>
+          </tr>
+        </table>
+
+        <div class="code" style="margin-top:16px;">
+<span class="cc">/* CSS */</span>
+<span class="ck">.btn:disabled</span>,
+<span class="ck">.btn[aria-disabled="true"]</span> {
+  <span class="ck">opacity</span>: <span class="cv">0.35</span>;
+  <span class="ck">cursor</span>: <span class="cv">not-allowed</span>;
+  <span class="ck">pointer-events</span>: <span class="cv">none</span>;
+}
+<span class="ck">.btn:disabled .wsv</span>,
+<span class="ck">.btn[aria-disabled="true"] .wsv</span> { <span class="ck">display</span>: <span class="cv">none</span>; }
+
+<span class="cc">/* HTML */</span>
+&lt;<span class="ck">button</span> <span class="cv">class</span>="btn btn--md btn--primary"
+         <span class="cv">disabled</span>
+         <span class="cv">aria-disabled</span>="true"&gt;
+  &lt;<span class="ck">span</span> <span class="cv">class</span>="blbl"&gt;Solicitar Orçamento&lt;/<span class="ck">span</span>&gt;
+&lt;/<span class="ck">button</span>&gt;
+        </div>
+      </section>
+
+      <!-- ── LOADING ── -->
+      <section class="ds-section" id="loading">
+        <p class="eyebrow">Estado · Loading</p>
+        <h2 class="sec-title">Loading / Busy</h2>
+        <p class="sec-desc">
+          Aplicado imediatamente após o clique em botões que disparam operações assíncronas — envio de formulário, chamada de API. O spinner fica inline com o texto dentro de <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">.blbl</code>, mantendo z-index sobre a onda SVG.
+        </p>
+
+        <div class="ds-card" style="margin-bottom:16px;">
+          <span class="ds-label">Loading em variantes principais</span>
+          <div class="btn-row">
+            <button class="btn btn--md btn--primary btn--loading" disabled aria-busy="true">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+              <span class="blbl"><span class="btn-spinner" aria-hidden="true"></span>Enviando...</span>
+            </button>
+            <button class="btn btn--md btn--cobalt btn--loading" disabled aria-busy="true">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+              <span class="blbl"><span class="btn-spinner" aria-hidden="true"></span>Carregando...</span>
+            </button>
+            <button class="btn btn--md btn--outline btn--loading" disabled aria-busy="true">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+              <span class="blbl"><span class="btn-spinner" aria-hidden="true"></span>Processando...</span>
+            </button>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr><th>Propriedade</th><th>Valor</th></tr>
+          <tr>
+            <td>cursor</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">wait</code></td>
+          </tr>
+          <tr>
+            <td>pointer-events</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">none</code></td>
+          </tr>
+          <tr>
+            <td>Spinner — tamanho</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">14×14px</code></td>
+          </tr>
+          <tr>
+            <td>Spinner — borda</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">2px solid rgba(255,255,255,.22)</code> · top: currentColor</td>
+          </tr>
+          <tr>
+            <td>Spinner — animação</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">spin .65s linear infinite</code></td>
+          </tr>
+          <tr>
+            <td>Texto</td>
+            <td>Manter legível — "Enviando...", "Processando...", "Carregando..."</td>
+          </tr>
+          <tr>
+            <td>ARIA</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">aria-busy="true"</code> + <code style="font-family:var(--font-m);font-size:11px">disabled</code></td>
+          </tr>
+          <tr>
+            <td>Variantes claras</td>
+            <td>Spinner em navy — <code style="font-family:var(--font-m);font-size:11px">border-top-color: var(--navy)</code></td>
+          </tr>
+        </table>
+
+        <div class="code" style="margin-top:16px;">
+<span class="cc">/* CSS */</span>
+<span class="ck">@keyframes</span> spin { <span class="ck">to</span> { <span class="ck">transform</span>: <span class="cv">rotate(360deg)</span>; } }
+
+<span class="ck">.btn--loading</span> { <span class="ck">cursor</span>: <span class="cv">wait</span>; <span class="ck">pointer-events</span>: <span class="cv">none</span>; }
+
+<span class="ck">.btn-spinner</span> {
+  <span class="ck">display</span>: <span class="cv">none</span>;
+  <span class="ck">width</span>: <span class="cv">14px</span>; <span class="ck">height</span>: <span class="cv">14px</span>;
+  <span class="ck">border</span>: <span class="cv">2px solid rgba(255,255,255,.22)</span>;
+  <span class="ck">border-top-color</span>: <span class="cv">currentColor</span>;
+  <span class="ck">border-radius</span>: <span class="cv">50%</span>;
+  <span class="ck">animation</span>: <span class="cv">spin .65s linear infinite</span>;
+  <span class="ck">flex-shrink</span>: <span class="cv">0</span>;
+}
+<span class="ck">.btn--loading .btn-spinner</span> { <span class="ck">display</span>: <span class="cv">block</span>; }
+
+<span class="cc">/* Variantes claras — spinner em navy */</span>
+<span class="ck">.btn--outline .btn-spinner</span>,
+<span class="ck">.btn--ghost   .btn-spinner</span> {
+  <span class="ck">border-color</span>: <span class="cv">rgba(26,74,138,.2)</span>;
+  <span class="ck">border-top-color</span>: <span class="cv">var(--navy)</span>;
+}
+
+<span class="cc">/* HTML */</span>
+&lt;<span class="ck">button</span> <span class="cv">class</span>="btn btn--md btn--primary btn--loading"
+         <span class="cv">disabled</span> <span class="cv">aria-busy</span>="true"&gt;
+  &lt;<span class="ck">svg</span> <span class="cv">class</span>="wsv" ...&gt;...&lt;/<span class="ck">svg</span>&gt;
+  &lt;<span class="ck">span</span> <span class="cv">class</span>="blbl"&gt;
+    &lt;<span class="ck">span</span> <span class="cv">class</span>="btn-spinner" <span class="cv">aria-hidden</span>="true"&gt;&lt;/<span class="ck">span</span>&gt;
+    Enviando...
+  &lt;/<span class="ck">span</span>&gt;
+&lt;/<span class="ck">button</span>&gt;
+        </div>
+      </section>
+
+      <!-- ── ERROR STATE ── -->
+      <section class="ds-section" id="error-state">
+        <p class="eyebrow">Estado · Error</p>
+        <h2 class="sec-title">Error State</h2>
+        <p class="sec-desc">
+          Aplicado temporariamente quando uma ação falha — envio mal-sucedido, timeout, erro de validação. Diferente do <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">btn--danger</code> (variante permanente de ação destrutiva), o error state é transitório: desaparece após 2–3s ou quando o usuário tenta novamente.
+        </p>
+
+        <div class="ds-card" style="margin-bottom:16px;">
+          <span class="ds-label">Error state — borda vermelha + shake (recarregue para rever a animação)</span>
+          <div class="btn-row">
+            <button class="btn btn--md btn--primary btn--error-state">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+              <span class="blbl">Falha no envio — tentar novamente</span>
+            </button>
+            <button class="btn btn--md btn--cobalt btn--error-state">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+              <span class="blbl">Erro — tentar novamente</span>
+            </button>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr><th>Propriedade</th><th>Valor</th></tr>
+          <tr>
+            <td>box-shadow</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">0 0 0 2px #D64045, 0 0 0 5px rgba(214,64,69,.18)</code></td>
+          </tr>
+          <tr>
+            <td>animation</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">shake .5s var(--spring) forwards</code></td>
+          </tr>
+          <tr>
+            <td>Duração</td>
+            <td>2–3s — remover a classe via JS após timeout</td>
+          </tr>
+          <tr>
+            <td>vs btn--danger</td>
+            <td>Error state é transitório + sobrepõe qualquer variante. btn--danger é variante permanente de ação destrutiva.</td>
+          </tr>
+          <tr>
+            <td>ARIA</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">role="alert"</code> no container da mensagem de erro adjacente</td>
+          </tr>
+        </table>
+
+        <div class="code" style="margin-top:16px;">
+<span class="cc">/* CSS */</span>
+<span class="ck">@keyframes</span> shake {
+  <span class="ck">0%</span>,<span class="ck">100%</span> { <span class="ck">transform</span>: <span class="cv">translateX(0)</span>; }
+  <span class="ck">20%</span>      { <span class="ck">transform</span>: <span class="cv">translateX(-5px)</span>; }
+  <span class="ck">40%</span>      { <span class="ck">transform</span>: <span class="cv">translateX(5px)</span>; }
+  <span class="ck">60%</span>      { <span class="ck">transform</span>: <span class="cv">translateX(-3px)</span>; }
+  <span class="ck">80%</span>      { <span class="ck">transform</span>: <span class="cv">translateX(3px)</span>; }
+}
+<span class="ck">.btn--error-state</span> {
+  <span class="ck">box-shadow</span>: <span class="cv">0 0 0 2px #D64045, 0 0 0 5px rgba(214,64,69,.18)</span>;
+  <span class="ck">animation</span>: <span class="cv">shake .5s var(--spring) forwards</span>;
+}
+
+<span class="cc">/* JS — aplicar e auto-remover após 2.5s */</span>
+<span class="ck">function</span> <span class="cv">setError</span>(btn) {
+  btn.classList.<span class="cv">add</span>(<span class="cv">'btn--error-state'</span>);
+  setTimeout(() => btn.classList.<span class="cv">remove</span>(<span class="cv">'btn--error-state'</span>), <span class="cv">2500</span>);
+}
+        </div>
+      </section>
+
+      <!-- ── FOCUS-VISIBLE ── -->
+      <section class="ds-section" id="focus-visible">
+        <p class="eyebrow">Estado · Focus-Visible</p>
+        <h2 class="sec-title">Focus-Visible</h2>
+        <p class="sec-desc">
+          Visível apenas na navegação por teclado (Tab / Shift+Tab) — nunca no clique com mouse. Usa <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">box-shadow</code> em vez de <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">outline</code> para respeitar o <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">border-radius:40px</code> do botão. WCAG 2.1 AA exige ≥3:1 de contraste do ring contra o background adjacente.
+        </p>
+
+        <div class="ds-card" style="margin-bottom:16px;">
+          <span class="ds-label">Dark variants — ring branco 2px + sky 4px</span>
+          <div class="btn-row" style="margin-bottom:20px;">
+            <button class="btn btn--md btn--primary btn--focus-dark">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+              <span class="blbl">Primary em foco</span>
+            </button>
+            <button class="btn btn--md btn--cobalt btn--focus-dark">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+              <span class="blbl">Cobalt em foco</span>
+            </button>
+          </div>
+          <span class="ds-label">Light variants — ring névoa 2px + navy 4px</span>
+          <div class="btn-row">
+            <button class="btn btn--md btn--outline btn--focus-light">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+              <span class="blbl">Outline em foco</span>
+            </button>
+            <button class="btn btn--md btn--ghost btn--focus-light">
+              <svg class="wsv" viewBox="0 0 600 60" preserveAspectRatio="none"><g class="wg1"><path class="wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g><g class="wg2"><path class="wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g></svg>
+              <span class="blbl">Ghost em foco</span>
+            </button>
+          </div>
+          <div style="font-family:var(--font-m);font-size:9px;color:var(--iron);margin-top:12px;">Acima é simulado — navegue com Tab para ver o ring real no browser</div>
+        </div>
+
+        <table class="spec-table">
+          <tr><th>Grupo de variante</th><th>box-shadow</th></tr>
+          <tr>
+            <td>Primary · Cobalt · Outline Dark · WA · Danger · Success</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">0 0 0 2px #fff, 0 0 0 4px var(--sky)</code></td>
+          </tr>
+          <tr>
+            <td>Outline Light · Ghost</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">0 0 0 2px var(--fog), 0 0 0 4px var(--navy)</code></td>
+          </tr>
+          <tr>
+            <td>outline nativo</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">none</code> — box-shadow segue o border-radius do botão</td>
+          </tr>
+          <tr>
+            <td>Não aparece com</td>
+            <td>Click de mouse — <code style="font-family:var(--font-m);font-size:11px">:focus-visible</code> é nativo para navegação por teclado</td>
+          </tr>
+          <tr>
+            <td>WCAG AA</td>
+            <td>Ring duplo de 2px + 4px garante contraste ≥3:1 contra backgrounds navy e névoa</td>
+          </tr>
+        </table>
+
+        <div class="code" style="margin-top:16px;">
+<span class="cc">/* Remover outline nativo em todos os estados de foco */</span>
+<span class="ck">.btn:focus</span> { <span class="ck">outline</span>: <span class="cv">none</span>; }
+
+<span class="cc">/* Default (dark variants) — ring branco + sky */</span>
+<span class="ck">.btn:focus-visible</span> {
+  <span class="ck">outline</span>: <span class="cv">none</span>;
+  <span class="ck">box-shadow</span>: <span class="cv">0 0 0 2px #fff, 0 0 0 4px var(--sky)</span>;
+}
+
+<span class="cc">/* Light variants override */</span>
+<span class="ck">.btn--outline:focus-visible</span>,
+<span class="ck">.btn--ghost:focus-visible</span> {
+  <span class="ck">box-shadow</span>: <span class="cv">0 0 0 2px var(--fog), 0 0 0 4px var(--navy)</span>;
+}
+        </div>
+      </section>
+
       <!-- ── TAMANHOS ── -->
       <section class="ds-section" id="tamanhos">
-        <p class="eyebrow">10 · Tokens</p>
+        <p class="eyebrow">11 · Tokens</p>
         <h2 class="sec-title">Tamanhos</h2>
         <p class="sec-desc">
           Três tamanhos com especificações extraídas do Figma. O Large é
@@ -2088,7 +2520,7 @@
 
       <!-- ── REGRAS ── -->
       <section class="ds-section" id="regras">
-        <p class="eyebrow">11 · Diretrizes</p>
+        <p class="eyebrow">12 · Diretrizes</p>
         <h2 class="sec-title">Regras de Uso</h2>
         <p class="sec-desc">
           As regras abaixo garantem consistência e hierarquia visual em todo o

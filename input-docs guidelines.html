@@ -1,0 +1,1455 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aqua DS — Documentação de Input</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Lato:wght@300;400;700&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy-deep: #0d2a52;
+        --navy:      #1a4a8a;
+        --cobalt:    #1a6bc4;
+        --sky:       #00b8f0;
+        --cyan:      #00c8f0;
+        --cyan-light:#7adcf5;
+        --cyan-pale: #c6f0fb;
+        --cyan-ghost:#e0f6fd;
+        --lacre:     #00d4aa;
+        --lacre-light:#ccfaf0;
+        --white:     #ffffff;
+        --fog:       #f2f6fb;
+        --mist:      #dde8f5;
+        --iron:      #6b82a0;
+        --steel:     #3a5270;
+        --text:      #0a1e35;
+        --error:     #d64045;
+        --font-d: "Syne", sans-serif;
+        --font-b: "Lato", sans-serif;
+        --font-m: "DM Mono", monospace;
+        --spring: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: var(--font-b);
+        background: var(--fog);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.6;
+      }
+
+      /* ── NAV ── */
+      .ds-nav {
+        position: fixed;
+        top: 0; left: 0; bottom: 0;
+        width: 220px;
+        background: var(--navy-deep);
+        padding: 32px 0;
+        overflow-y: auto;
+        z-index: 100;
+        border-right: 1px solid rgba(0,184,240,.1);
+      }
+      .ds-nav__logo {
+        padding: 0 24px 28px;
+        border-bottom: .5px solid rgba(255,255,255,.07);
+        margin-bottom: 20px;
+      }
+      .ds-nav__logo-name {
+        font-family: var(--font-d);
+        font-size: 13px;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -.3px;
+        display: block;
+        margin-bottom: 2px;
+      }
+      .ds-nav__logo-ver {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--sky);
+      }
+      .ds-nav__section {
+        font-family: var(--font-m);
+        font-size: 8px;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.25);
+        padding: 0 24px 8px;
+        margin-top: 20px;
+        display: block;
+      }
+      .ds-nav a {
+        display: block;
+        font-family: var(--font-b);
+        font-size: 13px;
+        color: rgba(255,255,255,.5);
+        text-decoration: none;
+        padding: 8px 24px;
+        transition: color .2s, background .2s;
+        border-left: 2px solid transparent;
+      }
+      .ds-nav a:hover { color: #fff; background: rgba(255,255,255,.04); }
+      .ds-nav a.active { color: var(--sky); border-left-color: var(--sky); background: rgba(0,184,240,.06); }
+
+      /* ── MAIN ── */
+      .ds-main { margin-left: 220px; padding: 48px; max-width: 1050px; }
+
+      /* ── SECTION ── */
+      .ds-section { margin-bottom: 80px; scroll-margin-top: 32px; }
+      .eyebrow {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: .22em;
+        text-transform: uppercase;
+        color: var(--sky);
+        margin-bottom: 6px;
+      }
+      .sec-title {
+        font-family: var(--font-d);
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--navy-deep);
+        letter-spacing: -.03em;
+        margin-bottom: 8px;
+      }
+      .sec-desc {
+        font-size: 14px;
+        color: var(--steel);
+        max-width: 600px;
+        line-height: 1.65;
+        margin-bottom: 32px;
+        font-weight: 300;
+      }
+      .ds-card {
+        background: #fff;
+        border-radius: 4px;
+        border: .5px solid var(--mist);
+        padding: 28px;
+        margin-bottom: 16px;
+      }
+      .ds-card--dark {
+        background: var(--navy-deep);
+        border-color: rgba(0,184,240,.12);
+      }
+      .ds-label {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--iron);
+        margin-bottom: 14px;
+        display: block;
+      }
+      .ds-label--light { color: rgba(255,255,255,.3); }
+      .code {
+        background: #0d1b2a;
+        border-radius: 4px;
+        padding: 16px 20px;
+        font-family: var(--font-m);
+        font-size: 11px;
+        line-height: 1.8;
+        color: #7adcf5;
+        overflow-x: auto;
+        margin-top: 12px;
+      }
+      .ck { color: #00c8f0; }
+      .cv { color: #b8e0ff; }
+      .cc { color: rgba(255,255,255,.3); }
+
+      /* ── SPEC TABLE ── */
+      .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+      .spec-table th {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--iron);
+        text-align: left;
+        padding: 8px 12px;
+        border-bottom: 1px solid var(--mist);
+      }
+      .spec-table td {
+        padding: 11px 12px;
+        border-bottom: .5px solid var(--mist);
+        color: var(--steel);
+        vertical-align: top;
+        line-height: 1.5;
+      }
+      .spec-table td:first-child {
+        font-family: var(--font-m);
+        font-size: 11px;
+        color: var(--cobalt);
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .spec-table tr:last-child td { border-bottom: none; }
+
+      /* ── DO / DONT ── */
+      .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .do-card {
+        background: var(--lacre-light);
+        border-left: 3px solid var(--lacre);
+        padding: 16px 18px;
+        border-radius: 0 4px 4px 0;
+      }
+      .dont-card {
+        background: #faeaea;
+        border-left: 3px solid var(--error);
+        padding: 16px 18px;
+        border-radius: 0 4px 4px 0;
+      }
+      .do-title {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: #00735a;
+        margin-bottom: 10px;
+      }
+      .dont-title {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: #a32d2d;
+        margin-bottom: 10px;
+      }
+      ul.rule-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+      ul.rule-list li { font-size: 12px; color: var(--steel); display: flex; gap: 7px; line-height: 1.45; }
+      ul.rule-list li::before { flex-shrink: 0; }
+      .do-card ul.rule-list li::before   { content: "✓"; color: var(--lacre); }
+      .dont-card ul.rule-list li::before { content: "✗"; color: var(--error); }
+
+      /* ── TAG ── */
+      .tag {
+        display: inline-block;
+        font-family: var(--font-m);
+        font-size: 9px;
+        padding: 2px 7px;
+        border-radius: 2px;
+        margin: 2px 2px 2px 0;
+      }
+      .tag--ok  { background: var(--lacre-light); color: #00735a; border: 1px solid var(--lacre); }
+      .tag--no  { background: #faeaea; color: #a32d2d; border: 1px solid var(--error); }
+      .tag--sky { background: var(--cyan-ghost); color: var(--navy); border: 1px solid var(--cyan-light); }
+
+      /* ══════════════════════════════════════
+         INPUT COMPONENT SYSTEM
+      ══════════════════════════════════════ */
+
+      /* Base wrapper */
+      .inp-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+        max-width: 380px;
+      }
+
+      /* Label */
+      .inp-label {
+        font-family: var(--font-m);
+        font-size: 10px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--steel);
+        line-height: 1.4;
+      }
+      .inp-label--required::after {
+        content: ' *';
+        color: var(--sky);
+        font-size: 10px;
+      }
+
+      /* Field container (for prefix/suffix positioning) */
+      .inp-field-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      /* The input element */
+      .inp {
+        width: 100%;
+        font-family: var(--font-b);
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--text);
+        background: var(--white);
+        border: 1.5px solid var(--mist);
+        border-radius: 4px;
+        padding: 12px 16px;
+        min-height: 48px;
+        outline: none;
+        transition: border-color .2s ease, box-shadow .2s ease;
+        -webkit-font-smoothing: antialiased;
+        appearance: none;
+      }
+      .inp::placeholder {
+        color: var(--iron);
+        font-weight: 300;
+      }
+
+      /* States — real (interactive) */
+      .inp:hover:not(:disabled):not(.inp--error) {
+        border-color: var(--cobalt);
+      }
+      .inp:focus:not(.inp--error) {
+        border-color: var(--sky);
+        box-shadow: 0 0 0 3px rgba(0,184,240,.12);
+      }
+      .inp:disabled {
+        opacity: .4;
+        cursor: not-allowed;
+        background: var(--fog);
+      }
+      .inp--error {
+        border-color: var(--error);
+      }
+      .inp--error:focus {
+        border-color: var(--error);
+        box-shadow: 0 0 0 3px rgba(214,64,69,.12);
+      }
+
+      /* States — static demo helpers */
+      .inp--s-hover  { border-color: var(--cobalt); }
+      .inp--s-focus  { border-color: var(--sky); box-shadow: 0 0 0 3px rgba(0,184,240,.12); }
+      .inp--s-filled { border-color: var(--mist); color: var(--text); }
+      .inp--s-disabled { opacity: .4; cursor: not-allowed; background: var(--fog); pointer-events: none; }
+
+      /* Helper / error text */
+      .inp-helper {
+        font-family: var(--font-b);
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--iron);
+        line-height: 1.45;
+      }
+      .inp-helper--error { color: var(--error); }
+      .inp-helper--ok    { color: var(--lacre); }
+
+      /* Prefix icon */
+      .inp-prefix {
+        position: absolute;
+        left: 14px;
+        display: flex;
+        align-items: center;
+        color: var(--iron);
+        pointer-events: none;
+      }
+      .inp-prefix svg { width: 16px; height: 16px; }
+
+      /* Suffix unit label */
+      .inp-suffix {
+        position: absolute;
+        right: 14px;
+        font-family: var(--font-m);
+        font-size: 10px;
+        letter-spacing: .08em;
+        color: var(--steel);
+        pointer-events: none;
+        white-space: nowrap;
+      }
+
+      /* Padding compensation */
+      .inp--has-prefix { padding-left: 42px; }
+      .inp--has-suffix { padding-right: 52px; }
+
+      /* Textarea variant */
+      .inp--textarea {
+        min-height: 120px;
+        resize: vertical;
+        padding-top: 14px;
+        line-height: 1.65;
+      }
+
+      /* Footer row (helper + char count) */
+      .inp-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .inp-char-count {
+        font-family: var(--font-m);
+        font-size: 10px;
+        color: var(--iron);
+        letter-spacing: .06em;
+        flex-shrink: 0;
+        margin-left: 8px;
+      }
+      .inp-char-count--warn { color: #e8a020; }
+      .inp-char-count--over { color: var(--error); }
+
+      /* Error icon inside field */
+      .inp-icon-error {
+        position: absolute;
+        right: 14px;
+        display: flex;
+        align-items: center;
+        color: var(--error);
+        pointer-events: none;
+      }
+      .inp-icon-error svg { width: 16px; height: 16px; }
+
+      /* ── ANATOMY DIAGRAM ── */
+      .anatomy-wrap { position: relative; padding: 20px; }
+      .anatomy-input-demo { max-width: 340px; }
+      .anno-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 8px 0;
+      }
+      .anno-line {
+        width: 40px;
+        height: 1px;
+        background: var(--sky);
+        opacity: .5;
+        flex-shrink: 0;
+      }
+      .anno-text {
+        font-family: var(--font-m);
+        font-size: 9px;
+        color: var(--sky);
+        white-space: nowrap;
+      }
+
+      /* ── STATES GRID ── */
+      .states-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .state-cell { display: flex; flex-direction: column; gap: 6px; }
+      .state-cell-label {
+        font-family: var(--font-m);
+        font-size: 9px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--iron);
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .ds-nav { display: none; }
+        .ds-main { margin-left: 0; padding: 24px; }
+        .grid-2 { grid-template-columns: 1fr; }
+        .states-grid { grid-template-columns: 1fr 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- SIDEBAR -->
+    <nav class="ds-nav" id="nav">
+      <div class="ds-nav__logo">
+        <span class="ds-nav__logo-name">Aqua DS</span>
+        <span class="ds-nav__logo-ver">Input · v1.0</span>
+      </div>
+
+      <span class="ds-nav__section">Visão Geral</span>
+      <a href="#intro" class="active">Introdução</a>
+      <a href="#anatomia">Anatomia</a>
+      <a href="#quando">Quando usar</a>
+
+      <span class="ds-nav__section">Variantes</span>
+      <a href="#default">Default</a>
+      <a href="#prefix-suffix">Prefixo / Sufixo</a>
+      <a href="#textarea">Área de Texto</a>
+
+      <span class="ds-nav__section">Estados</span>
+      <a href="#estados">Todos os estados</a>
+      <a href="#validacao">Validação</a>
+
+      <span class="ds-nav__section">Referência</span>
+      <a href="#tokens">Tokens</a>
+      <a href="#a11y">Acessibilidade</a>
+      <a href="#regras">Regras de uso</a>
+    </nav>
+
+    <main class="ds-main">
+
+      <!-- ── INTRO ── -->
+      <section class="ds-section" id="intro">
+        <p class="eyebrow">Aqua DS · Componentes</p>
+        <h1 class="sec-title">Input</h1>
+        <p class="sec-desc">
+          Campo de texto para coleta de dados do usuário. Sharp-edge, minimalista, com feedback visual preciso em cada estado de interação. Desenvolvido para o formulário de contato e orçamento — o ponto de conversão crítico do site.
+        </p>
+
+        <div class="ds-card" style="background:var(--navy-deep);margin-bottom:16px;">
+          <span class="ds-label ds-label--light" style="margin-bottom:20px;">Prévia — variantes e estados</span>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div class="inp-wrap">
+              <label class="inp-label inp-label--required">Nome completo</label>
+              <div class="inp-field-wrap">
+                <input class="inp" type="text" placeholder="Ex.: João da Silva" />
+              </div>
+              <span class="inp-helper">Como consta no documento</span>
+            </div>
+            <div class="inp-wrap">
+              <label class="inp-label inp-label--required">Telefone</label>
+              <div class="inp-field-wrap">
+                <span class="inp-prefix">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 6.338c0 9.15 7.162 16.312 16.313 16.312.343 0 .682-.012 1.019-.036l.006-.001a1.5 1.5 0 001.38-1.493V19.5a1.5 1.5 0 00-1.125-1.453l-2.893-.723a1.5 1.5 0 00-1.595.61l-.3.45c-.22.33-.623.476-.985.384a12.022 12.022 0 01-6.07-6.07.75.75 0 01.384-.985l.45-.3a1.5 1.5 0 00.61-1.595l-.723-2.892A1.5 1.5 0 006.5 4.5H4.688a1.5 1.5 0 00-1.493 1.38 16.51 16.51 0 00-.945 3.459z"/></svg>
+                </span>
+                <input class="inp inp--has-prefix" type="tel" placeholder="(51) 99999-9999" />
+              </div>
+            </div>
+            <div class="inp-wrap">
+              <label class="inp-label">Cidade</label>
+              <div class="inp-field-wrap">
+                <input class="inp inp--s-focus" type="text" value="Porto Alegre" />
+              </div>
+              <span class="inp-helper">Campo em foco</span>
+            </div>
+            <div class="inp-wrap">
+              <label class="inp-label">CEP</label>
+              <div class="inp-field-wrap">
+                <input class="inp inp--error" type="text" value="9999-000" />
+                <span class="inp-icon-error">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd"/></svg>
+                </span>
+              </div>
+              <span class="inp-helper inp-helper--error">CEP inválido — use o formato 99999-999</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── ANATOMIA ── -->
+      <section class="ds-section" id="anatomia">
+        <p class="eyebrow">01 · Estrutura</p>
+        <h2 class="sec-title">Anatomia</h2>
+        <p class="sec-desc">
+          Todo campo é composto por 4 camadas verticais. Label e helper text são obrigatórios — nunca use placeholder como substituto de label.
+        </p>
+
+        <div class="ds-card" style="overflow:visible;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+            <!-- Visual annotated demo -->
+            <div>
+              <!-- Label annotation -->
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+                <div style="width:3px;height:20px;background:rgba(0,184,240,.4);border-radius:2px;flex-shrink:0;"></div>
+                <span style="font-family:var(--font-m);font-size:9px;color:var(--sky);">.inp-label</span>
+              </div>
+              <div style="padding-left:13px;">
+                <div class="inp-wrap" style="max-width:100%;">
+                  <label class="inp-label inp-label--required">Mensagem</label>
+                  <!-- Field wrap annotation -->
+                  <div style="position:relative;">
+                    <div style="position:absolute;left:-13px;top:0;bottom:0;width:3px;background:rgba(0,184,240,.4);border-radius:2px;"></div>
+                    <div style="position:absolute;left:-80px;top:50%;transform:translateY(-50%);font-family:var(--font-m);font-size:9px;color:var(--sky);white-space:nowrap;display:none;"></div>
+                    <div class="inp-field-wrap">
+                      <input class="inp inp--s-focus" type="text" value="Preciso de orçamento" />
+                    </div>
+                  </div>
+                  <span class="inp-helper">Descreva o problema da sua caixa d'água</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;margin-top:6px;">
+                  <div style="width:3px;height:20px;background:rgba(0,184,240,.2);border-radius:2px;flex-shrink:0;"></div>
+                  <span style="font-family:var(--font-m);font-size:9px;color:rgba(0,184,240,.6);">.inp-helper</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Annotation legend -->
+            <div style="display:flex;flex-direction:column;gap:16px;padding-top:4px;">
+              <div style="border:.5px solid var(--mist);border-radius:4px;padding:16px;">
+                <div style="font-family:var(--font-m);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--iron);margin-bottom:12px;">4 camadas</div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <div style="display:flex;align-items:baseline;gap:10px;">
+                    <span style="font-family:var(--font-m);font-size:10px;color:var(--cobalt);min-width:100px;">.inp-label</span>
+                    <span style="font-size:12px;color:var(--steel);">Label obrigatório acima do campo</span>
+                  </div>
+                  <div style="display:flex;align-items:baseline;gap:10px;">
+                    <span style="font-family:var(--font-m);font-size:10px;color:var(--cobalt);min-width:100px;">.inp-field-wrap</span>
+                    <span style="font-size:12px;color:var(--steel);">Container relativo para prefix/suffix</span>
+                  </div>
+                  <div style="display:flex;align-items:baseline;gap:10px;">
+                    <span style="font-family:var(--font-m);font-size:10px;color:var(--cobalt);min-width:100px;">.inp</span>
+                    <span style="font-size:12px;color:var(--steel);">O elemento <code style="font-size:10px;font-family:var(--font-m);">&lt;input&gt;</code> nativo</span>
+                  </div>
+                  <div style="display:flex;align-items:baseline;gap:10px;">
+                    <span style="font-family:var(--font-m);font-size:10px;color:var(--cobalt);min-width:100px;">.inp-helper</span>
+                    <span style="font-size:12px;color:var(--steel);">Texto auxiliar ou erro abaixo</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="border:.5px solid var(--mist);border-radius:4px;padding:16px;">
+                <div style="font-family:var(--font-m);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--iron);margin-bottom:10px;">Medidas</div>
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div style="display:flex;justify-content:space-between;font-size:12px;">
+                    <span style="color:var(--steel);">min-height</span>
+                    <code style="font-family:var(--font-m);font-size:10px;color:var(--cobalt);">48px</code>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-size:12px;">
+                    <span style="color:var(--steel);">padding</span>
+                    <code style="font-family:var(--font-m);font-size:10px;color:var(--cobalt);">12px 16px</code>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-size:12px;">
+                    <span style="color:var(--steel);">border-radius</span>
+                    <code style="font-family:var(--font-m);font-size:10px;color:var(--cobalt);">4px</code>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-size:12px;">
+                    <span style="color:var(--steel);">border</span>
+                    <code style="font-family:var(--font-m);font-size:10px;color:var(--cobalt);">1.5px solid</code>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-size:12px;">
+                    <span style="color:var(--steel);">gap label→field</span>
+                    <code style="font-family:var(--font-m);font-size:10px;color:var(--cobalt);">6px</code>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-size:12px;">
+                    <span style="color:var(--steel);">gap field→helper</span>
+                    <code style="font-family:var(--font-m);font-size:10px;color:var(--cobalt);">6px</code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="code" style="margin-top:24px;">
+<span class="cc">&lt;!-- Estrutura HTML obrigatória --&gt;</span>
+&lt;<span class="ck">div</span> <span class="cv">class</span>="inp-wrap"&gt;
+
+  <span class="cc">&lt;!-- 1. Label — sempre visível, nunca omitir --&gt;</span>
+  &lt;<span class="ck">label</span> <span class="cv">class</span>="inp-label inp-label--required"
+         <span class="cv">for</span>="nome"&gt;Nome completo&lt;/<span class="ck">label</span>&gt;
+
+  <span class="cc">&lt;!-- 2. Container relativo para posicionar ícones --&gt;</span>
+  &lt;<span class="ck">div</span> <span class="cv">class</span>="inp-field-wrap"&gt;
+    &lt;<span class="ck">input</span> <span class="cv">class</span>="inp"
+           <span class="cv">id</span>="nome"
+           <span class="cv">type</span>="text"
+           <span class="cv">name</span>="nome"
+           <span class="cv">placeholder</span>="Ex.: João da Silva"
+           <span class="cv">autocomplete</span>="name" /&gt;
+  &lt;/<span class="ck">div</span>&gt;
+
+  <span class="cc">&lt;!-- 3. Texto auxiliar — sempre presente, mesmo que vazio --&gt;</span>
+  &lt;<span class="ck">span</span> <span class="cv">class</span>="inp-helper"
+        <span class="cv">id</span>="nome-helper"
+        <span class="cv">aria-live</span>="polite"&gt;Como consta no documento&lt;/<span class="ck">span</span>&gt;
+
+&lt;/<span class="ck">div</span>&gt;
+          </div>
+        </div>
+      </section>
+
+      <!-- ── QUANDO USAR ── -->
+      <section class="ds-section" id="quando">
+        <p class="eyebrow">02 · Decisão</p>
+        <h2 class="sec-title">Quando usar cada tipo</h2>
+        <p class="sec-desc">
+          Regra simples: use o tipo de campo que melhor corresponde ao dado coletado. Nunca use <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">type="text"</code> quando existe um tipo semântico correto.
+        </p>
+
+        <div style="border-radius:4px;overflow:hidden;border:.5px solid var(--mist);">
+          <div style="display:grid;grid-template-columns:160px 1fr 180px;background:var(--navy-deep);">
+            <div style="font-family:var(--font-m);font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:10px 16px;color:rgba(255,255,255,.4);">Tipo</div>
+            <div style="font-family:var(--font-m);font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:10px 16px;color:rgba(255,255,255,.4);">Quando usar</div>
+            <div style="font-family:var(--font-m);font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:10px 16px;color:rgba(255,255,255,.4);">autocomplete</div>
+          </div>
+
+          <!-- Rows -->
+          <div style="display:grid;grid-template-columns:160px 1fr 180px;border-top:.5px solid var(--mist);">
+            <div style="padding:13px 16px;background:var(--fog);font-family:var(--font-m);font-size:11px;color:var(--cobalt);">type="text"</div>
+            <div style="padding:13px 16px;font-size:13px;color:var(--steel);line-height:1.5;">Nome, cidade, empresa — texto livre sem formato definido</div>
+            <div style="padding:13px 16px;font-size:12px;color:var(--iron);font-family:var(--font-m);">name, organization</div>
+          </div>
+          <div style="display:grid;grid-template-columns:160px 1fr 180px;border-top:.5px solid var(--mist);">
+            <div style="padding:13px 16px;background:var(--fog);font-family:var(--font-m);font-size:11px;color:var(--cobalt);">type="tel"</div>
+            <div style="padding:13px 16px;font-size:13px;color:var(--steel);line-height:1.5;">Telefone — abre teclado numérico no mobile. Usar <code style="font-size:11px;font-family:var(--font-m);">inputmode="tel"</code></div>
+            <div style="padding:13px 16px;font-size:12px;color:var(--iron);font-family:var(--font-m);">tel</div>
+          </div>
+          <div style="display:grid;grid-template-columns:160px 1fr 180px;border-top:.5px solid var(--mist);">
+            <div style="padding:13px 16px;background:var(--fog);font-family:var(--font-m);font-size:11px;color:var(--cobalt);">type="email"</div>
+            <div style="padding:13px 16px;font-size:13px;color:var(--steel);line-height:1.5;">E-mail — validação nativa do browser + teclado com @</div>
+            <div style="padding:13px 16px;font-size:12px;color:var(--iron);font-family:var(--font-m);">email</div>
+          </div>
+          <div style="display:grid;grid-template-columns:160px 1fr 180px;border-top:.5px solid var(--mist);">
+            <div style="padding:13px 16px;background:var(--fog);font-family:var(--font-m);font-size:11px;color:var(--cobalt);">&lt;textarea&gt;</div>
+            <div style="padding:13px 16px;font-size:13px;color:var(--steel);line-height:1.5;">Mensagem longa, descrição do problema — mais de uma frase</div>
+            <div style="padding:13px 16px;font-size:12px;color:var(--iron);font-family:var(--font-m);">off</div>
+          </div>
+          <div style="display:grid;grid-template-columns:160px 1fr 180px;border-top:.5px solid var(--mist);">
+            <div style="padding:13px 16px;background:var(--fog);font-family:var(--font-m);font-size:11px;color:var(--cobalt);">type="number"</div>
+            <div style="padding:13px 16px;font-size:13px;color:var(--steel);line-height:1.5;">Quantidade, dimensão numérica — evitar para CPF/CEP (usar text)</div>
+            <div style="padding:13px 16px;font-size:12px;color:var(--iron);font-family:var(--font-m);">—</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── DEFAULT ── -->
+      <section class="ds-section" id="default">
+        <p class="eyebrow">03 · Variante</p>
+        <h2 class="sec-title">Default</h2>
+        <p class="sec-desc">
+          A variante base. Fundo branco, borda <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">var(--mist)</code> em repouso, label sempre acima, helper text sempre presente. Obrigatório em todo o formulário de contato/orçamento.
+        </p>
+
+        <div class="ds-card" style="margin-bottom:16px;">
+          <span class="ds-label">Campos do formulário de orçamento</span>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div class="inp-wrap" style="max-width:100%;">
+              <label class="inp-label inp-label--required">Nome completo</label>
+              <div class="inp-field-wrap">
+                <input class="inp" type="text" placeholder="Ex.: João da Silva" autocomplete="name" />
+              </div>
+              <span class="inp-helper">Como consta no documento</span>
+            </div>
+            <div class="inp-wrap" style="max-width:100%;">
+              <label class="inp-label inp-label--required">Cidade</label>
+              <div class="inp-field-wrap">
+                <input class="inp" type="text" placeholder="Ex.: Porto Alegre" autocomplete="address-level2" />
+              </div>
+              <span class="inp-helper">Cidade onde a caixa d'água está instalada</span>
+            </div>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr><th>Propriedade</th><th>Valor</th></tr>
+          <tr>
+            <td>background</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">var(--white) / #FFFFFF</code></td>
+          </tr>
+          <tr>
+            <td>border (repouso)</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">1.5px solid var(--mist) / #DDE8F5</code></td>
+          </tr>
+          <tr>
+            <td>border (hover)</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">1.5px solid var(--cobalt) / #1A6BC4</code></td>
+          </tr>
+          <tr>
+            <td>border (focus)</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">1.5px solid var(--sky) / #00B8F0</code></td>
+          </tr>
+          <tr>
+            <td>box-shadow (focus)</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">0 0 0 3px rgba(0,184,240,.12)</code></td>
+          </tr>
+          <tr>
+            <td>border-radius</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">4px</code> — --radius-sm</td>
+          </tr>
+          <tr>
+            <td>min-height</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">48px</code> — touch target mínimo WCAG</td>
+          </tr>
+          <tr>
+            <td>font (input)</td>
+            <td>Lato 300 · 14px · <code style="font-family:var(--font-m);font-size:11px">color: var(--text)</code></td>
+          </tr>
+          <tr>
+            <td>font (placeholder)</td>
+            <td>Lato 300 · 14px · <code style="font-family:var(--font-m);font-size:11px">color: var(--iron)</code></td>
+          </tr>
+          <tr>
+            <td>font (label)</td>
+            <td>DM Mono · 10px · uppercase · LS .14em · <code style="font-family:var(--font-m);font-size:11px">color: var(--steel)</code></td>
+          </tr>
+          <tr>
+            <td>required marker</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">*</code> em <code style="font-family:var(--font-m);font-size:11px">var(--sky)</code> via <code style="font-family:var(--font-m);font-size:11px">::after</code> em .inp-label--required</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ── PREFIX / SUFFIX ── -->
+      <section class="ds-section" id="prefix-suffix">
+        <p class="eyebrow">04 · Variante</p>
+        <h2 class="sec-title">Prefixo e Sufixo</h2>
+        <p class="sec-desc">
+          Ícone ou unidade integrados ao campo. O prefixo fica à esquerda (ícone contextual), o sufixo à direita (unidade de medida, moeda ou ação). Ambos são <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">pointer-events:none</code> — não são clicáveis.
+        </p>
+
+        <div class="ds-card" style="margin-bottom:16px;">
+          <span class="ds-label">Prefixo — ícone contextual</span>
+          <div style="display:flex;gap:20px;flex-wrap:wrap;">
+            <!-- Phone prefix -->
+            <div class="inp-wrap" style="max-width:220px;">
+              <label class="inp-label inp-label--required">Telefone RS</label>
+              <div class="inp-field-wrap">
+                <span class="inp-prefix">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 6.338c0 9.15 7.162 16.312 16.313 16.312.343 0 .682-.012 1.019-.036l.006-.001a1.5 1.5 0 001.38-1.493V19.5a1.5 1.5 0 00-1.125-1.453l-2.893-.723a1.5 1.5 0 00-1.595.61l-.3.45c-.22.33-.623.476-.985.384a12.022 12.022 0 01-6.07-6.07.75.75 0 01.384-.985l.45-.3a1.5 1.5 0 00.61-1.595l-.723-2.892A1.5 1.5 0 006.5 4.5H4.688a1.5 1.5 0 00-1.493 1.38 16.51 16.51 0 00-.945 3.459z"/></svg>
+                </span>
+                <input class="inp inp--has-prefix" type="tel" placeholder="(51) 99999-9999" inputmode="tel" />
+              </div>
+            </div>
+            <!-- Location prefix -->
+            <div class="inp-wrap" style="max-width:220px;">
+              <label class="inp-label">Localização</label>
+              <div class="inp-field-wrap">
+                <span class="inp-prefix">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                </span>
+                <input class="inp inp--has-prefix" type="text" placeholder="Porto Alegre, RS" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-card" style="margin-bottom:16px;">
+          <span class="ds-label">Sufixo — unidade ou rótulo</span>
+          <div style="display:flex;gap:20px;flex-wrap:wrap;">
+            <!-- Volume suffix -->
+            <div class="inp-wrap" style="max-width:180px;">
+              <label class="inp-label">Capacidade</label>
+              <div class="inp-field-wrap">
+                <input class="inp inp--has-suffix" type="number" min="0" placeholder="1.000" />
+                <span class="inp-suffix">litros</span>
+              </div>
+              <span class="inp-helper">Capacidade da caixa</span>
+            </div>
+            <!-- Area suffix -->
+            <div class="inp-wrap" style="max-width:180px;">
+              <label class="inp-label">Área da laje</label>
+              <div class="inp-field-wrap">
+                <input class="inp inp--has-suffix" type="number" min="0" placeholder="24" />
+                <span class="inp-suffix">m²</span>
+              </div>
+            </div>
+            <!-- Combined: prefix + suffix -->
+            <div class="inp-wrap" style="max-width:220px;">
+              <label class="inp-label">Busca por serviço</label>
+              <div class="inp-field-wrap">
+                <span class="inp-prefix">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803 7.5 7.5 0 0015.803 15.803z"/></svg>
+                </span>
+                <input class="inp inp--has-prefix inp--has-suffix" type="search" placeholder="Impermeabilização..." />
+                <span class="inp-suffix">RS · SC</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr><th>Elemento</th><th>Posição</th><th>Tamanho</th><th>Compensação de padding</th></tr>
+          <tr>
+            <td>.inp-prefix</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">left: 14px</code></td>
+            <td><code style="font-family:var(--font-m);font-size:11px">16×16px (svg)</code></td>
+            <td><code style="font-family:var(--font-m);font-size:11px">padding-left: 42px</code></td>
+          </tr>
+          <tr>
+            <td>.inp-suffix</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">right: 14px</code></td>
+            <td>DM Mono 10px</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">padding-right: 52px</code></td>
+          </tr>
+          <tr>
+            <td>Cor ícone</td>
+            <td colspan="3"><code style="font-family:var(--font-m);font-size:11px">var(--iron)</code> em repouso — herda a mudança de cor do border via estado do campo pai</td>
+          </tr>
+          <tr>
+            <td>pointer-events</td>
+            <td colspan="3"><code style="font-family:var(--font-m);font-size:11px">none</code> — nunca são alvos de clique</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ── TEXTAREA ── -->
+      <section class="ds-section" id="textarea">
+        <p class="eyebrow">05 · Variante</p>
+        <h2 class="sec-title">Área de Texto</h2>
+        <p class="sec-desc">
+          Mesma anatomia do input, mas usa o elemento <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">&lt;textarea&gt;</code> com <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">resize:vertical</code>. Exibir contador de caracteres quando houver limite definido. Obrigatório no campo "Mensagem" do formulário de contato.
+        </p>
+
+        <div class="ds-card" style="margin-bottom:16px;">
+          <span class="ds-label">Mensagem — com contador de caracteres</span>
+          <div style="max-width:460px;">
+            <div class="inp-wrap" style="max-width:100%;">
+              <label class="inp-label inp-label--required">Descreva o problema</label>
+              <div class="inp-field-wrap">
+                <textarea class="inp inp--textarea" placeholder="Ex.: Minha caixa d'água de 1.000L está rachada e a água chega com gosto estranho. A caixa fica no telhado do segundo andar..." maxlength="500"></textarea>
+              </div>
+              <div class="inp-footer">
+                <span class="inp-helper">Informe capacidade, localização e sintomas</span>
+                <span class="inp-char-count">0 / 500</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr><th>Propriedade</th><th>Valor</th></tr>
+          <tr>
+            <td>min-height</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">120px</code> — 4 linhas aproximadas</td>
+          </tr>
+          <tr>
+            <td>resize</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">vertical</code> — nunca horizontal</td>
+          </tr>
+          <tr>
+            <td>line-height</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">1.65</code></td>
+          </tr>
+          <tr>
+            <td>Contador</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">.inp-char-count</code> · DM Mono 10px · <code style="font-family:var(--font-m);font-size:11px">--warn</code> acima de 80% · <code style="font-family:var(--font-m);font-size:11px">--error</code> no limite</td>
+          </tr>
+          <tr>
+            <td>maxlength</td>
+            <td>500 chars para mensagem de formulário</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ── ESTADOS ── -->
+      <section class="ds-section" id="estados">
+        <p class="eyebrow">06 · Estados</p>
+        <h2 class="sec-title">Todos os Estados</h2>
+        <p class="sec-desc">
+          Seis estados de interação com visual distinto. O foco é especialmente importante — a mudança de cor da borda de <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">var(--mist)</code> para <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">var(--sky)</code> e o glow sutil garantem que o usuário sempre saiba onde está.
+        </p>
+
+        <div class="ds-card" style="margin-bottom:24px;">
+          <div class="states-grid">
+            <!-- Rest -->
+            <div class="state-cell">
+              <span class="state-cell-label">1 · Repouso</span>
+              <div class="inp-wrap" style="max-width:100%;">
+                <label class="inp-label">Nome</label>
+                <div class="inp-field-wrap">
+                  <input class="inp" type="text" placeholder="Ex.: João da Silva" tabindex="-1" />
+                </div>
+                <span class="inp-helper">border: var(--mist)</span>
+              </div>
+            </div>
+            <!-- Hover -->
+            <div class="state-cell">
+              <span class="state-cell-label">2 · Hover</span>
+              <div class="inp-wrap" style="max-width:100%;">
+                <label class="inp-label">Nome</label>
+                <div class="inp-field-wrap">
+                  <input class="inp inp--s-hover" type="text" placeholder="Ex.: João da Silva" tabindex="-1" />
+                </div>
+                <span class="inp-helper">border: var(--cobalt)</span>
+              </div>
+            </div>
+            <!-- Focus -->
+            <div class="state-cell">
+              <span class="state-cell-label">3 · Focus</span>
+              <div class="inp-wrap" style="max-width:100%;">
+                <label class="inp-label">Nome</label>
+                <div class="inp-field-wrap">
+                  <input class="inp inp--s-focus" type="text" placeholder="Ex.: João da Silva" tabindex="-1" />
+                </div>
+                <span class="inp-helper">border: var(--sky) + glow</span>
+              </div>
+            </div>
+            <!-- Filled -->
+            <div class="state-cell">
+              <span class="state-cell-label">4 · Preenchido</span>
+              <div class="inp-wrap" style="max-width:100%;">
+                <label class="inp-label">Nome</label>
+                <div class="inp-field-wrap">
+                  <input class="inp inp--s-filled" type="text" value="João da Silva" tabindex="-1" />
+                </div>
+                <span class="inp-helper">border: var(--mist) — retorna ao repouso</span>
+              </div>
+            </div>
+            <!-- Error -->
+            <div class="state-cell">
+              <span class="state-cell-label">5 · Erro</span>
+              <div class="inp-wrap" style="max-width:100%;">
+                <label class="inp-label">Nome</label>
+                <div class="inp-field-wrap">
+                  <input class="inp inp--error" type="text" value="J" tabindex="-1" />
+                  <span class="inp-icon-error">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd"/></svg>
+                  </span>
+                </div>
+                <span class="inp-helper inp-helper--error">Mínimo de 3 caracteres</span>
+              </div>
+            </div>
+            <!-- Disabled -->
+            <div class="state-cell">
+              <span class="state-cell-label">6 · Desabilitado</span>
+              <div class="inp-wrap" style="max-width:100%;">
+                <label class="inp-label" style="opacity:.4;">Nome</label>
+                <div class="inp-field-wrap">
+                  <input class="inp inp--s-disabled" type="text" value="João da Silva" disabled aria-disabled="true" />
+                </div>
+                <span class="inp-helper" style="opacity:.4;">opacity: 0.4 · cursor: not-allowed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr><th>Estado</th><th>border-color</th><th>box-shadow</th><th>Cursor</th></tr>
+          <tr>
+            <td>Repouso</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">var(--mist) / #DDE8F5</code></td>
+            <td>—</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">text</code></td>
+          </tr>
+          <tr>
+            <td>Hover</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">var(--cobalt) / #1A6BC4</code></td>
+            <td>—</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">text</code></td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">var(--sky) / #00B8F0</code></td>
+            <td><code style="font-family:var(--font-m);font-size:11px">0 0 0 3px rgba(0,184,240,.12)</code></td>
+            <td><code style="font-family:var(--font-m);font-size:11px">text</code></td>
+          </tr>
+          <tr>
+            <td>Preenchido</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">var(--mist)</code> — retorna ao repouso</td>
+            <td>—</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">text</code></td>
+          </tr>
+          <tr>
+            <td>Erro</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">var(--error) / #D64045</code></td>
+            <td><code style="font-family:var(--font-m);font-size:11px">0 0 0 3px rgba(214,64,69,.12)</code> no focus</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">text</code></td>
+          </tr>
+          <tr>
+            <td>Disabled</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">var(--mist)</code> — não muda</td>
+            <td>—</td>
+            <td><code style="font-family:var(--font-m);font-size:11px">not-allowed</code></td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ── VALIDAÇÃO ── -->
+      <section class="ds-section" id="validacao">
+        <p class="eyebrow">07 · Validação</p>
+        <h2 class="sec-title">Validação e Feedback</h2>
+        <p class="sec-desc">
+          Feedback imediato após o blur (quando o usuário sai do campo). Nunca validar durante a digitação — exceto contador de caracteres. Mensagens de erro devem ser específicas: explicar o problema <em>e</em> como corrigir.
+        </p>
+
+        <!-- Error state -->
+        <div class="ds-card" style="margin-bottom:16px;">
+          <span class="ds-label">Estado de erro — borda + ícone + mensagem</span>
+          <div style="display:flex;gap:20px;flex-wrap:wrap;">
+            <div class="inp-wrap" style="max-width:240px;">
+              <label class="inp-label inp-label--required">Telefone</label>
+              <div class="inp-field-wrap">
+                <span class="inp-prefix">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 6.338c0 9.15 7.162 16.312 16.313 16.312.343 0 .682-.012 1.019-.036l.006-.001a1.5 1.5 0 001.38-1.493V19.5a1.5 1.5 0 00-1.125-1.453l-2.893-.723a1.5 1.5 0 00-1.595.61l-.3.45c-.22.33-.623.476-.985.384a12.022 12.022 0 01-6.07-6.07.75.75 0 01.384-.985l.45-.3a1.5 1.5 0 00.61-1.595l-.723-2.892A1.5 1.5 0 006.5 4.5H4.688a1.5 1.5 0 00-1.493 1.38 16.51 16.51 0 00-.945 3.459z"/></svg>
+                </span>
+                <input class="inp inp--has-prefix inp--error" type="tel" value="5199" aria-describedby="tel-err" aria-invalid="true" />
+              </div>
+              <span class="inp-helper inp-helper--error" id="tel-err" role="alert">Número incompleto — use (DDD) + 9 dígitos</span>
+            </div>
+            <div class="inp-wrap" style="max-width:240px;">
+              <label class="inp-label inp-label--required">E-mail</label>
+              <div class="inp-field-wrap">
+                <input class="inp inp--error" type="email" value="joao@" aria-describedby="email-err" aria-invalid="true" />
+                <span class="inp-icon-error">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd"/></svg>
+                </span>
+              </div>
+              <span class="inp-helper inp-helper--error" id="email-err" role="alert">E-mail inválido — ex.: nome@dominio.com.br</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success state -->
+        <div class="ds-card" style="margin-bottom:16px;">
+          <span class="ds-label">Estado de sucesso — validação confirmada</span>
+          <div style="display:flex;gap:20px;flex-wrap:wrap;">
+            <div class="inp-wrap" style="max-width:240px;">
+              <label class="inp-label inp-label--required">Telefone</label>
+              <div class="inp-field-wrap">
+                <span class="inp-prefix">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 6.338c0 9.15 7.162 16.312 16.313 16.312.343 0 .682-.012 1.019-.036l.006-.001a1.5 1.5 0 001.38-1.493V19.5a1.5 1.5 0 00-1.125-1.453l-2.893-.723a1.5 1.5 0 00-1.595.61l-.3.45c-.22.33-.623.476-.985.384a12.022 12.022 0 01-6.07-6.07.75.75 0 01.384-.985l.45-.3a1.5 1.5 0 00.61-1.595l-.723-2.892A1.5 1.5 0 006.5 4.5H4.688a1.5 1.5 0 00-1.493 1.38 16.51 16.51 0 00-.945 3.459z"/></svg>
+                </span>
+                <input class="inp inp--has-prefix inp--s-filled" type="tel" value="(51) 99999-9999" style="border-color:var(--lacre);" aria-describedby="tel-ok" />
+              </div>
+              <span class="inp-helper inp-helper--ok" id="tel-ok">✓ Telefone válido</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="code" style="margin-top:0;">
+<span class="cc">/* CSS dos estados de validação */</span>
+<span class="ck">.inp--error</span> { <span class="ck">border-color</span>: <span class="cv">var(--error)</span>; }
+<span class="ck">.inp--error:focus</span> {
+  <span class="ck">border-color</span>: <span class="cv">var(--error)</span>;
+  <span class="ck">box-shadow</span>: <span class="cv">0 0 0 3px rgba(214,64,69,.12)</span>;
+}
+<span class="ck">.inp-helper--error</span> { <span class="ck">color</span>: <span class="cv">var(--error)</span>; }
+<span class="ck">.inp-helper--ok</span>    { <span class="ck">color</span>: <span class="cv">var(--lacre)</span>; }
+
+<span class="cc">/* ARIA obrigatório no estado de erro */</span>
+<span class="cc">/* HTML */</span>
+&lt;<span class="ck">input</span> <span class="cv">class</span>="inp inp--error"
+       <span class="cv">aria-invalid</span>="true"
+       <span class="cv">aria-describedby</span>="campo-erro" /&gt;
+&lt;<span class="ck">span</span> <span class="cv">class</span>="inp-helper inp-helper--error"
+      <span class="cv">id</span>="campo-erro"
+      <span class="cv">role</span>="alert"&gt;Mensagem específica do erro&lt;/<span class="ck">span</span>&gt;
+
+<span class="cc">/* JS — validar no blur, não no input */</span>
+<span class="ck">input</span>.addEventListener(<span class="cv">'blur'</span>, () => validate(input));
+        </div>
+      </section>
+
+      <!-- ── TOKENS ── -->
+      <section class="ds-section" id="tokens">
+        <p class="eyebrow">08 · Referência</p>
+        <h2 class="sec-title">Tokens Utilizados</h2>
+        <p class="sec-desc">
+          Todos os valores visuais do Input derivam dos tokens do Aqua DS. Nunca usar valores hardcoded.
+        </p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <!-- Color tokens -->
+          <div class="ds-card">
+            <span class="ds-label">Tokens de cor</span>
+            <table class="spec-table">
+              <tr><th>Token</th><th>Hex</th><th>Uso</th></tr>
+              <tr>
+                <td>--mist</td>
+                <td style="font-family:var(--font-m);font-size:11px;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:12px;height:12px;background:#dde8f5;border-radius:2px;border:.5px solid #ccc;flex-shrink:0;"></span>#DDE8F5</td>
+                <td>Border repouso</td>
+              </tr>
+              <tr>
+                <td>--cobalt</td>
+                <td style="font-family:var(--font-m);font-size:11px;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:12px;height:12px;background:#1a6bc4;border-radius:2px;flex-shrink:0;"></span>#1A6BC4</td>
+                <td>Border hover</td>
+              </tr>
+              <tr>
+                <td>--sky</td>
+                <td style="font-family:var(--font-m);font-size:11px;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:12px;height:12px;background:#00b8f0;border-radius:2px;flex-shrink:0;"></span>#00B8F0</td>
+                <td>Border focus · glow</td>
+              </tr>
+              <tr>
+                <td>--error</td>
+                <td style="font-family:var(--font-m);font-size:11px;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:12px;height:12px;background:#d64045;border-radius:2px;flex-shrink:0;"></span>#D64045</td>
+                <td>Border erro · texto erro</td>
+              </tr>
+              <tr>
+                <td>--lacre</td>
+                <td style="font-family:var(--font-m);font-size:11px;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:12px;height:12px;background:#00d4aa;border-radius:2px;flex-shrink:0;"></span>#00D4AA</td>
+                <td>Border / texto sucesso</td>
+              </tr>
+              <tr>
+                <td>--text</td>
+                <td style="font-family:var(--font-m);font-size:11px;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:12px;height:12px;background:#0a1e35;border-radius:2px;flex-shrink:0;"></span>#0A1E35</td>
+                <td>Texto digitado</td>
+              </tr>
+              <tr>
+                <td>--iron</td>
+                <td style="font-family:var(--font-m);font-size:11px;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:12px;height:12px;background:#6b82a0;border-radius:2px;flex-shrink:0;"></span>#6B82A0</td>
+                <td>Placeholder · helper</td>
+              </tr>
+              <tr>
+                <td>--steel</td>
+                <td style="font-family:var(--font-m);font-size:11px;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:12px;height:12px;background:#3a5270;border-radius:2px;flex-shrink:0;"></span>#3A5270</td>
+                <td>Label · sufixo</td>
+              </tr>
+              <tr>
+                <td>--fog</td>
+                <td style="font-family:var(--font-m);font-size:11px;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:12px;height:12px;background:#f2f6fb;border-radius:2px;border:.5px solid #ccc;flex-shrink:0;"></span>#F2F6FB</td>
+                <td>Background disabled</td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- Spacing + typography tokens -->
+          <div class="ds-card">
+            <span class="ds-label">Tokens de espaçamento e tipografia</span>
+            <table class="spec-table">
+              <tr><th>Propriedade</th><th>Valor</th><th>Token</th></tr>
+              <tr>
+                <td>padding</td>
+                <td><code style="font-family:var(--font-m);font-size:11px">12px 16px</code></td>
+                <td>--space-3 / --space-4</td>
+              </tr>
+              <tr>
+                <td>min-height</td>
+                <td><code style="font-family:var(--font-m);font-size:11px">48px</code></td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>gap (wrap)</td>
+                <td><code style="font-family:var(--font-m);font-size:11px">6px</code></td>
+                <td>--space-1.5</td>
+              </tr>
+              <tr>
+                <td>border-radius</td>
+                <td><code style="font-family:var(--font-m);font-size:11px">4px</code></td>
+                <td>--radius-sm</td>
+              </tr>
+              <tr>
+                <td>border-width</td>
+                <td><code style="font-family:var(--font-m);font-size:11px">1.5px</code></td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>font (input)</td>
+                <td>Lato · 14px · 300</td>
+                <td>--font-body</td>
+              </tr>
+              <tr>
+                <td>font (label)</td>
+                <td>DM Mono · 10px · 500</td>
+                <td>--font-mono</td>
+              </tr>
+              <tr>
+                <td>font (helper)</td>
+                <td>Lato · 12px · 300</td>
+                <td>--font-body</td>
+              </tr>
+              <tr>
+                <td>transition</td>
+                <td><code style="font-family:var(--font-m);font-size:11px">border-color .2s, box-shadow .2s ease</code></td>
+                <td>--dur-fast</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── ACESSIBILIDADE ── -->
+      <section class="ds-section" id="a11y">
+        <p class="eyebrow">09 · Acessibilidade</p>
+        <h2 class="sec-title">Acessibilidade</h2>
+        <p class="sec-desc">
+          Todo campo deve ter label associado via <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">for</code>/<code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">id</code>. Placeholder não é label. <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">aria-invalid</code> e <code style="font-family:var(--font-m);font-size:12px;color:var(--cobalt)">aria-describedby</code> são obrigatórios no estado de erro.
+        </p>
+
+        <!-- ARIA reference table -->
+        <div class="ds-card" style="margin-bottom:16px;">
+          <span class="ds-label">Atributos ARIA obrigatórios</span>
+          <table class="spec-table">
+            <tr><th>Atributo</th><th>Quando usar</th><th>Valor</th></tr>
+            <tr>
+              <td>for / id</td>
+              <td>Sempre — associa label ao input</td>
+              <td><code style="font-family:var(--font-m);font-size:11px">label[for="id"] + input[id="id"]</code></td>
+            </tr>
+            <tr>
+              <td>aria-required</td>
+              <td>Campos obrigatórios</td>
+              <td><code style="font-family:var(--font-m);font-size:11px">"true"</code> — em adição ao atributo nativo <code style="font-family:var(--font-m);font-size:11px">required</code></td>
+            </tr>
+            <tr>
+              <td>aria-invalid</td>
+              <td>Estado de erro após validação</td>
+              <td><code style="font-family:var(--font-m);font-size:11px">"true"</code> — remover quando corrigido</td>
+            </tr>
+            <tr>
+              <td>aria-describedby</td>
+              <td>Sempre que há helper ou erro</td>
+              <td>ID do elemento .inp-helper correspondente</td>
+            </tr>
+            <tr>
+              <td>aria-disabled</td>
+              <td>Campo desabilitado</td>
+              <td><code style="font-family:var(--font-m);font-size:11px">"true"</code> — em adição ao atributo nativo <code style="font-family:var(--font-m);font-size:11px">disabled</code></td>
+            </tr>
+            <tr>
+              <td>role="alert"</td>
+              <td>Mensagem de erro</td>
+              <td>No elemento .inp-helper--error — anuncia para leitores de tela</td>
+            </tr>
+            <tr>
+              <td>aria-live</td>
+              <td>Helper texto dinâmico</td>
+              <td><code style="font-family:var(--font-m);font-size:11px">"polite"</code> no .inp-helper estático</td>
+            </tr>
+            <tr>
+              <td>autocomplete</td>
+              <td>Sempre nos campos do formulário</td>
+              <td>name, tel, email, address-level2 conforme o tipo</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Keyboard nav -->
+        <div class="ds-card" style="margin-bottom:16px;">
+          <span class="ds-label">Navegação por teclado</span>
+          <table class="spec-table">
+            <tr><th>Tecla</th><th>Comportamento</th></tr>
+            <tr><td>Tab</td><td>Avança para o próximo campo na ordem do DOM</td></tr>
+            <tr><td>Shift + Tab</td><td>Retorna para o campo anterior</td></tr>
+            <tr><td>Enter</td><td>Em campo de texto: nova linha não é permitida (input). Em textarea: insere quebra de linha</td></tr>
+            <tr><td>Esc</td><td>Limpa sugestão de autocomplete do browser se estiver aberta</td></tr>
+          </table>
+        </div>
+
+        <div class="code">
+<span class="cc">&lt;!-- Exemplo completo com ARIA correto --&gt;</span>
+&lt;<span class="ck">div</span> <span class="cv">class</span>="inp-wrap"&gt;
+
+  &lt;<span class="ck">label</span> <span class="cv">class</span>="inp-label inp-label--required"
+         <span class="cv">for</span>="telefone"&gt;Telefone&lt;/<span class="ck">label</span>&gt;
+
+  &lt;<span class="ck">div</span> <span class="cv">class</span>="inp-field-wrap"&gt;
+    &lt;<span class="ck">input</span>
+      <span class="cv">class</span>="inp"
+      <span class="cv">id</span>="telefone"
+      <span class="cv">name</span>="telefone"
+      <span class="cv">type</span>="tel"
+      <span class="cv">inputmode</span>="tel"
+      <span class="cv">autocomplete</span>="tel"
+      <span class="cv">required</span>
+      <span class="cv">aria-required</span>="true"
+      <span class="cv">aria-describedby</span>="telefone-helper"
+      <span class="cv">aria-invalid</span>="false"      <span class="cc">// muda para "true" no erro</span>
+      <span class="cv">placeholder</span>="(51) 99999-9999" /&gt;
+  &lt;/<span class="ck">div</span>&gt;
+
+  &lt;<span class="ck">span</span>
+    <span class="cv">class</span>="inp-helper"       <span class="cc">// adicionar inp-helper--error quando inválido</span>
+    <span class="cv">id</span>="telefone-helper"
+    <span class="cv">aria-live</span>="polite"
+    <span class="cv">role</span>="alert"             <span class="cc">// adicionar role="alert" apenas no estado de erro</span>
+  &gt;DDD + número com 9 dígitos&lt;/<span class="ck">span</span>&gt;
+
+&lt;/<span class="ck">div</span>&gt;
+        </div>
+      </section>
+
+      <!-- ── REGRAS ── -->
+      <section class="ds-section" id="regras">
+        <p class="eyebrow">10 · Diretrizes</p>
+        <h2 class="sec-title">Regras de Uso</h2>
+        <p class="sec-desc">
+          Padrões de qualidade que garantem consistência, acessibilidade e conversão no formulário de orçamento.
+        </p>
+
+        <div class="grid-2" style="margin-bottom:24px;">
+          <div class="do-card">
+            <p class="do-title">Use assim ✓</p>
+            <ul class="rule-list">
+              <li>Label sempre visível acima do campo</li>
+              <li>Placeholder como exemplo de formato, não como label</li>
+              <li>Helper text sempre presente — mesmo que vazio ocupa espaço</li>
+              <li>Validar no blur, não durante a digitação</li>
+              <li>Mensagem de erro específica: o que errou + como corrigir</li>
+              <li>aria-invalid + aria-describedby no estado de erro</li>
+              <li>Usar type semântico: tel, email, number</li>
+              <li>autocomplete em todos os campos do formulário</li>
+              <li>min-height: 48px — touch target mínimo</li>
+              <li>resize:vertical em textareas</li>
+            </ul>
+          </div>
+          <div class="dont-card">
+            <p class="dont-title">Evite ✗</p>
+            <ul class="rule-list">
+              <li>Placeholder como único label do campo</li>
+              <li>Validação em tempo real durante digitação</li>
+              <li>Mensagens genéricas: "Campo inválido"</li>
+              <li>Remover o campo desabilitado do DOM</li>
+              <li>type="text" para telefone ou e-mail</li>
+              <li>resize:none em textareas — limita acessibilidade</li>
+              <li>Campos obrigatórios sem o marcador * no label</li>
+              <li>border-radius acima de 4px — contradiz o sharp-edge</li>
+              <li>Campos sem id vinculado ao label for</li>
+              <li>Ícones clicáveis sem feedback visual</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Hierarquia de formulário -->
+        <div class="ds-card" style="background:var(--navy-deep);">
+          <span class="ds-label ds-label--light" style="margin-bottom:16px;">Ordem dos campos — formulário de orçamento</span>
+          <table class="spec-table" style="color:rgba(255,255,255,.6)">
+            <tr>
+              <th style="color:rgba(255,255,255,.3);">#</th>
+              <th style="color:rgba(255,255,255,.3);">Campo</th>
+              <th style="color:rgba(255,255,255,.3);">Tipo</th>
+              <th style="color:rgba(255,255,255,.3);">Obrigatório</th>
+              <th style="color:rgba(255,255,255,.3);">autocomplete</th>
+            </tr>
+            <tr>
+              <td style="color:rgba(255,255,255,.35);">1</td>
+              <td>Nome completo</td>
+              <td><span class="tag tag--sky">text</span></td>
+              <td><span class="tag tag--no">sim</span></td>
+              <td style="font-family:var(--font-m);font-size:11px;">name</td>
+            </tr>
+            <tr>
+              <td style="color:rgba(255,255,255,.35);">2</td>
+              <td>Telefone</td>
+              <td><span class="tag tag--sky">tel</span></td>
+              <td><span class="tag tag--no">sim</span></td>
+              <td style="font-family:var(--font-m);font-size:11px;">tel</td>
+            </tr>
+            <tr>
+              <td style="color:rgba(255,255,255,.35);">3</td>
+              <td>Cidade</td>
+              <td><span class="tag tag--sky">text</span></td>
+              <td><span class="tag tag--no">sim</span></td>
+              <td style="font-family:var(--font-m);font-size:11px;">address-level2</td>
+            </tr>
+            <tr>
+              <td style="color:rgba(255,255,255,.35);">4</td>
+              <td>Estado (RS / SC)</td>
+              <td><span class="tag tag--sky">select</span></td>
+              <td><span class="tag tag--no">sim</span></td>
+              <td style="font-family:var(--font-m);font-size:11px;">address-level1</td>
+            </tr>
+            <tr>
+              <td style="color:rgba(255,255,255,.35);">5</td>
+              <td>Descreva o problema</td>
+              <td><span class="tag tag--sky">textarea</span></td>
+              <td><span class="tag tag--ok">não</span></td>
+              <td style="font-family:var(--font-m);font-size:11px;">off</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <script>
+      const sections = document.querySelectorAll(".ds-section");
+      const links = document.querySelectorAll(".ds-nav a");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              links.forEach((l) => l.classList.remove("active"));
+              const active = document.querySelector(`.ds-nav a[href="#${id}"]`);
+              if (active) active.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-30% 0px -60% 0px" }
+      );
+      sections.forEach((s) => observer.observe(s));
+
+      /* Char counter demo */
+      const textarea = document.querySelector("textarea[maxlength]");
+      if (textarea) {
+        const counter = document.querySelector(".inp-char-count");
+        const max = parseInt(textarea.getAttribute("maxlength"));
+        textarea.addEventListener("input", () => {
+          const len = textarea.value.length;
+          counter.textContent = `${len} / ${max}`;
+          counter.className = "inp-char-count";
+          if (len / max > 0.8) counter.classList.add("inp-char-count--warn");
+          if (len >= max)      counter.classList.add("inp-char-count--over");
+        });
+      }
+    </script>
+  </body>
+</html>

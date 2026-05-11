@@ -473,6 +473,12 @@ function scrollToNext() {
   color: #0d2a52;
 }
 
+.btn-hero:focus { outline: none; }
+.btn-hero:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-sky);
+}
+
 .wico {
   width: 16px;
   height: 16px;

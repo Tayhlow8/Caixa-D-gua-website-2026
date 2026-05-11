@@ -138,13 +138,22 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.97); /* manter — não tem token pra isso */
+  box-shadow: var(--shadow-md);
 }
 
 .navbar.scrolled .nav-links a {
-  color: rgba(13, 42, 82, 0.65);
+  color: var(--text-muted); /* --color-iron #6B82A0 — mais próximo */
+}
+
+.navbar.dark-hero .nav-links a {
+  color: var(
+    --text-on-dark-muted
+  ); /* rgba(255,255,255,0.50) — adicionamos hoje */
+}
+
+.overlay {
+  background: var(--bg-overlay); /* rgba(13,42,82,0.6) — adicionamos hoje */
 }
 
 .navbar.scrolled .nav-links a:hover {
@@ -362,6 +371,12 @@ nav {
   color: var(--color-navy-deep);
 }
 
+.btn-wave:focus { outline: none; }
+.btn-wave:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-sky);
+}
+
 /* ── Hamburger ── */
 .hamburger {
   display: none;
@@ -458,6 +473,11 @@ nav {
   padding: 16px 24px;
   border-radius: 2px;
   border-bottom: none !important;
+}
+.mob-cta:focus { outline: none; }
+.mob-cta:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-navy-deep), 0 0 0 4px var(--color-sky);
 }
 
 /* ── Overlay ── */
