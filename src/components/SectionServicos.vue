@@ -1,12 +1,12 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import imgSlide1 from "../assets/revestimento1.jpg";
-import imgSlide2 from "../assets/revestimento2.jpg";
-import imgSlide3 from "../assets/revestimento8.jpg";
-import imgSlide4 from "../assets/Revestimento9.jpg";
-import imgImpermeabilizacao from "../assets/foto chapa.jpg";
-import imgTampas from "../assets/tampa nova.jpg";
-import imgLimpeza from "../assets/antes3.JPG";
+import imgSlide1 from "../assets/novas fotos site/res depois.webp";
+import imgSlide2 from "../assets/novas fotos site/caixa dagua new.webp";
+import imgSlide3 from "../assets/novas fotos site/barriletes cano teto depois.webp";
+import imgImpermeabilizacao from "../assets/novas fotos site/revestimento externo nivelado.webp";
+import imgTampas from "../assets/novas fotos site/tampas depois.webp";
+import imgLimpeza from "../assets/novas fotos site/antes7 (1).webp";
+import imgLimpezaCard from "../assets/novas fotos site/limpeza.webp";
 
 const SLIDES = [
   {
@@ -18,6 +18,7 @@ const SLIDES = [
     label:
       "Técnico aplicando revestimento de PVC em caixa d'água durante o processo de instalação",
     img: imgSlide2,
+    position: "left center",
   },
   {
     label:
@@ -184,7 +185,14 @@ onUnmounted(() => {
         >
           <div class="carousel-track" ref="trackEl">
             <div v-for="(slide, i) in SLIDES" :key="i" class="carousel-slide">
-              <img v-if="slide.img" :src="slide.img" :alt="slide.label" />
+              <img
+                v-if="slide.img"
+                :src="slide.img"
+                :alt="slide.label"
+                :style="
+                  slide.position ? { objectPosition: slide.position } : {}
+                "
+              />
               <div v-else class="slide-ph">
                 <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round">
                   <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -393,7 +401,7 @@ onUnmounted(() => {
 
           <div class="card-photo">
             <img
-              :src="imgLimpeza"
+              :src="imgLimpezaCard"
               alt="Técnico realizando higienização e sanitização interna de caixa d'água com hipoclorito de sódio — inclui certificado de limpeza ANVISA"
             />
           </div>
@@ -731,10 +739,14 @@ onUnmounted(() => {
     fcBob2 4s ease-in-out 0.75s infinite;
 }
 
-.feat-cta:focus { outline: none; }
+.feat-cta:focus {
+  outline: none;
+}
 .feat-cta:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-sky);
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px var(--color-sky);
 }
 
 .feat-cta__label {
@@ -1004,9 +1016,9 @@ onUnmounted(() => {
 
 .tech-sub {
   font-family: var(--font-body);
-  font-size: 14px; /* era 15px — aqui pode ser menor, é detalhe técnico */
-  font-weight: 500; /* era var(--weight-light) = 300 */
-  color: rgba(255, 255, 255, 0.65); /* era 0.55 */
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
   margin-top: 4px;
   line-height: 1.5;
 }
@@ -1214,10 +1226,14 @@ onUnmounted(() => {
   color: var(--color-sky);
   gap: 10px;
 }
-.card-link:focus { outline: none; }
+.card-link:focus {
+  outline: none;
+}
 .card-link:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-fog), 0 0 0 4px var(--color-navy-deep);
+  box-shadow:
+    0 0 0 2px var(--color-fog),
+    0 0 0 4px var(--color-navy-deep);
   border-radius: 2px;
 }
 

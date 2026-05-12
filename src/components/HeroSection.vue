@@ -105,7 +105,7 @@ function scrollToNext() {
         <div class="drop-container">
           <div class="drop-wrap">
             <img
-              src="../assets/revestimento1.jpg"
+              src="../assets/novas fotos site/depois capa hero.webp"
               alt="Interior de caixa d'água com revestimento de PVC concluído — paredes lisas e impermeáveis para armazenamento de água potável"
               class="hero-img"
               loading="eager"
@@ -473,10 +473,14 @@ function scrollToNext() {
   color: #0d2a52;
 }
 
-.btn-hero:focus { outline: none; }
+.btn-hero:focus {
+  outline: none;
+}
 .btn-hero:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-sky);
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px var(--color-sky);
 }
 
 .wico {
@@ -525,7 +529,7 @@ function scrollToNext() {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: right center;
   display: block;
 }
 

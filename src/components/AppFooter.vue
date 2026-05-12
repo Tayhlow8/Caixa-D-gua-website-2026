@@ -9,6 +9,8 @@ const navLinks = [
   { label: "Impermeabilização", href: "/impermeabilizacao" },
   { label: "Serviços", href: "/#servicos" },
   { label: "Galeria", href: "/#revestimento" },
+  { label: "Blog", href: "/blog" },
+  { label: "FAQ", href: "/faq" },
   { label: "Contato", href: "/#contato" },
 ];
 

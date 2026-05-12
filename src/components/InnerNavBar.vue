@@ -198,23 +198,43 @@ nav {
 }
 
 .nav-links a {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
   padding: 8px 12px;
   border-radius: 2px;
   transition: color 0.2s;
+  position: relative;
 }
 
-.nav-links a:hover {
-  color: var(--color-sky);
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: var(--color-sky);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease-spring);
+  border-radius: 1px;
 }
+
+.nav-links a:hover,
 .nav-links a.active {
   color: var(--color-sky);
 }
 
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+}
+
+/* ── Wave button ── */
 .btn-wave {
   position: relative;
   overflow: hidden;
@@ -224,8 +244,9 @@ nav {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-navy-deep);
-  background: var(--color-lacre);
+  color: #fff;
+  background: var(--color-navy-deep);
+  border: 2px solid var(--color-sky);
   padding: 9px 18px;
   border-radius: 40px;
   display: inline-flex;
@@ -235,18 +256,109 @@ nav {
   white-space: nowrap;
   flex-shrink: 0;
   isolation: isolate;
-  transition: background 0.2s;
-  border: none;
-}
-
-.btn-wave:hover {
-  background: #00efc0;
+  transition: color 0.38s ease;
+  cursor: pointer;
 }
 
 .btn-wave .wsv {
-  display: none;
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 300%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
+.btn-wave:hover .wsv {
+  opacity: 1;
+}
+
+.btn-wave .wlbl {
+  position: relative;
+  z-index: 1;
+  transition: color 0.38s;
+}
+
+.btn-wave .g1 {
+  transform: translateY(115%);
+  transition: transform 0.55s ease-in;
+}
+.btn-wave .g2 {
+  transform: translateY(125%);
+  transition: transform 0.55s ease-in 0.04s;
+}
+
+.btn-wave:hover .g1 {
+  animation:
+    waveRise1 0.65s var(--ease-spring) forwards,
+    waveBob1 3.2s ease-in-out 0.65s infinite;
+}
+.btn-wave:hover .g2 {
+  animation:
+    waveRise2 0.7s var(--ease-spring) 0.05s forwards,
+    waveBob2 4s ease-in-out 0.75s infinite;
+}
+
+@keyframes waveRise1 {
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: translateY(-10%);
+  }
+}
+@keyframes waveRise2 {
+  from {
+    transform: translateY(125%);
+  }
+  to {
+    transform: translateY(-6%);
+  }
+}
+@keyframes waveBob1 {
+  0%,
+  100% {
+    transform: translateY(-10%);
+  }
+  50% {
+    transform: translateY(-14%);
+  }
+}
+@keyframes waveBob2 {
+  0%,
+  100% {
+    transform: translateY(-6%);
+  }
+  50% {
+    transform: translateY(-11%);
+  }
+}
+
+.btn-wave .f1 {
+  fill: var(--color-sky);
+}
+.btn-wave .f2 {
+  fill: var(--color-cyan-light);
+  opacity: 0.5;
+}
+.btn-wave:hover .wlbl {
+  color: var(--color-navy-deep);
+}
+
+.btn-wave:focus {
+  outline: none;
+}
+.btn-wave:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px var(--color-sky);
+}
+
+/* ── Hamburger ── */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -283,6 +395,7 @@ nav {
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* ── Mobile menu ── */
 .mob-menu {
   position: fixed;
   top: 64px;
@@ -448,6 +561,7 @@ nav {
   color: var(--color-navy-deep) !important;
 }
 
+/* ── Overlay ── */
 .overlay {
   position: fixed;
   inset: 0;

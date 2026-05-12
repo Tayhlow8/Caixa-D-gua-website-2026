@@ -1,63 +1,5 @@
 <!doctype html>
 <html lang="pt-BR">
-  <!-- Schema Markup -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "LocalBusiness",
-          "@id": "https://www.caixadaguarevestimentos.com.br/#business",
-          "name": "Caixa D'Água Revestimentos",
-          "description": "Especialistas em revestimento interno e impermeabilização de caixa d'água com tecnologia exclusiva de PVC flexível e atóxico, patenteada e aprovada pela ANVISA. Atendemos RS e SC desde 1994.",
-          "url": "https://www.caixadaguarevestimentos.com.br",
-          "telephone": ["+55-51-3348-1239", "+55-51-98196-9303"],
-          "email": "contato@caixadagua.com.br",
-          "foundingDate": "1994",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Rua Dr. José Éboli, 300",
-            "addressLocality": "Porto Alegre",
-            "addressRegion": "RS",
-            "postalCode": "91220-190",
-            "addressCountry": "BR"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": -30.0346,
-            "longitude": -51.2177
-          },
-          "areaServed": [
-            { "@type": "State", "name": "Rio Grande do Sul" },
-            { "@type": "State", "name": "Santa Catarina" }
-          ],
-          "priceRange": "$$",
-          "image": "https://www.caixadaguarevestimentos.com.br/favicon-512x512.png",
-          "sameAs": ["https://www.facebook.com/caixadaguarevestimentos"]
-        },
-        {
-          "@type": "Service",
-          "name": "Revestimento de Caixa d'Água em PVC",
-          "provider": {
-            "@id": "https://www.caixadaguarevestimentos.com.br/#business"
-          },
-          "areaServed": "Rio Grande do Sul, Santa Catarina",
-          "description": "Revestimento interno de caixa d'água com PVC flexível e atóxico. Instalação em 1 dia, 5 anos de garantia.",
-          "serviceType": "Revestimento de Reservatório"
-        },
-        {
-          "@type": "Service",
-          "name": "Impermeabilização de Caixa d'Água",
-          "provider": {
-            "@id": "https://www.caixadaguarevestimentos.com.br/#business"
-          },
-          "areaServed": "Rio Grande do Sul, Santa Catarina",
-          "description": "Impermeabilização com geomembrana PVC e manta asfáltica. Aprovação ANVISA, sem quebrar estrutura.",
-          "serviceType": "Impermeabilização de Reservatório"
-        }
-      ]
-    }
-  </script>
   <head>
     <meta
       name="google-site-verification"
@@ -67,7 +9,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Caixa d'Água — Revestimentos e Impermeabilizações</title>
 
-    <!-- SEO fallback (overridden per-page by @unhead/vue) -->
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://www.caixadaguarevestimentos.com.br/#business",
+            "name": "Caixa D'Água Revestimentos",
+            "description": "Especialistas em revestimento interno e impermeabilização de caixa d'água com tecnologia exclusiva de PVC flexível e atóxico, patenteada e aprovada pela ANVISA. Atendemos RS e SC desde 1994.",
+            "url": "https://www.caixadaguarevestimentos.com.br",
+            "telephone": ["+55-51-3348-1239", "+55-51-98196-9303"],
+            "email": "contato@caixadagua.com.br",
+            "foundingDate": "1994",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Rua Dr. José Éboli, 300",
+              "addressLocality": "Porto Alegre",
+              "addressRegion": "RS",
+              "postalCode": "91220-190",
+              "addressCountry": "BR"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": -30.0346,
+              "longitude": -51.2177
+            },
+            "areaServed": [
+              { "@type": "State", "name": "Rio Grande do Sul" },
+              { "@type": "State", "name": "Santa Catarina" }
+            ],
+            "priceRange": "$$",
+            "image": "https://www.caixadaguarevestimentos.com.br/favicon-512x512.png",
+            "sameAs": ["https://www.facebook.com/caixadaguarevestimentos"]
+          },
+          {
+            "@type": "Service",
+            "name": "Revestimento de Caixa d'Água em PVC",
+            "provider": {
+              "@id": "https://www.caixadaguarevestimentos.com.br/#business"
+            },
+            "areaServed": "Rio Grande do Sul, Santa Catarina",
+            "description": "Revestimento interno de caixa d'água com PVC flexível e atóxico. Instalação em 1 dia, 5 anos de garantia.",
+            "serviceType": "Revestimento de Reservatório"
+          },
+          {
+            "@type": "Service",
+            "name": "Impermeabilização de Caixa d'Água",
+            "provider": {
+              "@id": "https://www.caixadaguarevestimentos.com.br/#business"
+            },
+            "areaServed": "Rio Grande do Sul, Santa Catarina",
+            "description": "Impermeabilização com geomembrana PVC e manta asfáltica. Aprovação ANVISA, sem quebrar estrutura.",
+            "serviceType": "Impermeabilização de Reservatório"
+          }
+        ]
+      }
+    </script>
+
+    <!-- SEO fallback -->
     <meta
       name="description"
       content="Especialistas em revestimento interno e impermeabilização de caixa d'água com tecnologia exclusiva de PVC flexível. Atendemos RS e SC. Orçamento grátis!"
@@ -82,7 +83,7 @@
     <!-- Twitter / X card base -->
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Preconnect to external services -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
     <link rel="dns-prefetch" href="https://maps.googleapis.com" />

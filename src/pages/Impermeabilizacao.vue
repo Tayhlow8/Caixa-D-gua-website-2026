@@ -101,15 +101,21 @@ useHead({
 });
 
 // ── Interna images
-import antesI1 from "../assets/Antes 4.jpg";
-import depoisI1 from "../assets/revestimento7.jpg";
-import procLimpeza from "../assets/antes6.jpg";
-import procFixacao from "../assets/antes8.jpg";
-import procSolda from "../assets/depois com canos.jpg";
-import procFinal from "../assets/revestimento2.jpg";
+import antesI1 from "../assets/novas fotos site/antes2.webp";
+import depoisI1 from "../assets/novas fotos site/res depois (2).webp";
+import procLimpeza from "../assets/novas fotos site/canos enferrujados.webp";
+import procFixacao from "../assets/novas fotos site/zoom canos depois.webp";
+import procSolda from "../assets/novas fotos site/rev depois.webp";
+import procFinal from "../assets/novas fotos site/rev canto depois.webp";
 import procFinal2 from "../assets/revestimentos2.jpg";
-import antesI2 from "../assets/reservatorio antes.png";
-import depoisI2 from "../assets/Presidente Roosevelt (32).jpg";
+import antesI2 from "../assets/novas fotos site/Presidente Roosevelt (18) antes.webp";
+import depoisI2 from "../assets/novas fotos site/Presidente Roosevelt (28).webp";
+import baNovo1 from "../assets/novas fotos site/ninho de baratas antes revestimento.webp";
+import baNovo2 from "../assets/novas fotos site/depois 2.webp";
+import baNovo3 from "../assets/novas fotos site/res depois.webp";
+import baNovo4 from "../assets/novas fotos site/revestimetno depois.webp";
+import baNovo5 from "../assets/novas fotos site/canos e rev depois.webp";
+import baNovo6 from "../assets/novas fotos site/barriletes topo depois.webp";
 
 // ── Externa images
 import extManta from "../assets/manta asfaltica 1.png";
@@ -119,6 +125,37 @@ import extGeo2 from "../assets/geomembrana externa2 1.png";
 const WPP_RS = "https://api.whatsapp.com/send?phone=5551981969303";
 
 const activeTab = ref("interna");
+
+const BA_SLIDES = [
+  { img: antesI1, tag: "antes", caption: "Concreto exposto com infiltrações — risco à saúde" },
+  { img: baNovo1, tag: "antes", caption: "Deterioração avançada — colônia de insetos no concreto" },
+  { img: depoisI1, tag: "depois", caption: "PVC geomembrana instalado — superfície lisa, atóxica e impermeável" },
+  { img: baNovo2, tag: "depois", caption: "Revestimento PVC concluído" },
+  { img: baNovo3, tag: "depois", caption: "Resultado final — reservatório protegido" },
+  { img: baNovo4, tag: "depois", caption: "Revestimento interno completo" },
+  { img: baNovo5, tag: "depois", caption: "Canos e revestimento após instalação" },
+  { img: baNovo6, tag: "depois", caption: "Barriletes no topo após instalação" },
+];
+
+const baCurrent = ref(0);
+const baTrackEl = ref(null);
+
+function baGoTo(n) {
+  baCurrent.value = ((n % BA_SLIDES.length) + BA_SLIDES.length) % BA_SLIDES.length;
+  if (baTrackEl.value)
+    baTrackEl.value.style.transform = `translateX(-${baCurrent.value * 100}%)`;
+}
+function baPrev() { baGoTo(baCurrent.value - 1); }
+function baNext() { baGoTo(baCurrent.value + 1); }
+function baJumpTo(i) { baGoTo(i); }
+
+const lightboxSrc = ref(null);
+const lightboxAlt = ref("");
+function openLightbox(src, alt = "") {
+  lightboxSrc.value = src;
+  lightboxAlt.value = alt;
+}
+function closeLightbox() { lightboxSrc.value = null; }
 
 function switchTab(tab) {
   activeTab.value = tab;
@@ -307,37 +344,49 @@ function onTabKeydown(e, currentTab) {
           e com garantia de 5 anos.
         </p>
 
-        <!-- Antes e Depois 1 -->
+        <!-- Antes e Depois 1 — carrossel -->
         <div class="ba-section" aria-label="Comparativo antes e depois">
           <p class="ba-label" aria-hidden="true">
             Antes e depois do revestimento
           </p>
-          <div class="ba-grid" role="group" aria-label="Imagens comparativas">
-            <div class="ba-item">
-              <img
-                :src="antesI1"
-                alt="Interior de caixa d'água deteriorada com infiltrações — antes do serviço"
-                loading="lazy"
-              />
-              <span class="ba-tag ba-tag--antes" aria-hidden="true">Antes</span>
-              <p class="ba-caption">
-                Concreto exposto com infiltrações — risco à saúde
-              </p>
-            </div>
-            <div class="ba-item">
-              <img
-                :src="depoisI1"
-                alt="Interior de caixa d'água revestida com PVC geomembrana — após o serviço"
-                loading="lazy"
-              />
-              <span class="ba-tag ba-tag--depois" aria-hidden="true"
-                >Depois</span
+          <div class="ba-carousel" role="group" aria-label="Galeria antes e depois">
+            <div class="ba-carousel-track" ref="baTrackEl">
+              <div
+                v-for="(slide, i) in BA_SLIDES"
+                :key="i"
+                class="ba-carousel-slide"
+                @click="openLightbox(slide.img, slide.caption)"
               >
-              <p class="ba-caption">
-                PVC geomembrana instalado — superfície lisa, atóxica e
-                impermeável
-              </p>
+                <img :src="slide.img" :alt="slide.caption" loading="lazy" />
+                <span
+                  class="ba-tag"
+                  :class="slide.tag === 'antes' ? 'ba-tag--antes' : 'ba-tag--depois'"
+                  aria-hidden="true"
+                  >{{ slide.tag === "antes" ? "Antes" : "Depois" }}</span
+                >
+                <p class="ba-caption">{{ slide.caption }}</p>
+              </div>
             </div>
+            <button class="ba-btn ba-btn--prev" @click="baPrev" aria-label="Foto anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button class="ba-btn ba-btn--next" @click="baNext" aria-label="Próxima foto">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
+          <div class="ba-dots">
+            <button
+              v-for="(slide, i) in BA_SLIDES"
+              :key="i"
+              class="ba-dot"
+              :class="{ active: i === baCurrent }"
+              @click="baJumpTo(i)"
+              :aria-label="`Ver foto ${i + 1}`"
+            />
           </div>
         </div>
 
@@ -349,33 +398,37 @@ function onTabKeydown(e, currentTab) {
             role="group"
             aria-label="Fotos das etapas de instalação"
           >
-            <div class="gal-item">
+            <div class="gal-item" @click="openLightbox(procLimpeza, 'Canos enferrujados e deteriorados')">
               <img
                 :src="procLimpeza"
                 alt="Preparação dos barriletes de alumínio para fixação"
                 loading="lazy"
               />
-              <span class="gal-label" aria-hidden="true">Barriletes</span>
+              <span class="gal-label" aria-hidden="true"
+                >CANOS ENFERRUJADOS E DETERIORADOS</span
+              >
             </div>
-            <div class="gal-item">
+            <div class="gal-item" @click="openLightbox(procFixacao, 'Instalação dos novos canos e revestimento')">
               <img
                 :src="procFixacao"
                 alt="Instalação do revestimento PVC na caixa d'água"
                 loading="lazy"
               />
               <span class="gal-label" aria-hidden="true"
-                >Fixação dos barriletes</span
+                >instalação dos novos canos e revestimento</span
               >
             </div>
-            <div class="gal-item">
+            <div class="gal-item" @click="openLightbox(procSolda, 'Aplicação do revestimento')">
               <img
                 :src="procSolda"
                 alt="Solda térmica do PVC nas tubulações internas"
                 loading="lazy"
               />
-              <span class="gal-label" aria-hidden="true">Solda térmica</span>
+              <span class="gal-label" aria-hidden="true"
+                >Aplicação do revestimento</span
+              >
             </div>
-            <div class="gal-item">
+            <div class="gal-item" @click="openLightbox(procFinal, 'Instalação concluída')">
               <img
                 :src="procFinal"
                 alt="Instalação do PVC geomembrana concluída"
@@ -385,7 +438,7 @@ function onTabKeydown(e, currentTab) {
                 >Instalação concluída</span
               >
             </div>
-            <div class="gal-item">
+            <div class="gal-item" @click="openLightbox(procFinal2, 'Revestimento interno')">
               <img
                 :src="procFinal2"
                 alt="Interior de caixa d'água com revestimento PVC geomembrana instalado"
@@ -404,7 +457,7 @@ function onTabKeydown(e, currentTab) {
             Outro exemplo — caixa de grande volume
           </p>
           <div class="ba-grid" role="group" aria-label="Segundo comparativo">
-            <div class="ba-item">
+            <div class="ba-item" @click="openLightbox(antesI2, 'Infiltrações visíveis — situação comum em condomínios')">
               <img
                 :src="antesI2"
                 alt="Caixa d'água com concreto deteriorado — antes"
@@ -415,7 +468,7 @@ function onTabKeydown(e, currentTab) {
                 Infiltrações visíveis — situação comum em condomínios
               </p>
             </div>
-            <div class="ba-item">
+            <div class="ba-item" @click="openLightbox(depoisI2, 'Revestimento integral — paredes, fundo e entorno das tubulações')">
               <img
                 :src="depoisI2"
                 alt="Caixa d'água com PVC geomembrana instalado — depois"
@@ -701,7 +754,7 @@ function onTabKeydown(e, currentTab) {
             role="group"
             aria-label="Fotos da impermeabilização externa"
           >
-            <div class="g3-item">
+            <div class="g3-item" @click="openLightbox(extManta, 'Manta asfáltica')">
               <img
                 :src="extManta"
                 alt="Manta asfáltica aplicada sobre superfície externa da caixa d'água"
@@ -709,7 +762,7 @@ function onTabKeydown(e, currentTab) {
               />
               <span class="gal-label" aria-hidden="true">Manta asfáltica</span>
             </div>
-            <div class="g3-item">
+            <div class="g3-item" @click="openLightbox(extGeo1, 'Geomembrana externa')">
               <img
                 :src="extGeo1"
                 alt="Geomembrana aplicada na face externa do reservatório"
@@ -719,7 +772,7 @@ function onTabKeydown(e, currentTab) {
                 >Geomembrana externa</span
               >
             </div>
-            <div class="g3-item">
+            <div class="g3-item" @click="openLightbox(extGeo2, 'Acabamento')">
               <img
                 :src="extGeo2"
                 alt="Acabamento da geomembrana externa na caixa d'água"
@@ -945,6 +998,30 @@ function onTabKeydown(e, currentTab) {
 
     <AppFooter />
     <BackToTop />
+
+    <Teleport to="body">
+      <div
+        v-if="lightboxSrc"
+        class="lightbox"
+        @click.self="closeLightbox"
+        role="dialog"
+        aria-modal="true"
+        :aria-label="lightboxAlt || 'Imagem ampliada'"
+      >
+        <button
+          class="lightbox-close"
+          @click="closeLightbox"
+          aria-label="Fechar imagem"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <img class="lightbox-img" :src="lightboxSrc" :alt="lightboxAlt" />
+        <p v-if="lightboxAlt" class="lightbox-caption">{{ lightboxAlt }}</p>
+      </div>
+    </Teleport>
   </div>
 </template>
 
@@ -1127,12 +1204,20 @@ function onTabKeydown(e, currentTab) {
   font-weight: 500;
 }
 
-.tab-full { display: none; }
-.tab-short { display: inline; }
+.tab-full {
+  display: none;
+}
+.tab-short {
+  display: inline;
+}
 
 @media (min-width: 480px) {
-  .tab-full { display: inline; }
-  .tab-short { display: none; }
+  .tab-full {
+    display: inline;
+  }
+  .tab-short {
+    display: none;
+  }
 }
 
 /* ═══════════════════════════════
@@ -2162,5 +2247,169 @@ function onTabKeydown(e, currentTab) {
     color: #fff;
     background: rgba(255, 255, 255, 0.08);
   }
+}
+
+/* ═══════════════════════════════
+   CAROUSEL
+═══════════════════════════════ */
+.ba-carousel {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--color-mist);
+}
+
+.ba-carousel-track {
+  display: flex;
+  transition: transform var(--dur-slow) var(--ease-spring);
+  will-change: transform;
+}
+
+.ba-carousel-slide {
+  flex: 0 0 100%;
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--color-navy);
+  cursor: zoom-in;
+}
+
+.ba-carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease-spring);
+}
+
+.ba-carousel-slide:hover img {
+  transform: scale(1.03);
+}
+
+.ba-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: rgba(13, 42, 82, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background var(--dur-fast) var(--ease-default);
+  z-index: 2;
+}
+
+.ba-btn:hover {
+  background: rgba(13, 42, 82, 0.85);
+}
+
+.ba-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ba-btn--prev {
+  left: 12px;
+}
+
+.ba-btn--next {
+  right: 12px;
+}
+
+.ba-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding-bottom: var(--space-2);
+}
+
+.ba-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-mist);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--dur-fast) var(--ease-default), width var(--dur-fast) var(--ease-default);
+}
+
+.ba-dot.active {
+  background: var(--color-cobalt);
+  width: 24px;
+}
+
+/* zoom-in cursor on clickable gallery items */
+.gal-item,
+.ba-item,
+.g3-item {
+  cursor: zoom-in;
+}
+
+/* ═══════════════════════════════
+   LIGHTBOX
+═══════════════════════════════ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 26, 50, 0.92);
+  z-index: var(--z-modal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  backdrop-filter: blur(4px);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: var(--space-5);
+  right: var(--space-5);
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-pill);
+  color: var(--color-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--dur-fast) var(--ease-default);
+  z-index: 1;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lightbox-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-xl);
+}
+
+.lightbox-caption {
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  max-width: 560px;
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
 }
 </style>

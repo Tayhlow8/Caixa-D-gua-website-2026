@@ -47,6 +47,12 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
               >Impermeabilização</a
             >
           </li>
+          <li>
+            <a href="/blog" :class="{ act: route.path === '/blog' }">Blog</a>
+          </li>
+          <li>
+            <a href="/faq" :class="{ act: route.path === '/faq' }">FAQ</a>
+          </li>
           <li><a href="/#contato">Contato</a></li>
         </ul>
       </nav>
@@ -106,6 +112,19 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
           :class="{ act: route.path === '/impermeabilizacao' }"
           @click="closeMob"
           >Impermeabilização</a
+        >
+      </li>
+      <li>
+        <a
+          href="/blog"
+          :class="{ act: route.path === '/blog' }"
+          @click="closeMob"
+          >Blog</a
+        >
+      </li>
+      <li>
+        <a href="/faq" :class="{ act: route.path === '/faq' }" @click="closeMob"
+          >FAQ</a
         >
       </li>
       <li><a href="/#contato" @click="closeMob">Contato</a></li>
@@ -371,10 +390,14 @@ nav {
   color: var(--color-navy-deep);
 }
 
-.btn-wave:focus { outline: none; }
+.btn-wave:focus {
+  outline: none;
+}
 .btn-wave:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-sky);
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px var(--color-sky);
 }
 
 /* ── Hamburger ── */
@@ -474,10 +497,14 @@ nav {
   border-radius: 2px;
   border-bottom: none !important;
 }
-.mob-cta:focus { outline: none; }
+.mob-cta:focus {
+  outline: none;
+}
 .mob-cta:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-navy-deep), 0 0 0 4px var(--color-sky);
+  box-shadow:
+    0 0 0 2px var(--color-navy-deep),
+    0 0 0 4px var(--color-sky);
 }
 
 /* ── Overlay ── */

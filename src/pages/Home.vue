@@ -130,7 +130,7 @@ useHead({
           <div class="why-grid">
             <div class="why-card">
               <div class="wnum">01 · Tecnologia</div>
-              <div class="wtitle">Produto patenteado e exclusivo</div>
+              <div class="wtitle">Produto patenteado, exclusivo e atóxico</div>
               <p class="wtext">
                 Formulação própria com registro de propriedade intelectual.
                 Nenhum outro prestador pode oferecer o mesmo resultado.
