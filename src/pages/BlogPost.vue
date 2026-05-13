@@ -220,8 +220,11 @@ useHead(computed(() => ({
   ]
 })))
 
+const allImages = import.meta.glob('../assets/**/*.{webp,jpg,jpeg,png}', { eager: true })
+
 function getImageUrl(filename) {
-  return new URL(`../assets/${filename}`, import.meta.url).href
+  const key = `../assets/${filename}`
+  return allImages[key]?.default ?? ''
 }
 </script>
 
@@ -240,7 +243,7 @@ function getImageUrl(filename) {
 /* ─── Hero ─── */
 .post-hero {
   position: relative;
-  background: var(--color-navy-deep);
+  background: var(--color-white);
   padding-top: var(--space-24);
   overflow: hidden;
 }
@@ -255,7 +258,7 @@ function getImageUrl(filename) {
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 0.25;
+  opacity: 0.12;
 }
 
 .post-hero__overlay {
@@ -263,9 +266,9 @@ function getImageUrl(filename) {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(13, 42, 82, 0.5) 0%,
-    rgba(13, 42, 82, 0.85) 60%,
-    var(--color-navy-deep) 100%
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.82) 55%,
+    var(--color-white) 100%
   );
 }
 
@@ -287,7 +290,7 @@ function getImageUrl(filename) {
   font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 48px);
   font-weight: var(--weight-black);
-  color: var(--color-white);
+  color: var(--color-navy-deep);
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-tight);
   margin: 0 0 var(--space-6);
@@ -297,7 +300,7 @@ function getImageUrl(filename) {
 .post-hero__excerpt {
   font-family: var(--font-body);
   font-size: var(--text-md);
-  color: var(--text-on-dark-muted);
+  color: var(--text-secondary);
   line-height: var(--leading-normal);
   max-width: 620px;
   margin: 0;
@@ -326,7 +329,7 @@ function getImageUrl(filename) {
 .post-reading {
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--text-on-dark-muted);
+  color: var(--text-muted);
   letter-spacing: var(--tracking-mono);
 }
 

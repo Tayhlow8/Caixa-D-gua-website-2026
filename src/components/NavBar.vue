@@ -4,6 +4,7 @@ import { useRoute } from "vue-router";
 
 const scrolled = ref(false);
 const menuOpen = ref(false);
+const contatoOpen = ref(false);
 const route = useRoute();
 
 const darkHero = computed(
@@ -16,6 +17,7 @@ function onScroll() {
 
 function closeMob() {
   menuOpen.value = false;
+  contatoOpen.value = false;
 }
 
 onMounted(() => window.addEventListener("scroll", onScroll, { passive: true }));
@@ -53,7 +55,26 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
           <li>
             <a href="/faq" :class="{ act: route.path === '/faq' }">FAQ</a>
           </li>
-          <li><a href="/#contato">Contato</a></li>
+          <li class="has-dropdown">
+            <a href="/#contato" class="has-dropdown__trigger">
+              Contato
+              <svg class="has-dropdown__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown" role="list">
+              <div class="nav-dropdown__inner">
+                <a href="tel:+5551981969303" class="nav-dropdown__item" role="listitem">
+                  <span class="nav-dropdown__tag">Cel</span>
+                  <span class="nav-dropdown__num">(51) 98196-9303</span>
+                </a>
+                <a href="tel:+555133481239" class="nav-dropdown__item" role="listitem">
+                  <span class="nav-dropdown__tag">Fix</span>
+                  <span class="nav-dropdown__num">(51) 3348-1239</span>
+                </a>
+              </div>
+            </div>
+          </li>
         </ul>
       </nav>
 
@@ -127,7 +148,28 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
           >FAQ</a
         >
       </li>
-      <li><a href="/#contato" @click="closeMob">Contato</a></li>
+      <li class="mob-has-sub">
+        <button
+          class="mob-sub-trigger"
+          @click="contatoOpen = !contatoOpen"
+          :aria-expanded="contatoOpen"
+        >
+          Contato
+          <svg class="mob-sub-chevron" :class="{ open: contatoOpen }" width="12" height="7" viewBox="0 0 12 7" fill="none" aria-hidden="true">
+            <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="mob-sub-panel" :class="{ open: contatoOpen }">
+          <div>
+            <a href="tel:+5551981969303" class="mob-sub-item" @click="closeMob">
+              <span class="mob-sub-tag">Cel</span>(51) 98196-9303
+            </a>
+            <a href="tel:+555133481239" class="mob-sub-item" @click="closeMob">
+              <span class="mob-sub-tag">Fix</span>(51) 3348-1239
+            </a>
+          </div>
+        </div>
+      </li>
     </ul>
     <a
       href="https://api.whatsapp.com/send?phone=5551992145030"
@@ -522,6 +564,137 @@ nav {
 .overlay.show {
   opacity: 1;
   pointer-events: all;
+}
+
+/* ── Contato dropdown ── */
+.has-dropdown { position: relative; }
+
+.has-dropdown__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.has-dropdown__chevron {
+  transition: transform var(--transition-state);
+  flex-shrink: 0;
+}
+.has-dropdown:hover .has-dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  padding-top: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-state), transform var(--transition-state);
+  z-index: var(--z-dropdown);
+}
+.has-dropdown:hover .nav-dropdown {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown__inner {
+  background: var(--color-navy-deep);
+  border: 1px solid rgba(0, 184, 240, 0.18);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2) 0;
+  min-width: 172px;
+}
+
+.nav-dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  text-decoration: none;
+  transition: background var(--transition-hover);
+}
+.nav-dropdown__item:hover { background: rgba(0, 184, 240, 0.08); }
+
+.nav-dropdown__tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--color-sky);
+  min-width: 24px;
+}
+
+.nav-dropdown__num {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* ── Mobile sub-menu ── */
+.mob-sub-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 14px 0;
+  background: none;
+  border: none;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.mob-sub-trigger:hover { color: var(--color-sky); }
+
+.mob-sub-chevron {
+  color: rgba(255, 255, 255, 0.4);
+  transition: transform var(--transition-state);
+  flex-shrink: 0;
+}
+.mob-sub-chevron.open { transform: rotate(180deg); }
+
+.mob-sub-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-state);
+}
+.mob-sub-panel.open { grid-template-rows: 1fr; }
+.mob-sub-panel > div { overflow: hidden; }
+
+.mob-sub-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 11px 0 11px var(--space-4);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.mob-sub-item:hover { color: var(--color-sky); }
+.mob-sub-item:last-child { border-bottom: none; }
+
+.mob-sub-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--color-sky);
+  min-width: 24px;
 }
 
 @media (max-width: 767px) {

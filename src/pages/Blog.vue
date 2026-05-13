@@ -82,7 +82,13 @@
       <div class="container">
         <p class="blog-faq-cta__label">Tem dúvidas?</p>
         <h2 class="blog-faq-cta__title">Veja nossas perguntas frequentes</h2>
-        <router-link to="/faq" class="blog-faq-cta__btn">Acessar FAQ</router-link>
+        <router-link to="/faq" class="blog-faq-cta__btn">
+          <svg class="faqcta-wsv" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true">
+            <g class="faqcta-wg1"><path class="faqcta-wf1" d="M0,22 C50,6 100,38 150,22 C200,6 250,38 300,22 C350,6 400,38 450,22 C500,6 550,38 600,22 L600,80 L0,80 Z"/></g>
+            <g class="faqcta-wg2"><path class="faqcta-wf2" d="M0,28 C60,12 110,44 170,28 C220,12 280,44 330,28 C390,12 440,44 500,28 C545,14 575,40 600,28 L600,80 L0,80 Z"/></g>
+          </svg>
+          <span class="faqcta-lbl">Acessar FAQ</span>
+        </router-link>
       </div>
     </section>
 
@@ -107,8 +113,11 @@ useHead({
   ]
 })
 
+const allImages = import.meta.glob('../assets/**/*.{webp,jpg,jpeg,png}', { eager: true })
+
 function getImageUrl(filename) {
-  return new URL(`../assets/${filename}`, import.meta.url).href
+  const key = `../assets/${filename}`
+  return allImages[key]?.default ?? ''
 }
 </script>
 
@@ -406,8 +415,11 @@ function getImageUrl(filename) {
   margin: 0 0 var(--space-8);
 }
 
-/* DS pill button — padrão aqua-ds-guidelines */
+/* DS pill button — btn--primary (aqua-ds-guidelines) */
 .blog-faq-cta__btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -420,15 +432,75 @@ function getImageUrl(filename) {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: var(--space-4) var(--space-8);
-  border-radius: 40px;
+  border-radius: var(--radius-pill);
   text-decoration: none;
   min-height: 48px;
-  transition: background var(--transition-hover), color var(--transition-hover);
 }
 
-.blog-faq-cta__btn:hover {
-  background: var(--color-sky);
-  color: var(--color-navy-deep);
+.faqcta-wsv {
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 300%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.blog-faq-cta__btn:hover .faqcta-wsv { opacity: 1; }
+
+.faqcta-lbl {
+  position: relative;
+  z-index: 1;
+  transition: color var(--transition-wave);
+}
+
+.faqcta-wg1 {
+  transform: translateY(115%);
+  transition: transform 0.55s ease-in;
+}
+.faqcta-wg2 {
+  transform: translateY(125%);
+  transition: transform 0.55s ease-in 0.04s;
+}
+
+.blog-faq-cta__btn:hover .faqcta-wg1 {
+  animation:
+    faqRise1 0.65s var(--ease-spring) forwards,
+    faqBob1 3.2s ease-in-out 0.65s infinite;
+}
+.blog-faq-cta__btn:hover .faqcta-wg2 {
+  animation:
+    faqRise2 0.7s var(--ease-spring) 0.05s forwards,
+    faqBob2 4s ease-in-out 0.75s infinite;
+}
+
+@keyframes faqRise1 {
+  from { transform: translateY(115%); }
+  to   { transform: translateY(-10%); }
+}
+@keyframes faqRise2 {
+  from { transform: translateY(125%); }
+  to   { transform: translateY(-6%); }
+}
+@keyframes faqBob1 {
+  0%, 100% { transform: translateY(-10%); }
+  50%      { transform: translateY(-14%); }
+}
+@keyframes faqBob2 {
+  0%, 100% { transform: translateY(-6%); }
+  50%      { transform: translateY(-11%); }
+}
+
+.faqcta-wf1 { fill: var(--color-sky); }
+.faqcta-wf2 { fill: var(--color-cyan-light); opacity: 0.5; }
+
+.blog-faq-cta__btn:hover .faqcta-lbl { color: var(--color-navy-deep); }
+
+.blog-faq-cta__btn:focus { outline: none; }
+.blog-faq-cta__btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-navy-deep), 0 0 0 4px var(--color-sky);
 }
 
 /* ─── Responsivo ─── */

@@ -118,7 +118,7 @@ import baNovo5 from "../assets/novas fotos site/canos e rev depois.webp";
 import baNovo6 from "../assets/novas fotos site/barriletes topo depois.webp";
 
 // ── Externa images
-import extManta from "../assets/manta asfaltica 1.png";
+import extManta from "../assets/novas fotos site/revestimento externo nivelado.webp";
 import extGeo1 from "../assets/geomembrana externa.png";
 import extGeo2 from "../assets/geomembrana externa2 1.png";
 
@@ -127,27 +127,59 @@ const WPP_RS = "https://api.whatsapp.com/send?phone=5551981969303";
 const activeTab = ref("interna");
 
 const BA_SLIDES = [
-  { img: antesI1, tag: "antes", caption: "Concreto exposto com infiltrações — risco à saúde" },
-  { img: baNovo1, tag: "antes", caption: "Deterioração avançada — colônia de insetos no concreto" },
-  { img: depoisI1, tag: "depois", caption: "PVC geomembrana instalado — superfície lisa, atóxica e impermeável" },
+  {
+    img: antesI1,
+    tag: "antes",
+    caption: "Concreto exposto com infiltrações — risco à saúde",
+  },
+  {
+    img: baNovo1,
+    tag: "antes",
+    caption: "Deterioração avançada — colônia de insetos no concreto",
+  },
+  {
+    img: depoisI1,
+    tag: "depois",
+    caption:
+      "PVC geomembrana instalado — superfície lisa, atóxica e impermeável",
+  },
   { img: baNovo2, tag: "depois", caption: "Revestimento PVC concluído" },
-  { img: baNovo3, tag: "depois", caption: "Resultado final — reservatório protegido" },
+  {
+    img: baNovo3,
+    tag: "depois",
+    caption: "Resultado final — reservatório protegido",
+  },
   { img: baNovo4, tag: "depois", caption: "Revestimento interno completo" },
-  { img: baNovo5, tag: "depois", caption: "Canos e revestimento após instalação" },
-  { img: baNovo6, tag: "depois", caption: "Barriletes no topo após instalação" },
+  {
+    img: baNovo5,
+    tag: "depois",
+    caption: "Canos e revestimento após instalação",
+  },
+  {
+    img: baNovo6,
+    tag: "depois",
+    caption: "Barriletes no topo após instalação",
+  },
 ];
 
 const baCurrent = ref(0);
 const baTrackEl = ref(null);
 
 function baGoTo(n) {
-  baCurrent.value = ((n % BA_SLIDES.length) + BA_SLIDES.length) % BA_SLIDES.length;
+  baCurrent.value =
+    ((n % BA_SLIDES.length) + BA_SLIDES.length) % BA_SLIDES.length;
   if (baTrackEl.value)
     baTrackEl.value.style.transform = `translateX(-${baCurrent.value * 100}%)`;
 }
-function baPrev() { baGoTo(baCurrent.value - 1); }
-function baNext() { baGoTo(baCurrent.value + 1); }
-function baJumpTo(i) { baGoTo(i); }
+function baPrev() {
+  baGoTo(baCurrent.value - 1);
+}
+function baNext() {
+  baGoTo(baCurrent.value + 1);
+}
+function baJumpTo(i) {
+  baGoTo(i);
+}
 
 const lightboxSrc = ref(null);
 const lightboxAlt = ref("");
@@ -155,7 +187,9 @@ function openLightbox(src, alt = "") {
   lightboxSrc.value = src;
   lightboxAlt.value = alt;
 }
-function closeLightbox() { lightboxSrc.value = null; }
+function closeLightbox() {
+  lightboxSrc.value = null;
+}
 
 function switchTab(tab) {
   activeTab.value = tab;
@@ -349,7 +383,11 @@ function onTabKeydown(e, currentTab) {
           <p class="ba-label" aria-hidden="true">
             Antes e depois do revestimento
           </p>
-          <div class="ba-carousel" role="group" aria-label="Galeria antes e depois">
+          <div
+            class="ba-carousel"
+            role="group"
+            aria-label="Galeria antes e depois"
+          >
             <div class="ba-carousel-track" ref="baTrackEl">
               <div
                 v-for="(slide, i) in BA_SLIDES"
@@ -360,20 +398,46 @@ function onTabKeydown(e, currentTab) {
                 <img :src="slide.img" :alt="slide.caption" loading="lazy" />
                 <span
                   class="ba-tag"
-                  :class="slide.tag === 'antes' ? 'ba-tag--antes' : 'ba-tag--depois'"
+                  :class="
+                    slide.tag === 'antes' ? 'ba-tag--antes' : 'ba-tag--depois'
+                  "
                   aria-hidden="true"
                   >{{ slide.tag === "antes" ? "Antes" : "Depois" }}</span
                 >
                 <p class="ba-caption">{{ slide.caption }}</p>
               </div>
             </div>
-            <button class="ba-btn ba-btn--prev" @click="baPrev" aria-label="Foto anterior">
-              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <button
+              class="ba-btn ba-btn--prev"
+              @click="baPrev"
+              aria-label="Foto anterior"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
                 <polyline points="15 18 9 12 15 6" />
               </svg>
             </button>
-            <button class="ba-btn ba-btn--next" @click="baNext" aria-label="Próxima foto">
-              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <button
+              class="ba-btn ba-btn--next"
+              @click="baNext"
+              aria-label="Próxima foto"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
                 <polyline points="9 18 15 12 9 6" />
               </svg>
             </button>
@@ -398,7 +462,12 @@ function onTabKeydown(e, currentTab) {
             role="group"
             aria-label="Fotos das etapas de instalação"
           >
-            <div class="gal-item" @click="openLightbox(procLimpeza, 'Canos enferrujados e deteriorados')">
+            <div
+              class="gal-item"
+              @click="
+                openLightbox(procLimpeza, 'Canos enferrujados e deteriorados')
+              "
+            >
               <img
                 :src="procLimpeza"
                 alt="Preparação dos barriletes de alumínio para fixação"
@@ -408,7 +477,15 @@ function onTabKeydown(e, currentTab) {
                 >CANOS ENFERRUJADOS E DETERIORADOS</span
               >
             </div>
-            <div class="gal-item" @click="openLightbox(procFixacao, 'Instalação dos novos canos e revestimento')">
+            <div
+              class="gal-item"
+              @click="
+                openLightbox(
+                  procFixacao,
+                  'Instalação dos novos canos e revestimento',
+                )
+              "
+            >
               <img
                 :src="procFixacao"
                 alt="Instalação do revestimento PVC na caixa d'água"
@@ -418,7 +495,10 @@ function onTabKeydown(e, currentTab) {
                 >instalação dos novos canos e revestimento</span
               >
             </div>
-            <div class="gal-item" @click="openLightbox(procSolda, 'Aplicação do revestimento')">
+            <div
+              class="gal-item"
+              @click="openLightbox(procSolda, 'Aplicação do revestimento')"
+            >
               <img
                 :src="procSolda"
                 alt="Solda térmica do PVC nas tubulações internas"
@@ -428,7 +508,10 @@ function onTabKeydown(e, currentTab) {
                 >Aplicação do revestimento</span
               >
             </div>
-            <div class="gal-item" @click="openLightbox(procFinal, 'Instalação concluída')">
+            <div
+              class="gal-item"
+              @click="openLightbox(procFinal, 'Instalação concluída')"
+            >
               <img
                 :src="procFinal"
                 alt="Instalação do PVC geomembrana concluída"
@@ -438,7 +521,10 @@ function onTabKeydown(e, currentTab) {
                 >Instalação concluída</span
               >
             </div>
-            <div class="gal-item" @click="openLightbox(procFinal2, 'Revestimento interno')">
+            <div
+              class="gal-item"
+              @click="openLightbox(procFinal2, 'Revestimento interno')"
+            >
               <img
                 :src="procFinal2"
                 alt="Interior de caixa d'água com revestimento PVC geomembrana instalado"
@@ -457,7 +543,15 @@ function onTabKeydown(e, currentTab) {
             Outro exemplo — caixa de grande volume
           </p>
           <div class="ba-grid" role="group" aria-label="Segundo comparativo">
-            <div class="ba-item" @click="openLightbox(antesI2, 'Infiltrações visíveis — situação comum em condomínios')">
+            <div
+              class="ba-item"
+              @click="
+                openLightbox(
+                  antesI2,
+                  'Infiltrações visíveis — situação comum em condomínios',
+                )
+              "
+            >
               <img
                 :src="antesI2"
                 alt="Caixa d'água com concreto deteriorado — antes"
@@ -468,7 +562,15 @@ function onTabKeydown(e, currentTab) {
                 Infiltrações visíveis — situação comum em condomínios
               </p>
             </div>
-            <div class="ba-item" @click="openLightbox(depoisI2, 'Revestimento integral — paredes, fundo e entorno das tubulações')">
+            <div
+              class="ba-item"
+              @click="
+                openLightbox(
+                  depoisI2,
+                  'Revestimento integral — paredes, fundo e entorno das tubulações',
+                )
+              "
+            >
               <img
                 :src="depoisI2"
                 alt="Caixa d'água com PVC geomembrana instalado — depois"
@@ -754,22 +856,30 @@ function onTabKeydown(e, currentTab) {
             role="group"
             aria-label="Fotos da impermeabilização externa"
           >
-            <div class="g3-item" @click="openLightbox(extManta, 'Manta asfáltica')">
+            <div
+              class="g3-item"
+              @click="openLightbox(extManta, 'Manta asfáltica')"
+            >
               <img
                 :src="extManta"
                 alt="Manta asfáltica aplicada sobre superfície externa da caixa d'água"
                 loading="lazy"
               />
-              <span class="gal-label" aria-hidden="true">Manta asfáltica</span>
+              <span class="gal-label" aria-hidden="true"
+                >Nivelamento de telhado e impermeabilização</span
+              >
             </div>
-            <div class="g3-item" @click="openLightbox(extGeo1, 'Geomembrana externa')">
+            <div
+              class="g3-item"
+              @click="openLightbox(extGeo1, 'Geomembrana externa')"
+            >
               <img
                 :src="extGeo1"
                 alt="Geomembrana aplicada na face externa do reservatório"
                 loading="lazy"
               />
               <span class="gal-label" aria-hidden="true"
-                >Geomembrana externa</span
+                >Aplicação externa</span
               >
             </div>
             <div class="g3-item" @click="openLightbox(extGeo2, 'Acabamento')">
@@ -1013,7 +1123,14 @@ function onTabKeydown(e, currentTab) {
           @click="closeLightbox"
           aria-label="Fechar imagem"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
@@ -2337,7 +2454,9 @@ function onTabKeydown(e, currentTab) {
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: background var(--dur-fast) var(--ease-default), width var(--dur-fast) var(--ease-default);
+  transition:
+    background var(--dur-fast) var(--ease-default),
+    width var(--dur-fast) var(--ease-default);
 }
 
 .ba-dot.active {
@@ -2359,7 +2478,7 @@ function onTabKeydown(e, currentTab) {
   position: fixed;
   inset: 0;
   background: rgba(13, 26, 50, 0.92);
-  z-index: var(--z-modal);
+  z-index: var(--z-top);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2383,7 +2502,7 @@ function onTabKeydown(e, currentTab) {
   align-items: center;
   justify-content: center;
   transition: background var(--dur-fast) var(--ease-default);
-  z-index: 1;
+  z-index: var(--z-top);
 }
 
 .lightbox-close:hover {
