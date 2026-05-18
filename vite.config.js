@@ -16,7 +16,14 @@ export default defineConfig({
     }),
     sitemap({
       hostname: "https://www.caixadaguarevestimentos.com.br",
-      dynamicRoutes: ["/", "/impermeabilizacao", "/faq", "/blog"],
+      dynamicRoutes: [
+        "/",
+        "/impermeabilizacao",
+        "/faq",
+        "/blog",
+        "/politica-de-privacidade",
+        "/termos-de-servico",
+      ],
     }),
   ],
   resolve: {
