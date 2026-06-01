@@ -147,7 +147,8 @@ const areaTags = [
               <div class="contact-text">
                 <span class="contact-label">Endereço</span>
                 <span class="contact-value"
-                  >Porto Alegre, RS<br />Atendemos RS e SC</span
+                  >Jardim Itú, Zona Norte de Porto Alegre, RS<br />Atendemos RS
+                  e SC</span
                 >
               </div>
             </div>
