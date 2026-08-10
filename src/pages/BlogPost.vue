@@ -68,7 +68,7 @@
 
             <div v-else-if="block.type === 'cta'" class="post-cta-block">
               <a
-                :href="`https://api.whatsapp.com/send?phone=5551933481239&text=Olá! Vi o artigo no site e gostaria de ${block.text.toLowerCase()}.`"
+                :href="`https://api.whatsapp.com/send?phone=5551981969303&text=Olá! Vi o artigo no site e gostaria de ${block.text.toLowerCase()}.`"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="post-cta-btn"
@@ -118,7 +118,7 @@
             <p class="post-sidebar__cta-label">Precisa de ajuda?</p>
             <p class="post-sidebar__cta-text">Fale com nossa equipe técnica. Atendemos RS e SC.</p>
             <a
-              href="https://api.whatsapp.com/send?phone=5551933481239"
+              href="https://api.whatsapp.com/send?phone=5551981969303"
               target="_blank"
               rel="noopener noreferrer"
               class="post-sidebar__cta-btn"

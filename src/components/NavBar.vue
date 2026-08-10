@@ -80,7 +80,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
 
       <div class="cta-wrap">
         <a
-          href="https://api.whatsapp.com/send?phone=5551992145030"
+          href="https://api.whatsapp.com/send?phone=5551981969303"
           target="_blank"
           rel="noopener"
           class="btn-wave"
@@ -172,7 +172,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
       </li>
     </ul>
     <a
-      href="https://api.whatsapp.com/send?phone=5551992145030"
+      href="https://api.whatsapp.com/send?phone=5551981969303"
       target="_blank"
       rel="noopener"
       class="mob-cta"
