@@ -1281,7 +1281,7 @@ onUnmounted(() => {
   .feat-left {
     grid-column: 1;
     grid-row: 1;
-    padding: 36px 28px 32px 32px;
+    padding: 36px 28px 32px 0;
   }
 
   .feat-carousel-col {
@@ -1342,12 +1342,13 @@ onUnmounted(() => {
     grid-template-rows: 1fr auto;
     border-radius: var(--radius-sm) 0 0 var(--radius-sm);
     margin-bottom: 0;
+    container-type: inline-size;
   }
 
   .feat-left {
     grid-column: 1;
     grid-row: 1;
-    padding: 52px 48px 44px max(24px, calc((100% - 1304px) / 2));
+    padding: 52px 48px 44px max(0px, calc((100cqw - 1280px) / 2));
   }
 
   .feat-carousel-col {
