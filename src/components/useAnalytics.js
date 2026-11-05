@@ -1,7 +1,8 @@
 // src/composables/useAnalytics.js
-// Injeta o Google Analytics 4 apenas após consentimento do usuário (LGPD)
+// Injeta o Google Analytics 4 + Google Ads apenas após consentimento do usuário (LGPD)
 
 const GA_ID = 'G-ZGWTK4ECT3'
+const ADS_ID = 'AW-18146418540' // Google Ads (tag de conversão)
 
 let initialized = false
 
@@ -27,10 +28,11 @@ export function useAnalytics() {
       function gtag(){ dataLayer.push(arguments); }
       gtag('js', new Date());
       gtag('config', '${GA_ID}', { anonymize_ip: true });
+      gtag('config', '${ADS_ID}');
     `
     document.head.appendChild(scriptInit)
 
-    console.log('[Analytics] GA4 inicializado:', GA_ID)
+    console.log('[Analytics] GA4 + Google Ads inicializados:', GA_ID, ADS_ID)
   }
 
   /**
