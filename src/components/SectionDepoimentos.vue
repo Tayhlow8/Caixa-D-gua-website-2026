@@ -1,61 +1,42 @@
 <script setup>
 defineProps({
-  rating: { type: Number, default: 4.7 },
-  reviewCount: { type: [String, Number], default: null },
+  rating: { type: Number, default: 4.9 },
+  reviewCount: { type: [String, Number], default: 24 },
   googleUrl: {
     type: String,
-    default:
-      "https://www.google.com/maps/place/Caixa+D'%C3%A1gua+Revestimento+Impermeabiliza%C3%A7%C3%A3o+em+PVC/@-30.0227809,-51.1480857,15z/data=!4m6!3m5!1s0x951977adbf8c5a17:0xda35d91009ff89bb!8m2!3d-30.0188163!4d-51.1413608!16s%2Fg%2F1tz96xs_?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D",
+    default: "https://maps.app.goo.gl/syTWCcatTWqa2GHq7",
   },
   reviews: {
     type: Array,
     default: () => [
       {
         id: 1,
-        nome: "Sandra Gomes",
-        iniciais: "SG",
-        avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-        cidade: "Porto Alegre · RS",
+        nome: "Luiz Fernando da Rocha e Pinho",
+        iniciais: "LF",
         nota: 5,
         texto:
-          "Trabalho excelente desta empresa. Higienização, uma vez por ano, com os mesmos. Tem garantia.",
-        data: "2025",
+          "Buenos,\nTrabalho super competente da empresa, por ela representado pelo Álvaro que fez um belo trabalho.",
+        data: "2026",
         destaque: true,
       },
       {
         id: 2,
-        nome: "Marcos Henrique S.",
-        iniciais: "MH",
-        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-        cidade: "Porto Alegre · RS",
+        nome: "Ponche Verde",
+        iniciais: "PV",
         nota: 5,
         texto:
-          "Precisávamos resolver com urgência, pois o condomínio não podia ficar sem água. A equipe da Caixa D'Água Revestimentos chegou no horário combinado, instalou o revestimento em menos de um dia e já liberou o reservatório para uso. Zero interrupção para os moradores. Serviço ágil e profissional do início ao fim.",
-        data: "2025",
+          "A empresa instalou o revestimento das caixas d'água do condomínio há alguns anos, o que foi uma revolução pra melhorar nossa estrutura, e desde então são os responsáveis pela limpeza e manutenção. O serviço é impecável...",
+        data: "2026",
         destaque: false,
       },
       {
         id: 3,
-        nome: "Cristiane Alves",
-        iniciais: "CA",
-        avatar: "https://randomuser.me/api/portraits/women/63.jpg",
-        cidade: "Porto Alegre · RS",
+        nome: "Marlene Toldo",
+        iniciais: "MT",
         nota: 5,
         texto:
-          "Contratei há três anos e o revestimento está impecável até hoje. O material é claramente de qualidade — sem cheiro, sem manchas, a água continua limpa a cada análise que faço. O que me surpreendeu foi o suporte pós-serviço: tive uma dúvida meses depois e fui atendida rapidamente. Empresa séria, que não some após fechar o contrato.",
-        data: "2025",
-        destaque: false,
-      },
-      {
-        id: 4,
-        nome: "Ricardo Fontana",
-        iniciais: "RF",
-        avatar: "https://randomuser.me/api/portraits/men/57.jpg",
-        cidade: "Porto Alegre · RS",
-        nota: 5,
-        texto:
-          "Já usamos o serviço em dois edifícios do grupo e a experiência foi excelente nas duas vezes. Instalação rápida, sem sujeira, sem obra. O revestimento de PVC é aprovado pela ANVISA, o que dá muita segurança para um condomínio. Equipe educada, pontual e transparente no orçamento. Recomendo sem hesitar.",
-        data: "2025",
+          "Olá,sou síndica a mais de dez anos,e uma vez por ano faço a limpeza com está firma.\nA equipe é atenciosa e são caprichosos no serviço de limpeza.\nEu recomendo.",
+        data: "2026",
         destaque: false,
       },
     ],
@@ -81,10 +62,15 @@ function stars(n) {
         </div>
 
         <div class="reviews-rating">
-          <span class="rating-num">{{ rating }}</span>
+          <span class="rating-num">{{
+            rating.toLocaleString("pt-BR", {
+              minimumFractionDigits: 1,
+              maximumFractionDigits: 1,
+            })
+          }}</span>
           <div
             class="rating-stars"
-            aria-label="Nota média 5 de 5 estrelas no Google Meu Negócio"
+            :aria-label="`Nota média de ${rating} de 5 estrelas no Google`"
           >
             <svg v-for="i in 5" :key="i" viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -99,7 +85,12 @@ function stars(n) {
                 : "avaliações no Google"
             }}
           </span>
-          <span class="rating-badge">
+          <a
+            class="rating-badge"
+            :href="googleUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <svg
               width="12"
               height="12"
@@ -124,8 +115,8 @@ function stars(n) {
                 fill="#EA4335"
               />
             </svg>
-            Verificado · Google Meu Negócio
-          </span>
+            Ver avaliações no Google
+          </a>
         </div>
       </div>
 
@@ -155,7 +146,7 @@ function stars(n) {
             </div>
             <span
               class="card-google"
-              aria-label="Avaliação verificada pelo Google Meu Negócio"
+              aria-label="Avaliação publicada no Google"
             >
               <svg
                 width="10"
@@ -201,21 +192,8 @@ function stars(n) {
             <div class="author-info">
               <span class="author-name">{{ review.nome }}</span>
               <span class="author-meta"
-                >{{ review.cidade }} · {{ review.data }}</span
+                >{{ review.data }} · Google</span
               >
-            </div>
-            <div class="author-verified" aria-label="Cliente verificado">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  fill="none"
-                />
-              </svg>
-              Verificado
             </div>
           </footer>
         </article>

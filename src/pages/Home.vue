@@ -93,8 +93,8 @@ useHead({
         ],
         aggregateRating: {
           "@type": "AggregateRating",
-          ratingValue: "4.7",
-          reviewCount: "150",
+          ratingValue: "4.9",
+          reviewCount: "24",
           bestRating: "5",
         },
         sameAs: [
